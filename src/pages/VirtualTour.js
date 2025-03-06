@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
-import { useAudio } from "../contexts/AudioContext";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const TourContainer = styled.div`
   width: 100%;
@@ -218,13 +218,10 @@ const VirtualTour = () => {
   const [loading, setLoading] = useState(true);
   const [rotation, setRotation] = useState(0);
   const [selectedHotspot, setSelectedHotspot] = useState(null);
-  const { playAmbientSound } = useAudio();
+  const { t } = useLanguage();
 
   useEffect(() => {
-    // Start ambient museum sound
-    playAmbientSound("museum");
-
-    // Simulate loading
+    // Start loading sequence without audio
     const timer = setTimeout(() => {
       setLoading(false);
     }, 3000);
@@ -232,7 +229,7 @@ const VirtualTour = () => {
     return () => {
       clearTimeout(timer);
     };
-  }, [playAmbientSound]);
+  }, []);
 
   const rotateLeft = () => {
     setRotation((prev) => prev - 90);
@@ -274,29 +271,29 @@ const VirtualTour = () => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        Back to Home
+        {t("backToHome")}
       </BackButton>
 
       <MuseumRoom>
         <MuseumWalls rotation={rotation}>
           <FrontWall>
             <h2 style={{ color: "#d3a164", fontSize: "2rem" }}>
-              Tribal Heritage
+              {t("tribalHeritage")}
             </h2>
           </FrontWall>
           <BackWall>
             <h2 style={{ color: "#d3a164", fontSize: "2rem" }}>
-              Cultural Legacy
+              {t("culturalLegacy")}
             </h2>
           </BackWall>
           <LeftWall>
             <h2 style={{ color: "#d3a164", fontSize: "2rem" }}>
-              Ancestral Wisdom
+              {t("ancestralWisdom")}
             </h2>
           </LeftWall>
           <RightWall>
             <h2 style={{ color: "#d3a164", fontSize: "2rem" }}>
-              Living Traditions
+              {t("livingTraditions")}
             </h2>
           </RightWall>
           <Floor />
@@ -322,11 +319,8 @@ const VirtualTour = () => {
         animate={{ x: 0, opacity: 1 }}
         transition={{ delay: 0.5 }}
       >
-        <h2>Museum Tour</h2>
-        <p>
-          Use the rotation controls to navigate the virtual museum. Click on the
-          highlighted points to learn more about the exhibits.
-        </p>
+        <h2>{t("museumTour")}</h2>
+        <p>{t("navigationInfo")}</p>
       </InfoPanel>
 
       <AnimatePresence>
@@ -351,7 +345,7 @@ const VirtualTour = () => {
               }}
               onClick={() => setSelectedHotspot(null)}
             >
-              Close
+              {t("close")}
             </button>
           </DetailPanel>
         )}
@@ -364,8 +358,8 @@ const VirtualTour = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2>Loading Virtual Museum</h2>
-            <p>Preparing your immersive experience...</p>
+            <h2>{t("loadingVirtualMuseum")}</h2>
+            <p>{t("preparingExperience")}</p>
           </LoadingScreen>
         )}
       </AnimatePresence>

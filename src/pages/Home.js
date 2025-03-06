@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"; // Remove useRef import
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import HeroSection from "../components/HeroSection";
@@ -7,7 +7,6 @@ import ExhibitSection from "../components/ExhibitSection";
 import CTASection from "../components/CTASection";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { useAudio } from "../contexts/AudioContext";
 import { useLoading } from "../contexts/LoadingContext";
 
 const PageWrapper = styled(motion.div)`
@@ -18,16 +17,14 @@ const PageWrapper = styled(motion.div)`
 `;
 
 const Home = () => {
-  const { playAmbientSound } = useAudio();
   const { setLoaded } = useLoading();
 
   useEffect(() => {
-    // Start ambient sounds once page is loaded
+    // Start loading sequence
     setTimeout(() => {
       setLoaded(true);
-      playAmbientSound("nature");
     }, 2000);
-  }, [playAmbientSound, setLoaded]);
+  }, [setLoaded]);
 
   return (
     <PageWrapper

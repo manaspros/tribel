@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useAudio } from "../contexts/AudioContext";
+import { useLanguage } from "../contexts/LanguageContext";
 import logo from "../assets/logo.svg";
 
 const NavContainer = styled(motion.nav)`
@@ -103,24 +103,26 @@ const MobileNavLink = styled(NavLink)`
   font-size: 1.5rem;
 `;
 
-const AudioControl = styled.button`
+const LanguageToggle = styled.button`
   background: none;
-  border: none;
-  color: ${(props) => (props.isMuted ? "#666" : "#F5EFE7")};
-  font-size: 1.2rem;
+  border: 2px solid #d3a164;
+  border-radius: 20px;
+  color: #f5efe7;
+  font-size: 0.9rem;
+  padding: 5px 12px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
+  transition: all 0.3s ease;
+  margin-left: 20px;
 
-  svg {
-    margin-right: 5px;
+  &:hover {
+    background: rgba(211, 161, 100, 0.2);
   }
 `;
 
 const Navbar = ({ transparent = false }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { toggleMute, isMuted } = useAudio();
+  const { language, toggleLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -144,19 +146,21 @@ const Navbar = ({ transparent = false }) => {
       >
         <Logo to="/">
           <img src={logo} alt="Tribal Museum Logo" />
-          <span>Tribal Heritage</span>
+          <span>
+            {t("tribal")} {t("heritage")}
+          </span>
         </Logo>
 
         <NavLinks>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/exhibits">Exhibits</NavLink>
-          <NavLink to="/timeline">Historical Timeline</NavLink>
-          <NavLink to="/virtual-tour">Virtual Tour</NavLink>
-          <NavLink to="/visit">Plan Your Visit</NavLink>
+          <NavLink to="/">{t("home")}</NavLink>
+          <NavLink to="/exhibits">{t("exhibits")}</NavLink>
+          <NavLink to="/timeline">{t("timeline")}</NavLink>
+          <NavLink to="/virtual-tour">{t("virtualTour")}</NavLink>
+          <NavLink to="/visit">{t("planVisit")}</NavLink>
 
-          <AudioControl onClick={toggleMute} isMuted={isMuted}>
-            {isMuted ? <span>🔇 Unmute</span> : <span>🔊 Mute</span>}
-          </AudioControl>
+          <LanguageToggle onClick={toggleLanguage}>
+            {language === "en" ? "हिंदी" : "English"}
+          </LanguageToggle>
         </NavLinks>
 
         <MobileMenuButton onClick={() => setMobileMenuOpen(true)}>
@@ -175,34 +179,35 @@ const Navbar = ({ transparent = false }) => {
             <MobileMenuButton onClick={() => setMobileMenuOpen(false)}>
               ✕
             </MobileMenuButton>
+
             <MobileNavLink to="/" onClick={() => setMobileMenuOpen(false)}>
-              Home
+              {t("home")}
             </MobileNavLink>
             <MobileNavLink
               to="/exhibits"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Exhibits
+              {t("exhibits")}
             </MobileNavLink>
             <MobileNavLink
               to="/timeline"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Historical Timeline
+              {t("timeline")}
             </MobileNavLink>
             <MobileNavLink
               to="/virtual-tour"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Virtual Tour
+              {t("virtualTour")}
             </MobileNavLink>
             <MobileNavLink to="/visit" onClick={() => setMobileMenuOpen(false)}>
-              Plan Your Visit
+              {t("planVisit")}
             </MobileNavLink>
 
-            <AudioControl onClick={toggleMute} isMuted={isMuted}>
-              {isMuted ? "🔇 Unmute" : "🔊 Mute"}
-            </AudioControl>
+            <LanguageToggle onClick={toggleLanguage}>
+              {language === "en" ? "हिंदी" : "English"}
+            </LanguageToggle>
           </MobileMenu>
         )}
       </AnimatePresence>

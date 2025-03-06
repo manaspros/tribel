@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLoading } from "../contexts/LoadingContext";
+import { useLanguage } from "../contexts/LanguageContext";
 import gsap from "gsap";
 import tribalPattern from "../assets/tribal-pattern.svg";
 import tribalSymbol from "../assets/tribal-symbol.svg";
@@ -63,8 +64,20 @@ const LoaderTribalPattern = styled.div`
   mix-blend-mode: overlay;
 `;
 
+const AudioHint = styled(motion.div)`
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  font-size: 0.9rem;
+  opacity: 0.7;
+`;
+
 export const Loader = () => {
   const { isLoaded } = useLoading();
+  const { t } = useLanguage();
 
   useEffect(() => {
     // Animate progress bar
@@ -94,7 +107,9 @@ export const Loader = () => {
           <LoaderTribalPattern className="tribal-pattern" />
 
           <LoaderInner>
-            <LoaderTitle>Tribal Heritage Museum</LoaderTitle>
+            <LoaderTitle>
+              {t("tribal")} {t("heritageMuseum")}
+            </LoaderTitle>
             <motion.img
               src={tribalSymbol}
               alt="Tribal Symbol"
@@ -118,7 +133,7 @@ export const Loader = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
             >
-              Preparing your immersive journey...
+              {t("preparingExperience")}
             </motion.p>
           </LoaderInner>
         </LoaderContainer>

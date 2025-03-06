@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import halbaRebellionImg from "../assets/halba-rebellion.jpg";
-import bhumkalRevoltImg from "../assets/bhumkal-revolt.jpg";
+import halbaRebellionImg from "../assets/halba-rebellion.jpeg";
+import bhumkalRevoltImg from "../assets/bhumkal-revolt.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 

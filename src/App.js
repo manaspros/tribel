@@ -5,8 +5,8 @@ import { Loader } from "./components/Loader";
 import { Cursor } from "./components/Cursor";
 import Home from "./pages/Home";
 import VirtualTour from "./pages/VirtualTour";
-import AudioProvider from "./contexts/AudioContext";
 import { LoadingProvider } from "./contexts/LoadingContext";
+import { LanguageProvider } from "./contexts/LanguageContext";
 import "./styles/global.css";
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
   return (
     <Router>
       <LoadingProvider>
-        <AudioProvider>
+        <LanguageProvider>
           <Cursor />
           <Loader />
           <AnimatePresence mode="wait">
@@ -27,7 +27,7 @@ function App() {
               <Route path="/virtual-tour" element={<VirtualTour />} />
             </Routes>
           </AnimatePresence>
-        </AudioProvider>
+        </LanguageProvider>
       </LoadingProvider>
     </Router>
   );

@@ -12,6 +12,7 @@ const AudioProvider = ({ children }) => {
   });
 
   const [isMuted, setIsMuted] = useState(false);
+  const [userInteracted, setUserInteracted] = useState(false);
 
   useEffect(() => {
     // Load all audio files - using relative paths to public directory
@@ -27,25 +28,50 @@ const AudioProvider = ({ children }) => {
     museumSound.loop = true;
     museumSound.volume = 0.3;
 
-    setSounds({
+    // Create the sounds object
+    const newSounds = {
       nature: natureSound,
       drums: drumsSound,
       museum: museumSound,
-    });
+    };
+
+    setSounds(newSounds);
+
+    // Add event listener for user interaction
+    const handleUserInteraction = () => {
+      setUserInteracted(true);
+      // Remove event listeners after first interaction
+      window.removeEventListener("click", handleUserInteraction);
+      window.removeEventListener("touchstart", handleUserInteraction);
+      window.removeEventListener("keydown", handleUserInteraction);
+    };
+
+    window.addEventListener("click", handleUserInteraction);
+    window.addEventListener("touchstart", handleUserInteraction);
+    window.addEventListener("keydown", handleUserInteraction);
 
     return () => {
-      // Cleanup sounds on unmount using a local variable to avoid dependency issue
-      const currentSounds = sounds;
-      Object.values(currentSounds).forEach((sound) => {
+      // Cleanup sounds using the reference to newSounds instead of sounds state
+      Object.values(newSounds).forEach((sound) => {
         if (sound) {
           sound.pause();
           sound.currentTime = 0;
         }
       });
+
+      // Remove event listeners
+      window.removeEventListener("click", handleUserInteraction);
+      window.removeEventListener("touchstart", handleUserInteraction);
+      window.removeEventListener("keydown", handleUserInteraction);
     };
   }, []); // Keep empty dependency array to run only on mount
 
   const playAmbientSound = (type) => {
+    // If user hasn't interacted, store the sound type to play later
+    if (!userInteracted) {
+      return;
+    }
+
     // Stop all currently playing sounds
     Object.values(sounds).forEach((sound) => {
       if (sound) {
@@ -54,7 +80,7 @@ const AudioProvider = ({ children }) => {
       }
     });
 
-    // Play the selected sound
+    // Play the selected sound if not muted
     if (sounds[type] && !isMuted) {
       sounds[type]
         .play()
@@ -64,6 +90,9 @@ const AudioProvider = ({ children }) => {
 
   const toggleMute = () => {
     setIsMuted(!isMuted);
+
+    // If user toggles mute, consider it an interaction
+    setUserInteracted(true);
 
     Object.values(sounds).forEach((sound) => {
       if (sound) {
@@ -78,8 +107,23 @@ const AudioProvider = ({ children }) => {
     });
   };
 
+  // Add a method to play sound after user interaction
+  const attemptPlayOnInteraction = (type) => {
+    if (userInteracted && sounds[type] && !isMuted) {
+      playAmbientSound(type);
+    }
+  };
+
   return (
-    <AudioContext.Provider value={{ playAmbientSound, toggleMute, isMuted }}>
+    <AudioContext.Provider
+      value={{
+        playAmbientSound,
+        toggleMute,
+        isMuted,
+        userInteracted,
+        attemptPlayOnInteraction,
+      }}
+    >
       {children}
     </AudioContext.Provider>
   );
