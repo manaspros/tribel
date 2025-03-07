@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 import HeroSection from "../components/HeroSection";
 import TimelineSection from "../components/TimelineSection";
+import QuoteSection from "../components/QuoteSection";
+import StatisticsSection from "../components/StatisticsSection";
 import ExhibitSection from "../components/ExhibitSection";
 import CTASection from "../components/CTASection";
 import Navbar from "../components/Navbar";
@@ -35,7 +37,9 @@ const Home = () => {
     >
       <Navbar />
       <HeroSection />
+      <QuoteSection />
       <TimelineSection />
+      <StatisticsSection />
       <ExhibitSection />
       <CTASection />
       <Footer />
