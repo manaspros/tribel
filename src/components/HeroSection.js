@@ -233,6 +233,32 @@ const HeroSection = () => {
       });
     }
 
+    // Add a smooth transition to the next section
+    const createSmoothTransition = () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.fromTo(
+        "#timeline",
+        {
+          y: 100,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          scrollTrigger: {
+            trigger: "#timeline",
+            start: "top bottom-=100",
+            end: "top center",
+            scrub: true,
+          },
+        }
+      );
+    };
+
+    createSmoothTransition();
+
     return () => {
       // Cleanup animations
       if (fireAnim1) fireAnim1.kill();

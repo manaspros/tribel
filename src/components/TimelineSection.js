@@ -13,9 +13,21 @@ const TimelineContainer = styled.section`
   min-height: 100vh;
   width: 100%;
   padding: 100px 0;
-  background: #1a1410;
+  background: linear-gradient(to bottom, #1a1410 0%, #241c16 100%);
   position: relative;
   overflow: hidden;
+  z-index: 1;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent, #1a1410);
+    z-index: 2;
+  }
 `;
 
 const SectionTitle = styled.h2`
@@ -24,6 +36,19 @@ const SectionTitle = styled.h2`
   color: #d3a164;
   margin-bottom: 80px;
   font-family: "Playfair Display", serif;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(to right, transparent, #d3a164, transparent);
+  }
 `;
 
 const TimelineWrapper = styled.div`
