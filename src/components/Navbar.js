@@ -243,23 +243,23 @@ const Navbar = ({ transparent = false }) => {
       >
         <Link to="/">
           <LogoContainer>
-            <LogoImage src={logo} alt="Tribal Museum Logo" />
-            <LogoText>Tribal Museum</LogoText>
+            <LogoImage src={logo} alt={t("Tribal Museum")} />
+            <LogoText>{t("Tribal Museum")}</LogoText>
           </LogoContainer>
         </Link>
 
         <NavLinks>
-          <NavLink href="#about">About Museum</NavLink>
-          <NavLink href="#galleries">Galleries</NavLink>
-          <NavLink href="#collection">Our Collection</NavLink>
-          <NavLink href="#visiting">Visiting the Museum</NavLink>
+          <NavLink href="#about">{t("About Museum")}</NavLink>
+          <NavLink href="#galleries">{t("Galleries")}</NavLink>
+          <NavLink href="#collection">{t("Our Collection")}</NavLink>
+          <NavLink href="#visiting">{t("Visiting the Museum")}</NavLink>
           <VirtualTourButton
             as={Link}
             to="/virtual-tour"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Virtual Tour
+            {t("Virtual Tour")}
           </VirtualTourButton>
 
           <LanguageToggle
