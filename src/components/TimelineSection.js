@@ -53,11 +53,11 @@ const SectionTitle = styled.h2`
   }
 `;
 
-// Main wrapper for the timeline
+// Main wrapper for the timeline - adjusted height for better visibility
 const TimelineWrapper = styled.div`
   position: relative;
   width: 100%;
-  height: 650px; // Fixed height to accommodate all cards
+  height: 550px; // Reduced height to fit both cards better
   margin-bottom: 60px;
 `;
 
@@ -104,10 +104,10 @@ const TimelineDot = styled.div`
   top: ${(props) => (props.position === "top" ? "100%" : "0%")};
 `;
 
-// Each event card with a consistent design
+// Each event card with a consistent design - reduced size
 const TimelineEvent = styled(motion.div)`
-  width: 380px;
-  height: 280px; // Reduced height for better visibility
+  width: 350px; // Smaller width
+  height: 220px; // Reduced height to make both cards visible
   margin-right: 120px; // Space between cards
   position: absolute; // Absolute positioning for precise placement
   cursor: pointer;
@@ -117,8 +117,9 @@ const TimelineEvent = styled(motion.div)`
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   // Position from the top depends on if it's an odd or even card
-  top: ${(props) => (props.position === "top" ? "0" : "auto")};
-  bottom: ${(props) => (props.position === "bottom" ? "0" : "auto")};
+  // Adjusted positions for better visibility of both cards
+  top: ${(props) => (props.position === "top" ? "40px" : "auto")};
+  bottom: ${(props) => (props.position === "bottom" ? "40px" : "auto")};
   left: ${(props) => props.left}px;
 
   // Hover effects
@@ -139,13 +140,13 @@ const TimelineEvent = styled(motion.div)`
     z-index: 1;
   }
 
-  // Connection line to timeline belt
+  // Connection line to timeline belt - adjusted for shorter distance
   &:after {
     content: "";
     position: absolute;
     left: 50%;
     width: 2px;
-    height: ${(props) => (props.position === "top" ? "40px" : "40px")};
+    height: ${(props) => (props.position === "top" ? "30px" : "30px")};
     background: #d3a164;
     transform: translateX(-50%);
     z-index: 3;
@@ -164,42 +165,44 @@ const EventImage = styled.img`
   object-fit: cover;
 `;
 
-// Information overlay for each event
+// Adjust event info to fit in smaller card
 const EventInfo = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
-  padding: 20px;
+  padding: 15px; // Smaller padding
   color: #f5efe7;
   z-index: 2;
   width: 100%;
 `;
 
-// Year display
+// Year display - adjusted size
 const EventYear = styled.div`
-  font-size: 2rem;
+  font-size: 1.8rem; // Smaller font size
   font-weight: bold;
   color: #d3a164;
   font-family: "Playfair Display", serif;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
-  margin-bottom: 5px;
+  margin-bottom: 3px; // Less margin
 `;
 
-// Event title
+// Event title - adjusted size
 const EventTitle = styled.h3`
-  font-size: 1.5rem;
-  margin: 5px 0;
+  font-size: 1.3rem; // Smaller font size
+  margin: 3px 0;
   font-family: "Playfair Display", serif;
   color: #f5efe7;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
 `;
 
-// Event description
+// Event description - adjusted size
 const EventDescription = styled.p`
-  font-size: 0.9rem;
-  margin-top: 5px;
+  font-size: 0.8rem; // Smaller font size
+  margin-top: 3px;
   opacity: 0.8;
-  line-height: 1.4;
+  line-height: 1.3;
+  max-height: 60px; // Limit height
+  overflow: hidden;
 `;
 
 // Navigation buttons
@@ -471,50 +474,17 @@ const TimelineSection = () => {
 
   // Handle navigation buttons
   const handleNavigation = (direction) => {
-    const visibleWidth = getVisibleWidth();
-    const eventWidth = 380 + 120; // Card width + margin
-    const eventsPerPage = Math.floor(visibleWidth / eventWidth);
+    const newIndex =
+      direction === "next"
+        ? Math.min(currentIndex + 1, timelineEvents.length - 1)
+        : Math.max(currentIndex - 1, 0);
 
-    let newPosition;
-    if (direction === "next") {
-      newPosition = Math.min(
-        getMaxScroll(),
-        scrollPosition + eventsPerPage * eventWidth
-      );
-      setCurrentIndex(
-        Math.min(timelineEvents.length - 1, currentIndex + eventsPerPage)
-      );
-    } else {
-      newPosition = Math.max(0, scrollPosition - eventsPerPage * eventWidth);
-      setCurrentIndex(Math.max(0, currentIndex - eventsPerPage));
-    }
-
-    setScrollPosition(newPosition);
-
-    if (timelineRef.current) {
-      gsap.to(timelineRef.current, {
-        x: -newPosition,
-        duration: 0.8,
-        ease: "power2.out",
-      });
-    }
+    scrollToTimelinePosition(newIndex);
   };
 
   // Handle dot navigation
   const handleDotClick = (index) => {
-    const eventWidth = 380 + 120; // Card width + margin
-    const newPosition = Math.min(getMaxScroll(), index * eventWidth);
-
-    setScrollPosition(newPosition);
-    setCurrentIndex(index);
-
-    if (timelineRef.current) {
-      gsap.to(timelineRef.current, {
-        x: -newPosition,
-        duration: 0.8,
-        ease: "power2.out",
-      });
-    }
+    scrollToTimelinePosition(index);
   };
 
   // Initialize timeline
@@ -542,6 +512,88 @@ const TimelineSection = () => {
 
     // ...rest of existing effect code...
   }, [timelineEvents.length]);
+
+  // Fix the timeline scrolling behavior
+  useEffect(() => {
+    if (!timelineRef.current || !containerRef.current) return;
+
+    // Reset position at start
+    gsap.set(timelineRef.current, { x: 0 });
+    setScrollPosition(0);
+    setCurrentIndex(0);
+
+    // Calculate the total scroll distance needed for the timeline
+    const totalScrollDistance = getTotalWidth() - getVisibleWidth();
+
+    // Create a timeline with ScrollTrigger for proper pinning
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top top", // Start pinning when the top of section hits top of viewport
+        end: `+=${totalScrollDistance + 100}`, // Use the calculated scroll distance plus some buffer
+        pin: true, // Pin the section
+        anticipatePin: 1, // Improve pin performance
+        scrub: 1, // Smooth scrubbing
+        invalidateOnRefresh: true, // Recalculate on resize
+      },
+    });
+
+    // Add the horizontal scrolling animation to the timeline
+    tl.to(timelineRef.current, {
+      x: -totalScrollDistance,
+      ease: "none",
+      onUpdate: function () {
+        // Update current index based on progress
+        const progress = this.progress();
+        const newIndex = Math.min(
+          timelineEvents.length - 1,
+          Math.floor(progress * timelineEvents.length)
+        );
+        if (newIndex !== currentIndex) {
+          setCurrentIndex(newIndex);
+        }
+      },
+    });
+
+    return () => {
+      // Clean up all ScrollTrigger instances
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      tl.kill();
+    };
+  }, [timelineEvents.length]);
+
+  // Function to smoothly scroll to the timeline section when dot navigation is used
+  const scrollToTimelinePosition = (index) => {
+    if (!containerRef.current) return;
+
+    const rect = containerRef.current.getBoundingClientRect();
+    const allTriggers = ScrollTrigger.getAll();
+    const timelineTrigger = allTriggers.find(
+      (t) => t.vars.trigger === containerRef.current
+    );
+
+    if (timelineTrigger) {
+      // Calculate the scroll position for this index
+      const progress = index / (timelineEvents.length - 1);
+
+      // First scroll to the section if needed
+      if (rect.top > 0) {
+        window.scrollTo({
+          top: window.pageYOffset + rect.top,
+          behavior: "smooth",
+        });
+      }
+
+      // Then scroll within the timeline to the correct position
+      timelineTrigger.scroll(
+        timelineTrigger.start +
+          (timelineTrigger.end - timelineTrigger.start) * progress
+      );
+    }
+
+    // Update the current index
+    setCurrentIndex(index);
+  };
 
   return (
     <TimelineContainer ref={containerRef} id="timeline">
