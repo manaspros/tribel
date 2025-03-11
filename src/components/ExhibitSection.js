@@ -237,58 +237,6 @@ const ExhibitTag = styled.span`
   white-space: nowrap;
 `;
 
-// Enhanced exhibits data with more metadata
-const exhibits = [
-  {
-    id: 1,
-    title: "Tribal War Axe",
-    description:
-      "An ornate ceremonial war axe used by tribal chieftains in battle and important rituals. Features intricate carving and symbolic motifs.",
-    shape: "hexagon",
-    tags: ["Weapon", "Ceremonial"],
-  },
-  {
-    id: 2,
-    title: "Dhokra Art",
-    description:
-      "Traditional lost-wax metal casting technique dating back over 4,000 years. Known for its primitive simplicity, folk motifs, and rustic look.",
-    shape: "circle",
-    tags: ["Crafts", "Ancient"],
-  },
-  {
-    id: 3,
-    title: "Tribal Mask",
-    description:
-      "Ceremonial mask used during harvest festivals and spiritual rituals. Believed to channel ancestral spirits and bring prosperity.",
-    shape: "triangle",
-    tags: ["Ritual", "Spiritual"],
-  },
-  {
-    id: 4,
-    title: "Healing Herbs",
-    description:
-      "Collection of medicinal herbs used by tribal healers to treat various ailments, passed down through generations of knowledge.",
-    shape: "rectangle",
-    tags: ["Medicine", "Natural"],
-  },
-  {
-    id: 5,
-    title: "Tribal Jewelry",
-    description:
-      "Ornate jewelry pieces made from natural materials like seeds, bones, and metals, signifying social status and tribal affiliations.",
-    shape: "diamond",
-    tags: ["Adornment", "Cultural"],
-  },
-  {
-    id: 6,
-    title: "Musical Instruments",
-    description:
-      "Traditional instruments used in tribal celebrations, rituals and storytelling sessions, creating unique rhythms and melodies.",
-    shape: "octagon",
-    tags: ["Music", "Performance"],
-  },
-];
-
 // Shape components for different artifacts with enhanced designs
 const ShapedArtifact = ({ shape }) => {
   switch (shape) {
@@ -336,7 +284,53 @@ const ShapedArtifact = ({ shape }) => {
 const ExhibitSection = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.2 });
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+
+  // Define exhibits with translation keys
+  const exhibits = [
+    {
+      id: 1,
+      title: "tribalWarAxe",
+      description: "tribalWarAxeDesc",
+      shape: "hexagon",
+      tags: ["Weapon", "Ceremonial"],
+    },
+    {
+      id: 2,
+      title: "dhokraArt",
+      description: "dhokraArtDesc",
+      shape: "circle",
+      tags: ["Crafts", "Ancient"],
+    },
+    {
+      id: 3,
+      title: "tribalMask",
+      description: "tribalMaskDesc",
+      shape: "triangle",
+      tags: ["Ritual", "Spiritual"],
+    },
+    {
+      id: 4,
+      title: "Healing Herbs",
+      description: "Collection of medicinal herbs",
+      shape: "rectangle",
+      tags: ["Medicine", "Natural"],
+    },
+    {
+      id: 5,
+      title: "Tribal Jewelry",
+      description: "Ornate jewelry pieces",
+      shape: "diamond",
+      tags: ["Adornment", "Cultural"],
+    },
+    {
+      id: 6,
+      title: "Musical Instruments",
+      description: "Traditional instruments",
+      shape: "octagon",
+      tags: ["Music", "Performance"],
+    },
+  ];
 
   useEffect(() => {
     if (isInView) {
@@ -353,10 +347,7 @@ const ExhibitSection = () => {
   return (
     <ExhibitContainer ref={sectionRef}>
       <SectionTitle>{t("virtualExhibitGallery")}</SectionTitle>
-      <SectionSubtitle>
-        Explore our collection of rare tribal artifacts, each telling a unique
-        story of indigenous heritage, craftsmanship, and cultural significance.
-      </SectionSubtitle>
+      <SectionSubtitle>{t("Explore our collection")}</SectionSubtitle>
 
       <ExhibitsGrid>
         {exhibits.map((exhibit) => (
@@ -369,11 +360,11 @@ const ExhibitSection = () => {
               <ShapedArtifact shape={exhibit.shape} />
             </ExhibitImage>
             <ExhibitInfo>
-              <ExhibitTitle>{exhibit.title}</ExhibitTitle>
-              <ExhibitDescription>{exhibit.description}</ExhibitDescription>
+              <ExhibitTitle>{t(exhibit.title)}</ExhibitTitle>
+              <ExhibitDescription>{t(exhibit.description)}</ExhibitDescription>
               <ExhibitTags>
                 {exhibit.tags.map((tag, index) => (
-                  <ExhibitTag key={index}>{tag}</ExhibitTag>
+                  <ExhibitTag key={index}>{t(tag)}</ExhibitTag>
                 ))}
               </ExhibitTags>
             </ExhibitInfo>

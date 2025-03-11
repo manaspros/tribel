@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../contexts/LanguageContext";
 import logo from "../assets/logo.svg";
+import gsap from "gsap"; // Add this import for gsap
 
 // Enhanced container with transparent to solid transition
 const NavContainer = styled(motion.nav)`
@@ -108,6 +109,24 @@ const BookTicketButton = styled(motion.a)`
   }
 `;
 
+// Special Virtual Tour button styled like CTA
+const VirtualTourButton = styled(motion.a)`
+  background: rgba(211, 161, 100, 0.2);
+  border: 2px solid #d3a164;
+  color: #d3a164;
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  text-decoration: none;
+  margin-left: 5px;
+
+  &:hover {
+    background: rgba(211, 161, 100, 0.3);
+  }
+`;
+
 // Language toggle
 const LanguageToggle = styled(motion.button)`
   background: none;
@@ -185,7 +204,7 @@ const MobileBookButton = styled(motion.a)`
 const Navbar = ({ transparent = false }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { language, toggleLanguage } = useLanguage();
+  const { language, toggleLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -198,6 +217,21 @@ const Navbar = ({ transparent = false }) => {
     };
   }, []);
 
+  // Function to handle language toggle and provide visual feedback
+  const handleLanguageToggle = () => {
+    toggleLanguage();
+
+    // Optional: Add some visual feedback when language is changed
+    const languageButtons = document.querySelectorAll(".language-toggle-btn");
+    languageButtons.forEach((btn) => {
+      gsap.fromTo(
+        btn,
+        { scale: 0.95 },
+        { scale: 1, duration: 0.3, ease: "back.out" }
+      );
+    });
+  };
+
   return (
     <>
       <NavContainer
@@ -209,7 +243,6 @@ const Navbar = ({ transparent = false }) => {
       >
         <Link to="/">
           <LogoContainer>
-            {/* Simplified logo without animations and decorative elements */}
             <LogoImage src={logo} alt="Tribal Museum Logo" />
             <LogoText>Tribal Museum</LogoText>
           </LogoContainer>
@@ -220,9 +253,20 @@ const Navbar = ({ transparent = false }) => {
           <NavLink href="#galleries">Galleries</NavLink>
           <NavLink href="#collection">Our Collection</NavLink>
           <NavLink href="#visiting">Visiting the Museum</NavLink>
-          <NavLink href="#videos">Videos</NavLink>
+          <VirtualTourButton
+            as={Link}
+            to="/virtual-tour"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Virtual Tour
+          </VirtualTourButton>
 
-          <LanguageToggle onClick={toggleLanguage} whileTap={{ scale: 0.95 }}>
+          <LanguageToggle
+            onClick={handleLanguageToggle}
+            whileTap={{ scale: 0.95 }}
+            className="language-toggle-btn"
+          >
             {language === "en" ? "हिंदी" : "English"}
           </LanguageToggle>
 
@@ -231,16 +275,16 @@ const Navbar = ({ transparent = false }) => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Book the Ticket
+            {t("Book the Ticket")}
           </BookTicketButton>
         </NavLinks>
 
         <div style={{ display: "flex", alignItems: "center" }}>
           <LanguageToggle
-            onClick={toggleLanguage}
+            onClick={handleLanguageToggle}
             whileTap={{ scale: 0.95 }}
             style={{ display: "none" }}
-            className="mobile-only"
+            className="mobile-only language-toggle-btn"
           >
             {language === "en" ? "हिंदी" : "English"}
           </LanguageToggle>
@@ -270,37 +314,39 @@ const Navbar = ({ transparent = false }) => {
               href="#about"
               onClick={() => setMobileMenuOpen(false)}
             >
-              About Museum
+              {t("About Museum")}
             </MobileNavLink>
             <MobileNavLink
               href="#galleries"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Galleries
+              {t("Galleries")}
             </MobileNavLink>
             <MobileNavLink
               href="#collection"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Our Collection
+              {t("Our Collection")}
             </MobileNavLink>
             <MobileNavLink
               href="#visiting"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Visiting the Museum
+              {t("Visiting the Museum")}
             </MobileNavLink>
             <MobileNavLink
-              href="#videos"
+              as={Link}
+              to="/virtual-tour"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Videos
+              {t("Virtual Tour")}
             </MobileNavLink>
 
             <LanguageToggle
-              onClick={toggleLanguage}
+              onClick={handleLanguageToggle}
               whileTap={{ scale: 0.95 }}
               style={{ alignSelf: "flex-start" }}
+              className="language-toggle-btn"
             >
               {language === "en" ? "हिंदी" : "English"}
             </LanguageToggle>
@@ -311,7 +357,7 @@ const Navbar = ({ transparent = false }) => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Book the Ticket
+              {t("Book the Ticket")}
             </MobileBookButton>
           </MobileMenu>
         )}

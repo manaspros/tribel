@@ -186,7 +186,7 @@ const statsData = {
 };
 
 const StatisticsSection = () => {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.2 });
   const stats = statsData[language];
@@ -221,7 +221,7 @@ const StatisticsSection = () => {
 
   return (
     <StatsContainer ref={sectionRef}>
-      <StatsHeading>Museum Impact</StatsHeading>
+      <StatsHeading>{t("Museum Impact")}</StatsHeading>
       <StatsGrid>
         {stats.map((stat, index) => (
           <StatCard

@@ -1,6 +1,6 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
 
-// Dictionary of translations
+// Dictionary of translations - enhanced with more keys for complete site translation
 export const translations = {
   en: {
     // Navbar
@@ -9,6 +9,12 @@ export const translations = {
     timeline: "Historical Timeline",
     virtualTour: "Virtual Tour",
     planVisit: "Plan Your Visit",
+    "About Museum": "About Museum",
+    Galleries: "Galleries",
+    "Our Collection": "Our Collection",
+    "Visiting the Museum": "Visiting the Museum",
+    "Book the Ticket": "Book the Ticket",
+    "Tribal Museum": "Tribal Museum",
 
     // Hero section
     tribal: "Tribal",
@@ -21,9 +27,42 @@ export const translations = {
     tribalUprisingsTimeline: "Tribal Uprisings Timeline",
     halbaRebellion: "Halba Rebellion",
     bhumkalRevolt: "Bhumkal Revolt",
+    "Related Artifacts": "Related Artifacts",
+
+    // Quote section
+    "Museum Impact": "Museum Impact",
+
+    // Visit section
+    "Plan Your Visit": "Plan Your Visit",
+    "Step into the captivating world":
+      "Step into the captivating world of tribal heritage at our museum. Book your tickets in advance to ensure a seamless experience exploring our rich collection of artifacts and immersive exhibitions.",
+    "Open Tuesday through Sunday":
+      "Open Tuesday through Sunday, 10:00 AM to 6:00 PM",
+    "123 Heritage Avenue":
+      "123 Heritage Avenue, Cultural District, Tribal City",
+    "contact@tribalmuseum.org": "contact@tribalmuseum.org",
+    "+1 (555) 123-4567": "+1 (555) 123-4567",
+    "Book Your Ticket": "Book Your Ticket",
+    General: "General",
+    "Guided Tour": "Guided Tour",
+    "Special Event": "Special Event",
+    "First Name": "First Name",
+    "Last Name": "Last Name",
+    Email: "Email",
+    "Visit Date": "Visit Date",
+    "Time Slot": "Time Slot",
+    "Select...": "Select...",
+    "Number of Visitors": "Number of Visitors",
+    "Book Now": "Book Now",
+    "Thank You!": "Thank You!",
+    "Your booking has been confirmed":
+      "Your booking has been confirmed. You will receive a confirmation email shortly.",
+    Close: "Close",
 
     // Exhibit section
     virtualExhibitGallery: "Virtual Exhibit Gallery",
+    "Explore our collection":
+      "Explore our collection of rare tribal artifacts, each telling a unique story of indigenous heritage, craftsmanship, and cultural significance.",
     tribalWarAxe: "Tribal War Axe",
     tribalWarAxeDesc:
       "An ornate ceremonial war axe used by tribal chieftains in battle.",
@@ -33,6 +72,27 @@ export const translations = {
     tribalMask: "Tribal Mask",
     tribalMaskDesc:
       "Ceremonial mask used during harvest festivals and spiritual rituals.",
+    "Healing Herbs": "Healing Herbs",
+    "Collection of medicinal herbs":
+      "Collection of medicinal herbs used by tribal healers to treat various ailments, passed down through generations of knowledge.",
+    "Tribal Jewelry": "Tribal Jewelry",
+    "Ornate jewelry pieces":
+      "Ornate jewelry pieces made from natural materials like seeds, bones, and metals, signifying social status and tribal affiliations.",
+    "Musical Instruments": "Musical Instruments",
+    "Traditional instruments":
+      "Traditional instruments used in tribal celebrations, rituals and storytelling sessions, creating unique rhythms and melodies.",
+    Weapon: "Weapon",
+    Ceremonial: "Ceremonial",
+    Crafts: "Crafts",
+    Ancient: "Ancient",
+    Ritual: "Ritual",
+    Spiritual: "Spiritual",
+    Medicine: "Medicine",
+    Natural: "Natural",
+    Adornment: "Adornment",
+    Cultural: "Cultural",
+    Music: "Music",
+    Performance: "Performance",
 
     // CTA section
     experienceRichHeritage: "Experience Our Rich Heritage",
@@ -51,7 +111,6 @@ export const translations = {
     loadingVirtualMuseum: "Loading Virtual Museum",
     preparingExperience: "Preparing your immersive experience...",
     backToHome: "Back to Home",
-    close: "Close",
 
     // Footer
     aboutMuseum: "About The Museum",
@@ -78,6 +137,12 @@ export const translations = {
     timeline: "ऐतिहासिक समयरेखा",
     virtualTour: "आभासी दौरा",
     planVisit: "यात्रा की योजना",
+    "About Museum": "संग्रहालय के बारे में",
+    Galleries: "प्रदर्शनी कक्ष",
+    "Our Collection": "हमारा संग्रह",
+    "Visiting the Museum": "संग्रहालय भ्रमण",
+    "Book the Ticket": "टिकट बुक करें",
+    "Tribal Museum": "आदिवासी संग्रहालय",
 
     // Hero section
     tribal: "आदिवासी",
@@ -90,9 +155,41 @@ export const translations = {
     tribalUprisingsTimeline: "आदिवासी विद्रोहों की समयरेखा",
     halbaRebellion: "हल्बा विद्रोह",
     bhumkalRevolt: "भूमकाल विद्रोह",
+    "Related Artifacts": "संबंधित कलाकृतियां",
+
+    // Quote section
+    "Museum Impact": "संग्रहालय का प्रभाव",
+
+    // Visit section
+    "Plan Your Visit": "अपनी यात्रा की योजना बनाएं",
+    "Step into the captivating world":
+      "हमारे संग्रहालय में आदिवासी विरासत की मनमोहक दुनिया में कदम रखें। हमारे समृद्ध कलाकृति संग्रह और इमर्सिव प्रदर्शनियों का अन्वेषण करने के लिए अपने टिकट पहले से बुक करें।",
+    "Open Tuesday through Sunday":
+      "मंगलवार से रविवार तक, सुबह 10:00 बजे से शाम 6:00 बजे तक खुला है",
+    "123 Heritage Avenue": "123 हेरिटेज एवेन्यू, सांस्कृतिक जिला, आदिवासी नगर",
+    "contact@tribalmuseum.org": "contact@tribalmuseum.org",
+    "+1 (555) 123-4567": "+1 (555) 123-4567",
+    "Book Your Ticket": "अपना टिकट बुक करें",
+    General: "सामान्य",
+    "Guided Tour": "गाइडेड टूर",
+    "Special Event": "विशेष कार्यक्रम",
+    "First Name": "पहला नाम",
+    "Last Name": "अंतिम नाम",
+    Email: "ईमेल",
+    "Visit Date": "यात्रा की तिथि",
+    "Time Slot": "समय स्लॉट",
+    "Select...": "चुनें...",
+    "Number of Visitors": "आगंतुकों की संख्या",
+    "Book Now": "अभी बुक करें",
+    "Thank You!": "धन्यवाद!",
+    "Your booking has been confirmed":
+      "आपकी बुकिंग की पुष्टि हो गई है। आपको जल्द ही एक पुष्टिकरण ईमेल प्राप्त होगा।",
+    Close: "बंद करें",
 
     // Exhibit section
     virtualExhibitGallery: "आभासी प्रदर्शनी गैलरी",
+    "Explore our collection":
+      "दुर्लभ आदिवासी कलाकृतियों के हमारे संग्रह का अन्वेषण करें, प्रत्येक स्वदेशी विरासत, कारीगरी और सांस्कृतिक महत्व की अनूठी कहानी बताती है।",
     tribalWarAxe: "आदिवासी युद्ध कुल्हाड़ी",
     tribalWarAxeDesc:
       "एक अलंकृत अनुष्ठानिक युद्ध कुल्हाड़ी जो आदिवासी मुखियाओं द्वारा युद्ध में उपयोग की जाती थी।",
@@ -102,6 +199,27 @@ export const translations = {
     tribalMask: "आदिवासी मुखौटा",
     tribalMaskDesc:
       "फसल उत्सवों और आध्यात्मिक अनुष्ठानों के दौरान उपयोग किया जाने वाला अनुष्ठानिक मुखौटा।",
+    "Healing Herbs": "औषधीय जड़ी-बूटियां",
+    "Collection of medicinal herbs":
+      "आदिवासी चिकित्सकों द्वारा विभिन्न बीमारियों के इलाज के लिए प्रयुक्त औषधीय जड़ी-बूटियों का संग्रह, जो पीढ़ियों से ज्ञान के माध्यम से आगे बढ़ता है।",
+    "Tribal Jewelry": "आदिवासी आभूषण",
+    "Ornate jewelry pieces":
+      "बीज, हड्डियों और धातुओं जैसी प्राकृतिक सामग्री से बने अलंकृत आभूषण, जो सामाजिक स्थिति और आदिवासी संबंधों को दर्शाते हैं।",
+    "Musical Instruments": "वाद्य यंत्र",
+    "Traditional instruments":
+      "आदिवासी उत्सवों, अनुष्ठानों और कहानी सुनाने के सत्रों में प्रयुक्त पारंपरिक वाद्य यंत्र, जो अनूठे लय और धुन बनाते हैं।",
+    Weapon: "हथियार",
+    Ceremonial: "अनुष्ठानिक",
+    Crafts: "शिल्प",
+    Ancient: "प्राचीन",
+    Ritual: "अनुष्ठान",
+    Spiritual: "आध्यात्मिक",
+    Medicine: "दवा",
+    Natural: "प्राकृतिक",
+    Adornment: "आभूषण",
+    Cultural: "सांस्कृतिक",
+    Music: "संगीत",
+    Performance: "प्रदर्शन",
 
     // CTA section
     experienceRichHeritage: "हमारी समृद्ध विरासत का अनुभव करें",
@@ -120,7 +238,6 @@ export const translations = {
     loadingVirtualMuseum: "आभासी संग्रहालय लोड हो रहा है",
     preparingExperience: "आपके इमरसिव अनुभव की तैयारी...",
     backToHome: "होम पर वापस जाएं",
-    close: "बंद करें",
 
     // Footer
     aboutMuseum: "संग्रहालय के बारे में",
@@ -147,14 +264,39 @@ const LanguageContext = createContext();
 export const useLanguage = () => useContext(LanguageContext);
 
 export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState("en");
+  const [language, setLanguage] = useState(() => {
+    // Try to get language preference from localStorage
+    const savedLanguage = localStorage.getItem("preferredLanguage");
+    return savedLanguage || "en";
+  });
+
+  // Save language preference when it changes
+  useEffect(() => {
+    localStorage.setItem("preferredLanguage", language);
+    // Update document lang attribute for accessibility
+    document.documentElement.lang = language;
+
+    // Optional: Add a class to the body for language-specific styling
+    document.body.className = language === "en" ? "lang-en" : "lang-hi";
+  }, [language]);
 
   const toggleLanguage = () => {
     setLanguage(language === "en" ? "hi" : "en");
   };
 
-  const t = (key) => {
-    return translations[language][key] || key;
+  // Enhanced translation function to handle text not found in translations
+  // and handle dynamic text with placeholders
+  const t = (key, placeholders = {}) => {
+    // Get the translation or fallback to the key itself
+    let text = translations[language][key] || key;
+
+    // Replace any placeholders in the format {placeholderName}
+    Object.keys(placeholders).forEach((placeholder) => {
+      const regex = new RegExp(`{${placeholder}}`, "g");
+      text = text.replace(regex, placeholders[placeholder]);
+    });
+
+    return text;
   };
 
   return (
