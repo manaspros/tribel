@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import tribalPattern from "../assets/tribal-pattern.svg";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const FooterContainer = styled.footer`
   background: #1a1410;
@@ -137,18 +138,16 @@ const NewsletterInput = styled.div`
 `;
 
 const Footer = () => {
+  const { t } = useLanguage();
+
   return (
     <FooterContainer>
       <FooterPattern />
 
       <FooterContent>
         <FooterSection>
-          <h3>About The Museum</h3>
-          <p>
-            The Tribal Heritage Museum celebrates the rich cultural legacy and
-            historical significance of indigenous communities. Our mission is to
-            preserve, showcase and educate about tribal heritage.
-          </p>
+          <h3>{t("aboutMuseum")}</h3>
+          <p>{t("aboutDesc")}</p>
 
           <SocialIcons>
             <motion.a
@@ -183,31 +182,31 @@ const Footer = () => {
         </FooterSection>
 
         <FooterSection>
-          <h3>Useful Links</h3>
+          <h3>{t("usefulLinks")}</h3>
           <FooterLinks>
             <li>
-              <Link to="/about">About Us</Link>
+              <Link to="/about">{t("aboutUs")}</Link>
             </li>
             <li>
-              <Link to="/exhibits">Exhibits</Link>
+              <Link to="/exhibits">{t("exhibits")}</Link>
             </li>
             <li>
-              <Link to="/events">Events</Link>
+              <Link to="/events">{t("events")}</Link>
             </li>
             <li>
-              <Link to="/education">Educational Resources</Link>
+              <Link to="/education">{t("educationalResources")}</Link>
             </li>
             <li>
-              <Link to="/support">Support Us</Link>
+              <Link to="/support">{t("supportUs")}</Link>
             </li>
             <li>
-              <Link to="/contact">Contact</Link>
+              <Link to="/contact">{t("contact")}</Link>
             </li>
           </FooterLinks>
         </FooterSection>
 
         <FooterSection>
-          <h3>Visit Us</h3>
+          <h3>{t("visitUs")}</h3>
           <p>
             123 Heritage Avenue
             <br />
@@ -216,14 +215,14 @@ const Footer = () => {
             Tribal City, TX 75001
           </p>
           <p>
-            <strong>Hours:</strong>
+            <strong>{t("hours")}:</strong>
             <br />
             Tuesday-Sunday: 10 AM - 6 PM
             <br />
             Closed on Mondays
           </p>
           <p>
-            <strong>Contact:</strong>
+            <strong>{t("contact")}:</strong>
             <br />
             info@tribalmuseum.org
             <br />
@@ -232,27 +231,21 @@ const Footer = () => {
         </FooterSection>
 
         <FooterSection>
-          <h3>Newsletter</h3>
-          <p>
-            Subscribe to our newsletter to receive updates on new exhibits,
-            events, and educational programs.
-          </p>
+          <h3>{t("newsletter")}</h3>
+          <p>{t("newsletterDesc")}</p>
           <NewsletterInput>
             <input type="email" placeholder="Your email" />
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Subscribe
+              {t("subscribe")}
             </motion.button>
           </NewsletterInput>
         </FooterSection>
       </FooterContent>
 
-      <Copyright>
-        © {new Date().getFullYear()} Tribal Heritage Museum. All rights
-        reserved.
-      </Copyright>
+      <Copyright>{t("copyright")}</Copyright>
     </FooterContainer>
   );
 };

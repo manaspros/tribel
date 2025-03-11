@@ -118,7 +118,7 @@ const FireGlow = styled.div`
   pointer-events: none;
 `;
 
-// Add this new component for a call-to-action button
+// Improved ScrollDownIndicator with better styling and positioning
 const ScrollDownIndicator = styled(motion.div)`
   position: absolute;
   bottom: 40px;
@@ -129,12 +129,15 @@ const ScrollDownIndicator = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+  background: rgba(26, 20, 16, 0.4);
+  padding: 12px 20px 8px;
+  border-radius: 30px;
+  border: 1px solid rgba(211, 161, 100, 0.3);
+  backdrop-filter: blur(4px);
 
-  svg {
-    width: 30px;
-    height: 30px;
-    fill: #d3a164;
-    margin-top: 10px;
+  &:hover {
+    background: rgba(26, 20, 16, 0.6);
+    border-color: rgba(211, 161, 100, 0.6);
   }
 
   span {
@@ -142,6 +145,15 @@ const ScrollDownIndicator = styled(motion.div)`
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 2px;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+    fill: #d3a164;
+    filter: drop-shadow(0 0 5px rgba(211, 161, 100, 0.5));
   }
 `;
 
@@ -233,9 +245,12 @@ const HeroSection = () => {
       });
     }
 
-    // Add a smooth transition to the next section
+    // Fix the smooth transition arrow to avoid DOM manipulation errors
     const createSmoothTransition = () => {
       gsap.registerPlugin(ScrollTrigger);
+
+      // Instead of creating and appending a DOM element directly,
+      // let's create a GSAP animation for the timeline section
 
       gsap.fromTo(
         "#timeline",
@@ -257,7 +272,10 @@ const HeroSection = () => {
       );
     };
 
-    createSmoothTransition();
+    // Delay the transition creation to ensure the timeline element exists
+    setTimeout(() => {
+      createSmoothTransition();
+    }, 500);
 
     return () => {
       // Cleanup animations
@@ -266,6 +284,10 @@ const HeroSection = () => {
       if (fireGlowAnim) fireGlowAnim.kill();
 
       gsap.killTweensOf([".title-char", ".tagline", ".scroll-indicator"]);
+
+      // Clean up ScrollTrigger instances to prevent issues
+      const triggers = ScrollTrigger.getAll();
+      triggers.forEach((trigger) => trigger.kill());
     };
   }, []);
 
@@ -317,11 +339,21 @@ const HeroSection = () => {
         className="scroll-indicator"
         onClick={handleScrollDown}
         animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+        transition={{
+          repeat: Infinity,
+          duration: 2.5,
+          ease: "easeInOut",
+        }}
+        whileHover={{ y: 5, scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
       >
         <span>{t("explore")}</span>
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+          <path
+            d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       </ScrollDownIndicator>
     </HeroContainer>

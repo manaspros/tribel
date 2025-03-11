@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
 import tribalPattern from "../assets/tribal-pattern.svg";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const CTAContainer = styled.section`
   min-height: 60vh;
@@ -91,6 +92,7 @@ const PrimaryButton = styled(CTAButton)`
 const CTASection = () => {
   const buttonRef = useRef(null);
   const sectionRef = useRef(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     // Tribal motif animation around the primary button
@@ -117,12 +119,8 @@ const CTASection = () => {
       <PatternOverlay />
 
       <ContentWrapper>
-        <Title>Experience Our Rich Heritage</Title>
-        <Description>
-          Step into a world of ancient traditions, resilient spirits, and
-          cultural wonders. Our guided tours offer an immersive journey through
-          the heart of tribal history.
-        </Description>
+        <Title>{t("experienceRichHeritage")}</Title>
+        <Description>{t("stepIntoWorld")}</Description>
 
         <ButtonGroup>
           <PrimaryButton
@@ -130,7 +128,7 @@ const CTASection = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Book a Guided Tour
+            {t("bookGuidedTour")}
           </PrimaryButton>
 
           <CTAButton
@@ -139,7 +137,7 @@ const CTASection = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Virtual Tour
+            {t("virtualTour")}
           </CTAButton>
         </ButtonGroup>
       </ContentWrapper>
