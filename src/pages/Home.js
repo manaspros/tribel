@@ -6,6 +6,7 @@ import TimelineSection from "../components/TimelineSection";
 import QuoteSection from "../components/QuoteSection";
 import StatisticsSection from "../components/StatisticsSection";
 import ExhibitSection from "../components/ExhibitSection";
+import VisitSection from "../components/VisitSection";
 import CTASection from "../components/CTASection";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -41,6 +42,7 @@ const Home = () => {
       <TimelineSection />
       <StatisticsSection />
       <ExhibitSection />
+      <VisitSection />
       <CTASection />
       <Footer />
     </PageWrapper>

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useLanguage } from "../contexts/LanguageContext";
 import logo from "../assets/logo.svg";
 
+// Enhanced container with transparent to solid transition
 const NavContainer = styled(motion.nav)`
   position: fixed;
   top: 0;
@@ -23,36 +24,50 @@ const NavContainer = styled(motion.nav)`
       : "transparent"};
   backdrop-filter: ${(props) =>
     props.scrolled || !props.transparent ? "blur(10px)" : "none"};
-`;
 
-const Logo = styled(Link)`
-  font-family: "Playfair Display", serif;
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #d3a164;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-
-  img {
-    height: 40px;
-    margin-right: 12px;
+  @media (max-width: 768px) {
+    padding: 15px 20px;
   }
 `;
 
+// Simplified logo container without animation markup
+const LogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  position: relative;
+`;
+
+// Simple logo image without animations
+const LogoImage = styled.img`
+  height: 45px;
+  margin-right: 15px;
+`;
+
+// Simple logo text without animations
+const LogoText = styled.span`
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #d3a164;
+  text-decoration: none;
+`;
+
+// Enlarged mid-section for menu items
 const NavLinks = styled.div`
   display: flex;
-  gap: 30px;
+  gap: 25px;
+  align-items: center;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     display: none;
   }
 `;
 
-const NavLink = styled(Link)`
+// Enhanced nav link styling
+const NavLink = styled(motion.a)`
   color: #f5efe7;
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 1rem;
   position: relative;
   padding: 5px 0;
 
@@ -72,38 +87,29 @@ const NavLink = styled(Link)`
   }
 `;
 
-const MobileMenuButton = styled.button`
-  background: none;
-  border: none;
-  color: #f5efe7;
-  font-size: 1.5rem;
-  cursor: pointer;
-  display: none;
+// Special CTA button
+const BookTicketButton = styled(motion.a)`
+  background: #d3a164;
+  color: #1a1410;
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1rem;
+  white-space: nowrap;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(211, 161, 100, 0.3);
 
-  @media (max-width: 768px) {
-    display: block;
+  &:hover {
+    background: #e4b87f;
+  }
+
+  @media (max-width: 1024px) {
+    display: none;
   }
 `;
 
-const MobileMenu = styled(motion.div)`
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 300px;
-  height: 100vh;
-  background: #1a1410;
-  padding: 80px 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  z-index: 90;
-`;
-
-const MobileNavLink = styled(NavLink)`
-  font-size: 1.5rem;
-`;
-
-const LanguageToggle = styled.button`
+// Language toggle
+const LanguageToggle = styled(motion.button)`
   background: none;
   border: 2px solid #d3a164;
   border-radius: 20px;
@@ -117,12 +123,69 @@ const LanguageToggle = styled.button`
   &:hover {
     background: rgba(211, 161, 100, 0.2);
   }
+
+  @media (max-width: 1024px) {
+    margin-right: 15px;
+  }
+`;
+
+// Mobile menu toggle
+const MobileMenuButton = styled.button`
+  background: none;
+  border: none;
+  color: #f5efe7;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none;
+
+  @media (max-width: 1024px) {
+    display: block;
+  }
+`;
+
+// Mobile menu
+const MobileMenu = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100vh;
+  background: #1a1410;
+  padding: 80px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  z-index: 90;
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
+`;
+
+// Mobile nav link
+const MobileNavLink = styled(NavLink)`
+  font-size: 1.2rem;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(211, 161, 100, 0.1);
+`;
+
+// Mobile book ticket button
+const MobileBookButton = styled(motion.a)`
+  background: #d3a164;
+  color: #1a1410;
+  padding: 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 15px;
+  box-shadow: 0 4px 15px rgba(211, 161, 100, 0.3);
+
+  &:hover {
+    background: #e4b87f;
+  }
 `;
 
 const Navbar = ({ transparent = false }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { language, toggleLanguage, t } = useLanguage();
+  const { language, toggleLanguage } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -144,28 +207,48 @@ const Navbar = ({ transparent = false }) => {
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <Logo to="/">
-          <img src={logo} alt="Tribal Museum Logo" />
-          <span>
-            {t("tribal")} {t("heritage")}
-          </span>
-        </Logo>
+        <Link to="/">
+          <LogoContainer>
+            {/* Simplified logo without animations and decorative elements */}
+            <LogoImage src={logo} alt="Tribal Museum Logo" />
+            <LogoText>Tribal Museum</LogoText>
+          </LogoContainer>
+        </Link>
 
         <NavLinks>
-          <NavLink to="/">{t("home")}</NavLink>
-          <NavLink to="/exhibits">{t("exhibits")}</NavLink>
-          <NavLink to="/timeline">{t("timeline")}</NavLink>
-          <NavLink to="/virtual-tour">{t("virtualTour")}</NavLink>
-          <NavLink to="/visit">{t("planVisit")}</NavLink>
+          <NavLink href="#about">About Museum</NavLink>
+          <NavLink href="#galleries">Galleries</NavLink>
+          <NavLink href="#collection">Our Collection</NavLink>
+          <NavLink href="#visiting">Visiting the Museum</NavLink>
+          <NavLink href="#videos">Videos</NavLink>
 
-          <LanguageToggle onClick={toggleLanguage}>
+          <LanguageToggle onClick={toggleLanguage} whileTap={{ scale: 0.95 }}>
             {language === "en" ? "हिंदी" : "English"}
           </LanguageToggle>
+
+          <BookTicketButton
+            href="#booking"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Book the Ticket
+          </BookTicketButton>
         </NavLinks>
 
-        <MobileMenuButton onClick={() => setMobileMenuOpen(true)}>
-          ☰
-        </MobileMenuButton>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <LanguageToggle
+            onClick={toggleLanguage}
+            whileTap={{ scale: 0.95 }}
+            style={{ display: "none" }}
+            className="mobile-only"
+          >
+            {language === "en" ? "हिंदी" : "English"}
+          </LanguageToggle>
+
+          <MobileMenuButton onClick={() => setMobileMenuOpen(true)}>
+            ☰
+          </MobileMenuButton>
+        </div>
       </NavContainer>
 
       <AnimatePresence>
@@ -176,41 +259,76 @@ const Navbar = ({ transparent = false }) => {
             exit={{ x: 300 }}
             transition={{ type: "spring", damping: 20 }}
           >
-            <MobileMenuButton onClick={() => setMobileMenuOpen(false)}>
+            <MobileMenuButton
+              onClick={() => setMobileMenuOpen(false)}
+              style={{ position: "absolute", top: 20, right: 20 }}
+            >
               ✕
             </MobileMenuButton>
 
-            <MobileNavLink to="/" onClick={() => setMobileMenuOpen(false)}>
-              {t("home")}
-            </MobileNavLink>
             <MobileNavLink
-              to="/exhibits"
+              href="#about"
               onClick={() => setMobileMenuOpen(false)}
             >
-              {t("exhibits")}
+              About Museum
             </MobileNavLink>
             <MobileNavLink
-              to="/timeline"
+              href="#galleries"
               onClick={() => setMobileMenuOpen(false)}
             >
-              {t("timeline")}
+              Galleries
             </MobileNavLink>
             <MobileNavLink
-              to="/virtual-tour"
+              href="#collection"
               onClick={() => setMobileMenuOpen(false)}
             >
-              {t("virtualTour")}
+              Our Collection
             </MobileNavLink>
-            <MobileNavLink to="/visit" onClick={() => setMobileMenuOpen(false)}>
-              {t("planVisit")}
+            <MobileNavLink
+              href="#visiting"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Visiting the Museum
+            </MobileNavLink>
+            <MobileNavLink
+              href="#videos"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Videos
             </MobileNavLink>
 
-            <LanguageToggle onClick={toggleLanguage}>
+            <LanguageToggle
+              onClick={toggleLanguage}
+              whileTap={{ scale: 0.95 }}
+              style={{ alignSelf: "flex-start" }}
+            >
               {language === "en" ? "हिंदी" : "English"}
             </LanguageToggle>
+
+            <MobileBookButton
+              href="#booking"
+              onClick={() => setMobileMenuOpen(false)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Book the Ticket
+            </MobileBookButton>
           </MobileMenu>
         )}
       </AnimatePresence>
+
+      <style jsx global>{`
+        @media (min-width: 1025px) {
+          .mobile-only {
+            display: none !important;
+          }
+        }
+        @media (max-width: 1024px) {
+          .mobile-only {
+            display: block !important;
+          }
+        }
+      `}</style>
     </>
   );
 };
