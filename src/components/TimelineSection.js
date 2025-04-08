@@ -6,6 +6,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLanguage } from "../contexts/LanguageContext";
 import halbaRebellionImg from "../assets/halba-rebellion.jpeg";
 import bhumkalRevoltImg from "../assets/bhumkal-revolt.webp";
+import timeline2 from "../assets/tribel/Timeline1.jpg";
+import timeline3 from "../assets/tribel/Timeline2.jpg";
+import timeline4 from "../assets/tribel/Timeline3.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -424,8 +427,7 @@ const TimelineSection = () => {
       id: 3,
       year: 1942,
       title: t("Tribal Participation in Quit India Movement"),
-      image:
-        "https://placehold.co/600x400/1a1410/d3a164?text=Tribal+Resistance",
+      image: timeline2,
       description: t(
         "Tribal communities joined the nationwide struggle for independence."
       ),
@@ -442,7 +444,7 @@ const TimelineSection = () => {
       id: 4,
       year: 1970,
       title: t("Jharkhand Movement"),
-      image: "https://placehold.co/600x400/1a1410/d3a164?text=Jharkhand",
+      image: timeline3,
       description: t(
         "Movement for tribal autonomy and separate statehood in eastern India."
       ),
@@ -459,7 +461,7 @@ const TimelineSection = () => {
       id: 5,
       year: 2000,
       title: t("Narmada Bachao Andolan"),
-      image: "https://placehold.co/600x400/1a1410/d3a164?text=NBA",
+      image: timeline4,
       description: t("Resistance against displacement due to dam projects."),
       artifacts: [
         t("Protest art"),

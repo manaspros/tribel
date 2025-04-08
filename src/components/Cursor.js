@@ -1,128 +1,171 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-const CursorDot = styled(motion.div)`
+const CursorWrapper = styled(motion.div)`
+  pointer-events: none;
   position: fixed;
   top: 0;
   left: 0;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   background-color: #d3a164;
   border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
+  z-index: 999;
   mix-blend-mode: difference;
+
+  @media (max-width: 768px) {
+    display: none; /* Hide on touch devices */
+  }
 `;
 
 const CursorRing = styled(motion.div)`
+  pointer-events: none;
   position: fixed;
   top: 0;
   left: 0;
   width: 40px;
   height: 40px;
-  border: 2px solid rgba(211, 161, 100, 0.5);
+  border: 1px solid rgba(211, 161, 100, 0.5);
   border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  mix-blend-mode: difference;
+  z-index: 998;
+
+  @media (max-width: 768px) {
+    display: none; /* Hide on touch devices */
+  }
 `;
 
 export const Cursor = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [cursorVariant, setCursorVariant] = useState("default");
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [clicked, setClicked] = useState(false);
+  const [linkHovered, setLinkHovered] = useState(false);
+  const [hidden, setHidden] = useState(false);
+
+  const cursorRef = useRef(null);
+  const ringRef = useRef(null);
 
   useEffect(() => {
-    const mouseMove = (e) => {
-      setMousePosition({
-        x: e.clientX,
-        y: e.clientY,
-      });
+    // Check if we're on a touch device
+    const isTouchDevice = () => {
+      return (
+        "ontouchstart" in window ||
+        navigator.maxTouchPoints > 0 ||
+        navigator.msMaxTouchPoints > 0
+      );
     };
 
-    const mouseDown = () => setCursorVariant("click");
-    const mouseUp = () => setCursorVariant("default");
+    if (isTouchDevice()) {
+      setHidden(true);
+      return;
+    }
 
-    const handleLinkHover = () => setCursorVariant("hover");
-    const handleLinkLeave = () => setCursorVariant("default");
+    const addEventListeners = () => {
+      document.addEventListener("mousemove", onMouseMove);
+      document.addEventListener("mouseenter", onMouseEnter);
+      document.addEventListener("mouseleave", onMouseLeave);
+      document.addEventListener("mousedown", onMouseDown);
+      document.addEventListener("mouseup", onMouseUp);
+    };
 
-    window.addEventListener("mousemove", mouseMove);
-    window.addEventListener("mousedown", mouseDown);
-    window.addEventListener("mouseup", mouseUp);
+    const removeEventListeners = () => {
+      document.removeEventListener("mousemove", onMouseMove);
+      document.removeEventListener("mouseenter", onMouseEnter);
+      document.removeEventListener("mouseleave", onMouseLeave);
+      document.removeEventListener("mousedown", onMouseDown);
+      document.removeEventListener("mouseup", onMouseUp);
+    };
 
-    const links = document.querySelectorAll("a, button");
-    links.forEach((link) => {
-      link.addEventListener("mouseenter", handleLinkHover);
-      link.addEventListener("mouseleave", handleLinkLeave);
-    });
+    const onMouseMove = (e) => {
+      setPosition({ x: e.clientX, y: e.clientY });
+    };
+
+    const onMouseDown = () => {
+      setClicked(true);
+    };
+
+    const onMouseUp = () => {
+      setClicked(false);
+    };
+
+    const onMouseLeave = () => {
+      setHidden(true);
+    };
+
+    const onMouseEnter = () => {
+      setHidden(false);
+    };
+
+    const handleLinkHoverEvents = () => {
+      document
+        .querySelectorAll(
+          "a, button, [role='button'], [type='button'], [type='submit']"
+        )
+        .forEach((el) => {
+          el.addEventListener("mouseenter", () => setLinkHovered(true));
+          el.addEventListener("mouseleave", () => setLinkHovered(false));
+        });
+    };
+
+    addEventListeners();
+    handleLinkHoverEvents();
 
     return () => {
-      window.removeEventListener("mousemove", mouseMove);
-      window.removeEventListener("mousedown", mouseDown);
-      window.removeEventListener("mouseup", mouseUp);
-
-      links.forEach((link) => {
-        link.removeEventListener("mouseenter", handleLinkHover);
-        link.removeEventListener("mouseleave", handleLinkLeave);
-      });
+      removeEventListeners();
     };
   }, []);
 
+  // Cursor animation variants
   const variants = {
     default: {
-      x: mousePosition.x - 5,
-      y: mousePosition.y - 5,
-    },
-    hover: {
-      x: mousePosition.x - 5,
-      y: mousePosition.y - 5,
-      scale: 1.5,
-    },
-    click: {
-      x: mousePosition.x - 5,
-      y: mousePosition.y - 5,
-      scale: 0.8,
+      x: position.x - 6, // Half of cursor width
+      y: position.y - 6, // Half of cursor height
+      opacity: hidden ? 0 : 1,
+      scale: clicked ? 0.5 : linkHovered ? 1.5 : 1,
     },
   };
 
+  // Ring animation variants
   const ringVariants = {
     default: {
-      x: mousePosition.x - 20,
-      y: mousePosition.y - 20,
-      transition: {
-        type: "spring",
-        mass: 0.6,
-      },
-    },
-    hover: {
-      x: mousePosition.x - 20,
-      y: mousePosition.y - 20,
-      scale: 1.5,
-      transition: {
-        type: "spring",
-        mass: 0.6,
-      },
-    },
-    click: {
-      x: mousePosition.x - 20,
-      y: mousePosition.y - 20,
-      scale: 1.2,
-      transition: {
-        type: "spring",
-        mass: 0.6,
-      },
+      x: position.x - 20, // Half of ring width
+      y: position.y - 20, // Half of ring height
+      opacity: hidden ? 0 : 1,
+      scale: clicked ? 1.3 : linkHovered ? 1.5 : 1,
     },
   };
 
-  // Hide cursor on mobile devices
-  if (typeof window !== "undefined" && window.innerWidth < 768) {
-    return null;
-  }
+  // Animation spring options
+  const spring = {
+    type: "spring",
+    stiffness: 500,
+    damping: 28,
+    mass: 0.5,
+  };
+
+  // Ring animation spring options (slightly slower)
+  const ringSpring = {
+    type: "spring",
+    stiffness: 300,
+    damping: 25,
+    mass: 0.8,
+  };
 
   return (
     <>
-      <CursorDot variants={variants} animate={cursorVariant} />
-      <CursorRing variants={ringVariants} animate={cursorVariant} />
+      <CursorWrapper
+        ref={cursorRef}
+        variants={variants}
+        animate="default"
+        transition={spring}
+      />
+      <CursorRing
+        ref={ringRef}
+        variants={ringVariants}
+        animate="default"
+        transition={ringSpring}
+      />
     </>
   );
 };
+
+export default Cursor;

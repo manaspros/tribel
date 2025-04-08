@@ -217,12 +217,12 @@ const TicketTypeButton = styled(motion.button)`
   text-align: center;
   font-size: 0.95rem;
   border: none;
-  background: ${(props) => (props.active ? "#d3a164" : "transparent")};
-  color: ${(props) => (props.active ? "#1a1410" : "#f5efe7")};
+  background: ${(props) => (props.isActive ? "#d3a164" : "transparent")};
+  color: ${(props) => (props.isActive ? "#1a1410" : "#f5efe7")};
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-weight: ${(props) => (props.active ? "600" : "400")};
+  font-weight: ${(props) => (props.isActive ? "600" : "400")};
 `;
 
 const SuccessMessage = styled(motion.div)`
@@ -281,8 +281,8 @@ const CloseButton = styled(motion.button)`
   }
 `;
 
-const VisitSection = () => {
-  const { t, language } = useLanguage(); // Add 'language' from useLanguage hook
+const VisitSection = ({ children }) => {
+  const { t, language } = useLanguage();
   const [ticketType, setTicketType] = useState("general");
   const [formSubmitted, setFormSubmitted] = useState(false);
   const sectionRef = useRef(null);
@@ -324,195 +324,199 @@ const VisitSection = () => {
     <VisitContainer ref={sectionRef} id="visit">
       <BackgroundPattern />
 
-      <ContentWrapper>
-        <VisitInfo>
-          <SectionTitle>{t("Plan Your Visit")}</SectionTitle>
-          <Description>{t("Step into the captivating world")}</Description>
+      {children ? (
+        children
+      ) : (
+        <ContentWrapper>
+          <VisitInfo>
+            <SectionTitle>{t("Plan Your Visit")}</SectionTitle>
+            <Description>{t("Step into the captivating world")}</Description>
 
-          <DetailsList>
-            <DetailItem className="detail-item">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                width="24"
-                height="24"
+            <DetailsList>
+              <DetailItem className="detail-item">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  width="24"
+                  height="24"
+                >
+                  <path d="M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
+                </svg>
+                <span>{t("Open Tuesday through Sunday")}</span>
+              </DetailItem>
+
+              <DetailItem className="detail-item">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  width="24"
+                  height="24"
+                >
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                </svg>
+                <span>{t("123 Heritage Avenue")}</span>
+              </DetailItem>
+
+              <DetailItem className="detail-item">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  width="24"
+                  height="24"
+                >
+                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+                <span>{t("contact@tribalmuseum.org")}</span>
+              </DetailItem>
+
+              <DetailItem className="detail-item">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  width="24"
+                  height="24"
+                >
+                  <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                </svg>
+                <span>{t("+1 (555) 123-4567")}</span>
+              </DetailItem>
+            </DetailsList>
+          </VisitInfo>
+
+          <BookingForm className="booking-form">
+            <FormTitle>{t("Book Your Ticket")}</FormTitle>
+
+            <TicketTypeSelector>
+              <TicketTypeButton
+                isActive={ticketType === "general"}
+                onClick={() => setTicketType("general")}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <path d="M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
-              </svg>
-              <span>{t("Open Tuesday through Sunday")}</span>
-            </DetailItem>
-
-            <DetailItem className="detail-item">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                width="24"
-                height="24"
+                {t("General")}
+              </TicketTypeButton>
+              <TicketTypeButton
+                isActive={ticketType === "guided"}
+                onClick={() => setTicketType("guided")}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-              </svg>
-              <span>{t("123 Heritage Avenue")}</span>
-            </DetailItem>
-
-            <DetailItem className="detail-item">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                width="24"
-                height="24"
+                {t("Guided Tour")}
+              </TicketTypeButton>
+              <TicketTypeButton
+                isActive={ticketType === "special"}
+                onClick={() => setTicketType("special")}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-              </svg>
-              <span>{t("contact@tribalmuseum.org")}</span>
-            </DetailItem>
+                {t("Special Event")}
+              </TicketTypeButton>
+            </TicketTypeSelector>
 
-            <DetailItem className="detail-item">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                width="24"
-                height="24"
-              >
-                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
-              </svg>
-              <span>{t("+1 (555) 123-4567")}</span>
-            </DetailItem>
-          </DetailsList>
-        </VisitInfo>
+            <form onSubmit={handleSubmit}>
+              <FormRow>
+                <FormGroup>
+                  <FormLabel>{t("First Name")}</FormLabel>
+                  <FormInput type="text" required />
+                </FormGroup>
 
-        <BookingForm className="booking-form">
-          <FormTitle>{t("Book Your Ticket")}</FormTitle>
+                <FormGroup>
+                  <FormLabel>{t("Last Name")}</FormLabel>
+                  <FormInput type="text" required />
+                </FormGroup>
+              </FormRow>
 
-          <TicketTypeSelector>
-            <TicketTypeButton
-              active={ticketType === "general"}
-              onClick={() => setTicketType("general")}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {t("General")}
-            </TicketTypeButton>
-            <TicketTypeButton
-              active={ticketType === "guided"}
-              onClick={() => setTicketType("guided")}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {t("Guided Tour")}
-            </TicketTypeButton>
-            <TicketTypeButton
-              active={ticketType === "special"}
-              onClick={() => setTicketType("special")}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {t("Special Event")}
-            </TicketTypeButton>
-          </TicketTypeSelector>
-
-          <form onSubmit={handleSubmit}>
-            <FormRow>
               <FormGroup>
-                <FormLabel>{t("First Name")}</FormLabel>
-                <FormInput type="text" required />
+                <FormLabel>{t("Email")}</FormLabel>
+                <FormInput type="email" required />
               </FormGroup>
 
-              <FormGroup>
-                <FormLabel>{t("Last Name")}</FormLabel>
-                <FormInput type="text" required />
-              </FormGroup>
-            </FormRow>
+              <FormRow>
+                <FormGroup>
+                  <FormLabel>{t("Visit Date")}</FormLabel>
+                  <FormInput
+                    type="date"
+                    required
+                    min={new Date().toISOString().split("T")[0]}
+                  />
+                </FormGroup>
 
-            <FormGroup>
-              <FormLabel>{t("Email")}</FormLabel>
-              <FormInput type="email" required />
-            </FormGroup>
-
-            <FormRow>
-              <FormGroup>
-                <FormLabel>{t("Visit Date")}</FormLabel>
-                <FormInput
-                  type="date"
-                  required
-                  min={new Date().toISOString().split("T")[0]}
-                />
-              </FormGroup>
+                <FormGroup>
+                  <FormLabel>{t("Time Slot")}</FormLabel>
+                  <FormSelect required>
+                    <option value="">{t("Select...")}</option>
+                    <option value="10:00">10:00 AM</option>
+                    <option value="12:00">12:00 PM</option>
+                    <option value="14:00">2:00 PM</option>
+                    <option value="16:00">4:00 PM</option>
+                  </FormSelect>
+                </FormGroup>
+              </FormRow>
 
               <FormGroup>
-                <FormLabel>{t("Time Slot")}</FormLabel>
+                <FormLabel>{t("Number of Visitors")}</FormLabel>
                 <FormSelect required>
                   <option value="">{t("Select...")}</option>
-                  <option value="10:00">10:00 AM</option>
-                  <option value="12:00">12:00 PM</option>
-                  <option value="14:00">2:00 PM</option>
-                  <option value="16:00">4:00 PM</option>
+                  <option value="1">
+                    1 {language === "hi" ? "व्यक्ति" : "Person"}
+                  </option>
+                  <option value="2">
+                    2 {language === "hi" ? "व्यक्ति" : "People"}
+                  </option>
+                  <option value="3">
+                    3 {language === "hi" ? "व्यक्ति" : "People"}
+                  </option>
+                  <option value="4">
+                    4 {language === "hi" ? "व्यक्ति" : "People"}
+                  </option>
+                  <option value="5">
+                    5+ {language === "hi" ? "व्यक्ति" : "People"}
+                  </option>
                 </FormSelect>
               </FormGroup>
-            </FormRow>
 
-            <FormGroup>
-              <FormLabel>{t("Number of Visitors")}</FormLabel>
-              <FormSelect required>
-                <option value="">{t("Select...")}</option>
-                <option value="1">
-                  1 {language === "hi" ? "व्यक्ति" : "Person"}
-                </option>
-                <option value="2">
-                  2 {language === "hi" ? "व्यक्ति" : "People"}
-                </option>
-                <option value="3">
-                  3 {language === "hi" ? "व्यक्ति" : "People"}
-                </option>
-                <option value="4">
-                  4 {language === "hi" ? "व्यक्ति" : "People"}
-                </option>
-                <option value="5">
-                  5+ {language === "hi" ? "व्यक्ति" : "People"}
-                </option>
-              </FormSelect>
-            </FormGroup>
-
-            <SubmitButton
-              type="submit"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-            >
-              {t("Book Now")}
-            </SubmitButton>
-          </form>
-
-          <AnimatePresence>
-            {formSubmitted && (
-              <SuccessMessage
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
+              <SubmitButton
+                type="submit"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
               >
-                <IconContainer
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1, rotate: [0, 10, -10, 0] }}
-                  transition={{ type: "spring", stiffness: 200, damping: 10 }}
+                {t("Book Now")}
+              </SubmitButton>
+            </form>
+
+            <AnimatePresence>
+              {formSubmitted && (
+                <SuccessMessage
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
                 >
-                  ✓
-                </IconContainer>
-                <h3>{t("Thank You!")}</h3>
-                <p>{t("Your booking has been confirmed")}</p>
-                <CloseButton
-                  onClick={() => setFormSubmitted(false)}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {t("Close")}
-                </CloseButton>
-              </SuccessMessage>
-            )}
-          </AnimatePresence>
-        </BookingForm>
-      </ContentWrapper>
+                  <IconContainer
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1, rotate: [0, 10, -10, 0] }}
+                    transition={{ type: "spring", stiffness: 200, damping: 10 }}
+                  >
+                    ✓
+                  </IconContainer>
+                  <h3>{t("Thank You!")}</h3>
+                  <p>{t("Your booking has been confirmed")}</p>
+                  <CloseButton
+                    onClick={() => setFormSubmitted(false)}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {t("Close")}
+                  </CloseButton>
+                </SuccessMessage>
+              )}
+            </AnimatePresence>
+          </BookingForm>
+        </ContentWrapper>
+      )}
     </VisitContainer>
   );
 };

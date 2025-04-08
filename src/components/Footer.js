@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import tribalPattern from "../assets/tribal-pattern.svg";
 import { useLanguage } from "../contexts/LanguageContext";
+import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 
 const FooterContainer = styled.footer`
   background: #1a1410;
@@ -104,35 +105,21 @@ const Copyright = styled.div`
   font-size: 0.9rem;
 `;
 
-const NewsletterInput = styled.div`
-  display: flex;
-  margin-top: 15px;
+const DesignerCredit = styled.div`
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #d3a164;
+  font-weight: 500;
 
-  input {
-    flex-grow: 1;
-    padding: 10px 15px;
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    border-radius: 4px 0 0 4px;
-    color: #f5efe7;
-
-    &:focus {
-      outline: none;
-      background: rgba(255, 255, 255, 0.15);
-    }
-  }
-
-  button {
-    padding: 10px 15px;
-    background: #d3a164;
-    border: none;
-    border-radius: 0 4px 4px 0;
-    color: #1a1410;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  a {
+    color: #d3a164;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
 
     &:hover {
-      background: #c08b51;
+      opacity: 0.8;
+      text-decoration: underline;
     }
   }
 `;
@@ -154,29 +141,33 @@ const Footer = () => {
               href="#"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
+              aria-label="Facebook"
             >
-              FB
+              <FaFacebookF size={20} />
             </motion.a>
             <motion.a
               href="#"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
+              aria-label="Twitter"
             >
-              TW
+              <FaTwitter size={20} />
             </motion.a>
             <motion.a
               href="#"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
+              aria-label="Instagram"
             >
-              IG
+              <FaInstagram size={20} />
             </motion.a>
             <motion.a
               href="#"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
+              aria-label="YouTube"
             >
-              YT
+              <FaYoutube size={20} />
             </motion.a>
           </SocialIcons>
         </FooterSection>
@@ -191,12 +182,6 @@ const Footer = () => {
               <Link to="/exhibits">{t("exhibits")}</Link>
             </li>
             <li>
-              <Link to="/events">{t("events")}</Link>
-            </li>
-            <li>
-              <Link to="/education">{t("educationalResources")}</Link>
-            </li>
-            <li>
               <Link to="/support">{t("supportUs")}</Link>
             </li>
             <li>
@@ -208,11 +193,9 @@ const Footer = () => {
         <FooterSection>
           <h3>{t("visitUs")}</h3>
           <p>
-            123 Heritage Avenue
-            <br />
-            Cultural District
-            <br />
-            Tribal City, TX 75001
+            4QH6+XXX, Sector 24
+            <br /> Tuta, Uparwara
+            <br /> Chhattisgarh 492101
           </p>
           <p>
             <strong>{t("hours")}:</strong>
@@ -229,23 +212,20 @@ const Footer = () => {
             +1 (555) 123-4567
           </p>
         </FooterSection>
-
-        <FooterSection>
-          <h3>{t("newsletter")}</h3>
-          <p>{t("newsletterDesc")}</p>
-          <NewsletterInput>
-            <input type="email" placeholder="Your email" />
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {t("subscribe")}
-            </motion.button>
-          </NewsletterInput>
-        </FooterSection>
       </FooterContent>
 
       <Copyright>{t("copyright")}</Copyright>
+
+      <DesignerCredit>
+        Designed with ❤️ by{" "}
+        <a
+          href="https://www.iiitnr.ac.in"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <u>IIIT Naya Raipur</u>
+        </a>
+      </DesignerCredit>
     </FooterContainer>
   );
 };

@@ -20,11 +20,11 @@ const NavContainer = styled(motion.nav)`
   transition: background-color 0.3s ease;
 
   background-color: ${(props) =>
-    props.scrolled || !props.transparent
+    props.isScrolled || !props.transparent
       ? "rgba(26, 20, 16, 0.95)"
       : "transparent"};
   backdrop-filter: ${(props) =>
-    props.scrolled || !props.transparent ? "blur(10px)" : "none"};
+    props.isScrolled || !props.transparent ? "blur(10px)" : "none"};
 
   @media (max-width: 768px) {
     padding: 15px 20px;
@@ -235,7 +235,7 @@ const Navbar = ({ transparent = false }) => {
   return (
     <>
       <NavContainer
-        scrolled={scrolled}
+        isScrolled={scrolled}
         transparent={transparent}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
