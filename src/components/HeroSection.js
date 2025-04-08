@@ -7,7 +7,7 @@ import { useLanguage } from "../contexts/LanguageContext";
 import { useNavigate } from "react-router-dom";
 import forestBg from "../assets/forest-bg.jpeg";
 import villageSilhouette from "../assets/village-silhouette.jpg";
-import foregroundElements from "../assets/foreground-elements.jpg";
+import foregroundElements from "../assets/tribel/freedom-banner.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 

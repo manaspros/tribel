@@ -3,6 +3,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import { useLanguage } from "../contexts/LanguageContext";
+// Import images for the museum walls
+import tribalWeaponsImg from "../assets/tribel/Timeline3.jpg"; // Assuming this exists in your assets
+import tribalArtImg from "../assets/halba-rebellion.jpeg"; // Reusing from TimelineSection
+import ceremonyImg from "../assets/bhumkal-revolt.webp"; // Reusing from TimelineSection
+import dailyLifeImg from "../assets/tribel/Timeline1.jpg"; // Assuming this exists in your assets
 
 const TourContainer = styled.div`
   width: 100%;
@@ -83,20 +88,71 @@ const Ceiling = styled.div`
   border: 2px solid #d3a164;
 `;
 
+// Enhanced hotspot with better visibility
 const Hotspot = styled.div`
   position: absolute;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   background: #d3a164;
   border-radius: 50%;
   cursor: pointer;
   z-index: 10;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px 5px rgba(211, 161, 100, 0.5);
+  animation: pulse 2s infinite;
+
+  /* Plus sign inside the hotspot */
+  &::before {
+    content: "+";
+    color: #1a1410;
+    font-size: 28px;
+    font-weight: bold;
+  }
 
   &:hover {
-    transform: scale(1.2);
-    box-shadow: 0 0 15px #d3a164;
+    transform: scale(1.3);
+    box-shadow: 0 0 20px 8px rgba(211, 161, 100, 0.8);
+
+    /* Show the label on hover */
+    .hotspot-label {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 15px 5px rgba(211, 161, 100, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 20px 10px rgba(211, 161, 100, 0.8);
+    }
+    100% {
+      box-shadow: 0 0 15px 5px rgba(211, 161, 100, 0.5);
+    }
+  }
+`;
+
+const HotspotLabel = styled.div`
+  position: absolute;
+  background: rgba(26, 20, 16, 0.8);
+  color: #d3a164;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  border: 1px solid #d3a164;
+  z-index: 11;
 `;
 
 const LoadingScreen = styled(motion.div)`
@@ -181,6 +237,37 @@ const RotateButton = styled.button`
     transform: scale(1.1);
     background: #e4b87f;
   }
+`;
+
+const WallImage = styled.img`
+  width: 80%;
+  height: 70%;
+  object-fit: cover;
+  border: 3px solid #d3a164;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+`;
+
+const WallTitle = styled.h2`
+  color: #d3a164;
+  font-size: 2rem;
+  margin-bottom: 15px;
+  text-align: center;
+`;
+
+const WallContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
 `;
 
 const hotspots = [
@@ -277,24 +364,28 @@ const VirtualTour = () => {
       <MuseumRoom>
         <MuseumWalls rotation={rotation}>
           <FrontWall>
-            <h2 style={{ color: "#d3a164", fontSize: "2rem" }}>
-              {t("tribalHeritage")}
-            </h2>
+            <WallContent>
+              <WallTitle>{t("tribalHeritage")}</WallTitle>
+              <WallImage src={tribalWeaponsImg} alt={t("tribalHeritage")} />
+            </WallContent>
           </FrontWall>
           <BackWall>
-            <h2 style={{ color: "#d3a164", fontSize: "2rem" }}>
-              {t("culturalLegacy")}
-            </h2>
+            <WallContent>
+              <WallTitle>{t("culturalLegacy")}</WallTitle>
+              <WallImage src={dailyLifeImg} alt={t("culturalLegacy")} />
+            </WallContent>
           </BackWall>
           <LeftWall>
-            <h2 style={{ color: "#d3a164", fontSize: "2rem" }}>
-              {t("ancestralWisdom")}
-            </h2>
+            <WallContent>
+              <WallTitle>{t("ancestralWisdom")}</WallTitle>
+              <WallImage src={tribalArtImg} alt={t("ancestralWisdom")} />
+            </WallContent>
           </LeftWall>
           <RightWall>
-            <h2 style={{ color: "#d3a164", fontSize: "2rem" }}>
-              {t("livingTraditions")}
-            </h2>
+            <WallContent>
+              <WallTitle>{t("livingTraditions")}</WallTitle>
+              <WallImage src={ceremonyImg} alt={t("livingTraditions")} />
+            </WallContent>
           </RightWall>
           <Floor />
           <Ceiling />
@@ -305,7 +396,11 @@ const VirtualTour = () => {
             key={hotspot.id}
             style={getHotspotPosition(hotspot.position)}
             onClick={() => setSelectedHotspot(hotspot)}
-          />
+          >
+            <HotspotLabel className="hotspot-label">
+              {hotspot.title}
+            </HotspotLabel>
+          </Hotspot>
         ))}
       </MuseumRoom>
 

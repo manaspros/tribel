@@ -11,7 +11,7 @@ import halbaImg from "../assets/tribel/IMG-20250408-WA0015.jpg";
 import bhumkalImg from "../assets/tribel/IMG-20250408-WA0016.jpg";
 import quitIndiaImg from "../assets/tribel/IMG-20250408-WA0018.jpg";
 import jharkhandImg from "../assets/tribel/IMG-20250408-WA0019.jpg";
-import narmadaImg from "../assets/tribel/WhatsApp Image 2025-04-08 at 17.44.43_270936c5.jpg";
+import narmadaImg from "../assets/tribel/childwhitebg.jpg";
 
 const PageContainer = styled.div`
   background-color: #1a1410;
