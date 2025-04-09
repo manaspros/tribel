@@ -30,7 +30,6 @@ const ParallaxLayer = styled.div`
   will-change: transform;
 `;
 
-// Improved overlay with stronger gradient
 const DarkOverlay = styled.div`
   position: absolute;
   top: 0;
@@ -45,7 +44,6 @@ const DarkOverlay = styled.div`
   z-index: 5;
 `;
 
-// Enhanced title container with better contrast
 const TitleContainer = styled(motion.div)`
   position: relative;
   z-index: 10;
@@ -58,38 +56,17 @@ const TitleContainer = styled(motion.div)`
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5),
     0 0 0 1px rgba(211, 161, 100, 0.3) inset;
   max-width: 90%;
-`;
 
-// Stronger text styling
-// eslint-disable-next-line no-unused-vars
-const Title = styled(motion.h1)`
-  font-size: clamp(3rem, 8vw, 7rem);
-  margin: 0;
-  font-family: "Playfair Display", serif;
-  letter-spacing: 4px;
-  text-shadow: 0 0 20px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 0, 0, 0.7),
-    0 0 40px rgba(0, 0, 0, 0.5);
-  color: #fff;
-  font-weight: 700;
-
-  span {
-    display: inline-block;
+  @media (max-width: 768px) {
+    padding: 20px 15px;
+    width: 95%;
+    margin-top: -20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 `;
 
-const Tagline = styled(motion.p)`
-  font-size: clamp(1rem, 2vw, 1.5rem);
-  margin-top: 1.5rem;
-  font-family: "Poppins", sans-serif;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
-  line-height: 1.6;
-  color: #eee;
-`;
-
-// Enhanced Fire Animation with larger size and more visibility
 const FireAnimation = styled.div`
   position: absolute;
   bottom: 0;
@@ -103,6 +80,11 @@ const FireAnimation = styled.div`
   mask-repeat: repeat-x;
   opacity: 0.8;
   transform: translateY(30%);
+
+  @media (max-width: 768px) {
+    height: 25vh;
+    transform: translateY(20%);
+  }
 `;
 
 const FireGlow = styled.div`
@@ -118,9 +100,12 @@ const FireGlow = styled.div`
   );
   z-index: 5;
   pointer-events: none;
+
+  @media (max-width: 768px) {
+    height: 35vh;
+  }
 `;
 
-// Improved ScrollDownIndicator with better styling and positioning
 const ScrollDownIndicator = styled(motion.div)`
   position: absolute;
   bottom: 40px;
@@ -142,6 +127,12 @@ const ScrollDownIndicator = styled(motion.div)`
     border-color: rgba(211, 161, 100, 0.6);
   }
 
+  @media (max-width: 768px) {
+    bottom: 20px;
+    padding: 8px 16px 6px;
+    transform: translateX(-50%) scale(0.9);
+  }
+
   span {
     color: #d3a164;
     font-size: 14px;
@@ -159,8 +150,6 @@ const ScrollDownIndicator = styled(motion.div)`
   }
 `;
 
-// Add these styled components
-
 const MuseumSelector = styled.div`
   display: flex;
   align-items: center;
@@ -173,9 +162,15 @@ const MuseumSelector = styled.div`
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+  }
 `;
 
-// Redesigned museum option cards with better non-hover state
 const MuseumOption = styled(motion.div)`
   position: relative;
   cursor: pointer;
@@ -191,7 +186,12 @@ const MuseumOption = styled(motion.div)`
       ? "0 20px 40px rgba(211, 161, 100, 0.3), 0 0 0 2px rgba(211, 161, 100, 0.5) inset"
       : "0 15px 30px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(211, 161, 100, 0.2) inset"};
 
-  // Remove &::before gradient since we're handling it in the background image
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 260px;
+    max-width: 320px;
+    margin-bottom: 10px;
+  }
 
   &::after {
     content: "";
@@ -280,6 +280,11 @@ const MuseumContent = styled.div`
     rgba(26, 20, 16, 0.1) 80%,
     rgba(26, 20, 16, 0) 100%
   );
+
+  @media (max-width: 768px) {
+    padding: 15px 12px;
+    justify-content: space-around;
+  }
 `;
 
 const MuseumIconBox = styled(motion.div)`
@@ -298,9 +303,11 @@ const MuseumIconBox = styled(motion.div)`
   margin-top: 15px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-  ${MuseumOption}:hover & {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  @media (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    margin-top: 5px;
   }
 
   svg {
@@ -318,6 +325,11 @@ const MuseumTitle = styled.h2`
   margin: 0 0 10px 0;
   color: #f5efe7;
   position: relative;
+
+  @media (max-width: 768px) {
+    font-size: clamp(1.3rem, 4vw, 1.8rem);
+    margin: 0 0 3px 0;
+  }
 
   span {
     color: #d3a164;
@@ -357,10 +369,17 @@ const MuseumDescription = styled.p`
   opacity: 0.8;
   transition: transform 0.5s ease, opacity 0.5s ease, border-color 0.3s ease;
 
-  ${MuseumOption}:hover & {
-    transform: translateY(0);
-    opacity: 1;
-    border-color: rgba(211, 161, 100, 0.3);
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+    padding: 8px 10px;
+    margin: 5px 0 10px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-height: none;
+    height: auto;
   }
 `;
 
@@ -379,10 +398,12 @@ const ExploreIndicator = styled(motion.div)`
   transition: transform 0.5s ease, opacity 0.5s ease, background-color 0.3s ease;
   margin-bottom: 15px;
 
-  ${MuseumOption}:hover & {
-    transform: translateY(0);
+  @media (max-width: 768px) {
+    padding: 8px 16px;
+    font-size: 0.8rem;
     opacity: 1;
-    background-color: #e0b175;
+    transform: translateY(0);
+    margin-bottom: 8px;
   }
 
   svg {
@@ -412,14 +433,9 @@ const ActiveIndicator = styled(motion.div)`
   transition: opacity 0.3s ease;
 `;
 
-// Remove these unused components
-// const ExploreContainer, const ExplorePortal, const ExploreIconContainer,
-// const ExploreText, const RippleEffect...
-
 const HeroSection = () => {
   const { t } = useLanguage();
   const navigate = useNavigate();
-  // Instead of defaulting to tribal, start with no museum selected
   const [selectedMuseum, setSelectedMuseum] = useState(null);
   const [hoveredMuseum, setHoveredMuseum] = useState(null);
   const containerRef = useRef(null);
@@ -432,14 +448,9 @@ const HeroSection = () => {
   const midgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
   const foregroundY = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
 
-  // Remove figure refs, keep only fire refs
   const fireRef = useRef(null);
   const fireGlowRef = useRef(null);
 
-  // Add this state for ripple effect
-  const [showRipple, setShowRipple] = useState(false);
-
-  // Handle hover state changes
   const handleMouseEnter = (museum) => {
     setHoveredMuseum(museum);
   };
@@ -448,20 +459,16 @@ const HeroSection = () => {
     setHoveredMuseum(null);
   };
 
-  // Determine active museum based on hover or selection
   const getIsActive = (museum) => {
-    // If something is hovered, that's the active one
     if (hoveredMuseum) {
       return hoveredMuseum === museum;
     }
-    // Otherwise use the selected one (if any)
     return selectedMuseum === museum;
   };
 
   const [initialLoad, setInitialLoad] = useState(true);
 
   useEffect(() => {
-    // Set default hoveredMuseum on initial load to create a nice entry animation
     if (initialLoad) {
       setHoveredMuseum("tribal");
       setTimeout(() => {
@@ -471,11 +478,9 @@ const HeroSection = () => {
   }, [initialLoad]);
 
   useEffect(() => {
-    // Store refs in variables to use in cleanup function
     const fire = fireRef.current;
     const fireGlow = fireGlowRef.current;
 
-    // GSAP animations for text
     const tl = gsap.timeline();
     tl.from(".title-char", {
       opacity: 0,
@@ -496,7 +501,6 @@ const HeroSection = () => {
       "-=0.4"
     );
 
-    // Add animation for scroll indicator
     tl.from(
       ".scroll-indicator",
       {
@@ -508,10 +512,8 @@ const HeroSection = () => {
       "-=0.2"
     );
 
-    // Enhanced fire animations
     let fireAnim1, fireAnim2;
     if (fire) {
-      // Create flickering effect with wider range
       fireAnim1 = gsap.to(fire, {
         opacity: gsap.utils.wrap([0.6, 0.9]),
         duration: 0.8,
@@ -521,7 +523,6 @@ const HeroSection = () => {
         repeatRefresh: true,
       });
 
-      // Create horizontal movement
       fireAnim2 = gsap.to(fire, {
         backgroundPosition: "-800px 0",
         duration: 30,
@@ -530,7 +531,6 @@ const HeroSection = () => {
       });
     }
 
-    // Fire glow animation with more intensity
     let fireGlowAnim;
     if (fireGlow) {
       fireGlowAnim = gsap.to(fireGlow, {
@@ -542,12 +542,8 @@ const HeroSection = () => {
       });
     }
 
-    // Fix the smooth transition arrow to avoid DOM manipulation errors
     const createSmoothTransition = () => {
       gsap.registerPlugin(ScrollTrigger);
-
-      // Instead of creating and appending a DOM element directly,
-      // let's create a GSAP animation for the timeline section
 
       gsap.fromTo(
         "#timeline",
@@ -569,20 +565,37 @@ const HeroSection = () => {
       );
     };
 
-    // Delay the transition creation to ensure the timeline element exists
     setTimeout(() => {
       createSmoothTransition();
     }, 500);
 
+    const isMobile = window.innerWidth <= 768;
+
+    if (isMobile) {
+      if (fire) {
+        gsap.to(fire, {
+          opacity: gsap.utils.wrap([0.5, 0.8]),
+          duration: 1,
+          repeat: -1,
+          yoyo: true,
+        });
+      }
+
+      gsap.to(".museum-option", {
+        scale: 1,
+        duration: 0.5,
+        stagger: 0.2,
+        delay: 0.5,
+      });
+    }
+
     return () => {
-      // Cleanup animations
       if (fireAnim1) fireAnim1.kill();
       if (fireAnim2) fireAnim2.kill();
       if (fireGlowAnim) fireGlowAnim.kill();
 
       gsap.killTweensOf([".title-char", ".tagline", ".scroll-indicator"]);
 
-      // Clean up ScrollTrigger instances to prevent issues
       const triggers = ScrollTrigger.getAll();
       triggers.forEach((trigger) => trigger.kill());
     };
@@ -595,24 +608,16 @@ const HeroSection = () => {
     });
   };
 
-  const handleMuseumChange = (museum) => {
-    setSelectedMuseum(museum);
-  };
-
-  const handleExplore = () => {
-    setShowRipple(true);
-
-    // Create ripple effect before navigation
-    setTimeout(() => {
-      navigate(`/${selectedMuseum}`);
-    }, 800);
-  };
-
-  // Modify to directly navigate when clicking a museum
   const handleMuseumSelect = (museum) => {
     setSelectedMuseum(museum);
 
-    // Optional: Add a slight delay before navigation for visual effect
+    setTimeout(() => {
+      navigate(`/${museum}`);
+    }, 300);
+  };
+
+  const handleTouchEnd = (museum) => {
+    setHoveredMuseum(museum);
     setTimeout(() => {
       navigate(`/${museum}`);
     }, 300);
@@ -643,24 +648,25 @@ const HeroSection = () => {
 
       <DarkOverlay />
 
-      {/* Enhanced fire effects only */}
       <FireGlow ref={fireGlowRef} />
       <FireAnimation ref={fireRef} />
 
       <TitleContainer
         style={{
-          paddingTop: "60px",
-          paddingBottom: "60px",
-          maxWidth: "1400px",
+          paddingTop: window.innerWidth <= 768 ? "20px" : "60px",
+          paddingBottom: window.innerWidth <= 768 ? "20px" : "60px",
+          maxWidth: window.innerWidth <= 768 ? "95%" : "1400px",
         }}
       >
         <MuseumSelector>
           <MuseumOption
+            className="museum-option"
             isActive={getIsActive("tribal")}
             onClick={() => handleMuseumSelect("tribal")}
             onMouseEnter={() => handleMouseEnter("tribal")}
             onMouseLeave={handleMouseLeave}
-            whileHover={{ scale: 1.02 }}
+            onTouchEnd={() => handleTouchEnd("tribal")}
+            whileHover={{ scale: window.innerWidth <= 768 ? 1.01 : 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
             <MuseumBackground type="tribal" isActive={getIsActive("tribal")} />
@@ -704,18 +710,19 @@ const HeroSection = () => {
           </MuseumOption>
 
           <MuseumOption
+            className="museum-option"
             isActive={getIsActive("freedom")}
             onClick={() => handleMuseumSelect("freedom")}
             onMouseEnter={() => handleMouseEnter("freedom")}
             onMouseLeave={handleMouseLeave}
-            whileHover={{ scale: 1.02 }}
+            onTouchEnd={() => handleTouchEnd("freedom")}
+            whileHover={{ scale: window.innerWidth <= 768 ? 1.01 : 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
             <MuseumBackground
               type="freedom"
               isActive={getIsActive("freedom")}
             />
-            {/* ...existing MuseumContent for freedom... */}
             <MuseumContent>
               <MuseumIconBox
                 animate={{ rotate: [0, 5, -5, 0] }}
@@ -768,6 +775,7 @@ const HeroSection = () => {
         }}
         whileHover={{ y: 5, scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
+        style={{ display: window.innerWidth <= 500 ? "none" : "flex" }}
       >
         <span>{t("scrollDown")}</span>
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

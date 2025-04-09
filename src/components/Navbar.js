@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../contexts/LanguageContext";
 import logo from "../assets/logo.svg";
-import gsap from "gsap"; // Add this import for gsap
+import gsap from "gsap";
 
 // Enhanced container with transparent to solid transition
 const NavContainer = styled(motion.nav)`
@@ -178,6 +178,18 @@ const MobileMenu = styled(motion.div)`
   box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
 `;
 
+// Add an overlay to handle clicks outside the mobile menu
+const MobileMenuOverlay = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 80;
+  backdrop-filter: blur(3px);
+`;
+
 // Mobile nav link
 const MobileNavLink = styled(NavLink)`
   font-size: 1.2rem;
@@ -205,19 +217,38 @@ const Navbar = ({ transparent = false }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { language, toggleLanguage, t } = useLanguage();
+  const mobileMenuRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
 
+    // Add body overflow control when mobile menu opens
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      document.body.style.overflow = "auto"; // Reset on component unmount
     };
-  }, []);
+  }, [mobileMenuOpen]);
 
-  // Function to handle language toggle and provide visual feedback
+  // Handle clicks outside the mobile menu
+  const handleClickOutside = (e) => {
+    if (mobileMenuRef.current && !mobileMenuRef.current.contains(e.target)) {
+      setMobileMenuOpen(false);
+    }
+  };
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   const handleLanguageToggle = () => {
     toggleLanguage();
 
@@ -289,77 +320,89 @@ const Navbar = ({ transparent = false }) => {
             {language === "en" ? "हिंदी" : "English"}
           </LanguageToggle>
 
-          <MobileMenuButton onClick={() => setMobileMenuOpen(true)}>
-            ☰
+          <MobileMenuButton onClick={toggleMobileMenu}>
+            {mobileMenuOpen ? "✕" : "☰"}
           </MobileMenuButton>
         </div>
       </NavContainer>
 
       <AnimatePresence>
         {mobileMenuOpen && (
-          <MobileMenu
-            initial={{ x: 300 }}
-            animate={{ x: 0 }}
-            exit={{ x: 300 }}
-            transition={{ type: "spring", damping: 20 }}
-          >
-            <MobileMenuButton
-              onClick={() => setMobileMenuOpen(false)}
-              style={{ position: "absolute", top: 20, right: 20 }}
+          <>
+            <MobileMenuOverlay
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={handleClickOutside}
+            />
+            <MobileMenu
+              ref={mobileMenuRef}
+              initial={{ x: 300 }}
+              animate={{ x: 0 }}
+              exit={{ x: 300 }}
+              transition={{ type: "spring", damping: 20 }}
             >
-              ✕
-            </MobileMenuButton>
+              <MobileMenuButton
+                onClick={() => setMobileMenuOpen(false)}
+                style={{ position: "absolute", top: 20, right: 20 }}
+              >
+                ✕
+              </MobileMenuButton>
 
-            <MobileNavLink
-              href="#about"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {t("About Museum")}
-            </MobileNavLink>
-            <MobileNavLink
-              href="#galleries"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {t("Galleries")}
-            </MobileNavLink>
-            <MobileNavLink
-              href="#collection"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {t("Our Collection")}
-            </MobileNavLink>
-            <MobileNavLink
-              href="#visiting"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {t("Visiting the Museum")}
-            </MobileNavLink>
-            <MobileNavLink
-              as={Link}
-              to="/virtual-tour"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {t("Virtual Tour")}
-            </MobileNavLink>
+              <MobileNavLink
+                href="#about"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t("About Museum")}
+              </MobileNavLink>
+              <MobileNavLink
+                href="#galleries"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t("Galleries")}
+              </MobileNavLink>
+              <MobileNavLink
+                href="#collection"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t("Our Collection")}
+              </MobileNavLink>
+              <MobileNavLink
+                href="#visiting"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t("Visiting the Museum")}
+              </MobileNavLink>
+              <MobileNavLink
+                as={Link}
+                to="/virtual-tour"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t("Virtual Tour")}
+              </MobileNavLink>
 
-            <LanguageToggle
-              onClick={handleLanguageToggle}
-              whileTap={{ scale: 0.95 }}
-              style={{ alignSelf: "flex-start" }}
-              className="language-toggle-btn"
-            >
-              {language === "en" ? "हिंदी" : "English"}
-            </LanguageToggle>
+              <LanguageToggle
+                onClick={() => {
+                  handleLanguageToggle();
+                  setMobileMenuOpen(false);
+                }}
+                whileTap={{ scale: 0.95 }}
+                style={{ alignSelf: "flex-start" }}
+                className="language-toggle-btn"
+              >
+                {language === "en" ? "हिंदी" : "English"}
+              </LanguageToggle>
 
-            <MobileBookButton
-              href="#booking"
-              onClick={() => setMobileMenuOpen(false)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {t("Book the Ticket")}
-            </MobileBookButton>
-          </MobileMenu>
+              <MobileBookButton
+                href="#booking"
+                onClick={() => setMobileMenuOpen(false)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {t("Book the Ticket")}
+              </MobileBookButton>
+            </MobileMenu>
+          </>
         )}
       </AnimatePresence>
 
