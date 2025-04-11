@@ -6,7 +6,7 @@ import { useLanguage } from "../contexts/LanguageContext";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 // Import tribal images
-import tribalBanner from "../assets/tribel/IMG-20250408-WA0019.jpg"; // Assumed filename
+import tribalBanner from "../assets/tribel//Picture3.jpg"; // Assumed filename
 import tribalDecoration from "../assets/TRTI CG english logo curve.jpg"; // Assumed filename
 
 const PageContainer = styled.div`

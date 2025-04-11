@@ -504,7 +504,7 @@ const Navbar = ({ transparent = false }) => {
                 >
                   <DropdownItem
                     as={Link}
-                    to="/tribal"
+                    to="/tribal/gallery"
                     whileHover={{ x: 5 }}
                     onClick={() => setGalleriesDropdownOpen(false)}
                   >
@@ -516,7 +516,7 @@ const Navbar = ({ transparent = false }) => {
 
                   <DropdownItem
                     as={Link}
-                    to="/freedom"
+                    to="/freedom/gallery"
                     whileHover={{ x: 5 }}
                     onClick={() => setGalleriesDropdownOpen(false)}
                   >

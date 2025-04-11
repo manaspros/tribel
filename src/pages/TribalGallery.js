@@ -7,12 +7,12 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 // Import tribal gallery images (assuming these files exist)
-import warAxeImg from "../assets/tribel/BAIGA.jpg";
+import warAxeImg from "../assets/tribel/BAIGA2.jpg";
 import dhokraImg from "../assets/tribel/GHOTPAL.jpg";
 import maskImg from "../assets/tribel/DHURWA.jpg";
 import herbsImg from "../assets/tribel/KAMAR.jpg";
 import jewelryImg from "../assets/tribel/GOTUL.jpg";
-import musicImg from "../assets/tribel/KAMAR.jpg";
+import musicImg from "../assets/tribel/MURIYA.jpg";
 
 const PageContainer = styled.div`
   background-color: #1a1410;
