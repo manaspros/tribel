@@ -49,12 +49,10 @@ const TitleContainer = styled(motion.div)`
   z-index: 10;
   text-align: center;
   color: #f5efe7;
-  padding: 40px;
+  padding: 40px 20px;
   border-radius: 15px;
-  backdrop-filter: blur(8px);
-  background: rgba(26, 20, 16, 0.65);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(211, 161, 100, 0.3) inset;
+  background: rgba(26, 20, 16, 0);
+  width: 100%;
   max-width: 90%;
 
   @media (max-width: 768px) {
@@ -156,16 +154,16 @@ const MuseumSelector = styled.div`
   justify-content: center;
   margin-bottom: 40px;
   flex-wrap: wrap;
-  gap: 50px;
+  gap: 80px;
   perspective: 1200px;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
 
   @media (max-width: 768px) {
     flex-direction: column;
-    gap: 30px;
+    gap: 50px;
     margin-bottom: 10px;
     padding-top: 10px;
   }
@@ -177,19 +175,25 @@ const MuseumOption = styled(motion.div)`
   padding: 0;
   border-radius: 20px;
   overflow: hidden;
-  width: 360px;
-  height: 420px;
+  width: 460px;
+  height: 520px;
   transform-style: preserve-3d;
   transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
   box-shadow: ${(props) =>
     props.isActive
-      ? "0 20px 40px rgba(211, 161, 100, 0.3), 0 0 0 2px rgba(211, 161, 100, 0.5) inset"
-      : "0 15px 30px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(211, 161, 100, 0.2) inset"};
+      ? "0 25px 50px rgba(211, 161, 100, 0.4), 0 0 0 3px rgba(211, 161, 100, 0.5) inset"
+      : "0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(211, 161, 100, 0.2) inset"};
+  border-bottom: 8px solid rgba(211, 161, 100, 0.8);
+
+  @media (max-width: 992px) {
+    width: 420px;
+    height: 450px;
+  }
 
   @media (max-width: 768px) {
     width: 100%;
-    height: 260px;
-    max-width: 320px;
+    height: 320px;
+    max-width: 360px;
     margin-bottom: 10px;
   }
 
@@ -205,7 +209,7 @@ const MuseumOption = styled(motion.div)`
       rgba(211, 161, 100, 0.2),
       transparent 70%
     );
-    opacity: ${(props) => (props.isActive ? 0.7 : 0)};
+    opacity: ${(props) => (props.isActive ? 0.8 : 0)};
     z-index: 1;
     transition: opacity 0.5s ease;
     pointer-events: none;
@@ -214,7 +218,7 @@ const MuseumOption = styled(motion.div)`
   &:hover {
     transform: translateY(-15px) rotateX(5deg);
     box-shadow: 0 25px 50px rgba(211, 161, 100, 0.4),
-      0 0 0 2px rgba(211, 161, 100, 0.6) inset;
+      0 0 0 3px rgba(211, 161, 100, 0.6) inset;
   }
 
   &:hover::after {
@@ -236,7 +240,7 @@ const MuseumBackground = styled.div`
   transition: transform 0.8s ease, filter 0.5s ease;
   filter: ${(props) =>
     props.isActive
-      ? "brightness(0.9) saturate(1.1)"
+      ? "brightness(1) saturate(1.1)"
       : "brightness(0.7) saturate(0.8)"};
 
   &::after {
@@ -245,7 +249,7 @@ const MuseumBackground = styled.div`
     inset: 0;
     background: ${(props) =>
       props.isActive
-        ? "radial-gradient(circle at center, rgba(211, 161, 100, 0.15), transparent 70%)"
+        ? `radial-gradient(circle at center, rgba(211, 161, 100, 0.15), transparent 70%)`
         : "none"};
     mix-blend-mode: overlay;
     opacity: ${(props) => (props.isActive ? 1 : 0)};
@@ -254,7 +258,7 @@ const MuseumBackground = styled.div`
 
   ${MuseumOption}:hover & {
     transform: scale(1.15);
-    filter: brightness(0.95) saturate(1.2);
+    filter: brightness(1) saturate(1.2);
 
     &::after {
       opacity: 1;
@@ -268,67 +272,71 @@ const MuseumContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px 25px;
+  padding: 40px 30px;
   height: 100%;
   justify-content: space-between;
   text-align: center;
   background: linear-gradient(
     to top,
-    rgba(26, 20, 16, 0.9) 0%,
+    rgba(26, 20, 16, 0.95) 0%,
     rgba(26, 20, 16, 0.7) 40%,
-    rgba(26, 20, 16, 0.4) 60%,
-    rgba(26, 20, 16, 0.1) 80%,
+    rgba(26, 20, 16, 0.4) 70%,
     rgba(26, 20, 16, 0) 100%
   );
 
   @media (max-width: 768px) {
-    padding: 15px 12px;
+    padding: 25px 20px;
     justify-content: space-around;
   }
 `;
 
 const MuseumIconBox = styled(motion.div)`
-  width: 70px;
-  height: 70px;
-  border-radius: 20px;
+  width: 90px;
+  height: 90px;
+  border-radius: 25px;
   background: rgba(211, 161, 100, 0.15);
   backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: auto;
-  border: 1px solid rgba(211, 161, 100, 0.3);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(211, 161, 100, 0.3);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   position: relative;
   margin-top: 15px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   @media (max-width: 768px) {
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
     margin-top: 5px;
   }
 
   svg {
-    width: 35px;
-    height: 35px;
+    width: 45px;
+    height: 45px;
     fill: #d3a164;
+
+    @media (max-width: 768px) {
+      width: 35px;
+      height: 35px;
+    }
   }
 `;
 
 const MuseumTitle = styled.h2`
-  font-size: clamp(2rem, 4vw, 2.3rem);
+  font-size: clamp(2.2rem, 4vw, 2.8rem);
   font-family: "Playfair Display", serif;
   letter-spacing: 2px;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
-  margin: 0 0 10px 0;
+  margin: 0 0 15px 0;
   color: #f5efe7;
   position: relative;
 
   @media (max-width: 768px) {
-    font-size: clamp(1.3rem, 4vw, 1.8rem);
-    margin: 0 0 3px 0;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin: 0 0 5px 0;
   }
 
   span {
@@ -355,55 +363,52 @@ const MuseumTitle = styled.h2`
 `;
 
 const MuseumDescription = styled.p`
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: 1.6;
-  margin: 10px 0 25px;
+  margin: 20px 0 30px;
   text-align: center;
-  max-width: 320px;
-  background: rgba(0, 0, 0, 0.2);
+  max-width: 90%;
+  background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(5px);
-  padding: 15px;
-  border-radius: 10px;
-  border: 1px solid rgba(211, 161, 100, 0.1);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(211, 161, 100, 0.2);
   transform: translateY(0);
-  opacity: 0.8;
+  opacity: 0.9;
   transition: transform 0.5s ease, opacity 0.5s ease, border-color 0.3s ease;
 
   @media (max-width: 768px) {
-    font-size: 0.85rem;
-    padding: 8px 10px;
-    margin: 5px 0 10px;
-    line-height: 1.4;
+    font-size: 0.9rem;
+    padding: 12px;
+    margin: 10px 0 15px;
+    line-height: 1.5;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    max-height: none;
-    height: auto;
   }
 `;
 
 const ExploreIndicator = styled(motion.div)`
   background: #d3a164;
   color: #1a1410;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 600;
-  padding: 12px 25px;
+  padding: 14px 28px;
   border-radius: 30px;
   display: flex;
   align-items: center;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  transform: translateY(10px);
-  opacity: 0.9;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(0);
+  opacity: 1;
   transition: transform 0.5s ease, opacity 0.5s ease, background-color 0.3s ease;
-  margin-bottom: 15px;
+  margin-top: auto;
+  margin-bottom: 25px;
 
   @media (max-width: 768px) {
-    padding: 8px 16px;
-    font-size: 0.8rem;
-    opacity: 1;
-    transform: translateY(0);
-    margin-bottom: 8px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
   }
 
   svg {
@@ -417,6 +422,22 @@ const ExploreIndicator = styled(motion.div)`
   &:hover svg {
     transform: translateX(4px);
   }
+`;
+
+const MuseumTypeTag = styled.div`
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(211, 161, 100, 0.9);
+  color: #1a1410;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  z-index: 3;
 `;
 
 const ActiveIndicator = styled(motion.div)`
@@ -651,13 +672,7 @@ const HeroSection = () => {
       <FireGlow ref={fireGlowRef} />
       <FireAnimation ref={fireRef} />
 
-      <TitleContainer
-        style={{
-          paddingTop: window.innerWidth <= 768 ? "20px" : "60px",
-          paddingBottom: window.innerWidth <= 768 ? "20px" : "60px",
-          maxWidth: window.innerWidth <= 768 ? "95%" : "1400px",
-        }}
-      >
+      <TitleContainer>
         <MuseumSelector>
           <MuseumOption
             className="museum-option"
@@ -669,6 +684,7 @@ const HeroSection = () => {
             whileHover={{ scale: window.innerWidth <= 768 ? 1.01 : 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
+            <MuseumTypeTag>Tribal Museum</MuseumTypeTag>
             <MuseumBackground type="tribal" isActive={getIsActive("tribal")} />
             <MuseumContent>
               <MuseumIconBox
@@ -719,6 +735,7 @@ const HeroSection = () => {
             whileHover={{ scale: window.innerWidth <= 768 ? 1.01 : 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
+            <MuseumTypeTag>Freedom Museum</MuseumTypeTag>
             <MuseumBackground
               type="freedom"
               isActive={getIsActive("freedom")}

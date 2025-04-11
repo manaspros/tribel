@@ -7,7 +7,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 // Import freedom fighter images
-import freedomBanner from "../assets/logo.svg"; // Assumed filename
+import freedomBanner from "../assets/tribel/banner.jpg"; // Assumed filename
 import freedomTimeline from "../assets/tribel/IMG-20250408-WA0016.jpg"; // Assumed filename
 
 const PageContainer = styled.div`

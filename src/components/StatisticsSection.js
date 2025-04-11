@@ -220,7 +220,10 @@ const StatisticsSection = () => {
   }, [isInView]);
 
   return (
-    <StatsContainer ref={sectionRef}>
+    <StatsContainer
+      ref={sectionRef}
+      id="museum-stats" // Add this ID for scrolling
+    >
       <StatsHeading>{t("Museum Impact")}</StatsHeading>
       <StatsGrid>
         {stats.map((stat, index) => (

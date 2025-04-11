@@ -3,7 +3,8 @@ import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../contexts/LanguageContext";
-import logo from "../assets/logo.svg";
+import logo2 from "../assets/logo2.png";
+import logo3 from "../assets/logo3.png";
 import gsap from "gsap";
 
 // Enhanced container with transparent to solid transition
@@ -31,17 +32,44 @@ const NavContainer = styled(motion.nav)`
   }
 `;
 
-// Simplified logo container without animation markup
+// Enhanced LogoContainer to hold multiple logos
 const LogoContainer = styled.div`
   display: flex;
   align-items: center;
   position: relative;
 `;
 
-// Simple logo image without animations
+// Left-side logos container
+const LogosGroupLeft = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 15px;
+`;
+
+// Main logo image with adjusted styling
 const LogoImage = styled.img`
   height: 45px;
   margin-right: 15px;
+`;
+
+// Additional logo styling
+const AdditionalLogo = styled.img`
+  height: 35px;
+  opacity: 0.85;
+  transition: all 0.3s ease;
+
+  &:hover {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 768px) {
+    height: 30px;
+  }
+
+  @media (max-width: 480px) {
+    display: none; // Hide on very small screens
+  }
 `;
 
 // Simple logo text without animations
@@ -51,6 +79,10 @@ const LogoText = styled.span`
   font-weight: bold;
   color: #d3a164;
   text-decoration: none;
+
+  @media (max-width: 580px) {
+    font-size: 1.2rem;
+  }
 `;
 
 // Enlarged mid-section for menu items
@@ -213,11 +245,125 @@ const MobileBookButton = styled(motion.a)`
   }
 `;
 
+// Add dropdown container and menu styling
+const DropdownContainer = styled.div`
+  position: relative;
+  display: inline-block;
+`;
+
+const DropdownMenu = styled(motion.div)`
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(26, 20, 16, 0.95);
+  backdrop-filter: blur(10px);
+  min-width: 180px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  padding: 10px 0;
+  margin-top: 10px;
+  z-index: 110;
+  border: 1px solid rgba(211, 161, 100, 0.2);
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 12px;
+    height: 12px;
+    background: rgba(26, 20, 16, 0.95);
+    border-top: 1px solid rgba(211, 161, 100, 0.2);
+    border-left: 1px solid rgba(211, 161, 100, 0.2);
+  }
+`;
+
+const DropdownItem = styled(motion.div)`
+  padding: 12px 20px;
+  color: #f5efe7;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  svg {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    color: #d3a164;
+  }
+
+  &:hover {
+    background: rgba(211, 161, 100, 0.15);
+    color: #d3a164;
+  }
+`;
+
+const MobileDropdownMenu = styled.div`
+  margin: 0 0 0 20px;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-left: 1px solid rgba(211, 161, 100, 0.3);
+`;
+
+const MobileDropdownItem = styled(Link)`
+  color: rgba(245, 239, 231, 0.8);
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+
+  svg {
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+    color: #d3a164;
+  }
+
+  &:hover {
+    color: #d3a164;
+  }
+`;
+
+const DropdownTrigger = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover svg {
+    transform: rotate(180deg);
+  }
+`;
+
 const Navbar = ({ transparent = false }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { language, toggleLanguage, t } = useLanguage();
   const mobileMenuRef = useRef(null);
+
+  // Add state for dropdown menu
+  const [galleriesDropdownOpen, setGalleriesDropdownOpen] = useState(false);
+  const [mobileGalleriesOpen, setMobileGalleriesOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  // Add state for collection dropdown
+  const [collectionDropdownOpen, setCollectionDropdownOpen] = useState(false);
+  const [mobileCollectionOpen, setMobileCollectionOpen] = useState(false);
+  const collectionDropdownRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -245,6 +391,26 @@ const Navbar = ({ transparent = false }) => {
     }
   };
 
+  // Add handler for clicks outside dropdown
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setGalleriesDropdownOpen(false);
+      }
+      if (
+        collectionDropdownRef.current &&
+        !collectionDropdownRef.current.contains(event.target)
+      ) {
+        setCollectionDropdownOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
@@ -263,6 +429,15 @@ const Navbar = ({ transparent = false }) => {
     });
   };
 
+  // Handle scrolling to museum stats section
+  const scrollToStats = () => {
+    const statsSection = document.getElementById("museum-stats");
+    if (statsSection) {
+      statsSection.scrollIntoView({ behavior: "smooth" });
+    }
+    setMobileMenuOpen(false);
+  };
+
   return (
     <>
       <NavContainer
@@ -272,18 +447,145 @@ const Navbar = ({ transparent = false }) => {
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <Link to="/">
-          <LogoContainer>
-            <LogoImage src={logo} alt={t("Tribal Museum")} />
-            <LogoText>{t("Tribal Museum")}</LogoText>
-          </LogoContainer>
-        </Link>
+        {/* Modified left side with multiple logos */}
+        <LogosGroupLeft>
+          <AdditionalLogo
+            src={logo2}
+            alt="Partner Logo"
+            as={motion.img}
+            whileHover={{ scale: 1.4 }}
+            whileTap={{ scale: 0.95 }}
+          />
+
+          <Link to="/">
+            <LogoContainer>
+              <LogoImage src={logo3} alt={t("Tribal Museum")} />
+              <LogoText>{t("Tribal Museum")}</LogoText>
+            </LogoContainer>
+          </Link>
+        </LogosGroupLeft>
 
         <NavLinks>
-          <NavLink href="#about">{t("About Museum")}</NavLink>
-          <NavLink href="#galleries">{t("Galleries")}</NavLink>
-          <NavLink href="#collection">{t("Our Collection")}</NavLink>
-          <NavLink href="#visiting">{t("Visiting the Museum")}</NavLink>
+          <NavLink
+            as="div"
+            style={{ cursor: "pointer" }}
+            onClick={scrollToStats}
+          >
+            {t("About Museum")}
+          </NavLink>
+
+          {/* Replace galleries link with dropdown */}
+          <DropdownContainer
+            ref={dropdownRef}
+            onMouseEnter={() => setGalleriesDropdownOpen(true)}
+            onMouseLeave={() => setGalleriesDropdownOpen(false)}
+          >
+            <NavLink as="div" style={{ cursor: "pointer" }}>
+              <DropdownTrigger>
+                {t("Galleries")}
+                <svg
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                >
+                  <path d="M7 10l5 5 5-5z" />
+                </svg>
+              </DropdownTrigger>
+            </NavLink>
+
+            <AnimatePresence>
+              {galleriesDropdownOpen && (
+                <DropdownMenu
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <DropdownItem
+                    as={Link}
+                    to="/tribal"
+                    whileHover={{ x: 5 }}
+                    onClick={() => setGalleriesDropdownOpen(false)}
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm0 12.5L5 12 12 7l7 5-7 3.5z" />
+                    </svg>
+                    {t("Tribal Heritage")}
+                  </DropdownItem>
+
+                  <DropdownItem
+                    as={Link}
+                    to="/freedom"
+                    whileHover={{ x: 5 }}
+                    onClick={() => setGalleriesDropdownOpen(false)}
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M14.4 6l-.24-1.2c-.09-.46-.5-.8-.98-.8H6c-.55 0-1 .45-1 1v15c0 .55.45 1 1 1s1-.45 1-1v-6h5.6l.24 1.2c.09.47.5.8.98.8H19c.55 0 1-.45 1-1V7c0-.55-.45-1-1-1h-4.6z" />
+                    </svg>
+                    {t("Freedom Fighters")}
+                  </DropdownItem>
+                </DropdownMenu>
+              )}
+            </AnimatePresence>
+          </DropdownContainer>
+
+          {/* Add collection dropdown */}
+          <DropdownContainer
+            ref={collectionDropdownRef}
+            onMouseEnter={() => setCollectionDropdownOpen(true)}
+            onMouseLeave={() => setCollectionDropdownOpen(false)}
+          >
+            <NavLink as="div" style={{ cursor: "pointer" }}>
+              <DropdownTrigger>
+                {t("Our Collection")}
+                <svg
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                >
+                  <path d="M7 10l5 5 5-5z" />
+                </svg>
+              </DropdownTrigger>
+            </NavLink>
+
+            <AnimatePresence>
+              {collectionDropdownOpen && (
+                <DropdownMenu
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <DropdownItem
+                    as={Link}
+                    to="/tribal/artifacts"
+                    whileHover={{ x: 5 }}
+                    onClick={() => setCollectionDropdownOpen(false)}
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 4h2v5l-1-.75L9 9V4zm9 16H6V4h1v9l3-2.25L13 13V4h5v16z" />
+                    </svg>
+                    {t("Tribal Artifacts")}
+                  </DropdownItem>
+
+                  <DropdownItem
+                    as={Link}
+                    to="/freedom/artifacts"
+                    whileHover={{ x: 5 }}
+                    onClick={() => setCollectionDropdownOpen(false)}
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4.86 8.86l-3 3.87L9 13.14 6 17h12l-3.86-5.14z" />
+                    </svg>
+                    {t("Freedom Artifacts")}
+                  </DropdownItem>
+                </DropdownMenu>
+              )}
+            </AnimatePresence>
+          </DropdownContainer>
+
           <VirtualTourButton
             as={Link}
             to="/virtual-tour"
@@ -350,23 +652,139 @@ const Navbar = ({ transparent = false }) => {
               </MobileMenuButton>
 
               <MobileNavLink
-                href="#about"
-                onClick={() => setMobileMenuOpen(false)}
+                as="div"
+                onClick={scrollToStats}
+                style={{ cursor: "pointer" }}
               >
                 {t("About Museum")}
               </MobileNavLink>
-              <MobileNavLink
-                href="#galleries"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {t("Galleries")}
-              </MobileNavLink>
-              <MobileNavLink
-                href="#collection"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {t("Our Collection")}
-              </MobileNavLink>
+
+              {/* Modified mobile galleries with dropdown */}
+              <div>
+                <MobileNavLink
+                  as="div"
+                  onClick={() => setMobileGalleriesOpen(!mobileGalleriesOpen)}
+                  style={{
+                    cursor: "pointer",
+                    display: "flex",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <span>{t("Galleries")}</span>
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="24"
+                    height="24"
+                    fill="currentColor"
+                    style={{
+                      transform: mobileGalleriesOpen
+                        ? "rotate(180deg)"
+                        : "rotate(0deg)",
+                      transition: "transform 0.3s ease",
+                    }}
+                  >
+                    <path d="M7 10l5 5 5-5z" />
+                  </svg>
+                </MobileNavLink>
+
+                {mobileGalleriesOpen && (
+                  <MobileDropdownMenu>
+                    <MobileDropdownItem
+                      to="/tribal"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                      >
+                        <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm0 12.5L5 12 12 7l7 5-7 3.5z" />
+                      </svg>
+                      {t("Tribal Heritage")}
+                    </MobileDropdownItem>
+
+                    <MobileDropdownItem
+                      to="/freedom"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                      >
+                        <path d="M14.4 6l-.24-1.2c-.09-.46-.5-.8-.98-.8H6c-.55 0-1 .45-1 1v15c0 .55.45 1 1 1s1-.45 1-1v-6h5.6l.24 1.2c.09.47.5.8.98.8H19c.55 0 1-.45 1-1V7c0-.55-.45-1-1-1h-4.6z" />
+                      </svg>
+                      {t("Freedom Fighters")}
+                    </MobileDropdownItem>
+                  </MobileDropdownMenu>
+                )}
+              </div>
+
+              {/* Add collection dropdown to mobile menu */}
+              <div>
+                <MobileNavLink
+                  as="div"
+                  onClick={() => setMobileCollectionOpen(!mobileCollectionOpen)}
+                  style={{
+                    cursor: "pointer",
+                    display: "flex",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <span>{t("Our Collection")}</span>
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="24"
+                    height="24"
+                    fill="currentColor"
+                    style={{
+                      transform: mobileCollectionOpen
+                        ? "rotate(180deg)"
+                        : "rotate(0deg)",
+                      transition: "transform 0.3s ease",
+                    }}
+                  >
+                    <path d="M7 10l5 5 5-5z" />
+                  </svg>
+                </MobileNavLink>
+
+                {mobileCollectionOpen && (
+                  <MobileDropdownMenu>
+                    <MobileDropdownItem
+                      to="/tribal/artifacts"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                      >
+                        <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 4h2v5l-1-.75L9 9V4zm9 16H6V4h1v9l3-2.25L13 13V4h5v16z" />
+                      </svg>
+                      {t("Tribal Artifacts")}
+                    </MobileDropdownItem>
+
+                    <MobileDropdownItem
+                      to="/freedom/artifacts"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                      >
+                        <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4.86 8.86l-3 3.87L9 13.14 6 17h12l-3.86-5.14z" />
+                      </svg>
+                      {t("Freedom Artifacts")}
+                    </MobileDropdownItem>
+                  </MobileDropdownMenu>
+                )}
+              </div>
+
               <MobileNavLink
                 href="#visiting"
                 onClick={() => setMobileMenuOpen(false)}

@@ -6,8 +6,8 @@ import { useLanguage } from "../contexts/LanguageContext";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 // Import tribal images
-import tribalBanner from "../assets/tribel/childwhitebg.jpg"; // Assumed filename
-import tribalDecoration from "../assets/tribel/TRTI CG english logo curve.cdr"; // Assumed filename
+import tribalBanner from "../assets/tribel/IMG-20250408-WA0019.jpg"; // Assumed filename
+import tribalDecoration from "../assets/TRTI CG english logo curve.jpg"; // Assumed filename
 
 const PageContainer = styled.div`
   background-color: #1a1410;
