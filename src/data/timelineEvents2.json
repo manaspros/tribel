@@ -1,0 +1,50 @@
+[
+    {
+        "year": "1792",
+        "titleKey": "Sarguja Rebellion",
+        "image": "sarguja_rebellion.jpg",
+        "descriptionKey": "Tribal revolt against British oppression.",
+        "artifacts": [],
+        "contentKey": "The Sarguja region and its tribal population were deeply affected by British conspiracies..."
+    },
+    {
+        "year": "1824-1825",
+        "titleKey": "Paralkot Rebellion",
+        "image": "paralkot_rebellion.jpg",
+        "descriptionKey": "Tribal uprising led by Gaindra Singh.",
+        "artifacts": [],
+        "contentKey": "During the British superintendent period (1818–1825), the tribal communities of Paralkot..."
+    },
+    {
+        "year": "1842-1863",
+        "titleKey": "Meria Rebellion",
+        "image": "meria.jpg",
+        "descriptionKey": "21-year tribal resistance in Bastar",
+        "artifacts": [],
+        "contentKey": "The Meria Rebellion, lasting 21 years, was a tribal revolt in Bastar..."
+    },
+    {
+        "year": "1878-1882",
+        "titleKey": "Rani Cho Ris Rebellion",
+        "image": "rani_cho_ris.jpg",
+        "descriptionKey": "Women's protest against forced royal marriage",
+        "artifacts": [],
+        "contentKey": "The Rani Cho Ris Rebellion was led by tribal women from 1878 to 1882..."
+    },
+    {
+        "year": "1910",
+        "titleKey": "Bhumkal Rebellion",
+        "image": "bhumkal.jpg",
+        "descriptionKey": "Major tribal revolt for autonomy",
+        "artifacts": [],
+        "contentKey": "The Bhumkal Rebellion of 1910 aimed to establish tribal autonomy in Bastar..."
+    },
+    {
+        "year": "1857",
+        "titleKey": "Sonakhan Rebellion",
+        "image": "sonakhan.jpg",
+        "descriptionKey": "Narayan Singh’s resistance to British rule",
+        "artifacts": [],
+        "contentKey": "Due to Maratha 'Takoli' tax collection, tensions rose between Ramray..."
+    }
+]
