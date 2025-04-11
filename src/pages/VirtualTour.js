@@ -318,6 +318,30 @@ const VirtualTour = () => {
     };
   }, []);
 
+  // Add keyboard navigation support
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      // Don't handle keyboard events if a hotspot is selected (dialog open)
+      if (selectedHotspot) return;
+
+      switch (e.key) {
+        case "ArrowLeft":
+          rotateLeft();
+          break;
+        case "ArrowRight":
+          rotateRight();
+          break;
+        default:
+          break;
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedHotspot]); // Dependency on selectedHotspot to disable when dialog is open
+
   const rotateLeft = () => {
     setRotation((prev) => prev - 90);
   };
@@ -416,6 +440,9 @@ const VirtualTour = () => {
       >
         <h2>{t("museumTour")}</h2>
         <p>{t("navigationInfo")}</p>
+        <p style={{ marginTop: "10px", fontSize: "0.9rem", opacity: 0.9 }}>
+          {t("Use the arrow keys or buttons to navigate")}
+        </p>
       </InfoPanel>
 
       <AnimatePresence>
