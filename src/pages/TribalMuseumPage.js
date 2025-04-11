@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import styled from "styled-components";
@@ -168,8 +168,53 @@ const InfoTitle = styled.h3`
   }
 `;
 
+const MapContainer = styled.div`
+  width: 100%;
+  height: 180px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 10px;
+  border: 1px solid rgba(211, 161, 100, 0.3);
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 5px 15px rgba(211, 161, 100, 0.2);
+  }
+`;
+
+const MapIframe = styled.iframe`
+  width: 100%;
+  height: 100%;
+  border: none;
+`;
+
+const MapOverlay = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px;
+  background-color: rgba(211, 161, 100, 0.9);
+  color: #1a1410;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  transform: translateY(${(props) => (props.isHovered ? "0" : "100%")});
+  transition: transform 0.3s ease;
+`;
+
 const TribalMuseumPage = () => {
   const { t } = useLanguage();
+  const [mapHovered, setMapHovered] = useState(false);
+
+  const locationAddress = "Tribal Freedom Fighter Museum, Naya Raipur";
+  const mapLocationQuery = encodeURIComponent(locationAddress);
+
+  const handleMapClick = () => {
+    window.open(`https://www.google.com/maps?q=${mapLocationQuery}`, "_blank");
+  };
 
   return (
     <PageContainer>
@@ -211,9 +256,9 @@ const TribalMuseumPage = () => {
                 {t("Admission Fees")}
               </InfoTitle>
               <p>
-                {t("Adults")}: $12
+                {t("Adults")}: ₹12
                 <br />
-                {t("Students & Seniors")}: $8
+                {t("Students & Seniors")}: ₹8
                 <br />
                 {t("Children (under 12)")}: {t("Free")}
                 <br />
@@ -254,12 +299,27 @@ const TribalMuseumPage = () => {
                 </svg>
                 {t("Location")}
               </InfoTitle>
-              <p>
-                123 Heritage Avenue
-                <br />
-                Cultural District
-                <br />
-                Tribal City, TX 75001
+              <MapContainer
+                onMouseEnter={() => setMapHovered(true)}
+                onMouseLeave={() => setMapHovered(false)}
+                onClick={handleMapClick}
+              >
+                <MapIframe
+                  src={`https://maps.google.com/maps?q=${mapLocationQuery}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+                  allowFullScreen
+                />
+                <MapOverlay isHovered={mapHovered}>
+                  {t("Click to view directions")}
+                </MapOverlay>
+              </MapContainer>
+              <p
+                style={{
+                  marginTop: "10px",
+                  fontSize: "0.9rem",
+                  color: "#d3a164",
+                }}
+              >
+                {locationAddress}
               </p>
             </InfoCard>
           </InfoGrid>

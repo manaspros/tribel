@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import styled from "styled-components";
@@ -206,8 +206,86 @@ const FeaturedTitle = styled.h3`
   font-family: "Playfair Display", serif;
 `;
 
+const InfoGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+  margin: 40px 0 60px;
+`;
+
+const InfoCard = styled(motion.div)`
+  background: rgba(42, 35, 28, 0.5);
+  border-radius: 10px;
+  padding: 30px;
+  border: 1px solid rgba(211, 161, 100, 0.2);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-color: rgba(211, 161, 100, 0.5);
+  }
+`;
+
+const InfoTitle = styled.h3`
+  color: #d3a164;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+
+  svg {
+    margin-right: 10px;
+  }
+`;
+
+const MapContainer = styled.div`
+  width: 100%;
+  height: 180px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 10px;
+  border: 1px solid rgba(211, 161, 100, 0.3);
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 5px 15px rgba(211, 161, 100, 0.2);
+  }
+`;
+
+const MapIframe = styled.iframe`
+  width: 100%;
+  height: 100%;
+  border: none;
+`;
+
+const MapOverlay = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px;
+  background-color: rgba(211, 161, 100, 0.9);
+  color: #1a1410;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  transform: translateY(${(props) => (props.isHovered ? "0" : "100%")});
+  transition: transform 0.3s ease;
+`;
+
 const FreedomMuseumPage = () => {
   const { t } = useLanguage();
+  const [mapHovered, setMapHovered] = useState(false);
+
+  const locationAddress = "Tribal Freedom Fighter Museum, Naya Raipur";
+  const mapLocationQuery = encodeURIComponent(locationAddress);
+
+  const handleMapClick = () => {
+    window.open(`https://www.google.com/maps?q=${mapLocationQuery}`, "_blank");
+  };
 
   return (
     <PageContainer>
@@ -352,6 +430,49 @@ const FreedomMuseumPage = () => {
               {t("virtualTour")}
             </StyledLink>
           </LinksSection>
+
+          <InfoGrid>
+            <InfoCard>
+              <InfoTitle>
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" />
+                </svg>
+                {t("Museum Location")}
+              </InfoTitle>
+              <Description>
+                {t(
+                  "Explore the museum's location and learn about its significance in preserving the history of tribal freedom fighters."
+                )}
+              </Description>
+              <MapContainer
+                onMouseEnter={() => setMapHovered(true)}
+                onMouseLeave={() => setMapHovered(false)}
+                onClick={handleMapClick}
+              >
+                <MapIframe
+                  src={`https://maps.google.com/maps?q=${mapLocationQuery}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+                  allowFullScreen
+                />
+                <MapOverlay isHovered={mapHovered}>
+                  {t("Click to view directions")}
+                </MapOverlay>
+              </MapContainer>
+              <p
+                style={{
+                  marginTop: "10px",
+                  fontSize: "0.9rem",
+                  color: "#d3a164",
+                }}
+              >
+                {locationAddress}
+              </p>
+            </InfoCard>
+          </InfoGrid>
         </motion.div>
       </ContentContainer>
 

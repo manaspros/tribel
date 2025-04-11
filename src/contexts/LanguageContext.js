@@ -128,7 +128,7 @@ export const translations = {
     newsletterDesc:
       "Subscribe to our newsletter to receive updates on new exhibits, events, and educational programs.",
     subscribe: "Subscribe",
-    copyright: "© 2023 Tribal Heritage Museum. All rights reserved.",
+    copyright: "Tribal Heritage Museum. All rights reserved.",
 
     // Additional translations
     freedom: "Freedom",
@@ -310,7 +310,7 @@ export const translations = {
     newsletterDesc:
       "नई प्रदर्शनियों, कार्यक्रमों और शैक्षिक कार्यक्रमों के अपडेट प्राप्त करने के लिए हमारे न्यूज़लेटर की सदस्यता लें।",
     subscribe: "सदस्यता लें",
-    copyright: "© 2023 आदिवासी विरासत संग्रहालय। सर्वाधिकार सुरक्षित।",
+    copyright: "आदिवासी विरासत संग्रहालय। सर्वाधिकार सुरक्षित।",
 
     // Additional translations
     freedom: "स्वतंत्रता",

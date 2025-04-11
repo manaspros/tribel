@@ -137,56 +137,38 @@ const Footer = () => {
           <p>{t("aboutDesc")}</p>
 
           <SocialIcons>
-            <motion.a
-              href="#"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              aria-label="Facebook"
-            >
-              <FaFacebookF size={20} />
-            </motion.a>
-            <motion.a
-              href="#"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              aria-label="Twitter"
-            >
-              <FaTwitter size={20} />
-            </motion.a>
-            <motion.a
-              href="#"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              aria-label="Instagram"
-            >
-              <FaInstagram size={20} />
-            </motion.a>
-            <motion.a
-              href="#"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              aria-label="YouTube"
-            >
-              <FaYoutube size={20} />
-            </motion.a>
+            {[
+              { icon: FaFacebookF, label: "Facebook" },
+              { icon: FaTwitter, label: "Twitter" },
+              { icon: FaInstagram, label: "Instagram" },
+              { icon: FaYoutube, label: "YouTube" },
+            ].map((social, index) => (
+              <motion.a
+                key={index}
+                href="#"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                aria-label={social.label}
+              >
+                <social.icon size={20} />
+              </motion.a>
+            ))}
           </SocialIcons>
         </FooterSection>
 
         <FooterSection>
           <h3>{t("usefulLinks")}</h3>
           <FooterLinks>
-            <li>
-              <Link to="/about">{t("aboutUs")}</Link>
-            </li>
-            <li>
-              <Link to="/exhibits">{t("exhibits")}</Link>
-            </li>
-            <li>
-              <Link to="/support">{t("supportUs")}</Link>
-            </li>
-            <li>
-              <Link to="/contact">{t("contact")}</Link>
-            </li>
+            {[
+              { to: "/about", text: t("aboutUs") },
+              { to: "/exhibits", text: t("exhibits") },
+              { to: "/support", text: t("supportUs") },
+              { to: "/contact", text: t("contact") },
+            ].map((link, index) => (
+              <li key={index}>
+                <Link to={link.to}>{link.text}</Link>
+              </li>
+            ))}
           </FooterLinks>
         </FooterSection>
 
@@ -197,27 +179,35 @@ const Footer = () => {
             <br /> Tuta, Uparwara
             <br /> Chhattisgarh 492101
           </p>
-          <p>
+
+          <p style={{ marginTop: "15px" }}>
             <strong>{t("hours")}:</strong>
             <br />
             Tuesday-Sunday: 10 AM - 6 PM
             <br />
-            Closed on Mondays
+            <span style={{ color: "#d3a164" }}>Closed on Mondays</span>
           </p>
-          <p>
+
+          <p style={{ marginTop: "15px" }}>
             <strong>{t("contact")}:</strong>
             <br />
-            info@tribalmuseum.org
+            <a href="mailto:info@tribalmuseum.org" style={{ color: "#f5efe7" }}>
+              info@tribalmuseum.org
+            </a>
             <br />
-            +1 (555) 123-4567
+            <a href="tel:+15551234567" style={{ color: "#f5efe7" }}>
+              +1 (555) 123-4567
+            </a>
           </p>
         </FooterSection>
       </FooterContent>
 
-      <Copyright>{t("copyright")}</Copyright>
+      <Copyright>
+        &copy; {new Date().getFullYear()} {t("copyright")}
+      </Copyright>
 
       <DesignerCredit>
-        Designed with ❤️ by{" "}
+        Designed by{" "}
         <a
           href="https://www.iiitnr.ac.in"
           target="_blank"
