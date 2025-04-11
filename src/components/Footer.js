@@ -175,9 +175,9 @@ const Footer = () => {
         <FooterSection>
           <h3>{t("visitUs")}</h3>
           <p>
-            4QH6+XXX, Sector 24
-            <br /> Tuta, Uparwara
-            <br /> Chhattisgarh 492101
+            {t("addressLine1")}
+            <br /> {t("addressLine2")}
+            <br /> {t("addressLine3")}
           </p>
 
           <p style={{ marginTop: "15px" }}>

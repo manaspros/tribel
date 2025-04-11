@@ -4,11 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLanguage } from "../contexts/LanguageContext";
-import halbaRebellionImg from "../assets/halba-rebellion.jpeg";
-import bhumkalRevoltImg from "../assets/bhumkal-revolt.webp";
-import timeline2 from "../assets/tribel/Timeline1.jpg";
-import timeline3 from "../assets/tribel/Timeline2.jpg";
-import timeline4 from "../assets/tribel/Timeline3.jpg";
+import timelineData from '../data/timelineEvents';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -387,92 +383,16 @@ const TimelineSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [scrollPosition, setScrollPosition] = useState(0);
 
+  const events = timelineData[language];
+
   // Timeline events data with translation
-  const timelineEvents = [
-    {
-      id: 1,
-      year: 1830,
-      title: t("halbaRebellion"),
-      image: halbaRebellionImg,
-      description: t(
-        "Led by Halba tribes against British colonial rule in Central India."
-      ),
-      artifacts: [
-        t("Tribal weapons"),
-        t("British records"),
-        t("Maps of the uprising"),
-      ],
-      content: t(
-        "The Halba Rebellion of 1830 was a significant uprising led by the Halba tribal communities against the oppressive policies of the British East India Company. The rebellion was sparked by excessive taxation, land appropriation, and the erosion of traditional tribal autonomy. Led by tribal chieftain Shambu Singh, the Halbas organized a formidable resistance that lasted several months before being suppressed by British forces. Despite its ultimate defeat, the rebellion marked an important early instance of organized tribal resistance against colonial rule in Central India."
-      ),
-    },
-    {
-      id: 2,
-      year: 1910,
-      title: t("bhumkalRevolt"),
-      image: bhumkalRevoltImg,
-      description: t(
-        "A major tribal uprising in Bastar region against exploitation."
-      ),
-      artifacts: [
-        t("Traditional drums"),
-        t("Gond paintings"),
-        t("Revolutionary letters"),
-      ],
-      content: t(
-        "The Bhumkal Revolt of 1910, also known as the Bastar Rebellion, was a major uprising by the indigenous tribal communities of Bastar region against British colonial rule and exploitation by local authorities. The uprising, led by tribal leader Gunda Dhur, was sparked by a series of policies that threatened tribal lands, cultural practices, and autonomy. The revolt witnessed participation from multiple tribal groups including Muria, Maria, and Bhattra communities who united against their oppressors. British authorities responded with brutal force, eventually suppressing the rebellion, but the Bhumkal Revolt remains a powerful symbol of indigenous resistance and is commemorated to this day."
-      ),
-    },
-    {
-      id: 3,
-      year: 1942,
-      title: t("Tribal Participation in Quit India Movement"),
-      image: timeline2,
-      description: t(
-        "Tribal communities joined the nationwide struggle for independence."
-      ),
-      artifacts: [
-        t("Freedom flags"),
-        t("Protest documents"),
-        t("Gandhi memorabilia"),
-      ],
-      content: t(
-        "During the Quit India Movement launched by Mahatma Gandhi in 1942, tribal communities across India played a significant but often overlooked role in the struggle for independence. In regions like Jharkhand, Chhattisgarh, and Odisha, tribal groups organized protests, disrupted colonial infrastructure, and provided support to underground freedom fighters. Their participation was motivated not only by nationalist sentiment but also by their ongoing struggles against forest laws, land alienation, and economic exploitation under British rule. The British response was severe, with many tribal villages facing collective punishment, but their contribution added crucial momentum to India's independence movement."
-      ),
-    },
-    {
-      id: 4,
-      year: 1970,
-      title: t("Jharkhand Movement"),
-      image: timeline3,
-      description: t(
-        "Movement for tribal autonomy and separate statehood in eastern India."
-      ),
-      artifacts: [
-        t("Movement banners"),
-        t("Tribal declarations"),
-        t("Documentary photographs"),
-      ],
-      content: t(
-        "The Jharkhand Movement intensified in the 1970s as a struggle for tribal autonomy, cultural preservation, and separate statehood in what was then part of Bihar. Led by tribal intellectuals and activists like Jaipal Singh Munda, the movement highlighted the marginalization of Adivasi communities and exploitation of tribal-dominated regions rich in mineral resources. The movement combined political activism, cultural renaissance, and grassroots mobilization to demand recognition of tribal rights and aspirations. After decades of persistent struggle, Jharkhand was finally carved out as a separate state in 2000, representing a significant victory for tribal self-determination and identity."
-      ),
-    },
-    {
-      id: 5,
-      year: 2000,
-      title: t("Narmada Bachao Andolan"),
-      image: timeline4,
-      description: t("Resistance against displacement due to dam projects."),
-      artifacts: [
-        t("Protest art"),
-        t("Medha Patkar's journals"),
-        t("Environmental impact reports"),
-      ],
-      content: t(
-        "The Narmada Bachao Andolan (Save Narmada Movement) gained significant momentum around 2000 as a powerful example of tribal communities fighting for their rights against displacement caused by large dam projects. Led by activist Medha Patkar, the movement represented the struggle of Adivasi communities in the Narmada Valley who faced submergence of their ancestral lands due to the Sardar Sarovar Dam and other projects. Beyond opposing displacement, the movement raised fundamental questions about development models, environmental justice, and the rights of indigenous peoples. Despite facing considerable opposition from state authorities, the movement achieved significant victories including better rehabilitation policies and international recognition of the rights of people displaced by development projects."
-      ),
-    },
-  ];
+  const translatedEvents = events.map(event => ({
+    ...event,
+    title: t(event.titleKey),
+    description: t(event.descriptionKey),
+    content: t(event.contentKey),
+    artifacts: event.artifacts.map(artifact => t(artifact))
+  }));
 
   // Calculate visible width for the timeline
   const getVisibleWidth = () => {
@@ -483,7 +403,7 @@ const TimelineSection = () => {
   const getTotalWidth = () => {
     const eventWidth = 380; // Width of each event card
     const marginRight = 120; // Right margin of each card
-    return timelineEvents.length * (eventWidth + marginRight) - marginRight;
+    return translatedEvents.length * (eventWidth + marginRight) - marginRight;
   };
 
   // Calculate max scroll position
@@ -495,7 +415,7 @@ const TimelineSection = () => {
   const handleNavigation = (direction) => {
     const newIndex =
       direction === "next"
-        ? Math.min(currentIndex + 1, timelineEvents.length - 1)
+        ? Math.min(currentIndex + 1, translatedEvents.length - 1)
         : Math.max(currentIndex - 1, 0);
 
     scrollToTimelinePosition(newIndex);
@@ -530,7 +450,7 @@ const TimelineSection = () => {
     });
 
     // ...rest of existing effect code...
-  }, [timelineEvents.length]);
+  }, [translatedEvents.length]);
 
   // Fix the timeline scrolling behavior
   useEffect(() => {
@@ -565,8 +485,8 @@ const TimelineSection = () => {
         // Update current index based on progress
         const progress = this.progress();
         const newIndex = Math.min(
-          timelineEvents.length - 1,
-          Math.floor(progress * timelineEvents.length)
+          translatedEvents.length - 1,
+          Math.floor(progress * translatedEvents.length)
         );
         if (newIndex !== currentIndex) {
           setCurrentIndex(newIndex);
@@ -579,7 +499,7 @@ const TimelineSection = () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       tl.kill();
     };
-  }, [timelineEvents.length]);
+  }, [translatedEvents.length]);
 
   // Function to smoothly scroll to the timeline section when dot navigation is used
   const scrollToTimelinePosition = (index) => {
@@ -593,7 +513,7 @@ const TimelineSection = () => {
 
     if (timelineTrigger) {
       // Calculate the scroll position for this index
-      const progress = index / (timelineEvents.length - 1);
+      const progress = index / (translatedEvents.length - 1);
 
       // First scroll to the section if needed
       if (rect.top > 0) {
@@ -643,20 +563,20 @@ const TimelineSection = () => {
       <TimelineWrapper>
         <TimelineBelt />
         <TimelineTrack ref={timelineRef}>
-          {timelineEvents.map((event, index) => {
+          {translatedEvents.map((event, index) => {
             const position = index % 2 === 0 ? "bottom" : "top";
             const leftPosition = index * 500; // Position each card with enough space
 
             return (
               <TimelineEvent
-                key={event.id}
+                key={index}
                 position={position}
                 left={leftPosition}
                 onClick={() => setSelectedEvent(event)}
                 whileHover={{ scale: 1.03 }}
               >
                 <TimelineDot position={position} />
-                <EventImage src={event.image} alt={event.title} />
+                <EventImage src={`/timelineSection/${event.image}`} alt={event.title} />
                 <EventInfo>
                   <EventYear>{event.year}</EventYear>
                   <EventTitle>{event.title}</EventTitle>
@@ -680,7 +600,7 @@ const TimelineSection = () => {
         </NavButton>
         <NavButton
           onClick={() => handleNavigation("next")}
-          disabled={currentIndex >= timelineEvents.length - 1}
+          disabled={currentIndex >= translatedEvents.length - 1}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
@@ -690,7 +610,7 @@ const TimelineSection = () => {
 
       {/* Progress indicator dots */}
       <TimelineProgress>
-        {timelineEvents.map((_, index) => (
+        {translatedEvents.map((_, index) => (
           <ProgressDot
             key={index}
             active={index === currentIndex}
