@@ -5,14 +5,7 @@ import styled from "styled-components";
 import { useLanguage } from "../contexts/LanguageContext";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-
-// Import tribal gallery images (assuming these files exist)
-import warAxeImg from "../assets/tribel/BAIGA2.jpg";
-import dhokraImg from "../assets/tribel/GHOTPAL.jpg";
-import maskImg from "../assets/tribel/DHURWA.jpg";
-import herbsImg from "../assets/tribel/KAMAR.jpg";
-import jewelryImg from "../assets/tribel/GOTUL.jpg";
-import musicImg from "../assets/tribel/MURIYA.jpg";
+import galleries from "../data/galleries.json"; // Assuming you have a JSON file with gallery data
 
 const PageContainer = styled.div`
   background-color: #1a1410;
@@ -155,51 +148,6 @@ const BackLink = styled(Link)`
 const TribalGallery = () => {
   const { t } = useLanguage();
 
-  const galleries = [
-    {
-      id: 1,
-      title: "tribalWarAxe",
-      description:
-        "Explore our collection of ceremonial and hunting weapons used by tribal chieftains in battles and rituals. These intricately decorated pieces tell stories of bravery, leadership, and cultural significance.",
-      image: warAxeImg,
-    },
-    {
-      id: 2,
-      title: "dhokraArt",
-      description:
-        "Discover the ancient Dhokra metalworking technique that dates back over 4,000 years. These exquisite metal artifacts showcase the remarkable craftsmanship and artistic tradition passed down through generations.",
-      image: dhokraImg,
-    },
-    {
-      id: 3,
-      title: "tribalMask",
-      description:
-        "Witness our impressive collection of ceremonial masks used during harvest festivals, spiritual rituals, and important tribal ceremonies. Each mask embodies the spiritual connection to ancestors and natural forces.",
-      image: maskImg,
-    },
-    {
-      id: 4,
-      title: "Healing Herbs",
-      description:
-        "Learn about traditional medicinal practices through our diverse collection of healing herbs and plants. This exhibit highlights the profound botanical knowledge developed by tribal healers over thousands of years.",
-      image: herbsImg,
-    },
-    {
-      id: 5,
-      title: "Tribal Jewelry",
-      description:
-        "Admire the beautiful ornamental pieces crafted from natural materials including seeds, bones, metals, and precious stones. These adornments signify social status, tribal affiliations, and important life stages.",
-      image: jewelryImg,
-    },
-    {
-      id: 6,
-      title: "Musical Instruments",
-      description:
-        "Experience the rhythmic soul of tribal communities through our collection of traditional musical instruments. These pieces have been central to cultural celebrations, storytelling sessions, and spiritual ceremonies.",
-      image: musicImg,
-    },
-  ];
-
   return (
     <PageContainer>
       <Navbar />
@@ -220,9 +168,7 @@ const TribalGallery = () => {
         </PageTitle>
 
         <GalleryIntro>
-          {t(
-            "Our specialized galleries offer immersive experiences into different aspects of tribal life and culture. Each carefully curated space presents artifacts within their cultural context, allowing visitors to gain deeper insights into the significance and stories behind these remarkable objects."
-          )}
+          {t("GalleriesDescription")}
         </GalleryIntro>
 
         <GalleryGrid>
@@ -233,11 +179,11 @@ const TribalGallery = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
             >
-              <GalleryImage image={gallery.image} />
+              <GalleryImage image={`/gallery/${gallery.image}`} />
               <GalleryInfo>
                 <div>
-                  <GalleryTitle>{t(gallery.title)}</GalleryTitle>
-                  <GalleryDescription>{gallery.description}</GalleryDescription>
+                  <GalleryTitle>{t(gallery.titleKey)}</GalleryTitle>
+                  <GalleryDescription>{t(gallery.descriptionKey)}</GalleryDescription>
                 </div>
                 <ExploreButton
                   whileHover={{ scale: 1.05 }}

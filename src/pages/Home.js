@@ -148,7 +148,7 @@ const Home = () => {
           animate={inViewReviews ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          {t("Share Your Experience")}
+          {t("shareExperience")}
         </SectionTitle>
         <VisitContainer ref={reviewsRef}>
           <VisitInfo>
@@ -157,16 +157,14 @@ const Home = () => {
               animate={inViewReviews ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              {t("We Value Your Feedback")}
+              {t("reviewContainerTitle")}
             </motion.h3>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={inViewReviews ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              {t(
-                "Your thoughts about our museums help us improve the experience for everyone. Share what you enjoyed, what moved you, or what you learned during your visit."
-              )}
+              {t("reviewContainerCmd")}
             </motion.p>
             <VisitButton
               initial={{ opacity: 0, y: 20 }}
@@ -178,7 +176,7 @@ const Home = () => {
               }}
               whileTap={{ scale: 0.95 }}
             >
-              {t("Write a Review")}
+              {t("writeAReview")}
             </VisitButton>
           </VisitInfo>
           <ReviewsContainer>
@@ -193,13 +191,9 @@ const Home = () => {
                 borderLeft: "5px solid #d3a164",
               }}
             >
-              <ReviewStars>★★★★★</ReviewStars>
-              <ReviewText>
-                "The tribal artifacts exhibition was breathtaking. I gained a
-                new appreciation for indigenous craftsmanship and cultural
-                heritage."
-              </ReviewText>
-              <ReviewAuthor>- Priya S.</ReviewAuthor>
+              <ReviewStars>{t("fiveStars")}</ReviewStars>
+              <ReviewText>{t("review1")}</ReviewText>
+              <ReviewAuthor>{t("reviewAuthor1")}</ReviewAuthor>
             </ReviewCard>
             <ReviewCard
               as={motion.div}
@@ -212,13 +206,9 @@ const Home = () => {
                 borderLeft: "5px solid #d3a164",
               }}
             >
-              <ReviewStars>★★★★★</ReviewStars>
-              <ReviewText>
-                "The Freedom Fighters Museum tells such powerful stories. Every
-                Indian should visit to understand our struggle for
-                independence."
-              </ReviewText>
-              <ReviewAuthor>- Rahul M.</ReviewAuthor>
+              <ReviewStars>{t("fiveStars")}</ReviewStars>
+              <ReviewText>{t("review2")}</ReviewText>
+              <ReviewAuthor>{t("reviewAuthor2")}</ReviewAuthor>
             </ReviewCard>
           </ReviewsContainer>
         </VisitContainer>
