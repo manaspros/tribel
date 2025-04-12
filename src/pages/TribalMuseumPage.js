@@ -305,9 +305,9 @@ const TribalMuseumPage = () => {
                 {t("Admission Fees")}
               </InfoTitle>
               <p>
-                {t("Adults")}: ₹12
+                {t("Adults")}: ₹20
                 <br />
-                {t("Students & Seniors")}: ₹8
+                {t("Students")}: ₹10
                 <br />
                 {t("Children (under 12)")}: {t("Free")}
                 <br />
