@@ -1,7 +1,8 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
+import translationsFromJson from "../data/translations.json"; // Assuming translations are in JSON format
 
 // Dictionary of translations - enhanced with more keys for complete site translation
-export const translations = {
+const translationsData = {
   en: {
     // Navbar
     home: "Home",
@@ -410,8 +411,10 @@ export const translations = {
       "नर्मदा बचाओ आंदोलन विस्थापन और पर्यावरणीय अन्याय के खिलाफ लड़ने वाले आदिवासी समुदायों का एक शक्तिशाली आधुनिक उदाहरण है। यह प्रदर्शनी दर्शाती है कि कैसे नर्मदा घाटी के आदिवासी लोगों ने बड़े बांध परियोजनाओं द्वारा अपनी पैतृक भूमि को डूबने से बचाने के लिए संगठित किया। विरोध कला, कार्यकर्ता पत्रिकाओं, वृत्तचित्र तस्वीरों और इंटरैक्टिव प्रदर्शनों के माध्यम से, आगंतुक इस चल रहे संघर्ष के साथ जुड़ते हैं जिसने स्वदेशी अधिकारों और पर्यावरणीय न्याय के बारे में वैश्विक जागरूकता बढ़ाई है।",
   },
 };
-
 const LanguageContext = createContext();
+
+// Merge translations from both sources or choose one
+export const translations = translationsFromJson || translationsData; // Export translations for use in components
 
 export const useLanguage = () => useContext(LanguageContext);
 

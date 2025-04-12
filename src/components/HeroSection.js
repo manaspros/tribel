@@ -253,9 +253,9 @@ const MuseumBackground = styled.div`
     position: absolute;
     inset: 0;
     background: ${(props) =>
-      props.isActive
-        ? `radial-gradient(circle at center, rgba(211, 161, 100, 0.15), transparent 70%)`
-        : "none"};
+    props.isActive
+      ? `radial-gradient(circle at center, rgba(211, 161, 100, 0.15), transparent 70%)`
+      : "none"};
     mix-blend-mode: overlay;
     opacity: ${(props) => (props.isActive ? 1 : 0)};
     transition: opacity 0.5s ease;
@@ -715,13 +715,11 @@ const HeroSection = () => {
               </MuseumTitle>
 
               <MuseumDescription>
-                {t(
-                  "Explore the rich cultural heritage of indigenous tribal communities through artifacts, art, and stories."
-                )}
+                {t("heritageMuseumDescription")}
               </MuseumDescription>
 
               <ExploreIndicator>
-                {t("Begin Journey")}
+                {t("beginJourney")}
                 <svg viewBox="0 0 24 24">
                   <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z" />
                 </svg>
@@ -739,11 +737,10 @@ const HeroSection = () => {
             whileHover={{ scale: window.innerWidth <= 768 ? 1.01 : 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <MuseumTypeTag>Freedom Museum</MuseumTypeTag>
-            <MuseumBackground
-              type="freedom"
-              isActive={getIsActive("freedom")}
-            />
+            <MuseumTypeTag>{t("freedomMuseum")}</MuseumTypeTag>
+
+            <MuseumBackground type="freedom" isActive={getIsActive("freedom")} />
+
             <MuseumContent>
               <MuseumIconBox
                 transition={{
@@ -751,7 +748,11 @@ const HeroSection = () => {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-              ></MuseumIconBox>
+              >
+                <svg viewBox="0 0 24 24">
+                  <path d="M14.4 6l-.24-1.2c-.09-.46-.5-.8-.98-.8H6c-.55 0-1 .45-1 1v15c0 .55.45 1 1 1s1-.45 1-1v-6h5.6l.24 1.2c.09.47.5.8.98.8H19c.55 0 1-.45 1-1V7c0-.55-.45-1-1-1h-4.6z" />
+                </svg>
+              </MuseumIconBox>
 
               <ActiveIndicator
                 isActive={getIsActive("freedom")}
@@ -764,19 +765,18 @@ const HeroSection = () => {
               </MuseumTitle>
 
               <MuseumDescription>
-                {t(
-                  "Discover the powerful stories of courage and resistance in the struggle for independence."
-                )}
+                {t("freedomMuseumDescription")}
               </MuseumDescription>
 
               <ExploreIndicator>
-                {t("Begin Journey")}
+                {t("beginJourney")}
                 <svg viewBox="0 0 24 24">
                   <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z" />
                 </svg>
               </ExploreIndicator>
             </MuseumContent>
           </MuseumOption>
+
         </MuseumSelector>
       </TitleContainer>
 
