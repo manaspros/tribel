@@ -15,6 +15,11 @@ export const translations = {
     "Visiting the Museum": "Visiting the Museum",
     "Book the Ticket": "Book the Ticket",
     "Tribal Museum": "Tribal Museum",
+    "Department of Tribal Department": "Department of Tribal Department",
+    "Department of Scheduled Caste Department":
+      "Department of Scheduled Caste Department",
+    "Department of Backword Classes and minorities Development":
+      "Department of Backward Classes and Minorities Development",
 
     // Hero section
     tribal: "Tribal",
@@ -35,13 +40,13 @@ export const translations = {
     // Visit section
     "Plan Your Visit": "Plan Your Visit",
     "Step into the captivating world":
-      "Step into the captivating world of tribal heritage at our museum. Book your tickets in advance to ensure a seamless experience exploring our rich collection of artifacts and immersive exhibitions.",
+      "Step into the captivating world of tribal heritage at our museum. Located in Naya Raipur, the Tribal Freedom Fighter Museum celebrates the rich history, culture, and struggles of India's indigenous communities during the freedom movement.",
     "Open Tuesday through Sunday":
       "Open Tuesday through Sunday, 10:00 AM to 6:00 PM",
     "123 Heritage Avenue":
-      "123 Heritage Avenue, Cultural District, Tribal City",
-    "contact@tribalmuseum.org": "contact@tribalmuseum.org",
-    "+1 (555) 123-4567": "+1 (555) 123-4567",
+      "Tribal Freedom Fighter Museum, Sector 24, Naya Raipur, Chhattisgarh 492101",
+    "contact@tribalmuseum.org": "info@tribalmuseum.org",
+    "+1 (555) 123-4567": "+91 771-2242181",
     "Book Your Ticket": "Book Your Ticket",
     General: "General",
     "Guided Tour": "Guided Tour",
@@ -115,7 +120,7 @@ export const translations = {
     // Footer
     aboutMuseum: "About The Museum",
     aboutDesc:
-      "The Tribal Heritage Museum celebrates the rich cultural legacy and historical significance of indigenous communities. Our mission is to preserve, showcase and educate about tribal heritage.",
+      "The National Tribal Freedom Fighter Museum in Naya Raipur celebrates the contributions of tribal communities to India's freedom struggle. Inaugurated in 2023, this museum preserves and showcases the heroic stories of tribal freedom fighters who fought against colonial oppression across different regions of India.",
     usefulLinks: "Useful Links",
     aboutUs: "About Us",
     events: "Events",
@@ -139,6 +144,56 @@ export const translations = {
       "Discover the inspiring stories and sacrifices of brave freedom fighters who shaped our nation's destiny",
     exploreMuseum: "Explore Museum",
     scrollDown: "Scroll Down",
+
+    // Freedom Museum Page
+    "Freedom Fighter Museum": "Tribal Freedom Fighter Museum",
+
+    "Honor the courage, sacrifices, and unwavering spirit of those who fought for India's independence. Our Freedom Fighter Museum preserves the powerful stories of tribal communities' contributions to the freedom struggle, from organized uprisings against colonial rule to participation in the nationwide movement for liberation.":
+      "Honor the courage, sacrifices, and unwavering spirit of tribal freedom fighters who fought for India's independence. The National Tribal Freedom Fighter Museum in Naya Raipur is dedicated to preserving and showcasing the rich history of tribal resistance against colonial oppression and their substantial contributions to India's freedom struggle.",
+
+    "Our exhibits document the lesser-known but crucial role of indigenous peoples in shaping India's journey to independence. Through original artifacts, historical documents, photographs, and interactive displays, visitors can explore the remarkable intersection of tribal identity and national resistance movements that ultimately led to freedom.":
+      "Our exhibits document the lesser-known but crucial role of tribal communities in shaping India's journey to independence. Through original artifacts, historical documents, photographs, and interactive displays, visitors can explore the remarkable contributions of tribal leaders like Birsa Munda, Komaram Bheem, Tantya Bhil, and many others who sacrificed their lives for freedom.",
+
+    "Spotlight: The Bhumkal Revolt of 1910":
+      "Spotlight: The Bhumkal Revolt of 1910",
+
+    "The Bhumkal Revolt of 1910, also known as the Bastar Rebellion, stands as one of history's most significant tribal uprisings against British colonial rule in India. Led by the charismatic tribal leader Gunda Dhur, this powerful resistance movement united multiple tribal communities including the Muria, Maria, and Bhattra peoples of the Bastar region.":
+      "The Bhumkal Revolt of 1910, also known as the Bastar Rebellion, stands as one of the most significant tribal uprisings in Chhattisgarh's history against British colonial rule. Led by the courageous tribal leader Gunda Dhur from the Muria community, this powerful resistance movement united diverse tribes including Muria, Maria, Dhruva, Dorla and Halba communities across the Bastar region.",
+
+    "Sparked by exploitative taxation, forced labor, and restrictions on traditional forest rights, the revolt spread rapidly across Bastar. The tribal warriors, armed primarily with traditional weapons, mounted fierce attacks on colonial outposts and successfully disrupted British control of the region for several months. Though eventually suppressed through brutal military force, the Bhumkal Revolt remains a testament to indigenous resistance and is commemorated annually as a symbol of tribal identity and courage.":
+      "The revolt was sparked by exploitation under colonial forest policies, land alienation, forced labor (begari), excessive taxation, and restrictions on traditional rights. On February 2, 1910, thousands of tribal people armed with traditional weapons like bows, arrows, axes, and spears marched to Jagdalpur to protest. When British forces opened fire, the peaceful protest transformed into armed resistance. Though eventually suppressed, the Bhumkal Revolt symbolizes the indomitable spirit of tribal resistance against colonial oppression and is commemorated annually on February 10 as 'Bhumkal Diwas' in Chhattisgarh.",
+
+    // Additional museum-specific content
+    "The National Tribal Freedom Fighter Museum in Naya Raipur honors the significant contributions of India's tribal communities to the freedom struggle. This museum showcases the brave resistance of tribal leaders against colonial oppression through a rich collection of artifacts, photographs, and interactive exhibits that tell their powerful stories of courage and sacrifice.":
+      "नया रायपुर में राष्ट्रीय आदिवासी स्वतंत्रता सेनानी संग्रहालय स्वतंत्रता संग्राम में भारत के आदिवासी समुदायों के महत्वपूर्ण योगदान का सम्मान करता है। यह संग्रहालय कलाकृतियों, तस्वीरों और इंटरैक्टिव प्रदर्शनों के समृद्ध संग्रह के माध्यम से औपनिवेशिक उत्पीड़न के खिलाफ आदिवासी नेताओं के साहसिक प्रतिरोध को प्रदर्शित करता है जो उनके साहस और बलिदान की शक्तिशाली कहानियां बताते हैं।",
+
+    // Missing translations
+    "Admission Fees": "Admission Fees",
+    Adults: "Adults",
+    "Students & Seniors": "Students & Seniors",
+    "Children (under 12)": "Children (under 12)",
+    Free: "Free",
+    Members: "Members",
+    "Museum Hours": "Museum Hours",
+    "Tuesday - Friday: 10:00 AM - 6:00 PM":
+      "Tuesday - Friday: 10:00 AM - 6:00 PM",
+    "Saturday - Sunday: 9:00 AM - 7:00 PM":
+      "Saturday - Sunday: 9:00 AM - 7:00 PM",
+    "Monday: Closed": "Monday: Closed",
+    Location: "Location",
+    "Click to view directions": "Click to view directions",
+    "Tribal Freedom Fighter Museum, Naya Raipur":
+      "Tribal Freedom Fighter Museum, Naya Raipur",
+    "Visiting Experience": "Visiting Experience",
+
+    "Step into a world where ancient traditions come alive. Our Tribal Heritage Museum celebrates the rich cultural tapestry of indigenous communities, preserving their wisdom, art, and stories for future generations. Through carefully curated exhibits, we invite you to explore the profound connection between tribal peoples and their natural environment, their spiritual beliefs, and their unique artistic expressions.":
+      "Step into a world where ancient traditions come alive. Our Tribal Heritage Museum celebrates the rich cultural tapestry of indigenous communities, preserving their wisdom, art, and stories for future generations. Through carefully curated exhibits, we invite you to explore the profound connection between tribal peoples and their natural environment, their spiritual beliefs, and their unique artistic expressions.",
+
+    "Our collection features over 10,000 carefully preserved artifacts, each telling a unique story of indigenous heritage. From intricately crafted ceremonial masks and traditional weapons to healing herbs and musical instruments, every item represents the ingenuity, spirituality, and artistic expression of tribal communities. Special exhibits highlight the sustainable practices that have allowed these cultures to thrive in harmony with nature for thousands of years.":
+      "Our collection features over 10,000 carefully preserved artifacts, each telling a unique story of indigenous heritage. From intricately crafted ceremonial masks and traditional weapons to healing herbs and musical instruments, every item represents the ingenuity, spirituality, and artistic expression of tribal communities. Special exhibits highlight the sustainable practices that have allowed these cultures to thrive in harmony with nature for thousands of years.",
+
+    "Immerse yourself in the vibrant traditions of indigenous peoples through our interactive exhibits, cultural demonstrations, and educational programs. Witness traditional crafting techniques, participate in storytelling sessions, and experience the rhythmic power of tribal music. Our knowledgeable guides, many from tribal communities themselves, offer insights that bring each artifact and story to life.":
+      "Immerse yourself in the vibrant traditions of indigenous peoples through our interactive exhibits, cultural demonstrations, and educational programs. Witness traditional crafting techniques, participate in storytelling sessions, and experience the rhythmic power of tribal music. Our knowledgeable guides, many from tribal communities themselves, offer insights that bring each artifact and story to life.",
   },
   hi: {
     // Navbar
@@ -153,6 +208,10 @@ export const translations = {
     "Visiting the Museum": "संग्रहालय भ्रमण",
     "Book the Ticket": "टिकट बुक करें",
     "Tribal Museum": "आदिवासी संग्रहालय",
+    "Department of Tribal Department": "आदिम जाति विभाग",
+    "Department of Scheduled Caste Department": "अनुसूचित जाति विभाग",
+    "Department of Backword Classes and minorities Development":
+      "पिछड़ा वर्ग एवं अल्पसंख्यक विकास विभाग",
 
     // Hero section
     tribal: "आदिवासी",
@@ -212,235 +271,143 @@ export const translations = {
     "The Bhumkal Revolt of 1910, also known as the Bastar Rebellion, was a major uprising by the indigenous tribal communities of Bastar region against British colonial rule and exploitation by local authorities. The uprising, led by tribal leader Gunda Dhur, was sparked by a series of policies that threatened tribal lands, cultural practices, and autonomy. The revolt witnessed participation from multiple tribal groups including Muria, Maria, and Bhattra communities who united against their oppressors. British authorities responded with brutal force, eventually suppressing the rebellion, but the Bhumkal Revolt remains a powerful symbol of indigenous resistance and is commemorated to this day.":
       "1910 का भूमकाल विद्रोह, जिसे बस्तर विद्रोह के नाम से भी जाना जाता है, बस्तर क्षेत्र के स्वदेशी आदिवासी समुदायों द्वारा ब्रिटिश औपनिवेशिक शासन और स्थानीय अधिकारियों द्वारा शोषण के खिलाफ एक प्रमुख विद्रोह था। आदिवासी नेता गुंडा धुर के नेतृत्व में विद्रोह, नीतियों की एक श्रृंखला से प्रेरित था जिसने आदिवासी भूमि, सांस्कृतिक प्रथाओं और स्वायत्तता को खतरे में डाल दिया था। विद्रोह में मुरिया, मारिया और भत्रा समुदायों सहित कई आदिवासी समूहों की भागीदारी देखी गई, जो अपने अत्याचारियों के खिलाफ एकजुट हुए थे। ब्रिटिश अधिकारियों ने क्रूर बल के साथ जवाब दिया, अंततः विद्रोह को दबा दिया, लेकिन भूमकाल विद्रोह स्वदेशी प्रतिरोध का एक शक्तिशाली प्रतीक बना हुआ है और आज भी इसका स्मरण किया जाता है।",
 
-    // Quote section
-    "Museum Impact": "संग्रहालय का प्रभाव",
+    "Spotlight: The Bhumkal Revolt of 1910": "1910 का भूमकाल विद्रोह",
+
+    "The Bhumkal Revolt of 1910, also known as the Bastar Rebellion, stands as one of history's most significant tribal uprisings against British colonial rule in India. Led by the charismatic tribal leader Gunda Dhur, this powerful resistance movement united multiple tribal communities including the Muria, Maria, and Bhattra peoples of the Bastar region.":
+      "1910 का भूमकाल विद्रोह, जिसे बस्तर विद्रोह के नाम से भी जाना जाता है, भारत में ब्रिटिश औपनिवेशिक शासन के खिलाफ इतिहास के सबसे महत्वपूर्ण आदिवासी विद्रोहों में से एक है। मुरिया समुदाय के साहसी आदिवासी नेता गुंडा धुर के नेतृत्व में, इस शक्तिशाली प्रतिरोध आंदोलन ने बस्तर क्षेत्र में मुरिया, मारिया, ध्रुवा, डोरला और हल्बा समुदायों सहित विविध जनजातियों को एकजुट किया।",
+
+    "Sparked by exploitative taxation, forced labor, and restrictions on traditional forest rights, the revolt spread rapidly across Bastar. The tribal warriors, armed primarily with traditional weapons, mounted fierce attacks on colonial outposts and successfully disrupted British control of the region for several months. Though eventually suppressed through brutal military force, the Bhumkal Revolt remains a testament to indigenous resistance and is commemorated annually as a symbol of tribal identity and courage.":
+      "विद्रोह औपनिवेशिक वन नीतियों, भूमि अलगाव, जबरन श्रम (बेगारी), अत्यधिक कराधान और पारंपरिक अधिकारों पर प्रतिबंध के तहत शोषण से प्रेरित था। 2 फरवरी, 1910 को, हजारों आदिवासी लोग धनुष, तीर, कुल्हाड़ी और भाले जैसे पारंपरिक हथियारों से लैस होकर विरोध प्रदर्शन करने के लिए जगदलपुर पहुंचे। जब ब्रिटिश बलों ने गोलीबारी की, तो शांतिपूर्ण विरोध सशस्त्र प्रतिरोध में बदल गया। हालांकि अंततः दबा दिया गया, भूमकाल विद्रोह औपनिवेशिक उत्पीड़न के खिलाफ आदिवासी प्रतिरोध की अडिग भावना का प्रतीक है और छत्तीसगढ़ में हर साल 10 फरवरी को 'भूमकाल दिवस' के रूप में मनाया जाता है।",
 
     // Visit section
-    "Plan Your Visit": "अपनी यात्रा की योजना बनाएं",
+    "Plan Your Visit": "यात्रा की योजना बनाएं",
     "Step into the captivating world":
-      "हमारे संग्रहालय में आदिवासी विरासत की मनमोहक दुनिया में कदम रखें। हमारे समृद्ध कलाकृति संग्रह और इमर्सिव प्रदर्शनियों का अन्वेषण करने के लिए अपने टिकट पहले से बुक करें।",
+      "हमारे संग्रहालय में आदिवासी विरासत की मनमोहक दुनिया में कदम रखें। नया रायपुर में स्थित, आदिवासी स्वतंत्रता सेनानी संग्रहालय स्वतंत्रता आंदोलन के दौरान भारत के स्वदेशी समुदायों के समृद्ध इतिहास, संस्कृति और संघर्षों का जश्न मनाता है।",
     "Open Tuesday through Sunday":
-      "मंगलवार से रविवार तक, सुबह 10:00 बजे से शाम 6:00 बजे तक खुला है",
-    "123 Heritage Avenue": "123 हेरिटेज एवेन्यू, सांस्कृतिक जिला, आदिवासी नगर",
-    "contact@tribalmuseum.org": "contact@tribalmuseum.org",
-    "+1 (555) 123-4567": "+1 (555) 123-4567",
+      "मंगलवार से रविवार तक खुला, सुबह 10:00 बजे से शाम 6:00 बजे तक",
+    "123 Heritage Avenue":
+      "आदिवासी स्वतंत्रता सेनानी संग्रहालय, सेक्टर 24, नया रायपुर, छत्तीसगढ़ 492101",
+    "contact@tribalmuseum.org": "info@tribalmuseum.org",
+    "+1 (555) 123-4567": "+91 771-2242181",
     "Book Your Ticket": "अपना टिकट बुक करें",
     General: "सामान्य",
-    "Guided Tour": "गाइडेड टूर",
+    "Guided Tour": "मार्गदर्शित दौरा",
     "Special Event": "विशेष कार्यक्रम",
-    "First Name": "पहला नाम",
+    "First Name": "प्रथम नाम",
     "Last Name": "अंतिम नाम",
     Email: "ईमेल",
-    "Visit Date": "यात्रा की तिथि",
+    "Visit Date": "भ्रमण तिथि",
     "Time Slot": "समय स्लॉट",
     "Select...": "चुनें...",
     "Number of Visitors": "आगंतुकों की संख्या",
     "Book Now": "अभी बुक करें",
     "Thank You!": "धन्यवाद!",
     "Your booking has been confirmed":
-      "आपकी बुकिंग की पुष्टि हो गई है। आपको जल्द ही एक पुष्टिकरण ईमेल प्राप्त होगा।",
+      "आपकी बुकिंग की पुष्टि हो गई है। आपको शीघ्र ही एक पुष्टिकरण ईमेल प्राप्त होगा।",
     Close: "बंद करें",
-
-    // Exhibit section
-    virtualExhibitGallery: "आभासी प्रदर्शनी गैलरी",
-    "Explore our collection":
-      "दुर्लभ आदिवासी कलाकृतियों के हमारे संग्रह का अन्वेषण करें, प्रत्येक स्वदेशी विरासत, कारीगरी और सांस्कृतिक महत्व की अनूठी कहानी बताती है।",
-    tribalWarAxe: "आदिवासी युद्ध कुल्हाड़ी",
-    tribalWarAxeDesc:
-      "एक अलंकृत अनुष्ठानिक युद्ध कुल्हाड़ी जो आदिवासी मुखियाओं द्वारा युद्ध में उपयोग की जाती थी।",
-    dhokraArt: "ढोकरा कला",
-    dhokraArtDesc:
-      "4,000 वर्षों से अधिक पुरानी पारंपरिक लॉस्ट-वैक्स मेटल कास्टिंग तकनीक।",
-    tribalMask: "आदिवासी मुखौटा",
-    tribalMaskDesc:
-      "फसल उत्सवों और आध्यात्मिक अनुष्ठानों के दौरान उपयोग किया जाने वाला अनुष्ठानिक मुखौटा।",
-    "Healing Herbs": "औषधीय जड़ी-बूटियां",
-    "Collection of medicinal herbs":
-      "आदिवासी चिकित्सकों द्वारा विभिन्न बीमारियों के इलाज के लिए प्रयुक्त औषधीय जड़ी-बूटियों का संग्रह, जो पीढ़ियों से ज्ञान के माध्यम से आगे बढ़ता है।",
-    "Tribal Jewelry": "आदिवासी आभूषण",
-    "Ornate jewelry pieces":
-      "बीज, हड्डियों और धातुओं जैसी प्राकृतिक सामग्री से बने अलंकृत आभूषण, जो सामाजिक स्थिति और आदिवासी संबंधों को दर्शाते हैं।",
-    "Musical Instruments": "वाद्य यंत्र",
-    "Traditional instruments":
-      "आदिवासी उत्सवों, अनुष्ठानों और कहानी सुनाने के सत्रों में प्रयुक्त पारंपरिक वाद्य यंत्र, जो अनूठे लय और धुन बनाते हैं।",
-    Weapon: "हथियार",
-    Ceremonial: "अनुष्ठानिक",
-    Crafts: "शिल्प",
-    Ancient: "प्राचीन",
-    Ritual: "अनुष्ठान",
-    Spiritual: "आध्यात्मिक",
-    Medicine: "दवा",
-    Natural: "प्राकृतिक",
-    Adornment: "आभूषण",
-    Cultural: "सांस्कृतिक",
-    Music: "संगीत",
-    Performance: "प्रदर्शन",
-
-    // CTA section
-    experienceRichHeritage: "हमारी समृद्ध विरासत का अनुभव करें",
-    stepIntoWorld:
-      "प्राचीन परंपराओं, लचीले आत्माओं और सांस्कृतिक चमत्कारों की दुनिया में कदम रखें। हमारे गाइडेड टूर आदिवासी इतिहास के हृदय के माध्यम से एक इमरसिव यात्रा प्रदान करते हैं।",
-    bookGuidedTour: "गाइडेड टूर बुक करें",
-
-    // Virtual Tour
-    museumTour: "संग्रहालय दौरा",
-    navigationInfo:
-      "आभासी संग्रहालय में नेविगेट करने के लिए रोटेशन नियंत्रण का उपयोग करें। प्रदर्शनियों के बारे में अधिक जानने के लिए हाइलाइट किए गए बिंदुओं पर क्लिक करें।",
-    tribalHeritage: "आदिवासी विरासत",
-    culturalLegacy: "सांस्कृतिक विरासत",
-    ancestralWisdom: "पैतृक ज्ञान",
-    livingTraditions: "जीवित परंपराएँ",
-    loadingVirtualMuseum: "आभासी संग्रहालय लोड हो रहा है",
-    preparingExperience: "आपके इमरसिव अनुभव की तैयारी...",
-    backToHome: "होम पर वापस जाएं",
 
     // Footer
     aboutMuseum: "संग्रहालय के बारे में",
     aboutDesc:
-      "आदिवासी विरासत संग्रहालय स्वदेशी समुदायों की समृद्ध सांस्कृतिक विरासत और ऐतिहासिक महत्व का जश्न मनाता है। हमारा मिशन आदिवासी विरासत को संरक्षित, प्रदर्शित और शिक्षित करना है।",
+      "नया रायपुर में राष्ट्रीय आदिवासी स्वतंत्रता सेनानी संग्रहालय भारत के स्वतंत्रता संग्राम में आदिवासी समुदायों के योगदान का जश्न मनाता है। 2023 में उद्घाटन किया गया, यह संग्रहालय आदिवासी स्वतंत्रता सेनानियों की वीरगाथाओं को संरक्षित और प्रदर्शित करता है जिन्होंने भारत के विभिन्न क्षेत्रों में औपनिवेशिक उत्पीड़न के खिलाफ लड़ाई लड़ी।",
     usefulLinks: "उपयोगी लिंक",
     aboutUs: "हमारे बारे में",
     events: "कार्यक्रम",
     educationalResources: "शैक्षिक संसाधन",
-    supportUs: "हमें सहयोग दें",
-    contact: "संपर्क",
+    supportUs: "हमारा समर्थन करें",
+    contact: "संपर्क करें",
     visitUs: "हमसे मिलें",
     hours: "समय",
     newsletter: "न्यूज़लेटर",
     newsletterDesc:
-      "नई प्रदर्शनियों, कार्यक्रमों और शैक्षिक कार्यक्रमों के अपडेट प्राप्त करने के लिए हमारे न्यूज़लेटर की सदस्यता लें।",
+      "हमारे न्यूज़लेटर की सदस्यता लें ताकि आपको नई प्रदर्शनियों, कार्यक्रमों और शैक्षिक कार्यक्रमों पर अपडेट प्राप्त हो सके।",
     subscribe: "सदस्यता लें",
     copyright: "आदिवासी विरासत संग्रहालय। सर्वाधिकार सुरक्षित।",
 
-    // Additional translations
-    freedom: "स्वतंत्रता",
-    fighterMuseum: "सेनानी संग्रहालय",
-    tribalJourneyText:
-      "समय के माध्यम से यात्रा करें और स्वदेशी समुदायों की जीवंत संस्कृति और लचीले आत्मा का अनुभव करें",
-    freedomJourneyText:
-      "वीर स्वतंत्रता सेनानियों की प्रेरणादायक कहानियों और बलिदानों की खोज करें जिन्होंने हमारे राष्ट्र के इतिहास को आकार दिया",
-    exploreMuseum: "संग्रहालय देखें",
-    scrollDown: "नीचे स्क्रॉल करें",
+    // Freedom Museum Page
+    "Freedom Fighter Museum": "आदिवासी स्वतंत्रता सेनानी संग्रहालय",
 
-    // Additional translations for Home.js
-    "Share Your Experience": "अपना अनुभव साझा करें",
-    "We Value Your Feedback": "हम आपकी प्रतिक्रिया का सम्मान करते हैं",
-    "Your thoughts about our museums help us improve the experience for everyone. Share what you enjoyed, what moved you, or what you learned during your visit.":
-      "हमारे संग्रहालयों के बारे में आपके विचार सभी के लिए अनुभव को बेहतर बनाने में हमारी मदद करते हैं। साझा करें कि आपने क्या आनंद लिया, आपको क्या प्रभावित किया, या आपने अपनी यात्रा के दौरान क्या सीखा।",
-    "Write a Review": "समीक्षा लिखें",
-    "Begin Journey": "यात्रा शुरू करें",
+    "Honor the courage, sacrifices, and unwavering spirit of those who fought for India's independence. Our Freedom Fighter Museum preserves the powerful stories of tribal communities' contributions to the freedom struggle, from organized uprisings against colonial rule to participation in the nationwide movement for liberation.":
+      "उन आदिवासी स्वतंत्रता सेनानियों के साहस, बलिदान और अटल भावना का सम्मान करें जिन्होंने भारत की आज़ादी के लिए लड़ाई लड़ी। नया रायपुर में राष्ट्रीय आदिवासी स्वतंत्रता सेनानी संग्रहालय औपनिवेशिक उत्पीड़न के खिलाफ आदिवासी प्रतिरोध के समृद्ध इतिहास और भारत के स्वतंत्रता संग्राम में उनके महत्वपूर्ण योगदान को संरक्षित और प्रदर्शित करने के लिए समर्पित है।",
 
-    // Museum descriptions
-    "Explore the rich cultural heritage of indigenous tribal communities through artifacts, art, and stories.":
-      "कलाकृतियों, कला और कहानियों के माध्यम से स्वदेशी आदिवासी समुदायों की समृद्ध सांस्कृतिक विरासत का अन्वेषण करें।",
-    "Discover the powerful stories of courage and resistance in the struggle for independence.":
-      "स्वतंत्रता के संघर्ष में साहस और प्रतिरोध की शक्तिशाली कहानियों का पता लगाएं।",
+    "Our exhibits document the lesser-known but crucial role of indigenous peoples in shaping India's journey to independence. Through original artifacts, historical documents, photographs, and interactive displays, visitors can explore the remarkable intersection of tribal identity and national resistance movements that ultimately led to freedom.":
+      "हमारी प्रदर्शनियां भारत की स्वतंत्रता की यात्रा को आकार देने में आदिवासी समुदायों की कम ज्ञात लेकिन महत्वपूर्ण भूमिका का दस्तावेजीकरण करती हैं। मूल कलाकृतियों, ऐतिहासिक दस्तावेजों, तस्वीरों और इंटरैक्टिव प्रदर्शनों के माध्यम से, आगंतुक बिरसा मुंडा, कोमाराम भीम, टंट्या भील और कई अन्य आदिवासी नेताओं के उल्लेखनीय योगदान का पता लगा सकते हैं जिन्होंने स्वतंत्रता के लिए अपने प्रान न्योछावर किए।",
 
-    // Reviews and testimonials
-    "The tribal artifacts exhibition was breathtaking. I gained a new appreciation for indigenous craftsmanship and cultural heritage.":
-      "आदिवासी कलाकृति प्रदर्शनी अद्भुत थी। मुझे स्वदेशी कारीगरी और सांस्कृतिक विरासत के लिए एक नई सराहना मिली।",
-    "The Freedom Fighters Museum tells such powerful stories. Every Indian should visit to understand our struggle for independence.":
-      "स्वतंत्रता सेनानी संग्रहालय ऐसी शक्तिशाली कहानियां बताता है। स्वतंत्रता के हमारे संघर्ष को समझने के लिए हर भारतीय को यहां आना चाहिए।",
-    "- Priya S.": "- प्रिया एस.",
-    "- Rahul M.": "- राहुल एम.",
+    // Additional museum-specific content
+    "The National Tribal Freedom Fighter Museum in Naya Raipur honors the significant contributions of India's tribal communities to the freedom struggle. This museum showcases the brave resistance of tribal leaders against colonial oppression through a rich collection of artifacts, photographs, and interactive exhibits that tell their powerful stories of courage and sacrifice.":
+      "नया रायपुर में राष्ट्रीय आदिवासी स्वतंत्रता सेनानी संग्रहालय स्वतंत्रता संग्राम में भारत के आदिवासी समुदायों के महत्वपूर्ण योगदान का सम्मान करता है। यह संग्रहालय कलाकृतियों, तस्वीरों और इंटरैक्टिव प्रदर्शनों के समृद्ध संग्रह के माध्यम से औपनिवेशिक उत्पीड़न के खिलाफ आदिवासी नेताओं के साहसिक प्रतिरोध को प्रदर्शित करता है जो उनके साहस और बलिदान की शक्तिशाली कहानियां बताते हैं।",
 
-    // Statistics Section
-    "Discover Our Impact": "हमारे प्रभाव को जानें",
-    "Years Preserving Heritage": "वर्षों से विरासत का संरक्षण",
-    "Unique Artifacts": "अद्वितीय कलाकृतियां",
-    "Annual Visitors": "वार्षिक आगंतुक",
-    "Cultural Programs": "सांस्कृतिक कार्यक्रम",
-    "Our museum stands as a testament to the resilience and richness of indigenous cultures and freedom movements that have shaped our nation. Each year, we continue to expand our collection and reach, bringing these important stories to wider audiences.":
-      "हमारा संग्रहालय स्वदेशी संस्कृतियों की लचीलापन और समृद्धि और स्वतंत्रता आंदोलनों का प्रमाण है जिन्होंने हमारे राष्ट्र को आकार दिया है। प्रत्येक वर्ष, हम अपने संग्रह और पहुंच का विस्तार करते हैं, इन महत्वपूर्ण कहानियों को व्यापक दर्शकों तक पहुंचाते हैं।",
-
-    // CTA section additional text
-    Discover: "खोजें",
-    Connect: "जुड़ें",
-    Preserve: "संरक्षण करें",
-    "Our Approach": "हमारा दृष्टिकोण",
-    "We believe in creating immersive, educational experiences that honor the legacy of our ancestors while engaging with contemporary issues.":
-      "हम ऐसे इमर्सिव, शैक्षिक अनुभव बनाने में विश्वास करते हैं जो हमारे पूर्वजों की विरासत का सम्मान करते हुए समकालीन मुद्दों से जुड़ते हैं।",
-    "Join us in preserving and celebrating our shared heritage.":
-      "हमारी साझा विरासत के संरक्षण और उत्सव में हमारे साथ जुड़ें।",
-    "Learn More": "और जानें",
-    "Together, we can ensure these stories live on for generations to come.":
-      "साथ मिलकर, हम सुनिश्चित कर सकते हैं कि ये कहानियां आने वाली पीढ़ियों के लिए जीवित रहें।",
-    "Get Involved": "शामिल हों",
-
-    // Museum pages translations
-    "Museum Hours": "संग्रहालय का समय",
+    // Missing translations
     "Admission Fees": "प्रवेश शुल्क",
-    Location: "स्थान",
     Adults: "वयस्क",
     "Students & Seniors": "छात्र और वरिष्ठ नागरिक",
     "Children (under 12)": "बच्चे (12 वर्ष से कम)",
+    Free: "नि:शुल्क",
     Members: "सदस्य",
-    Free: "निःशुल्क",
+    "Museum Hours": "संग्रहालय का समय",
     "Tuesday - Friday: 10:00 AM - 6:00 PM":
       "मंगलवार - शुक्रवार: सुबह 10:00 बजे - शाम 6:00 बजे",
     "Saturday - Sunday: 9:00 AM - 7:00 PM":
       "शनिवार - रविवार: सुबह 9:00 बजे - शाम 7:00 बजे",
     "Monday: Closed": "सोमवार: बंद",
+    Location: "स्थान",
+    "Click to view directions": "दिशा-निर्देश देखने के लिए क्लिक करें",
+    "Tribal Freedom Fighter Museum, Naya Raipur":
+      "आदिवासी स्वतंत्रता सेनानी संग्रहालय, नया रायपुर",
+    "Visiting Experience": "भ्रमण अनुभव",
 
-    // Tribal Museum Page
     "Step into a world where ancient traditions come alive. Our Tribal Heritage Museum celebrates the rich cultural tapestry of indigenous communities, preserving their wisdom, art, and stories for future generations. Through carefully curated exhibits, we invite you to explore the profound connection between tribal peoples and their natural environment, their spiritual beliefs, and their unique artistic expressions.":
-      "एक ऐसी दुनिया में कदम रखें जहां प्राचीन परंपराएं जीवंत हो उठती हैं। हमारा आदिवासी विरासत संग्रहालय स्वदेशी समुदायों के समृद्ध सांस्कृतिक ताने-बाने का जश्न मनाता है, उनके ज्ञान, कला और कहानियों को आने वाली पीढ़ियों के लिए संरक्षित करता है। सावधानीपूर्वक क्यूरेट की गई प्रदर्शनियों के माध्यम से, हम आपको आदिवासी लोगों और उनके प्राकृतिक वातावरण, उनकी आध्यात्मिक मान्यताओं और उनकी अनूठी कलात्मक अभिव्यक्तियों के बीच गहरे संबंध की खोज करने के लिए आमंत्रित करते हैं।",
+      "एक ऐसी दुनिया में कदम रखें जहां प्राचीन परंपराएं जीवंत हो उठती हैं। हमारा आदिवासी विरासत संग्रहालय स्वदेशी समुदायों की समृद्ध सांस्कृतिक विरासत का जश्न मनाता है, उनके ज्ञान, कला और कहानियों को भावी पीढ़ियों के लिए संरक्षित करता है। सावधानीपूर्वक तैयार की गई प्रदर्शनियों के माध्यम से, हम आपको आदिवासी समुदायों और उनके प्राकृतिक वातावरण, उनकी आध्यात्मिक मान्यताओं और उनकी अनूठी कलात्मक अभिव्यक्तियों के बीच गहरे संबंध का पता लगाने के लिए आमंत्रित करते हैं।",
 
     "Our collection features over 10,000 carefully preserved artifacts, each telling a unique story of indigenous heritage. From intricately crafted ceremonial masks and traditional weapons to healing herbs and musical instruments, every item represents the ingenuity, spirituality, and artistic expression of tribal communities. Special exhibits highlight the sustainable practices that have allowed these cultures to thrive in harmony with nature for thousands of years.":
-      "हमारे संग्रह में 10,000 से अधिक सावधानीपूर्वक संरक्षित कलाकृतियां हैं, जिनमें से प्रत्येक स्वदेशी विरासत की एक अनूठी कहानी बताती है। जटिल रूप से निर्मित अनुष्ठानिक मुखौटों और पारंपरिक हथियारों से लेकर चिकित्सीय जड़ी-बूटियों और वाद्य यंत्रों तक, हर वस्तु आदिवासी समुदायों की प्रतिभा, आध्यात्मिकता और कलात्मक अभिव्यक्ति का प्रतिनिधित्व करती है। विशेष प्रदर्शनियां टिकाऊ प्रथाओं पर प्रकाश डालती हैं जिन्होंने इन संस्कृतियों को हजारों वर्षों से प्रकृति के साथ सामंजस्य में फलने-फूलने की अनुमति दी है।",
-
-    "Visiting Experience": "आगंतुक अनुभव",
+      "हमारे संग्रह में 10,000 से अधिक सावधानीपूर्वक संरक्षित कलाकृतियां हैं, जिनमें से प्रत्येक स्वदेशी विरासत की एक अनूठी कहानी बताती है। जटिलता से बनाए गए अनुष्ठानिक मुखौटों और पारंपरिक हथियारों से लेकर चिकित्सीय जड़ी-बूटियों और संगीत वाद्ययंत्रों तक, हर वस्तु आदिवासी समुदायों की प्रतिभा, आध्यात्मिकता और कलात्मक अभिव्यक्ति का प्रतिनिधित्व करती है। विशेष प्रदर्शनियां उन टिकाऊ प्रथाओं पर प्रकाश डालती हैं जिन्होंने इन संस्कृतियों को हजारों वर्षों से प्रकृति के साथ सामंजस्य में फलने-फूलने की अनुमति दी है।",
 
     "Immerse yourself in the vibrant traditions of indigenous peoples through our interactive exhibits, cultural demonstrations, and educational programs. Witness traditional crafting techniques, participate in storytelling sessions, and experience the rhythmic power of tribal music. Our knowledgeable guides, many from tribal communities themselves, offer insights that bring each artifact and story to life.":
-      "हमारी इंटरैक्टिव प्रदर्शनियों, सांस्कृतिक प्रदर्शनों और शैक्षिक कार्यक्रमों के माध्यम से स्वदेशी लोगों की जीवंत परंपराओं में खुद को डुबोएं। पारंपरिक शिल्प तकनीकों को देखें, कहानी सुनाने के सत्रों में भाग लें और आदिवासी संगीत की लयबद्ध शक्ति का अनुभव करें। हमारे जानकार गाइड, जिनमें से कई खुद आदिवासी समुदायों से हैं, ऐसी अंतर्दृष्टि प्रदान करते हैं जो हर कलाकृति और कहानी को जीवंत बनाती है।",
+      "हमारी इंटरैक्टिव प्रदर्शनियों, सांस्कृतिक प्रदर्शनों और शैक्षिक कार्यक्रमों के माध्यम से स्वदेशी लोगों की जीवंत परंपराओं में खुद को डुबोएं। पारंपरिक शिल्प तकनीकों को देखें, कहानी सुनाने के सत्रों में भाग लें, और आदिवासी संगीत की लयबद्ध शक्ति का अनुभव करें। हमारे जानकार गाइड, जिनमें से कई स्वयं आदिवासी समुदायों से हैं, ऐसी अंतर्दृष्टि प्रदान करते हैं जो प्रत्येक कलाकृति और कहानी को जीवंत बनाती है।",
 
-    // Tribal Gallery Page
-    Galleries: "गैलरीज़",
+    // Gallery page translations
+    "Our specialized galleries chronicle pivotal moments in tribal resistance history, showcasing the extraordinary courage and determination of indigenous communities in their fight for freedom, dignity, and autonomy. Each carefully curated exhibit combines historical artifacts, documentary evidence, and personal testimonies to reveal these powerful yet often overlooked chapters in the struggle against colonialism.":
+      "हमारी विशेष प्रदर्शनियाँ आदिवासी प्रतिरोध इतिहास के महत्वपूर्ण क्षणों का वर्णन करती हैं, स्वतंत्रता, गरिमा और स्वायत्तता के लिए संघर्ष में स्वदेशी समुदायों के असाधारण साहस और दृढ़ता को प्रदर्शित करती हैं। प्रत्येक सावधानीपूर्वक तैयार की गई प्रदर्शनी ऐतिहासिक कलाकृतियों, प्रलेखित साक्ष्य और व्यक्तिगत गवाहियों को जोड़ती है जो औपनिवेशवाद के खिलाफ संघर्ष में इन शक्तिशाली लेकिन अक्सर अनदेखे अध्यायों को उजागर करती हैं।",
 
-    "Our specialized galleries offer immersive experiences into different aspects of tribal life and culture. Each carefully curated space presents artifacts within their cultural context, allowing visitors to gain deeper insights into the significance and stories behind these remarkable objects.":
-      "हमारी विशेष गैलरियां आदिवासी जीवन और संस्कृति के विभिन्न पहलुओं में इमर्सिव अनुभव प्रदान करती हैं। प्रत्येक सावधानीपूर्वक क्यूरेट किया गया स्थान कलाकृतियों को उनके सांस्कृतिक संदर्भ में प्रस्तुत करता है, जिससे आगंतुकों को इन उल्लेखनीय वस्तुओं के पीछे के महत्व और कहानियों की गहरी जानकारी प्राप्त करने की अनुमति मिलती है।",
+    "Explore Gallery": "प्रदर्शनी का अन्वेषण करें",
 
-    "Explore Gallery →": "गैलरी का अन्वेषण करें →",
+    // Gallery titles
+    "Halba Rebellion (1830)": "हल्बा विद्रोह (1830)",
+    "Bhumkal Revolt (1910)": "भूमकाल विद्रोह (1910)",
+    "Tribal Participation in Quit India Movement (1942)":
+      "भारत छोड़ो आंदोलन में आदिवासी भागीदारी (1942)",
+    "Jharkhand Movement (1970s)": "झारखंड आंदोलन (1970 का दशक)",
+    "Narmada Bachao Andolan (2000s)": "नर्मदा बचाओ आंदोलन (2000 का दशक)",
 
-    // Tribal Artifacts Page
-    "Our Collection": "हमारा संग्रह",
+    // Gallery locations
+    "Central India": "मध्य भारत",
+    "Bastar Region": "बस्तर क्षेत्र",
+    "Multiple regions": "कई क्षेत्र",
+    "Eastern India": "पूर्वी भारत",
+    "Narmada Valley": "नर्मदा घाटी",
 
-    "Our curated collection features authentic tribal artifacts that showcase the remarkable craftsmanship, cultural significance, and artistic traditions of indigenous communities. Each piece tells a story of heritage, spiritual beliefs, and the profound connection between tribal peoples and their environment.":
-      "हमारा क्यूरेटेड संग्रह प्रामाणिक आदिवासी कलाकृतियों को प्रदर्शित करता है जो स्वदेशी समुदायों की उल्लेखनीय कारीगरी, सांस्कृतिक महत्व और कलात्मक परंपराओं को दर्शाता है। प्रत्येक टुकड़ा विरासत, आध्यात्मिक विश्वासों और आदिवासी लोगों और उनके वातावरण के बीच गहरे संबंध की कहानी बताता है।",
+    // Gallery durations
+    "Several months": "कई महीने",
+    "Over 6 months": "6 महीने से अधिक",
+    "1942-1945": "1942-1945",
+    "Over 30 years": "30 वर्षों से अधिक",
+    "Ongoing since 1985": "1985 से जारी",
 
-    "All Categories": "सभी श्रेणियां",
-    Weapons: "हथियार",
-    Origin: "उत्पत्ति",
-    Age: "काल",
-    Materials: "सामग्री",
-    Category: "श्रेणी",
-    Significance: "महत्व",
+    // Gallery descriptions
+    "The Halba Rebellion marked one of the earliest organized tribal resistances against British colonial rule in Central India. Led by tribal chieftain Shambu Singh, the Halba tribes rose up against excessive taxation, land appropriation, and the erosion of traditional tribal autonomy imposed by the British East India Company. This gallery showcases rare artifacts, maps, and accounts from this pivotal uprising that, despite its ultimate defeat, set a powerful precedent for indigenous resistance.":
+      "हल्बा विद्रोह मध्य भारत में ब्रिटिश औपनिवेशिक शासन के खिलाफ सबसे पहले संगठित आदिवासी प्रतिरोध में से एक था। आदिवासी मुखिया शंभू सिंह के नेतृत्व में, हल्बा जनजातियां ब्रिटिश ईस्ट इंडिया कंपनी द्वारा लगाए गए अत्यधिक कराधान, भूमि अधिग्रहण, और पारंपरिक आदिवासी स्वायत्तता के क्षरण के खिलाफ उठ खड़ी हुईं। यह गैलरी इस महत्वपूर्ण विद्रोह से दुर्लभ कलाकृतियों, मानचित्रों और वृतांतों को प्रदर्शित करती है, जो अपनी अंतिम हार के बावजूद, स्वदेशी प्रतिरोध के लिए एक शक्तिशाली उदाहरण स्थापित किया।",
 
-    // Freedom Museum Page
-    "Freedom Fighter Museum": "स्वतंत्रता सेनानी संग्रहालय",
+    "The Bhumkal Revolt of 1910, also known as the Bastar Rebellion, stands as one of the most significant tribal uprisings in Indian history. Led by tribal leader Gunda Dhur, this powerful movement united the Muria, Maria, and Bhattra communities against British colonial exploitation. Our gallery features original photographs, traditional weapons, and firsthand accounts that bring to life this extraordinary chapter of indigenous resistance that continues to inspire tribal identity and pride.":
+      "1910 का भूमकाल विद्रोह, जिसे बस्तर विद्रोह के नाम से भी जाना जाता है, भारतीय इतिहास में सबसे महत्वपूर्ण आदिवासी विद्रोहों में से एक के रूप में खड़ा है। आदिवासी नेता गुंडा धुर के नेतृत्व में, इस शक्तिशाली आंदोलन ने ब्रिटिश औपनिवेशिक शोषण के खिलाफ मुरिया, मारिया और भत्रा समुदायों को एकजुट किया। हमारी गैलरी में मूल तस्वीरें, पारंपरिक हथियार और प्रत्यक्षदर्शी खाते शामिल हैं जो स्वदेशी प्रतिरोध के इस असाधारण अध्याय को जीवंत करते हैं जो आदिवासी पहचान और गौरव को प्रेरित करना जारी रखता है।",
 
-    "Honor the courage, sacrifices, and unwavering spirit of those who fought for India's independence. Our Freedom Fighter Museum preserves the powerful stories of tribal communities' contributions to the freedom struggle, from organized uprisings against colonial rule to participation in the nationwide movement for liberation.":
-      "उन लोगों के साहस, बलिदान और अटल भावना का सम्मान करें जिन्होंने भारत की आजादी के लिए लड़ाई लड़ी। हमारा स्वतंत्रता सेनानी संग्रहालय आजादी के संघर्ष में आदिवासी समुदायों के योगदान की शक्तिशाली कहानियों को संरक्षित करता है, औपनिवेशिक शासन के खिलाफ संगठित विद्रोहों से लेकर मुक्ति के लिए राष्ट्रव्यापी आंदोलन में भागीदारी तक।",
+    "During the pivotal Quit India Movement of 1942, tribal communities across India made significant but often overlooked contributions to the independence struggle. This exhibit documents how indigenous groups in Jharkhand, Chhattisgarh, and Odisha organized protests, disrupted colonial infrastructure, and provided crucial support to underground freedom fighters. Displays include protest flags, correspondence between tribal leaders and national movement figures, and oral histories collected from movement participants.":
+      "1942 के निर्णायक भारत छोड़ो आंदोलन के दौरान, भारत भर के आदिवासी समुदायों ने स्वतंत्रता संग्राम में महत्वपूर्ण लेकिन अक्सर अनदेखी योगदान दिया। यह प्रदर्शनी दस्तावेज करती है कि कैसे झारखंड, छत्तीसगढ़ और ओडिशा में स्वदेशी समूहों ने विरोध प्रदर्शन आयोजित किए, औपनिवेशिक बुनियादी ढांचे को बाधित किया, और भूमिगत स्वतंत्रता सेनानियों को महत्वपूर्ण समर्थन प्रदान किया। प्रदर्शनों में विरोध ध्वज, आदिवासी नेताओं और राष्ट्रीय आंदोलन के प्रमुखों के बीच पत्राचार, और आंदोलन प्रतिभागियों से एकत्रित मौखिक इतिहास शामिल हैं।",
 
-    "Our exhibits document the lesser-known but crucial role of indigenous peoples in shaping India's journey to independence. Through original artifacts, historical documents, photographs, and interactive displays, visitors can explore the remarkable intersection of tribal identity and national resistance movements that ultimately led to freedom.":
-      "हमारी प्रदर्शनियां भारत की स्वतंत्रता की यात्रा को आकार देने में स्वदेशी लोगों की कम ज्ञात लेकिन महत्वपूर्ण भूमिका का दस्तावेजीकरण करती हैं। मूल कलाकृतियों, ऐतिहासिक दस्तावेजों, तस्वीरों और इंटरैक्टिव प्रदर्शनों के माध्यम से, आगंतुक आदिवासी पहचान और राष्ट्रीय प्रतिरोध आंदोलनों के उल्लेखनीय प्रतिच्छेदन का पता लगा सकते हैं जो अंततः स्वतंत्रता की ओर ले गए।",
+    "The Jharkhand Movement represents one of the most successful campaigns for tribal autonomy in modern India. This gallery chronicles the decades-long struggle led by tribal intellectuals and activists demanding recognition of Adivasi rights and separate statehood. Through photographs, movement banners, newspaper clippings, and video testimonials, visitors witness the remarkable journey that culminated in the formation of Jharkhand state in 2000, securing a historic victory for tribal self-determination.":
+      "झारखंड आंदोलन आधुनिक भारत में आदिवासी स्वायत्तता के लिए सबसे सफल अभियानों में से एक का प्रतिनिधित्व करता है। यह गैलरी आदिवासी अधिकारों और अलग राज्य की मांग के लिए आदिवासी बुद्धिजीवियों और कार्यकर्ताओं के नेतृत्व में दशकों लंबे संघर्ष का इतिहास बताती है। तस्वीरों, आंदोलन बैनरों, अखबारों की कतरनों और वीडियो गवाहियों के माध्यम से, आगंतुक उस उल्लेखनीय यात्रा को देखते हैं जिसका परिणाम 2000 में झारखंड राज्य के गठन के रूप में हुआ, जिससे आदिवासी आत्मनिर्णय के लिए एक ऐतिहासिक जीत सुरक्षित हुई।",
 
-    "Spotlight: The Bhumkal Revolt of 1910":
-      "स्पॉटलाइट: 1910 का भूमकाल विद्रोह",
-
-    "The Bhumkal Revolt of 1910, also known as the Bastar Rebellion, stands as one of history's most significant tribal uprisings against British colonial rule in India. Led by the charismatic tribal leader Gunda Dhur, this powerful resistance movement united multiple tribal communities including the Muria, Maria, and Bhattra peoples of the Bastar region.":
-      "1910 का भूमकाल विद्रोह, जिसे बस्तर विद्रोह के नाम से भी जाना जाता है, भारत में ब्रिटिश औपनिवेशिक शासन के खिलाफ इतिहास के सबसे महत्वपूर्ण आदिवासी विद्रोहों में से एक के रूप में खड़ा है। करिश्माई आदिवासी नेता गुंडा धुर के नेतृत्व में, इस शक्तिशाली प्रतिरोध आंदोलन ने बस्तर क्षेत्र के मुरिया, मारिया और भत्रा समुदायों सहित कई आदिवासी समुदायों को एकजुट किया।",
-
-    "Sparked by exploitative taxation, forced labor, and restrictions on traditional forest rights, the revolt spread rapidly across Bastar. The tribal warriors, armed primarily with traditional weapons, mounted fierce attacks on colonial outposts and successfully disrupted British control of the region for several months. Though eventually suppressed through brutal military force, the Bhumkal Revolt remains a testament to indigenous resistance and is commemorated annually as a symbol of tribal identity and courage.":
-      "शोषणकारी कराधान, जबरन श्रम और पारंपरिक वन अधिकारों पर प्रतिबंधों से प्रेरित होकर, विद्रोह बस्तर में तेजी से फैल गया। मुख्य रूप से पारंपरिक हथियारों से लैस आदिवासी योद्धाओं ने औपनिवेशिक चौकियों पर जबरदस्त हमले किए और कई महीनों तक क्षेत्र पर ब्रिटिश नियंत्रण को सफलतापूर्वक बाधित किया। हालांकि अंततः क्रूर सैन्य बल के माध्यम से दबा दिया गया, भूमकाल विद्रोह स्वदेशी प्रतिरोध का एक प्रमाण बना हुआ है और इसे आदिवासी पहचान और साहस के प्रतीक के रूप में प्रतिवर्ष मनाया जाता है।",
-
-    "The struggle for freedom by indigenous communities spans centuries, with organized resistance movements arising in response to colonial encroachment on tribal lands, cultures, and autonomy. Each uprising represents a crucial chapter in the story of indigenous resilience and self-determination.":
-      "स्वदेशी समुदायों द्वारा स्वतंत्रता के लिए संघर्ष सदियों तक फैला है, जिसमें आदिवासी भूमि, संस्कृतियों और स्वायत्तता पर औपनिवेशिक अतिक्रमण के जवाब में संगठित प्रतिरोध आंदोलन उत्पन्न हुए। प्रत्येक विद्रोह स्वदेशी लचीलेपन और आत्मनिर्णय की कहानी में एक महत्वपूर्ण अध्याय का प्रतिनिधित्व करता है।",
-
-    // Museum page navigation
-    "Visiting the Museum": "संग्रहालय भ्रमण",
-    "Our Freedom Fighter Museum offers an immersive journey through the courageous struggles of tribal communities fighting for sovereignty and dignity. Through artifacts, historical documents, photographs, and first-hand accounts, we honor the sacrifices made in the pursuit of independence.":
-      "हमारा स्वतंत्रता सेनानी संग्रहालय संप्रभुता और गरिमा के लिए लड़ने वाले आदिवासी समुदायों के साहसिक संघर्षों के माध्यम से एक इमर्सिव यात्रा प्रदान करता है। कलाकृतियों, ऐतिहासिक दस्तावेजों, तस्वीरों और प्रत्यक्ष विवरणों के माध्यम से, हम स्वतंत्रता की खोज में किए गए बलिदानों का सम्मान करते हैं।",
+    "The Narmada Bachao Andolan (Save Narmada Movement) represents a powerful modern example of tribal communities fighting against displacement and environmental injustice. This exhibit documents how Adivasi peoples in the Narmada Valley organized to protect their ancestral lands from submergence by large dam projects. Through protest art, activist journals, documentary photographs, and interactive displays, visitors engage with this ongoing struggle that has raised global awareness about indigenous rights and environmental justice.":
+      "नर्मदा बचाओ आंदोलन विस्थापन और पर्यावरणीय अन्याय के खिलाफ लड़ने वाले आदिवासी समुदायों का एक शक्तिशाली आधुनिक उदाहरण है। यह प्रदर्शनी दर्शाती है कि कैसे नर्मदा घाटी के आदिवासी लोगों ने बड़े बांध परियोजनाओं द्वारा अपनी पैतृक भूमि को डूबने से बचाने के लिए संगठित किया। विरोध कला, कार्यकर्ता पत्रिकाओं, वृत्तचित्र तस्वीरों और इंटरैक्टिव प्रदर्शनों के माध्यम से, आगंतुक इस चल रहे संघर्ष के साथ जुड़ते हैं जिसने स्वदेशी अधिकारों और पर्यावरणीय न्याय के बारे में वैश्विक जागरूकता बढ़ाई है।",
   },
 };
 

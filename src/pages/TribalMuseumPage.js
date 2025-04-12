@@ -41,6 +41,41 @@ const HeroSection = styled.div`
   }
 `;
 
+const LanguageToggle = styled(motion.button)`
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  background-color: rgba(211, 161, 100, 0.2);
+  border: 1px solid #d3a164;
+  color: #d3a164;
+  padding: 8px 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &:hover {
+    background-color: rgba(211, 161, 100, 0.4);
+    transform: translateY(-2px);
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+    fill: #d3a164;
+  }
+
+  @media (max-width: 768px) {
+    top: 70px;
+    right: 15px;
+  }
+`;
+
 const ContentContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
@@ -206,10 +241,10 @@ const MapOverlay = styled.div`
 `;
 
 const TribalMuseumPage = () => {
-  const { t } = useLanguage();
+  const { t, language, toggleLanguage } = useLanguage();
   const [mapHovered, setMapHovered] = useState(false);
 
-  const locationAddress = "Tribal Freedom Fighter Museum, Naya Raipur";
+  const locationAddress = t("Tribal Freedom Fighter Museum, Naya Raipur");
   const mapLocationQuery = encodeURIComponent(locationAddress);
 
   const handleMapClick = () => {
@@ -221,6 +256,20 @@ const TribalMuseumPage = () => {
       <Navbar />
 
       <HeroSection>
+        <LanguageToggle
+          onClick={toggleLanguage}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.3 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <svg viewBox="0 0 24 24">
+            <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z" />
+          </svg>
+          {language === "en" ? "हिंदी" : "English"}
+        </LanguageToggle>
+
         <PageTitle
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -346,7 +395,7 @@ const TribalMuseumPage = () => {
                 viewBox="0 0 24 24"
                 fill="currentColor"
               >
-                <path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z" />
+                <path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4H4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4H4v4z" />
               </svg>
               {t("Galleries")}
             </StyledLink>

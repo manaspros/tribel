@@ -12,7 +12,7 @@ import foregroundElements from "../assets/tribel/freedom-banner.jpg";
 gsap.registerPlugin(ScrollTrigger);
 
 const HeroContainer = styled.section`
-  height: 100vh;
+  height: 110vh; /* Increased from 100vh to 110vh to make the section taller */
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -49,19 +49,24 @@ const TitleContainer = styled(motion.div)`
   z-index: 10;
   text-align: center;
   color: #f5efe7;
-  padding: 40px 20px;
+  padding: 200px 20px 40px; /* Increased top padding from 150px to 200px */
   border-radius: 15px;
   background: rgba(26, 20, 16, 0);
   width: 100%;
   max-width: 90%;
 
   @media (max-width: 768px) {
-    padding: 20px 15px;
+    padding: 170px 15px 20px; /* Increased from 120px to 170px */
     width: 95%;
-    margin-top: -20px;
+    margin-top: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+  /* Extra small screens may need even more padding adjustment */
+  @media (max-width: 480px) {
+    padding-top: 150px; /* Increased from 100px to 150px */
   }
 `;
 

@@ -259,13 +259,9 @@ const FreedomGallery = () => {
         </PageTitle>
 
         <GalleryIntro>
-          Our specialized galleries chronicle pivotal moments in tribal
-          resistance history, showcasing the extraordinary courage and
-          determination of indigenous communities in their fight for freedom,
-          dignity, and autonomy. Each carefully curated exhibit combines
-          historical artifacts, documentary evidence, and personal testimonies
-          to reveal these powerful yet often overlooked chapters in the struggle
-          against colonialism.
+          {t(
+            "Our specialized galleries chronicle pivotal moments in tribal resistance history, showcasing the extraordinary courage and determination of indigenous communities in their fight for freedom, dignity, and autonomy. Each carefully curated exhibit combines historical artifacts, documentary evidence, and personal testimonies to reveal these powerful yet often overlooked chapters in the struggle against colonialism."
+          )}
         </GalleryIntro>
 
         <GalleryGrid>
@@ -278,8 +274,10 @@ const FreedomGallery = () => {
             >
               <GalleryImage image={gallery.image} />
               <GalleryInfo>
-                <GalleryTitle>{gallery.title}</GalleryTitle>
-                <GalleryDescription>{gallery.description}</GalleryDescription>
+                <GalleryTitle>{t(gallery.title)}</GalleryTitle>
+                <GalleryDescription>
+                  {t(gallery.description)}
+                </GalleryDescription>
 
                 <GalleryDetails>
                   <GalleryDetail>
@@ -291,7 +289,7 @@ const FreedomGallery = () => {
                     >
                       <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                     </svg>
-                    {gallery.location}
+                    {t(gallery.location)}
                   </GalleryDetail>
 
                   <GalleryDetail>
@@ -301,9 +299,9 @@ const FreedomGallery = () => {
                       viewBox="0 0 24 24"
                       fill="currentColor"
                     >
-                      <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
+                      <path d="M11.99 2C6.47 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 11.99 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
                     </svg>
-                    {gallery.duration}
+                    {t(gallery.duration)}
                   </GalleryDetail>
                 </GalleryDetails>
 
@@ -311,7 +309,7 @@ const FreedomGallery = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Explore Gallery
+                  {t("Explore Gallery")}
                   <svg
                     width="16"
                     height="16"

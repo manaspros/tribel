@@ -42,6 +42,41 @@ const HeroSection = styled.div`
   }
 `;
 
+const LanguageToggle = styled(motion.button)`
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  background-color: rgba(211, 161, 100, 0.2);
+  border: 1px solid #d3a164;
+  color: #d3a164;
+  padding: 8px 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &:hover {
+    background-color: rgba(211, 161, 100, 0.4);
+    transform: translateY(-2px);
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+    fill: #d3a164;
+  }
+
+  @media (max-width: 768px) {
+    top: 70px;
+    right: 15px;
+  }
+`;
+
 const ContentContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
@@ -277,10 +312,10 @@ const MapOverlay = styled.div`
 `;
 
 const FreedomMuseumPage = () => {
-  const { t } = useLanguage();
+  const { t, language, toggleLanguage } = useLanguage();
   const [mapHovered, setMapHovered] = useState(false);
 
-  const locationAddress = "Tribal Freedom Fighter Museum, Naya Raipur";
+  const locationAddress = t("Tribal Freedom Fighter Museum, Naya Raipur");
   const mapLocationQuery = encodeURIComponent(locationAddress);
 
   const handleMapClick = () => {
@@ -292,6 +327,20 @@ const FreedomMuseumPage = () => {
       <Navbar />
 
       <HeroSection>
+        <LanguageToggle
+          onClick={toggleLanguage}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.3 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <svg viewBox="0 0 24 24">
+            <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z" />
+          </svg>
+          {language === "en" ? "हिंदी" : "English"}
+        </LanguageToggle>
+
         <PageTitle
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -309,13 +358,13 @@ const FreedomMuseumPage = () => {
         >
           <Description>
             {t(
-              "Honor the courage, sacrifices, and unwavering spirit of those who fought for India's independence. Our Freedom Fighter Museum preserves the powerful stories of tribal communities' contributions to the freedom struggle, from organized uprisings against colonial rule to participation in the nationwide movement for liberation."
+              "The National Tribal Freedom Fighter Museum in Naya Raipur honors the courage, sacrifices, and unwavering spirit of tribal freedom fighters who fought for India's independence. This state-of-the-art museum, inaugurated in 2023, preserves and showcases the powerful stories of tribal communities' significant contributions to the freedom struggle against colonial rule."
             )}
           </Description>
 
           <Description>
             {t(
-              "Our exhibits document the lesser-known but crucial role of indigenous peoples in shaping India's journey to independence. Through original artifacts, historical documents, photographs, and interactive displays, visitors can explore the remarkable intersection of tribal identity and national resistance movements that ultimately led to freedom."
+              "Our exhibits document the remarkable contributions of tribal leaders like Birsa Munda, Komaram Bheem, Tantya Bhil, Rani Gaidinliu, Laxman Naik, Talakkal Chandu, and many others who led resistance movements across different parts of India. Through original artifacts, historical documents, photographs, and interactive displays, visitors can explore how tribal identity and resistance movements shaped our nation's journey to freedom."
             )}
           </Description>
 
@@ -349,39 +398,43 @@ const FreedomMuseumPage = () => {
               <TimelineEvents>
                 <TimelineEvent>
                   <EventYear>1830</EventYear>
-                  <EventTitle>Halba Rebellion</EventTitle>
+                  <EventTitle>{t("Halba Rebellion")}</EventTitle>
                   <p>
-                    Led by the Halba tribes against oppressive British East
-                    India Company policies in Central India.
+                    {t(
+                      "Led by the Halba tribes against oppressive British East India Company policies in Central India."
+                    )}
                   </p>
                 </TimelineEvent>
 
                 <TimelineEvent>
                   <EventYear>1910</EventYear>
-                  <EventTitle>Bhumkal Revolt</EventTitle>
+                  <EventTitle>{t("Bhumkal Revolt")}</EventTitle>
                   <p>
-                    A major tribal uprising in the Bastar region against
-                    exploitation and cultural suppression.
+                    {t(
+                      "A major tribal uprising in the Bastar region against exploitation and cultural suppression."
+                    )}
                   </p>
                 </TimelineEvent>
 
                 <TimelineEvent>
                   <EventYear>1942</EventYear>
                   <EventTitle>
-                    Tribal Participation in Quit India Movement
+                    {t("Tribal Participation in Quit India Movement")}
                   </EventTitle>
                   <p>
-                    Indigenous communities joined the nationwide struggle for
-                    independence from British colonial rule.
+                    {t(
+                      "Indigenous communities joined the nationwide struggle for independence from British colonial rule."
+                    )}
                   </p>
                 </TimelineEvent>
 
                 <TimelineEvent>
                   <EventYear>1970s</EventYear>
-                  <EventTitle>Jharkhand Movement</EventTitle>
+                  <EventTitle>{t("Jharkhand Movement")}</EventTitle>
                   <p>
-                    Sustained campaign for tribal autonomy and separate
-                    statehood in eastern India, ultimately successful in 2000.
+                    {t(
+                      "Sustained campaign for tribal autonomy and separate statehood in eastern India, ultimately successful in 2000."
+                    )}
                   </p>
                 </TimelineEvent>
               </TimelineEvents>
@@ -403,7 +456,7 @@ const FreedomMuseumPage = () => {
                 viewBox="0 0 24 24"
                 fill="currentColor"
               >
-                <path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z" />
+                <path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4H4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z" />
               </svg>
               {t("Galleries")}
             </StyledLink>

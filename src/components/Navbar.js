@@ -10,14 +10,14 @@ import gsap from "gsap";
 // Enhanced container with transparent to solid transition
 const NavContainer = styled(motion.nav)`
   position: fixed;
-  top: 0;
+  top: 0; // Always stay at the top
   left: 0;
   right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  z-index: 100;
+  z-index: 101; // Increase z-index to appear above department names
   transition: background-color 0.3s ease;
 
   background-color: ${(props) =>
@@ -350,6 +350,40 @@ const DropdownTrigger = styled.div`
   }
 `;
 
+// Modified department names container to appear below navbar
+const DepartmentNamesContainer = styled(motion.div)`
+  width: 100%;
+  padding: 15px 40px 10px;
+  background-color: rgba(26, 20, 16, 0.98);
+  text-align: center;
+  position: fixed;
+  top: 80px; // Position below the navbar height (adjust as needed based on your navbar height)
+  left: 0;
+  z-index: 100; // Lower z-index than navbar
+  border-bottom: 1px solid rgba(211, 161, 100, 0.2);
+
+  @media (max-width: 768px) {
+    top: 65px; // Adjust for smaller navbar height on mobile
+  }
+`;
+
+const DepartmentName = styled.span`
+  display: block;
+  color: #d3a164;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+  font-family: "Playfair Display", serif;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+`;
+
 const Navbar = ({ transparent = false }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -440,6 +474,7 @@ const Navbar = ({ transparent = false }) => {
 
   return (
     <>
+      {/* Main Navigation Container - always at the top */}
       <NavContainer
         isScrolled={scrolled}
         transparent={transparent}
@@ -627,6 +662,28 @@ const Navbar = ({ transparent = false }) => {
           </MobileMenuButton>
         </div>
       </NavContainer>
+
+      {/* Department Names Section - Appears only when not scrolled */}
+      <AnimatePresence>
+        {!scrolled && (
+          <DepartmentNamesContainer
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <DepartmentName>
+              {t("Department of Tribal Department")}
+            </DepartmentName>
+            <DepartmentName>
+              {t("Department of Scheduled Caste Department")}
+            </DepartmentName>
+            <DepartmentName>
+              {t("Department of Backword Classes and minorities Development")}
+            </DepartmentName>
+          </DepartmentNamesContainer>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {mobileMenuOpen && (
