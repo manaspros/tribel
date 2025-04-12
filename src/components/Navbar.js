@@ -673,13 +673,13 @@ const Navbar = ({ transparent = false }) => {
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
             <DepartmentName>
-              {t("Department of Tribal Department")}
+              {t("Department of Tribal")}
             </DepartmentName>
             <DepartmentName>
-              {t("Department of Scheduled Caste Department")}
+              {t("Department of Scheduled Caste")}
             </DepartmentName>
             <DepartmentName>
-              {t("Department of Backword Classes and minorities Development")}
+              {t("Department of Backword Classes and minorities")}
             </DepartmentName>
           </DepartmentNamesContainer>
         )}
