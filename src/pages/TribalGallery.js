@@ -167,9 +167,7 @@ const TribalGallery = () => {
           {t("Galleries")}
         </PageTitle>
 
-        <GalleryIntro>
-          {t("GalleriesDescription")}
-        </GalleryIntro>
+        <GalleryIntro>{t("GalleriesDescription")}</GalleryIntro>
 
         <GalleryGrid>
           {galleries.map((gallery, index) => (
@@ -183,7 +181,9 @@ const TribalGallery = () => {
               <GalleryInfo>
                 <div>
                   <GalleryTitle>{t(gallery.titleKey)}</GalleryTitle>
-                  <GalleryDescription>{t(gallery.descriptionKey)}</GalleryDescription>
+                  <GalleryDescription>
+                    {t(gallery.descriptionKey)}
+                  </GalleryDescription>
                 </div>
                 <ExploreButton
                   whileHover={{ scale: 1.05 }}

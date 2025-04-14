@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { useLanguage } from "../contexts/LanguageContext";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import artifactDescriptions from "../data/artifactDescriptions.json";
 
 const PageContainer = styled.div`
   background-color: #1a1410;
@@ -263,88 +264,96 @@ const BackLink = styled(Link)`
 `;
 
 const TribalArtifacts = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [filter, setFilter] = useState("all");
   const [selectedArtifact, setSelectedArtifact] = useState(null);
+
+  const getArtifactTranslation = (artifactKey, field) => {
+    if (
+      artifactDescriptions.tribalArtifacts[artifactKey] &&
+      artifactDescriptions.tribalArtifacts[artifactKey][field] &&
+      artifactDescriptions.tribalArtifacts[artifactKey][field][language]
+    ) {
+      return artifactDescriptions.tribalArtifacts[artifactKey][field][language];
+    }
+    return `Translation missing for ${artifactKey}.${field}`;
+  };
+
+  const getCategoryTranslation = (category) => {
+    const lowerCategory = category.toLowerCase();
+    if (
+      artifactDescriptions.categoryLabels[lowerCategory] &&
+      artifactDescriptions.categoryLabels[lowerCategory][language]
+    ) {
+      return artifactDescriptions.categoryLabels[lowerCategory][language];
+    }
+    return category;
+  };
+
+  const getDetailTranslation = (detail) => {
+    if (
+      artifactDescriptions.detailLabels[detail] &&
+      artifactDescriptions.detailLabels[detail][language]
+    ) {
+      return artifactDescriptions.detailLabels[detail][language];
+    }
+    return detail;
+  };
 
   const artifacts = [
     {
       id: 1,
-      title: "Ceremonial War Axe",
-      description:
-        "An ornate ceremonial war axe used by tribal chieftains in battle and important tribal ceremonies.",
+      artifactKey: "ceremonialWarAxe",
       emoji: "🪓",
       tags: ["Weapon", "Ceremonial"],
       culture: "Gond Tribe",
       age: "Circa 1750",
       materials: "Iron, Wood, Leather, Semi-precious stones",
-      significance:
-        "This ceremonial axe represents the authority of tribal chiefs and was used in both warfare and ritual ceremonies. The intricate carvings depict ancestral spirits and hunting scenes that tell the story of the tribe's history.",
     },
     {
       id: 2,
-      title: "Dhokra Horse Figurine",
-      description:
-        "Traditional lost-wax metal casting technique dating back over 4,000 years, showcasing exceptional craftsmanship.",
+      artifactKey: "dhokraHorse",
       emoji: "🏺",
       tags: ["Crafts", "Ancient"],
       culture: "Bastar Region",
       age: "Contemporary (using ancient techniques)",
       materials: "Bronze alloy",
-      significance:
-        "Dhokra is one of the oldest traditional metal casting techniques still practiced today. This horse figurine demonstrates the precision and artistic expression of tribal artisans who have preserved this ancient craft for millennia.",
     },
     {
       id: 3,
-      title: "Ritual Harvest Mask",
-      description:
-        "Ceremonial mask used during harvest festivals and spiritual rituals to invoke blessings from nature deities.",
+      artifactKey: "ritualMask",
       emoji: "🎭",
       tags: ["Ritual", "Spiritual"],
       culture: "Warli Tribe",
       age: "Early 20th Century",
       materials: "Wood, Natural pigments, Feathers",
-      significance:
-        "This mask embodies the spiritual connection between tribal communities and natural forces. Worn by shamans during harvest ceremonies, it's believed to channel ancestral spirits who ensure abundant crops and community prosperity.",
     },
     {
       id: 4,
-      title: "Medicinal Herb Collection",
-      description:
-        "Collection of medicinal herbs used by tribal healers to treat various ailments, based on knowledge passed down for generations.",
+      artifactKey: "medicinalHerbs",
       emoji: "🌿",
       tags: ["Medicine", "Natural"],
       culture: "Multiple Tribal Groups",
       age: "Contemporary (ongoing tradition)",
       materials: "Various dried herbs, roots, and leaves",
-      significance:
-        "This collection represents the sophisticated pharmacological knowledge of tribal healers. These plants have been used for centuries to treat ailments ranging from common infections to chronic conditions, many containing compounds now validated by modern medicine.",
     },
     {
       id: 5,
-      title: "Ceremonial Necklace",
-      description:
-        "Ornate jewelry pieces made from natural materials like seeds, bones, and metals, signifying social status and tribal affiliations.",
+      artifactKey: "ceremonialNecklace",
       emoji: "💍",
       tags: ["Adornment", "Cultural"],
       culture: "Banjara Tribe",
       age: "Mid-19th Century",
       materials: "Silver, Glass beads, Coins, Cotton thread",
-      significance:
-        "This elaborate necklace was traditionally worn by women during important ceremonies and festivals. The silver coins and intricate beadwork not only displayed family wealth but also served as portable assets in nomadic communities.",
     },
     {
       id: 6,
-      title: "Tribal Drum",
-      description:
-        "Traditional percussive instrument used in celebrations, rituals and storytelling sessions, creating unique rhythms and melodies.",
+      artifactKey: "tribalDrum",
       emoji: "🥁",
       tags: ["Music", "Performance"],
       culture: "Santhal Tribe",
       age: "Early 20th Century",
       materials: "Wood, Animal hide, Natural fibers",
-      significance:
-        "This ceremonial drum formed the heartbeat of tribal gatherings, used to communicate across distances and to accompany traditional dances. The specific rhythmic patterns played on this drum were integral to tribal identity and oral history transmission.",
     },
   ];
 
@@ -373,9 +382,7 @@ const TribalArtifacts = () => {
         </PageTitle>
 
         <ArtifactsDescription>
-          {t(
-            "Our curated collection features authentic tribal artifacts that showcase the remarkable craftsmanship, cultural significance, and artistic traditions of indigenous communities. Each piece tells a story of heritage, spiritual beliefs, and the profound connection between tribal peoples and their environment."
-          )}
+          {artifactDescriptions.tribalArtifactsIntro[language]}
         </ArtifactsDescription>
 
         <ArtifactsHeader>
@@ -384,37 +391,37 @@ const TribalArtifacts = () => {
               active={filter === "all"}
               onClick={() => setFilter("all")}
             >
-              {t("All Categories")}
+              {getCategoryTranslation("all")}
             </FilterButton>
             <FilterButton
               active={filter === "Weapon"}
               onClick={() => setFilter("Weapon")}
             >
-              {t("Weapons")}
+              {getCategoryTranslation("weapon")}
             </FilterButton>
             <FilterButton
               active={filter === "Ceremonial"}
               onClick={() => setFilter("Ceremonial")}
             >
-              {t("Ceremonial")}
+              {getCategoryTranslation("ceremonial")}
             </FilterButton>
             <FilterButton
               active={filter === "Crafts"}
               onClick={() => setFilter("Crafts")}
             >
-              {t("Crafts")}
+              {getCategoryTranslation("crafts")}
             </FilterButton>
             <FilterButton
               active={filter === "Ritual"}
               onClick={() => setFilter("Ritual")}
             >
-              {t("Ritual")}
+              {getCategoryTranslation("ritual")}
             </FilterButton>
             <FilterButton
               active={filter === "Music"}
               onClick={() => setFilter("Music")}
             >
-              {t("Music")}
+              {getCategoryTranslation("music")}
             </FilterButton>
           </FilterContainer>
         </ArtifactsHeader>
@@ -422,7 +429,7 @@ const TribalArtifacts = () => {
         <ArtifactsGrid>
           {filteredArtifacts.map((artifact, index) => (
             <ArtifactCard
-              key={artifact.id}
+              key={`artifact-${artifact.id}-${language}`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
@@ -431,13 +438,17 @@ const TribalArtifacts = () => {
             >
               <ArtifactImage>{artifact.emoji}</ArtifactImage>
               <ArtifactInfo>
-                <ArtifactTitle>{artifact.title}</ArtifactTitle>
+                <ArtifactTitle>
+                  {getArtifactTranslation(artifact.artifactKey, "title")}
+                </ArtifactTitle>
                 <ArtifactDescription>
-                  {artifact.description}
+                  {getArtifactTranslation(artifact.artifactKey, "description")}
                 </ArtifactDescription>
                 <ArtifactTags>
                   {artifact.tags.map((tag) => (
-                    <ArtifactTag key={tag}>{t(tag)}</ArtifactTag>
+                    <ArtifactTag key={tag}>
+                      {getCategoryTranslation(tag)}
+                    </ArtifactTag>
                   ))}
                 </ArtifactTags>
               </ArtifactInfo>
@@ -463,24 +474,36 @@ const TribalArtifacts = () => {
                   <div className="emoji">{selectedArtifact.emoji}</div>
                 </DetailImageSection>
                 <DetailInfoSection>
-                  <DetailTitle>{selectedArtifact.title}</DetailTitle>
+                  <DetailTitle>
+                    {getArtifactTranslation(
+                      selectedArtifact.artifactKey,
+                      "title"
+                    )}
+                  </DetailTitle>
                   <DetailDescription>
-                    {selectedArtifact.significance}
+                    {getArtifactTranslation(
+                      selectedArtifact.artifactKey,
+                      "significance"
+                    )}
                   </DetailDescription>
 
                   <DetailProperty>
-                    <strong>{t("Origin")}:</strong> {selectedArtifact.culture}
+                    <strong>{getDetailTranslation("origin")}:</strong>{" "}
+                    {selectedArtifact.culture}
                   </DetailProperty>
                   <DetailProperty>
-                    <strong>{t("Age")}:</strong> {selectedArtifact.age}
+                    <strong>{getDetailTranslation("age")}:</strong>{" "}
+                    {selectedArtifact.age}
                   </DetailProperty>
                   <DetailProperty>
-                    <strong>{t("Materials")}:</strong>{" "}
+                    <strong>{getDetailTranslation("materials")}:</strong>{" "}
                     {selectedArtifact.materials}
                   </DetailProperty>
                   <DetailProperty>
-                    <strong>{t("Category")}:</strong>{" "}
-                    {selectedArtifact.tags.map((tag) => t(tag)).join(", ")}
+                    <strong>{getDetailTranslation("category")}:</strong>{" "}
+                    {selectedArtifact.tags
+                      .map((tag) => getCategoryTranslation(tag))
+                      .join(", ")}
                   </DetailProperty>
                 </DetailInfoSection>
 

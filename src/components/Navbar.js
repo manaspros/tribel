@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -17,7 +17,7 @@ const NavContainer = styled(motion.nav)`
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  z-index: 101; // Increase z-index to appear above department names
+  z-index: 100; // Decreased from 101 to 100
   transition: background-color 0.3s ease;
 
   background-color: ${(props) =>
@@ -206,7 +206,7 @@ const MobileMenu = styled(motion.div)`
   display: flex;
   flex-direction: column;
   gap: 25px;
-  z-index: 90;
+  z-index: 102; // Increased from 90 to 102
   box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
 `;
 
@@ -218,7 +218,7 @@ const MobileMenuOverlay = styled(motion.div)`
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 80;
+  z-index: 101; // Increased from 80 to 101
   backdrop-filter: blur(3px);
 `;
 
@@ -359,7 +359,7 @@ const DepartmentNamesContainer = styled(motion.div)`
   position: fixed;
   top: 80px; // Position below the navbar height (adjust as needed based on your navbar height)
   left: 0;
-  z-index: 100; // Lower z-index than navbar
+  z-index: 99; // Decreased from 100 to 99 to ensure it's below the navbar
   border-bottom: 1px solid rgba(211, 161, 100, 0.2);
 
   @media (max-width: 768px) {
@@ -367,7 +367,8 @@ const DepartmentNamesContainer = styled(motion.div)`
   }
 `;
 
-const DepartmentName = styled.span`
+// Convert to motion.span to properly support motion props
+const DepartmentName = styled(motion.span)`
   display: block;
   color: #d3a164;
   font-size: 1.1rem;
@@ -384,11 +385,54 @@ const DepartmentName = styled.span`
   }
 `;
 
+// Create direct, hardcoded translations for department names
+const departmentTranslations = {
+  en: {
+    "Department of Tribal": "Department of Tribal",
+    "Department of Scheduled Caste": "Department of Scheduled Caste",
+    "Department of Backword Classes and minorities":
+      "Department of Backward Classes and Minorities",
+  },
+  hi: {
+    "Department of Tribal": "आदिम जाति विभाग",
+    "Department of Scheduled Caste": "अनुसूचित जाति विभाग",
+    "Department of Backword Classes and minorities":
+      "पिछड़ा वर्ग एवं अल्पसंख्यक विकास विभाग",
+  },
+};
+
+// Create a special component for department names that will re-render correctly
+const DepartmentNameTranslated = ({ translationKey }) => {
+  const { language } = useLanguage();
+
+  // Get translation directly from our hardcoded dictionary
+  const translation =
+    departmentTranslations[language][translationKey] || translationKey;
+
+  console.log(
+    `Rendering department ${translationKey} as: ${translation} (lang: ${language})`
+  );
+
+  return (
+    <DepartmentName animate={{ opacity: 1 }}>{translation}</DepartmentName>
+  );
+};
+
 const Navbar = ({ transparent = false }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { language, toggleLanguage, t } = useLanguage();
+  const { language, toggleLanguage, t, version } = useLanguage();
   const mobileMenuRef = useRef(null);
+
+  // Log when component re-renders due to language change
+  useEffect(() => {
+    console.log(
+      "Navbar re-rendered with language:",
+      language,
+      "version:",
+      version
+    );
+  }, [language, version]);
 
   // Add state for dropdown menu
   const [galleriesDropdownOpen, setGalleriesDropdownOpen] = useState(false);
@@ -450,6 +494,7 @@ const Navbar = ({ transparent = false }) => {
   };
 
   const handleLanguageToggle = () => {
+    console.log("Language toggle button clicked, current language:", language);
     toggleLanguage();
 
     // Optional: Add some visual feedback when language is changed
@@ -482,6 +527,9 @@ const Navbar = ({ transparent = false }) => {
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
+        {/* Add a hidden debug element to verify current language */}
+        <div style={{ display: "none" }}>Current language: {language}</div>
+
         {/* Modified left side with multiple logos */}
         <LogosGroupLeft>
           <AdditionalLogo
@@ -556,7 +604,7 @@ const Navbar = ({ transparent = false }) => {
                     onClick={() => setGalleriesDropdownOpen(false)}
                   >
                     <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M14.4 6l-.24-1.2c-.09-.46-.5-.8-.98-.8H6c-.55 0-1 .45-1 1v15c0 .55.45 1 1 1s1-.45 1-1v-6h5.6l.24 1.2c.09.47.5.8.98.8H19c.55 0 1-.45 1-1V7c0-.55-.45-1-1-1h-4.6z" />
+                      <path d="M14.4 6l-.24-1.2c-.09-.46-.5-.8-.98-.8H6c-.55 0-1 .45-1 1v15c0 .55.45 1 1 1s1-.45 1-1v-6h5.6l.24 1.2c-.09.47.5.8.98.8H19c.55 0 1-.45 1-1V7c0-.55-.45-1-1-1h-4.6z" />
                     </svg>
                     {t("Freedom Fighters")}
                   </DropdownItem>
@@ -667,20 +715,16 @@ const Navbar = ({ transparent = false }) => {
       <AnimatePresence>
         {!scrolled && (
           <DepartmentNamesContainer
+            key={`dept-container-${language}-${version}`} // Force re-render when language or version changes
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            <DepartmentName>
-              {t("Department of Tribal")}
-            </DepartmentName>
-            <DepartmentName>
-              {t("Department of Scheduled Caste")}
-            </DepartmentName>
-            <DepartmentName>
-              {t("Department of Backword Classes and minorities")}
-            </DepartmentName>
+            {/* Use special component with direct dictionary access instead of t() */}
+            <DepartmentNameTranslated translationKey="Department of Tribal" />
+            <DepartmentNameTranslated translationKey="Department of Scheduled Caste" />
+            <DepartmentNameTranslated translationKey="Department of Backword Classes and minorities" />
           </DepartmentNamesContainer>
         )}
       </AnimatePresence>
@@ -771,7 +815,7 @@ const Navbar = ({ transparent = false }) => {
                         height="16"
                         fill="currentColor"
                       >
-                        <path d="M14.4 6l-.24-1.2c-.09-.46-.5-.8-.98-.8H6c-.55 0-1 .45-1 1v15c0 .55.45 1 1 1s1-.45 1-1v-6h5.6l.24 1.2c.09.47.5.8.98.8H19c.55 0 1-.45 1-1V7c0-.55-.45-1-1-1h-4.6z" />
+                        <path d="M14.4 6l-.24-1.2c-.09-.46-.5-.8-.98-.8H6c-.55 0-1 .45-1 1v15c0 .55.45 1 1 1s1-.45 1-1v-6h5.6l.24 1.2c-.09.47.5.8.98.8H19c.55 0 1-.45 1-1V7c0-.55-.45-1-1-1h-4.6z" />
                       </svg>
                       {t("Freedom Fighters")}
                     </MobileDropdownItem>

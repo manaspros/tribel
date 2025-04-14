@@ -197,37 +197,9 @@ const MuseumOption = styled(motion.div)`
 
   @media (max-width: 768px) {
     width: 100%;
-    height: 320px;
+    height: 340px; // Increased from 320px to 340px for more space
     max-width: 360px;
     margin-bottom: 10px;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    top: -50%;
-    left: -50%;
-    background: radial-gradient(
-      circle at center,
-      rgba(211, 161, 100, 0.2),
-      transparent 70%
-    );
-    opacity: ${(props) => (props.isActive ? 0.8 : 0)};
-    z-index: 1;
-    transition: opacity 0.5s ease;
-    pointer-events: none;
-  }
-
-  &:hover {
-    transform: translateY(-15px) rotateX(5deg);
-    box-shadow: 0 25px 50px rgba(211, 161, 100, 0.4),
-      0 0 0 3px rgba(211, 161, 100, 0.6) inset;
-  }
-
-  &:hover::after {
-    opacity: 1;
   }
 `;
 
@@ -253,9 +225,9 @@ const MuseumBackground = styled.div`
     position: absolute;
     inset: 0;
     background: ${(props) =>
-    props.isActive
-      ? `radial-gradient(circle at center, rgba(211, 161, 100, 0.15), transparent 70%)`
-      : "none"};
+      props.isActive
+        ? `radial-gradient(circle at center, rgba(211, 161, 100, 0.15), transparent 70%)`
+        : "none"};
     mix-blend-mode: overlay;
     opacity: ${(props) => (props.isActive ? 1 : 0)};
     transition: opacity 0.5s ease;
@@ -277,7 +249,7 @@ const MuseumContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 30px;
+  padding: 70px 30px 40px; // Increased top padding from 40px to 70px to push content down
   height: 100%;
   justify-content: space-between;
   text-align: center;
@@ -290,7 +262,7 @@ const MuseumContent = styled.div`
   );
 
   @media (max-width: 768px) {
-    padding: 25px 20px;
+    padding: 60px 20px 25px; // Increased top padding here too
     justify-content: space-around;
   }
 `;
@@ -331,22 +303,25 @@ const MuseumIconBox = styled(motion.div)`
 `;
 
 const MuseumTitle = styled.h2`
-  font-size: clamp(2.2rem, 4vw, 2.8rem);
+  font-size: clamp(2rem, 4vw, 2.6rem); // Slightly reduced font size
   font-family: "Playfair Display", serif;
   letter-spacing: 2px;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
-  margin: 0 0 15px 0;
+  margin: 30px 0 15px 0; // Increased top margin from 0 to 30px
   color: #f5efe7;
   position: relative;
+  max-width: 100%; // Ensure title doesn't overflow
+  line-height: 1.3; // Improved line height for better readability
 
   @media (max-width: 768px) {
-    font-size: clamp(1.5rem, 4vw, 2rem);
-    margin: 0 0 5px 0;
+    font-size: clamp(1.4rem, 4vw, 1.8rem); // Reduced font size on mobile
+    margin: 20px 0 5px 0; // Adjusted margin
   }
 
   span {
     color: #d3a164;
     position: relative;
+    display: inline-block; // Helps with line wrapping
 
     &::after {
       content: "";
@@ -370,7 +345,7 @@ const MuseumTitle = styled.h2`
 const MuseumDescription = styled.p`
   font-size: 1.1rem;
   line-height: 1.6;
-  margin: 20px 0 30px;
+  margin: 25px 0 30px; // Increased top margin from 20px to 25px
   text-align: center;
   max-width: 90%;
   background: rgba(0, 0, 0, 0.3);
@@ -385,7 +360,7 @@ const MuseumDescription = styled.p`
   @media (max-width: 768px) {
     font-size: 0.9rem;
     padding: 12px;
-    margin: 10px 0 15px;
+    margin: 15px 0 15px; // Increased top margin from 10px to 15px
     line-height: 1.5;
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -431,18 +406,22 @@ const ExploreIndicator = styled(motion.div)`
 
 const MuseumTypeTag = styled.div`
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 15px; // Adjusted from 20px to 15px
+  left: 15px; // Adjusted from 20px to 15px
   background: rgba(211, 161, 100, 0.9);
   color: #1a1410;
-  padding: 8px 16px;
+  padding: 6px 14px; // Slightly smaller padding
   border-radius: 20px;
-  font-size: 0.85rem;
+  font-size: 0.8rem; // Reduced font size
   font-weight: 600;
   letter-spacing: 1px;
   text-transform: uppercase;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   z-index: 3;
+  max-width: 70%; // Ensure it doesn't get too wide
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const ActiveIndicator = styled(motion.div)`
@@ -689,21 +668,9 @@ const HeroSection = () => {
             whileHover={{ scale: window.innerWidth <= 768 ? 1.01 : 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <MuseumTypeTag>Tribal Museum</MuseumTypeTag>
+            <MuseumTypeTag>{t("Tribal Museum")}</MuseumTypeTag>
             <MuseumBackground type="tribal" isActive={getIsActive("tribal")} />
             <MuseumContent>
-              <MuseumIconBox
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-                <svg viewBox="0 0 24 24">
-                  <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z" />
-                </svg>
-              </MuseumIconBox>
-
               <ActiveIndicator
                 isActive={getIsActive("tribal")}
                 animate={{ scale: [1, 1.2, 1] }}
@@ -739,21 +706,12 @@ const HeroSection = () => {
           >
             <MuseumTypeTag>{t("freedomMuseum")}</MuseumTypeTag>
 
-            <MuseumBackground type="freedom" isActive={getIsActive("freedom")} />
+            <MuseumBackground
+              type="freedom"
+              isActive={getIsActive("freedom")}
+            />
 
             <MuseumContent>
-              <MuseumIconBox
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-                <svg viewBox="0 0 24 24">
-                  <path d="M14.4 6l-.24-1.2c-.09-.46-.5-.8-.98-.8H6c-.55 0-1 .45-1 1v15c0 .55.45 1 1 1s1-.45 1-1v-6h5.6l.24 1.2c.09.47.5.8.98.8H19c.55 0 1-.45 1-1V7c0-.55-.45-1-1-1h-4.6z" />
-                </svg>
-              </MuseumIconBox>
-
               <ActiveIndicator
                 isActive={getIsActive("freedom")}
                 animate={{ scale: [1, 1.2, 1] }}
@@ -776,7 +734,6 @@ const HeroSection = () => {
               </ExploreIndicator>
             </MuseumContent>
           </MuseumOption>
-
         </MuseumSelector>
       </TitleContainer>
 

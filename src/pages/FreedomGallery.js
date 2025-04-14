@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import styled from "styled-components";
 import { useLanguage } from "../contexts/LanguageContext";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import galleryDescriptions from "../data/galleryDescriptions.json";
 
 // Import freedom gallery images (assuming these files exist)
 import halbaImg from "../assets/tribel/IMG-20250408-WA0015.jpg";
@@ -188,60 +189,137 @@ const BackLink = styled(Link)`
   }
 `;
 
+const LanguageIndicator = styled(motion.div)`
+  position: fixed;
+  top: 100px;
+  right: 30px;
+  background-color: rgba(211, 161, 100, 0.9);
+  color: #1a1410;
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-weight: 600;
+  z-index: 1000;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  @media (max-width: 768px) {
+    top: 70px;
+    right: 20px;
+    font-size: 0.9rem;
+  }
+`;
+
 const FreedomGallery = () => {
-  const { t } = useLanguage();
+  const { t, language, version } = useLanguage();
+  const [showLanguageIndicator, setShowLanguageIndicator] = useState(false);
+  const [prevLanguage, setPrevLanguage] = useState(language);
+
+  // Show indicator when language changes
+  useEffect(() => {
+    // If language has changed
+    if (language !== prevLanguage) {
+      setShowLanguageIndicator(true);
+      setPrevLanguage(language);
+
+      // Auto-hide after 3 seconds
+      const timer = setTimeout(() => {
+        setShowLanguageIndicator(false);
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [language, version, prevLanguage]);
+
+  // Get description from JSON file based on current language
+  const getGalleryDescription = (key) => {
+    if (galleryDescriptions[key] && galleryDescriptions[key][language]) {
+      return galleryDescriptions[key][language];
+    }
+    return `Description not available for ${key}`;
+  };
+
+  // Get title, location, or duration translation
+  const getTranslation = (category, key) => {
+    if (
+      galleryDescriptions[category] &&
+      galleryDescriptions[category][key] &&
+      galleryDescriptions[category][key][language]
+    ) {
+      return galleryDescriptions[category][key][language];
+    }
+    return key; // Fallback to key if translation not found
+  };
 
   const galleries = [
     {
       id: 1,
-      title: "Halba Rebellion (1830)",
-      description:
-        "The Halba Rebellion marked one of the earliest organized tribal resistances against British colonial rule in Central India. Led by tribal chieftain Shambu Singh, the Halba tribes rose up against excessive taxation, land appropriation, and the erosion of traditional tribal autonomy imposed by the British East India Company. This gallery showcases rare artifacts, maps, and accounts from this pivotal uprising that, despite its ultimate defeat, set a powerful precedent for indigenous resistance.",
+      titleKey: "halbaRebellion",
+      descriptionKey: "halbaRebellion",
       image: halbaImg,
-      location: "Central India",
-      duration: "Several months",
+      locationKey: "centralIndia",
+      durationKey: "severalMonths",
     },
     {
       id: 2,
-      title: "Bhumkal Revolt (1910)",
-      description:
-        "The Bhumkal Revolt of 1910, also known as the Bastar Rebellion, stands as one of the most significant tribal uprisings in Indian history. Led by tribal leader Gunda Dhur, this powerful movement united the Muria, Maria, and Bhattra communities against British colonial exploitation. Our gallery features original photographs, traditional weapons, and firsthand accounts that bring to life this extraordinary chapter of indigenous resistance that continues to inspire tribal identity and pride.",
+      titleKey: "bhumkalRevolt",
+      descriptionKey: "bhumkalRevolt",
       image: bhumkalImg,
-      location: "Bastar Region",
-      duration: "Over 6 months",
+      locationKey: "bastarRegion",
+      durationKey: "overSixMonths",
     },
     {
       id: 3,
-      title: "Tribal Participation in Quit India Movement (1942)",
-      description:
-        "During the pivotal Quit India Movement of 1942, tribal communities across India made significant but often overlooked contributions to the independence struggle. This exhibit documents how indigenous groups in Jharkhand, Chhattisgarh, and Odisha organized protests, disrupted colonial infrastructure, and provided crucial support to underground freedom fighters. Displays include protest flags, correspondence between tribal leaders and national movement figures, and oral histories collected from movement participants.",
+      titleKey: "quitIndiaMovement",
+      descriptionKey: "quitIndiaMovement",
       image: quitIndiaImg,
-      location: "Multiple regions",
-      duration: "1942-1945",
+      locationKey: "multipleRegions",
+      durationKey: "period1942To1945",
     },
     {
       id: 4,
-      title: "Jharkhand Movement (1970s)",
-      description:
-        "The Jharkhand Movement represents one of the most successful campaigns for tribal autonomy in modern India. This gallery chronicles the decades-long struggle led by tribal intellectuals and activists demanding recognition of Adivasi rights and separate statehood. Through photographs, movement banners, newspaper clippings, and video testimonials, visitors witness the remarkable journey that culminated in the formation of Jharkhand state in 2000, securing a historic victory for tribal self-determination.",
+      titleKey: "jharkhandMovement",
+      descriptionKey: "jharkhandMovement",
       image: jharkhandImg,
-      location: "Eastern India",
-      duration: "Over 30 years",
+      locationKey: "easternIndia",
+      durationKey: "overThirtyYears",
     },
     {
       id: 5,
-      title: "Narmada Bachao Andolan (2000s)",
-      description:
-        "The Narmada Bachao Andolan (Save Narmada Movement) represents a powerful modern example of tribal communities fighting against displacement and environmental injustice. This exhibit documents how Adivasi peoples in the Narmada Valley organized to protect their ancestral lands from submergence by large dam projects. Through protest art, activist journals, documentary photographs, and interactive displays, visitors engage with this ongoing struggle that has raised global awareness about indigenous rights and environmental justice.",
+      titleKey: "narmadaBachaoAndolan",
+      descriptionKey: "narmadaBachaoAndolan",
       image: narmadaImg,
-      location: "Narmada Valley",
-      duration: "Ongoing since 1985",
+      locationKey: "narmadaValley",
+      durationKey: "ongoingSince1985",
     },
   ];
 
   return (
     <PageContainer>
       <Navbar />
+
+      <AnimatePresence>
+        {showLanguageIndicator && (
+          <LanguageIndicator
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z" />
+            </svg>
+            {language === "en" ? "English" : "हिंदी"}
+          </LanguageIndicator>
+        )}
+      </AnimatePresence>
+
       <ContentContainer>
         <BackLink to="/freedom">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="#d3a164">
@@ -251,6 +329,7 @@ const FreedomGallery = () => {
         </BackLink>
 
         <PageTitle
+          key={`title-${language}`} // Force re-render animation on language change
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -258,25 +337,23 @@ const FreedomGallery = () => {
           {t("Galleries")}
         </PageTitle>
 
-        <GalleryIntro>
-          {t(
-            "Our specialized galleries chronicle pivotal moments in tribal resistance history, showcasing the extraordinary courage and determination of indigenous communities in their fight for freedom, dignity, and autonomy. Each carefully curated exhibit combines historical artifacts, documentary evidence, and personal testimonies to reveal these powerful yet often overlooked chapters in the struggle against colonialism."
-          )}
-        </GalleryIntro>
+        <GalleryIntro>{getGalleryDescription("galleryIntro")}</GalleryIntro>
 
         <GalleryGrid>
           {galleries.map((gallery, index) => (
             <GalleryItem
-              key={gallery.id}
+              key={`gallery-${gallery.id}-${language}`} // Force re-render on language change
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2, duration: 0.7 }}
             >
               <GalleryImage image={gallery.image} />
               <GalleryInfo>
-                <GalleryTitle>{t(gallery.title)}</GalleryTitle>
+                <GalleryTitle>
+                  {getTranslation("titles", gallery.titleKey)}
+                </GalleryTitle>
                 <GalleryDescription>
-                  {t(gallery.description)}
+                  {getGalleryDescription(gallery.descriptionKey)}
                 </GalleryDescription>
 
                 <GalleryDetails>
@@ -289,7 +366,7 @@ const FreedomGallery = () => {
                     >
                       <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                     </svg>
-                    {t(gallery.location)}
+                    {getTranslation("locations", gallery.locationKey)}
                   </GalleryDetail>
 
                   <GalleryDetail>
@@ -301,7 +378,7 @@ const FreedomGallery = () => {
                     >
                       <path d="M11.99 2C6.47 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 11.99 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
                     </svg>
-                    {t(gallery.duration)}
+                    {getTranslation("durations", gallery.durationKey)}
                   </GalleryDetail>
                 </GalleryDetails>
 

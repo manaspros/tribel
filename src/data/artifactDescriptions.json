@@ -1,0 +1,186 @@
+{
+    "tribalArtifactsIntro": {
+        "en": "Our curated collection features authentic tribal artifacts that showcase the remarkable craftsmanship, cultural significance, and artistic traditions of indigenous communities. Each piece tells a story of heritage, spiritual beliefs, and the profound connection between tribal peoples and their environment.",
+        "hi": "हमारा संग्रह प्रामाणिक आदिवासी कलाकृतियों को प्रदर्शित करता है जो स्वदेशी समुदायों की उल्लेखनीय कारीगरी, सांस्कृतिक महत्व और कलात्मक परंपराओं को दर्शाता है। प्रत्येक वस्तु विरासत, आध्यात्मिक मान्यताओं और आदिवासी लोगों और उनके पर्यावरण के बीच गहरे संबंध की कहानी बताती है।"
+    },
+    "freedomArtifactsIntro": {
+        "en": "Our collection features authentic artifacts from tribal freedom struggles across India, each telling a powerful story of resistance, sacrifice, and determination. These objects provide tangible connections to indigenous communities' fight for dignity, autonomy, and justice throughout history—from early rebellions against colonial powers to modern movements for self-determination and environmental justice.",
+        "hi": "हमारा संग्रह पूरे भारत में आदिवासी स्वतंत्रता संघर्षों से प्रामाणिक कलाकृतियों को प्रदर्शित करता है, जिनमें से प्रत्येक प्रतिरोध, बलिदान और दृढ़ संकल्प की एक शक्तिशाली कहानी बताती है। ये वस्तुएँ इतिहास भर में स्वदेशी समुदायों के गरिमा, स्वायत्तता और न्याय के लिए संघर्ष से मूर्त संबंध प्रदान करती हैं - औपनिवेशिक शक्तियों के खिलाफ प्रारंभिक विद्रोहों से लेकर आत्मनिर्णय और पर्यावरणीय न्याय के लिए आधुनिक आंदोलनों तक।"
+    },
+    "tribalArtifacts": {
+        "ceremonialWarAxe": {
+            "title": {
+                "en": "Ceremonial War Axe",
+                "hi": "अनुष्ठानिक युद्ध कुल्हाड़ी"
+            },
+            "description": {
+                "en": "An ornate ceremonial war axe used by tribal chieftains in battle and important tribal ceremonies.",
+                "hi": "एक सजावटी अनुष्ठानिक युद्ध कुल्हाड़ी जिसका उपयोग आदिवासी मुखिया द्वारा युद्ध और महत्वपूर्ण आदिवासी समारोहों में किया जाता था।"
+            },
+            "significance": {
+                "en": "This ceremonial axe represents the authority of tribal chiefs and was used in both warfare and ritual ceremonies. The intricate carvings depict ancestral spirits and hunting scenes that tell the story of the tribe's history.",
+                "hi": "यह अनुष्ठानिक कुल्हाड़ी आदिवासी प्रमुखों के अधिकार का प्रतिनिधित्व करती है और इसका उपयोग युद्ध और अनुष्ठानिक समारोहों दोनों में किया जाता था। जटिल नक्काशी पूर्वजों की आत्माओं और शिकार के दृश्यों को चित्रित करती है जो जनजाति के इतिहास की कहानी बताती है।"
+            }
+        },
+        "dhokraHorse": {
+            "title": {
+                "en": "Dhokra Horse Figurine",
+                "hi": "धोकड़ा घोड़ा मूर्ति"
+            },
+            "description": {
+                "en": "Traditional lost-wax metal casting technique dating back over 4,000 years, showcasing exceptional craftsmanship.",
+                "hi": "पारंपरिक लॉस्ट-वैक्स धातु ढलाई तकनीक जो 4,000 वर्षों से अधिक पुरानी है, असाधारण कारीगरी का प्रदर्शन करती है।"
+            },
+            "significance": {
+                "en": "Dhokra is one of the oldest traditional metal casting techniques still practiced today. This horse figurine demonstrates the precision and artistic expression of tribal artisans who have preserved this ancient craft for millennia.",
+                "hi": "धोकड़ा सबसे पुरानी पारंपरिक धातु ढलाई तकनीकों में से एक है जो आज भी प्रचलित है। यह घोड़े की मूर्ति आदिवासी कारीगरों की सटीकता और कलात्मक अभिव्यक्ति का प्रदर्शन करती है जिन्होंने इस प्राचीन शिल्प को हजारों वर्षों तक संरक्षित रखा है।"
+            }
+        },
+        "ritualMask": {
+            "title": {
+                "en": "Ritual Harvest Mask",
+                "hi": "अनुष्ठानिक फसल मुखौटा"
+            },
+            "description": {
+                "en": "Ceremonial mask used during harvest festivals and spiritual rituals to invoke blessings from nature deities.",
+                "hi": "फसल त्योहारों और आध्यात्मिक अनुष्ठानों के दौरान प्रकृति देवताओं से आशीर्वाद प्राप्त करने के लिए उपयोग किया जाने वाला अनुष्ठान मुखौटा।"
+            },
+            "significance": {
+                "en": "This mask embodies the spiritual connection between tribal communities and natural forces. Worn by shamans during harvest ceremonies, it's believed to channel ancestral spirits who ensure abundant crops and community prosperity.",
+                "hi": "यह मुखौटा आदिवासी समुदायों और प्राकृतिक शक्तियों के बीच आध्यात्मिक संबंध को साकार करता है। फसल समारोहों के दौरान शमनों द्वारा पहना जाता है, यह माना जाता है कि यह पूर्वजों की आत्माओं को प्रभावित करता है जो प्रचुर फसलों और सामुदायिक समृद्धि सुनिश्चित करते हैं।"
+            }
+        },
+        "medicinalHerbs": {
+            "title": {
+                "en": "Medicinal Herb Collection",
+                "hi": "औषधीय जड़ी-बूटी संग्रह"
+            },
+            "description": {
+                "en": "Collection of medicinal herbs used by tribal healers to treat various ailments, based on knowledge passed down for generations.",
+                "hi": "औषधीय जड़ी-बूटियों का संग्रह जिनका उपयोग आदिवासी चिकित्सकों द्वारा विभिन्न बीमारियों का इलाज करने के लिए किया जाता है, जो पीढ़ियों से आगे बढ़ाए गए ज्ञान पर आधारित है।"
+            },
+            "significance": {
+                "en": "This collection represents the sophisticated pharmacological knowledge of tribal healers. These plants have been used for centuries to treat ailments ranging from common infections to chronic conditions, many containing compounds now validated by modern medicine.",
+                "hi": "यह संग्रह आदिवासी चिकित्सकों के परिष्कृत फार्माकोलॉजिकल ज्ञान का प्रतिनिधित्व करता है। इन पौधों का उपयोग सदियों से सामान्य संक्रमणों से लेकर पुरानी स्थितियों तक की बीमारियों के इलाज के लिए किया जाता रहा है, जिनमें से कई में ऐसे यौगिक होते हैं जिन्हें अब आधुनिक चिकित्सा द्वारा मान्य किया गया है।"
+            }
+        },
+        "ceremonialNecklace": {
+            "title": {
+                "en": "Ceremonial Necklace",
+                "hi": "अनुष्ठानिक हार"
+            },
+            "description": {
+                "en": "Ornate jewelry pieces made from natural materials like seeds, bones, and metals, signifying social status and tribal affiliations.",
+                "hi": "बीज, हड्डियों और धातुओं जैसी प्राकृतिक सामग्रियों से बने सजावटी आभूषण, जो सामाजिक स्थिति और आदिवासी संबद्धता का प्रतीक हैं।"
+            },
+            "significance": {
+                "en": "This elaborate necklace was traditionally worn by women during important ceremonies and festivals. The silver coins and intricate beadwork not only displayed family wealth but also served as portable assets in nomadic communities.",
+                "hi": "यह विस्तृत हार परंपरागत रूप से महत्वपूर्ण समारोहों और त्योहारों के दौरान महिलाओं द्वारा पहना जाता था। चांदी के सिक्के और जटिल मणिका कार्य न केवल परिवार की संपत्ति का प्रदर्शन करते थे बल्कि खानाबदोश समुदायों में पोर्टेबल संपत्ति के रूप में भी काम करते थे।"
+            }
+        },
+        "tribalDrum": {
+            "title": {
+                "en": "Tribal Drum",
+                "hi": "आदिवासी ढोल"
+            },
+            "description": {
+                "en": "Traditional percussive instrument used in celebrations, rituals and storytelling sessions, creating unique rhythms and melodies.",
+                "hi": "उत्सवों, अनुष्ठानों और कहानी सुनाने के सत्रों में उपयोग किया जाने वाला पारंपरिक अवनद्ध वाद्य यंत्र, जो अद्वितीय ताल और धुनें बनाता है।"
+            },
+            "significance": {
+                "en": "This ceremonial drum formed the heartbeat of tribal gatherings, used to communicate across distances and to accompany traditional dances. The specific rhythmic patterns played on this drum were integral to tribal identity and oral history transmission.",
+                "hi": "इस अनुष्ठानिक ढोल ने आदिवासी सभाओं की धड़कन का निर्माण किया, जिसका उपयोग दूरियों के बीच संवाद करने और पारंपरिक नृत्य के साथ चलने के लिए किया जाता था। इस ढोल पर बजाए गए विशिष्ट लयबद्ध पैटर्न आदिवासी पहचान और मौखिक इतिहास के संचरण के लिए अभिन्न थे।"
+            }
+        }
+    },
+    "freedomArtifacts": {
+        "revolutionaryFlag": {
+            "title": {
+                "en": "Revolutionary Flag",
+                "hi": "क्रांतिकारी झंडा"
+            },
+            "description": {
+                "en": "Handcrafted flags carried by tribal freedom fighters during resistance movements against colonial rule.",
+                "hi": "औपनिवेशिक शासन के खिलाफ प्रतिरोध आंदोलनों के दौरान आदिवासी स्वतंत्रता सेनानियों द्वारा ले जाए गए हस्तनिर्मित झंडे।"
+            },
+            "significance": {
+                "en": "This flag was carried by tribal warriors during the Bhumkal Revolt of 1910. The distinctive red color represents the blood shed for freedom, while the triangular shape symbolizes the mountains that sheltered rebel forces. It served both as a rallying symbol and a means of communication during coordinated attacks against colonial outposts.",
+                "hi": "1910 के भूमकाल विद्रोह के दौरान आदिवासी योद्धाओं द्वारा यह झंडा ले जाया गया था। विशिष्ट लाल रंग स्वतंत्रता के लिए बहाए गए खून का प्रतिनिधित्व करता है, जबकि त्रिकोणीय आकार उन पहाड़ों का प्रतीक है जिन्होंने विद्रोही बलों को आश्रय दिया। यह औपनिवेशिक चौकियों के खिलाफ समन्वित हमलों के दौरान रैली का प्रतीक और संचार का साधन दोनों के रूप में काम करता था।"
+            }
+        },
+        "warDrum": {
+            "title": {
+                "en": "War Drum",
+                "hi": "युद्ध ढोल"
+            },
+            "description": {
+                "en": "Ceremonial drum used to rally tribal communities and coordinate resistance movements during uprisings.",
+                "hi": "विद्रोहों के दौरान आदिवासी समुदायों को एकजुट करने और प्रतिरोध आंदोलनों का समन्वय करने के लिए उपयोग किया जाने वाला अनुष्ठानिक ढोल।"
+            },
+            "significance": {
+                "en": "These drums played a crucial role in tribal uprisings, serving as a sophisticated communication system that could relay messages across vast distances. Each rhythm pattern conveyed specific information: calls to assemble, warnings of approaching enemy forces, or signals to begin coordinated attacks. Colonial authorities frequently confiscated and destroyed these drums, recognizing their strategic importance to resistance movements.",
+                "hi": "इन ढोलों ने आदिवासी विद्रोहों में महत्वपूर्ण भूमिका निभाई, एक परिष्कृत संचार प्रणाली के रूप में काम किया जो व्यापक दूरियों पर संदेशों को प्रसारित कर सकता था। प्रत्येक ताल पैटर्न विशिष्ट जानकारी प्रदान करता था: एकत्र होने के लिए आह्वान, आने वाली दुश्मन सेनाओं की चेतावनी, या समन्वित हमलों को शुरू करने के संकेत। औपनिवेशिक अधिकारियों ने अक्सर इन ढोलों को जब्त और नष्ट कर दिया, प्रतिरोध आंदोलनों के लिए उनके रणनीतिक महत्व को पहचानते हुए।"
+            }
+        }
+    },
+    "categoryLabels": {
+        "all": {
+            "en": "All Categories",
+            "hi": "सभी श्रेणियां"
+        },
+        "weapon": {
+            "en": "Weapons",
+            "hi": "हथियार"
+        },
+        "ceremonial": {
+            "en": "Ceremonial",
+            "hi": "अनुष्ठानिक"
+        },
+        "crafts": {
+            "en": "Crafts",
+            "hi": "शिल्प"
+        },
+        "ritual": {
+            "en": "Ritual",
+            "hi": "अनुष्ठान"
+        },
+        "music": {
+            "en": "Music",
+            "hi": "संगीत"
+        },
+        "historical": {
+            "en": "Historical",
+            "hi": "ऐतिहासिक"
+        },
+        "symbolic": {
+            "en": "Symbolic",
+            "hi": "प्रतीकात्मक"
+        },
+        "document": {
+            "en": "Documents",
+            "hi": "दस्तावेज़"
+        },
+        "protest": {
+            "en": "Protest Items",
+            "hi": "विरोध वस्तुएँ"
+        }
+    },
+    "detailLabels": {
+        "origin": {
+            "en": "Origin",
+            "hi": "उत्पत्ति"
+        },
+        "age": {
+            "en": "Age",
+            "hi": "आयु"
+        },
+        "materials": {
+            "en": "Materials",
+            "hi": "सामग्री"
+        },
+        "category": {
+            "en": "Category",
+            "hi": "श्रेणी"
+        }
+    }
+}
