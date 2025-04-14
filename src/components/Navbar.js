@@ -675,7 +675,7 @@ const Navbar = ({ transparent = false }) => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            {t("Virtual Tour")}
+            {t("virtualTour")}
           </VirtualTourButton>
 
           <LanguageToggle
@@ -897,7 +897,7 @@ const Navbar = ({ transparent = false }) => {
                 to="/virtual-tour"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                {t("Virtual Tour")}
+                {t("virtualTour")}
               </MobileNavLink>
 
               <LanguageToggle

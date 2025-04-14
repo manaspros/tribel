@@ -121,7 +121,8 @@
         "tribalJewelryDesc": "Admire the beautiful ornamental pieces crafted from natural materials including seeds, bones, metals, and precious stones. These adornments signify social status, tribal affiliations, and important life stages.",
         "musicalInstruments": "Musical Instruments",
         "musicalInstrumentsDesc": "Experience the rhythmic soul of tribal communities through our collection of traditional musical instruments. These pieces have been central to cultural celebrations, storytelling sessions, and spiritual ceremonies.",
-        "GalleriesDescription": "Our specialized galleries offer immersive experiences into different aspects of tribal life and culture. Each carefully curated space presents artifacts within their cultural context, allowing visitors to gain deeper insights into the significance and stories behind these remarkable objects."
+        "GalleriesDescription": "Our specialized galleries offer immersive experiences into different aspects of tribal life and culture. Each carefully curated space presents artifacts within their cultural context, allowing visitors to gain deeper insights into the significance and stories behind these remarkable objects.",
+        "exploreGallery": "Explore Gallery"
     },
     "hi": {
         "home": "मुखपृष्ठ",
@@ -233,6 +234,7 @@
         "Tribal Artifacts": "जनजातीय कलाकृतियाँ",
         "Freedom Artifacts": "स्वतंत्रता कलाकृतियाँ",
         "Tribal Heritage": "जनजातीय धरोहर",
-        "Freedom Fighters": "स्वतंत्रता सेनानी"
+        "Freedom Fighters": "स्वतंत्रता सेनानी",
+        "exploreGallery": "गैलरी का अन्वेषण करें"
     }
 }

@@ -88,5 +88,11 @@
     "narmadaBachaoAndolan": {
         "en": "The Narmada Bachao Andolan (Save Narmada Movement) represents a powerful modern example of tribal communities fighting against displacement and environmental injustice. This exhibit documents how Adivasi peoples in the Narmada Valley organized to protect their ancestral lands from submergence by large dam projects. Through protest art, activist journals, documentary photographs, and interactive displays, visitors engage with this ongoing struggle that has raised global awareness about indigenous rights and environmental justice.",
         "hi": "नर्मदा बचाओ आंदोलन विस्थापन और पर्यावरणीय अन्याय के खिलाफ लड़ने वाले आदिवासी समुदायों का एक शक्तिशाली आधुनिक उदाहरण है। यह प्रदर्शनी दर्शाती है कि कैसे नर्मदा घाटी के आदिवासी लोगों ने बड़े बांध परियोजनाओं द्वारा अपनी पैतृक भूमि को डूबने से बचाने के लिए संगठित किया। विरोध कला, कार्यकर्ता पत्रिकाओं, वृत्तचित्र तस्वीरों और इंटरैक्टिव प्रदर्शनों के माध्यम से, आगंतुक इस चल रहे संघर्ष के साथ जुड़ते हैं जिसने स्वदेशी अधिकारों और पर्यावरणीय न्याय के बारे में वैश्विक जागरूकता बढ़ाई है।"
+    },
+    "buttonLabels": {
+        "exploreGallery": {
+            "en": "Explore Gallery",
+            "hi": "गैलरी का अन्वेषण करें"
+        }
     }
 }

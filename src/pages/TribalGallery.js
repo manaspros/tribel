@@ -189,7 +189,7 @@ const TribalGallery = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  {t("Explore Gallery →")}
+                  {t("exploreGallery")} →
                 </ExploreButton>
               </GalleryInfo>
             </GalleryItem>

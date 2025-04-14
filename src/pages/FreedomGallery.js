@@ -386,7 +386,7 @@ const FreedomGallery = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  {t("Explore Gallery")}
+                  {t("exploreGallery")}
                   <svg
                     width="16"
                     height="16"
