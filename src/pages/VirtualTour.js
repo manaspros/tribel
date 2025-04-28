@@ -274,30 +274,34 @@ const hotspots = [
   {
     id: 1,
     position: { wall: "front", top: "30%", left: "25%" },
-    title: "Tribal Weapons Display",
+    heading: "Tribal Introduction",
+    title: "Indigenous Communities",
     content:
-      "Ancient weapons used by indigenous tribes for hunting and warfare, including spears, bows, and ceremonial daggers. Each weapon tells a story of survival, ritual, and craftsmanship passed down through generations.",
+      "Explore the rich diversity of tribal communities that form an integral part of India's cultural heritage. This exhibit showcases the unique customs, traditions, and social structures that have been preserved through generations, highlighting the distinct identity of various tribal groups across different regions.",
   },
   {
     id: 2,
     position: { wall: "left", top: "40%", left: "60%" },
-    title: "Tribal Art Gallery",
+    heading: "Hunting Equipment",
+    title: "Traditional Hunting Tools",
     content:
-      "Traditional art forms including paintings and sculptures that represent the cosmology and spiritual beliefs of tribal communities. Many of these pieces use natural pigments and materials sourced directly from forests.",
+      "Discover the ingenious hunting tools and techniques developed by indigenous tribes for survival. From expertly crafted bows and arrows to specialized traps and spears, these artifacts demonstrate the deep knowledge of local ecosystems and sustainable hunting practices that have been passed down through generations.",
   },
   {
     id: 3,
     position: { wall: "right", top: "50%", left: "40%" },
-    title: "Ceremonial Artifacts",
+    heading: "Life Cycle",
+    title: "Birth to Afterlife Customs",
     content:
-      "Sacred objects used during important tribal rituals and ceremonies, including masks, drums, and ornate headdresses that connect the physical and spiritual worlds.",
+      "This exhibit illustrates the significant rituals and ceremonies that mark important transitions in tribal life - from birth celebrations and coming-of-age ceremonies to marriage customs and funeral rites. Each stage is accompanied by unique cultural practices that strengthen community bonds and preserve ancestral traditions.",
   },
   {
     id: 4,
     position: { wall: "back", top: "35%", left: "70%" },
-    title: "Daily Life Exhibit",
+    heading: "Housing and Home",
+    title: "Traditional Dwellings",
     content:
-      "Tools, utensils, and clothing that provide insight into the everyday lives of indigenous peoples. These artifacts demonstrate incredible ingenuity in using natural resources sustainably.",
+      "Examine the traditional housing styles and living arrangements of various tribal communities. These dwellings reflect remarkable architectural knowledge using locally available materials and designs perfectly adapted to local climates and terrains. The spatial organization within homes also reveals social structures and daily life patterns.",
   },
 ];
 
@@ -374,8 +378,6 @@ const VirtualTour = () => {
 
   return (
     <TourContainer>
-      <Navbar transparent />
-
       <BackButton
         as="a"
         href="/"
@@ -389,26 +391,38 @@ const VirtualTour = () => {
         <MuseumWalls rotation={rotation}>
           <FrontWall>
             <WallContent>
-              <WallTitle>{t("tribalHeritage")}</WallTitle>
-              <WallImage src={tribalWeaponsImg} alt={t("tribalHeritage")} />
+              <WallTitle>{t("Tribal Introduction")}</WallTitle>
+              <WallImage
+                src={"virtualtour/Picture3.jpg"}
+                alt={t("tribalIntroduction")}
+              />
             </WallContent>
           </FrontWall>
           <BackWall>
             <WallContent>
-              <WallTitle>{t("culturalLegacy")}</WallTitle>
-              <WallImage src={dailyLifeImg} alt={t("culturalLegacy")} />
+              <WallTitle>{t("Housing And Home")}</WallTitle>
+              <WallImage
+                src={"virtualtour/Picture5.jpg"}
+                alt={t("housingAndHome")}
+              />
             </WallContent>
           </BackWall>
           <LeftWall>
             <WallContent>
-              <WallTitle>{t("ancestralWisdom")}</WallTitle>
-              <WallImage src={tribalArtImg} alt={t("ancestralWisdom")} />
+              <WallTitle>{t("Hunting Equipment")}</WallTitle>
+              <WallImage
+                src={"virtualtour/Picture6.jpg"}
+                alt={t("huntingEquipment")}
+              />
             </WallContent>
           </LeftWall>
           <RightWall>
             <WallContent>
-              <WallTitle>{t("livingTraditions")}</WallTitle>
-              <WallImage src={ceremonyImg} alt={t("livingTraditions")} />
+              <WallTitle>{t("Life Cycle")}</WallTitle>
+              <WallImage
+                src={"virtualtour/Picture4.jpg"}
+                alt={t("lifeCycle")}
+              />
             </WallContent>
           </RightWall>
           <Floor />

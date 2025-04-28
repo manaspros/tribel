@@ -418,7 +418,7 @@ const DepartmentNameTranslated = ({ translationKey }) => {
   );
 };
 
-const Navbar = ({ transparent = false }) => {
+const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { language, toggleLanguage, t, version } = useLanguage();
@@ -711,9 +711,9 @@ const Navbar = ({ transparent = false }) => {
         </div>
       </NavContainer>
 
-      {/* Department Names Section - Appears only when not scrolled */}
+      {/* Department Names Section - Only appears when not scrolled AND hideDepartmentNames is false */}
       <AnimatePresence>
-        {!scrolled && (
+        {!scrolled && !hideDepartmentNames && (
           <DepartmentNamesContainer
             key={`dept-container-${language}-${version}`} // Force re-render when language or version changes
             initial={{ opacity: 0, y: -20 }}
