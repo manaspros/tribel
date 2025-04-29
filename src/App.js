@@ -14,6 +14,8 @@ import FreedomGallery from "./pages/FreedomGallery";
 import FreedomArtifacts from "./pages/FreedomArtifacts";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
+import MuseumStatsPage from "./pages/MuseumStatsPage";
+import PlanYourVisitPage from "./pages/PlanYourVisitPage";
 import { LoadingProvider } from "./contexts/LoadingContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import "./styles/global.css";
@@ -38,6 +40,8 @@ function App() {
               <Route path="/freedom/artifacts" element={<FreedomArtifacts />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/museum-stats" element={<MuseumStatsPage />} />
+              <Route path="/plan-visit" element={<PlanYourVisitPage />} />
             </Routes>
           </Router>
         </AnimatePresence>
@@ -45,4 +49,5 @@ function App() {
     </LoadingProvider>
   );
 }
+
 export default App;

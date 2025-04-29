@@ -120,6 +120,17 @@ const NavLink = styled(motion.a)`
   }
 `;
 
+// Special CTA buttons wrapper for both buttons
+const CTAButtonsWrapper = styled.div`
+  display: flex;
+  gap: 15px;
+  align-items: center;
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
+`;
+
 // Special CTA button
 const BookTicketButton = styled(motion.a)`
   background: #d3a164;
@@ -135,9 +146,24 @@ const BookTicketButton = styled(motion.a)`
   &:hover {
     background: #e4b87f;
   }
+`;
 
-  @media (max-width: 1024px) {
-    display: none;
+// Plan Visit button with complementary styling
+const PlanVisitButton = styled(motion.a)`
+  background: transparent;
+  color: #d3a164;
+  padding: 8px 16px;
+  border-radius: 30px;
+  border: 2px solid #d3a164;
+  font-weight: 600;
+  font-size: 1rem;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(211, 161, 100, 0.15);
+    transform: translateY(-3px);
   }
 `;
 
@@ -353,35 +379,43 @@ const DropdownTrigger = styled.div`
 // Modified department names container to appear below navbar
 const DepartmentNamesContainer = styled(motion.div)`
   width: 100%;
-  padding: 15px 40px 10px;
+  padding: 20px 60px 15px;
   background-color: rgba(26, 20, 16, 0.98);
   text-align: center;
   position: fixed;
-  top: 80px; // Position below the navbar height (adjust as needed based on your navbar height)
+  top: 80px; // Position below the navbar height
   left: 0;
-  z-index: 99; // Decreased from 100 to 99 to ensure it's below the navbar
+  z-index: 99; // Ensure it's below the navbar
   border-bottom: 1px solid rgba(211, 161, 100, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
 
   @media (max-width: 768px) {
     top: 65px; // Adjust for smaller navbar height on mobile
+    flex-direction: column;
+    padding: 15px 20px 12px;
   }
 `;
 
 // Convert to motion.span to properly support motion props
 const DepartmentName = styled(motion.span)`
-  display: block;
   color: #d3a164;
   font-size: 1.1rem;
   font-weight: 500;
-  margin-bottom: 5px;
   font-family: "Playfair Display", serif;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
+  margin: 0 30px;
+  padding: 5px 10px;
+  white-space: nowrap;
 
   @media (max-width: 768px) {
+    margin-bottom: 8px;
+    margin-left: 0;
+    margin-right: 0;
     font-size: 0.9rem;
+    display: block;
   }
 `;
 
@@ -510,24 +544,9 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
     });
   };
 
-  // Handle scrolling to museum stats section
-  const scrollToStats = () => {
-    const statsSection = document.getElementById("museum-stats");
-    if (statsSection) {
-      statsSection.scrollIntoView({ behavior: "smooth" });
-    }
-    setMobileMenuOpen(false);
-  };
-
-  // Handle about museum navigation - works from any page
+  // Handle about museum navigation - navigate to new page instead of scrolling
   const handleAboutClick = () => {
-    if (location.pathname === "/") {
-      // If on home page, scroll to section
-      scrollToStats();
-    } else {
-      // If on another page, navigate to home with hash (without checking location first)
-      navigate("/#museum-stats");
-    }
+    navigate("/museum-stats");
     setMobileMenuOpen(false);
   };
 
@@ -700,13 +719,24 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
             {language === "en" ? "हिंदी" : "English"}
           </LanguageToggle>
 
-          <BookTicketButton
-            href="#booking"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {t("Book the Ticket")}
-          </BookTicketButton>
+          <CTAButtonsWrapper>
+            <PlanVisitButton
+              as={Link}
+              to="/plan-visit"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {t("Plan Your Visit")}
+            </PlanVisitButton>
+
+            <BookTicketButton
+              href="#booking"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {t("Book Now")}
+            </BookTicketButton>
+          </CTAButtonsWrapper>
         </NavLinks>
 
         <div style={{ display: "flex", alignItems: "center" }}>
@@ -905,6 +935,13 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t("Visiting the Museum")}
+              </MobileNavLink>
+              <MobileNavLink
+                as={Link}
+                to="/plan-visit"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t("Plan Your Visit")}
               </MobileNavLink>
               <MobileNavLink
                 as={Link}

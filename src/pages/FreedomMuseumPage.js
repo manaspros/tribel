@@ -7,8 +7,11 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 // Import freedom fighter images
-import freedomBanner from "../assets/tribel/banner.jpg"; // Assumed filename
-import freedomTimeline from "../assets/tribel/IMG-20250408-WA0016.jpg"; // Assumed filename
+import freedomBanner from "../assets/tribel/banner.jpg";
+import freedomTimeline from "../assets/tribel/IMG-20250408-WA0016.jpg";
+
+// Import translations for this page
+import translations from "../data/freedomMuseumTranslations.json";
 
 const PageContainer = styled.div`
   background-color: #1a1410;
@@ -311,12 +314,53 @@ const MapOverlay = styled.div`
   transition: transform 0.3s ease;
 `;
 
+const PriceTag = styled.div`
+  display: inline-block;
+  background: rgba(211, 161, 100, 0.2);
+  color: #d3a164;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-right: 10px;
+`;
+
+const PriceNote = styled.p`
+  font-size: 0.85rem;
+  color: rgba(245, 239, 231, 0.8);
+  margin-top: 6px;
+  font-style: italic;
+`;
+
+const TimingDetail = styled.p`
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 8px;
+
+  svg {
+    margin-right: 8px;
+    min-width: 16px;
+    margin-top: 3px;
+    color: #d3a164;
+    opacity: 0.9;
+  }
+`;
+
 const FreedomMuseumPage = () => {
-  const { t, language, toggleLanguage } = useLanguage();
+  const { language, toggleLanguage } = useLanguage();
   const [mapHovered, setMapHovered] = useState(false);
 
-  const locationAddress = t("Tribal Freedom Fighter Museum, Naya Raipur");
-  const mapLocationQuery = encodeURIComponent(locationAddress);
+  // Function to get translated content from the specific JSON file
+  const t = (key) => {
+    if (translations[language] && translations[language][key]) {
+      return translations[language][key];
+    }
+    // Fallback to English if translation is missing
+    return translations["en"][key] || key;
+  };
+
+  const mapLocationQuery = encodeURIComponent(t("museumAddress"));
 
   const handleMapClick = () => {
     window.open(`https://www.google.com/maps?q=${mapLocationQuery}`, "_blank");
@@ -346,7 +390,7 @@ const FreedomMuseumPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          {t("Freedom Fighter Museum")}
+          {t("pageTitle")}
         </PageTitle>
       </HeroSection>
 
@@ -356,97 +400,53 @@ const FreedomMuseumPage = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.8 }}
         >
-          <Description>
-            {t(
-              "The National Tribal Freedom Fighter Museum in Naya Raipur honors the courage, sacrifices, and unwavering spirit of tribal freedom fighters who fought for India's independence. This state-of-the-art museum, inaugurated in 2023, preserves and showcases the powerful stories of tribal communities' significant contributions to the freedom struggle against colonial rule."
-            )}
-          </Description>
+          <Description>{t("introduction")}</Description>
 
-          <Description>
-            {t(
-              "Our exhibits document the remarkable contributions of tribal leaders like Birsa Munda, Komaram Bheem, Tantya Bhil, Rani Gaidinliu, Laxman Naik, Talakkal Chandu, and many others who led resistance movements across different parts of India. Through original artifacts, historical documents, photographs, and interactive displays, visitors can explore how tribal identity and resistance movements shaped our nation's journey to freedom."
-            )}
-          </Description>
+          <Description>{t("exhibitDescription")}</Description>
 
           <FeaturedRevolt>
-            <FeaturedTitle>
-              {t("Spotlight: The Bhumkal Revolt of 1910")}
-            </FeaturedTitle>
-            <Description>
-              {t(
-                "The Bhumkal Revolt of 1910, also known as the Bastar Rebellion, stands as one of history's most significant tribal uprisings against British colonial rule in India. Led by the charismatic tribal leader Gunda Dhur, this powerful resistance movement united multiple tribal communities including the Muria, Maria, and Bhattra peoples of the Bastar region."
-              )}
-            </Description>
-            <Description>
-              {t(
-                "Sparked by exploitative taxation, forced labor, and restrictions on traditional forest rights, the revolt spread rapidly across Bastar. The tribal warriors, armed primarily with traditional weapons, mounted fierce attacks on colonial outposts and successfully disrupted British control of the region for several months. Though eventually suppressed through brutal military force, the Bhumkal Revolt remains a testament to indigenous resistance and is commemorated annually as a symbol of tribal identity and courage."
-              )}
-            </Description>
+            <FeaturedTitle>{t("featuredRevoltTitle")}</FeaturedTitle>
+            <Description>{t("featuredRevoltDesc1")}</Description>
+            <Description>{t("featuredRevoltDesc2")}</Description>
           </FeaturedRevolt>
 
-          <SectionTitle>{t("tribalUprisingsTimeline")}</SectionTitle>
+          <SectionTitle>{t("timelineTitle")}</SectionTitle>
 
           <TimelineSection>
             <TimelineImage />
             <TimelineContent>
-              <Description>
-                {t(
-                  "The struggle for freedom by indigenous communities spans centuries, with organized resistance movements arising in response to colonial encroachment on tribal lands, cultures, and autonomy. Each uprising represents a crucial chapter in the story of indigenous resilience and self-determination."
-                )}
-              </Description>
+              <Description>{t("timelineIntro")}</Description>
 
               <TimelineEvents>
                 <TimelineEvent>
-                  <EventYear>1830</EventYear>
-                  <EventTitle>{t("Halba Rebellion")}</EventTitle>
-                  <p>
-                    {t(
-                      "Led by the Halba tribes against oppressive British East India Company policies in Central India."
-                    )}
-                  </p>
+                  <EventYear>{t("timeline1Year")}</EventYear>
+                  <EventTitle>{t("timeline1Title")}</EventTitle>
+                  <p>{t("timeline1Desc")}</p>
                 </TimelineEvent>
 
                 <TimelineEvent>
-                  <EventYear>1910</EventYear>
-                  <EventTitle>{t("Bhumkal Revolt")}</EventTitle>
-                  <p>
-                    {t(
-                      "A major tribal uprising in the Bastar region against exploitation and cultural suppression."
-                    )}
-                  </p>
+                  <EventYear>{t("timeline2Year")}</EventYear>
+                  <EventTitle>{t("timeline2Title")}</EventTitle>
+                  <p>{t("timeline2Desc")}</p>
                 </TimelineEvent>
 
                 <TimelineEvent>
-                  <EventYear>1942</EventYear>
-                  <EventTitle>
-                    {t("Tribal Participation in Quit India Movement")}
-                  </EventTitle>
-                  <p>
-                    {t(
-                      "Indigenous communities joined the nationwide struggle for independence from British colonial rule."
-                    )}
-                  </p>
+                  <EventYear>{t("timeline3Year")}</EventYear>
+                  <EventTitle>{t("timeline3Title")}</EventTitle>
+                  <p>{t("timeline3Desc")}</p>
                 </TimelineEvent>
 
                 <TimelineEvent>
-                  <EventYear>1970s</EventYear>
-                  <EventTitle>{t("Jharkhand Movement")}</EventTitle>
-                  <p>
-                    {t(
-                      "Sustained campaign for tribal autonomy and separate statehood in eastern India, ultimately successful in 2000."
-                    )}
-                  </p>
+                  <EventYear>{t("timeline4Year")}</EventYear>
+                  <EventTitle>{t("timeline4Title")}</EventTitle>
+                  <p>{t("timeline4Desc")}</p>
                 </TimelineEvent>
               </TimelineEvents>
             </TimelineContent>
           </TimelineSection>
 
-          <SectionTitle>{t("Visiting the Museum")}</SectionTitle>
-          <Description>
-            {t(
-              "Our Freedom Fighter Museum offers an immersive journey through the courageous struggles of tribal communities fighting for sovereignty and dignity. Through artifacts, historical documents, photographs, and first-hand accounts, we honor the sacrifices made in the pursuit of independence."
-            )}
-          </Description>
+          <SectionTitle>{t("visitTitle")}</SectionTitle>
+          <Description>{t("visitDesc")}</Description>
 
           <LinksSection>
             <StyledLink to="/freedom/gallery">
@@ -456,9 +456,9 @@ const FreedomMuseumPage = () => {
                 viewBox="0 0 24 24"
                 fill="currentColor"
               >
-                <path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4H4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z" />
+                <path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z" />
               </svg>
-              {t("Galleries")}
+              {t("galleriesLink")}
             </StyledLink>
             <StyledLink to="/freedom/artifacts">
               <svg
@@ -469,7 +469,7 @@ const FreedomMuseumPage = () => {
               >
                 <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 4h2v5l-1-.75L9 9V4zm9 16H6V4h1v9l3-2.25L13 13V4h5v16z" />
               </svg>
-              {t("Our Collection")}
+              {t("collectionLink")}
             </StyledLink>
             <StyledLink to="/virtual-tour">
               <svg
@@ -480,12 +480,98 @@ const FreedomMuseumPage = () => {
               >
                 <path d="M12 10.9c-.61 0-1.1.49-1.1 1.1s.49 1.1 1.1 1.1c.61 0 1.1-.49 1.1-1.1s-.49-1.1-1.1-1.1zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm2.19 12.19L6 18l3.81-8.19L18 6l-3.81 8.19z" />
               </svg>
-              {t("virtualTour")}
+              {t("virtualTourLink")}
             </StyledLink>
           </LinksSection>
 
           <InfoGrid>
-            <InfoCard>
+            <InfoCard
+              whileHover={{ y: -5 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              <InfoTitle>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="#d3a164">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.94 1.64h1.71c-.05-1.34-.87-2.57-2.49-2.97V5H10.9v1.69c-1.51.32-2.72 1.3-2.72 2.81 0 1.79 1.4 2.72 3.52 3.33 1.74.5 2.2 1.2 2.2 1.95 0 .8-.65 1.57-2.01 1.57-1.36 0-2.05-.59-2.15-1.57H8.01c.1 1.58 1.23 2.66 2.89 2.96V19h1.32v-1.67c1.56-.3 2.7-1.37 2.7-2.83-.01-2.24-1.85-3.09-3.61-3.36z" />
+                </svg>
+                {t("admissionTitle")}
+              </InfoTitle>
+
+              <div>
+                <PriceTag>₹20 - {t("adults")}</PriceTag>
+                <PriceTag>₹10 - {t("studentsAndSeniors")}</PriceTag>
+                <PriceTag>
+                  {t("free")} - {t("children")}
+                </PriceTag>
+                <PriceTag>
+                  {t("free")} - {t("members")}
+                </PriceTag>
+              </div>
+
+              <PriceNote>{t("specialDiscount")}</PriceNote>
+            </InfoCard>
+
+            <InfoCard
+              whileHover={{ y: -5 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+            >
+              <InfoTitle>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="#d3a164">
+                  <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
+                </svg>
+                {t("hoursTitle")}
+              </InfoTitle>
+
+              <TimingDetail>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z" />
+                </svg>
+                {t("weekdayHours")}
+              </TimingDetail>
+
+              <TimingDetail>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z" />
+                </svg>
+                {t("weekendHours")}
+              </TimingDetail>
+
+              <TimingDetail>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M9.31 17l2.44-2.44L14.19 17l1.06-1.06-2.44-2.44 2.44-2.44L14.19 10l-2.44 2.44L9.31 10l-1.06 1.06 2.44 2.44-2.44 2.44L9.31 17zM19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z" />
+                </svg>
+                <span style={{ color: "#e74c3c" }}>{t("mondayClosed")}</span>
+              </TimingDetail>
+
+              <PriceNote style={{ marginTop: "10px" }}>
+                {t("holidayNote")}
+              </PriceNote>
+            </InfoCard>
+
+            <InfoCard
+              whileHover={{ y: -5 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+            >
               <InfoTitle>
                 <svg
                   width="20"
@@ -493,15 +579,11 @@ const FreedomMuseumPage = () => {
                   viewBox="0 0 24 24"
                   fill="currentColor"
                 >
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" />
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                 </svg>
-                {t("Museum Location")}
+                {t("locationTitle")}
               </InfoTitle>
-              <Description>
-                {t(
-                  "Explore the museum's location and learn about its significance in preserving the history of tribal freedom fighters."
-                )}
-              </Description>
+
               <MapContainer
                 onMouseEnter={() => setMapHovered(true)}
                 onMouseLeave={() => setMapHovered(false)}
@@ -512,7 +594,7 @@ const FreedomMuseumPage = () => {
                   allowFullScreen
                 />
                 <MapOverlay isHovered={mapHovered}>
-                  {t("Click to view directions")}
+                  {t("viewDirections")}
                 </MapOverlay>
               </MapContainer>
               <p
@@ -522,7 +604,7 @@ const FreedomMuseumPage = () => {
                   color: "#d3a164",
                 }}
               >
-                {locationAddress}
+                {t("museumAddress")}
               </p>
             </InfoCard>
           </InfoGrid>

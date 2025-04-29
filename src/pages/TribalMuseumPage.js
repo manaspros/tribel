@@ -205,6 +205,38 @@ const InfoTitle = styled.h3`
   }
 `;
 
+const PriceTag = styled.div`
+  display: inline-block;
+  background: rgba(211, 161, 100, 0.2);
+  color: #d3a164;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 0.95rem;
+`;
+
+const PriceNote = styled.p`
+  font-size: 0.85rem;
+  color: rgba(245, 239, 231, 0.8);
+  margin-top: 6px;
+  font-style: italic;
+`;
+
+const TimingDetail = styled.p`
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 8px;
+
+  svg {
+    margin-right: 8px;
+    min-width: 16px;
+    margin-top: 3px;
+    color: #d3a164;
+    opacity: 0.9;
+  }
+`;
+
 const MapContainer = styled.div`
   width: 100%;
   height: 180px;
@@ -318,20 +350,29 @@ const TribalMuseumPage = () => {
                 </svg>
                 {getContent("tribalMuseum.infoCards.admissionTitle")}
               </InfoTitle>
-              <p>
-                {getContent("tribalMuseum.infoCards.admissionDetails.adults")}:
-                ₹20
-                <br />
+
+              <PriceTag>
+                ₹20 -{" "}
+                {getContent("tribalMuseum.infoCards.admissionDetails.adults")}
+              </PriceTag>
+              <PriceTag>
+                ₹10 -{" "}
                 {getContent("tribalMuseum.infoCards.admissionDetails.students")}
-                : ₹10
-                <br />
+              </PriceTag>
+              <PriceTag>
+                {getContent("tribalMuseum.infoCards.admissionDetails.free")} -{" "}
                 {getContent("tribalMuseum.infoCards.admissionDetails.children")}
-                : {getContent("tribalMuseum.infoCards.admissionDetails.free")}
-                <br />
+              </PriceTag>
+              <PriceTag>
+                {getContent("tribalMuseum.infoCards.admissionDetails.free")} -{" "}
+                {getContent("tribalMuseum.infoCards.admissionDetails.members")}
+              </PriceTag>
+
+              <PriceNote>
                 {getContent(
-                  "tribalMuseum.infoCards.admissionDetails.members"
-                )}: {getContent("tribalMuseum.infoCards.admissionDetails.free")}
-              </p>
+                  "tribalMuseum.infoCards.admissionDetails.specialDiscount"
+                )}
+              </PriceNote>
             </InfoCard>
 
             <InfoCard
@@ -346,13 +387,48 @@ const TribalMuseumPage = () => {
                 </svg>
                 {getContent("tribalMuseum.infoCards.hoursTitle")}
               </InfoTitle>
-              <p>
+
+              <TimingDetail>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z" />
+                </svg>
                 {getContent("tribalMuseum.infoCards.hoursDetails.weekdays")}
-                <br />
+              </TimingDetail>
+
+              <TimingDetail>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z" />
+                </svg>
                 {getContent("tribalMuseum.infoCards.hoursDetails.weekends")}
-                <br />
-                {getContent("tribalMuseum.infoCards.hoursDetails.monday")}
-              </p>
+              </TimingDetail>
+
+              <TimingDetail>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M9.31 17l2.44-2.44L14.19 17l1.06-1.06-2.44-2.44 2.44-2.44L14.19 10l-2.44 2.44L9.31 10l-1.06 1.06 2.44 2.44-2.44 2.44L9.31 17zM19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z" />
+                </svg>
+                <span style={{ color: "#e74c3c" }}>
+                  {getContent("tribalMuseum.infoCards.hoursDetails.monday")}
+                </span>
+              </TimingDetail>
+
+              <PriceNote style={{ marginTop: "10px" }}>
+                {getContent("tribalMuseum.infoCards.hoursDetails.holidayHours")}
+              </PriceNote>
             </InfoCard>
 
             <InfoCard

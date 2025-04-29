@@ -17,6 +17,7 @@ const PageWrapper = styled(motion.div)`
   color: #f5efe7;
   width: 100%;
   overflow-x: hidden;
+  position: relative;
 `;
 
 const SectionTitle = styled.h2`

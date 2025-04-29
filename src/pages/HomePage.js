@@ -14,6 +14,46 @@ import VisitContainer from "../components/VisitContainer";
 import VisitInfo from "../components/VisitInfo";
 import VisitButton from "../components/VisitButton";
 
+const MuseumInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  font-size: 0.85rem;
+`;
+
+const InfoRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+
+const InfoIcon = styled.span`
+  color: #d3a164;
+  font-size: 1rem;
+`;
+
+const InfoText = styled.span`
+  color: #f5efe7;
+  opacity: 0.9;
+`;
+
+const TagContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 3px;
+`;
+
+const PriceTag = styled.span`
+  background: rgba(211, 161, 100, 0.2);
+  color: #d3a164;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+`;
+
 const HomePage = () => {
   const { t } = useTranslation();
 
@@ -33,6 +73,36 @@ const HomePage = () => {
               {t("tribal")} {t("heritageMuseum")}
             </MuseumTitle>
             <MuseumDescription>{t("tribalMuseumDesc")}</MuseumDescription>
+
+            {/* Add pricing and timing information */}
+            <MuseumInfo>
+              <InfoRow>
+                <InfoIcon>🕒</InfoIcon>
+                <InfoText>
+                  {t("Tuesday - Friday")}: 10:00 AM - 6:00 PM
+                  <br />
+                  {t("Saturday - Sunday")}: 9:00 AM - 7:00 PM
+                  <br />
+                  <span style={{ color: "#e74c3c" }}>
+                    {t("Monday")}: {t("Closed")}
+                  </span>
+                </InfoText>
+              </InfoRow>
+              <InfoRow>
+                <InfoIcon>💲</InfoIcon>
+                <InfoText>
+                  {t("Admission")}:
+                  <TagContainer>
+                    <PriceTag>₹20 - {t("Adults")}</PriceTag>
+                    <PriceTag>₹10 - {t("Students")}</PriceTag>
+                    <PriceTag>
+                      {t("Free")} - {t("Children")}
+                    </PriceTag>
+                  </TagContainer>
+                </InfoText>
+              </InfoRow>
+            </MuseumInfo>
+
             <MuseumLink to="/tribal">{t("explore")} →</MuseumLink>
           </MuseumCard>
 
@@ -46,6 +116,36 @@ const HomePage = () => {
               {t("freedom")} {t("fighterMuseum")}
             </MuseumTitle>
             <MuseumDescription>{t("freedomMuseumDesc")}</MuseumDescription>
+
+            {/* Add pricing and timing information */}
+            <MuseumInfo>
+              <InfoRow>
+                <InfoIcon>🕒</InfoIcon>
+                <InfoText>
+                  {t("Tuesday - Friday")}: 10:00 AM - 6:00 PM
+                  <br />
+                  {t("Saturday - Sunday")}: 9:00 AM - 7:00 PM
+                  <br />
+                  <span style={{ color: "#e74c3c" }}>
+                    {t("Monday")}: {t("Closed")}
+                  </span>
+                </InfoText>
+              </InfoRow>
+              <InfoRow>
+                <InfoIcon>💲</InfoIcon>
+                <InfoText>
+                  {t("Admission")}:
+                  <TagContainer>
+                    <PriceTag>₹20 - {t("Adults")}</PriceTag>
+                    <PriceTag>₹10 - {t("Students")}</PriceTag>
+                    <PriceTag>
+                      {t("Free")} - {t("Children")}
+                    </PriceTag>
+                  </TagContainer>
+                </InfoText>
+              </InfoRow>
+            </MuseumInfo>
+
             <MuseumLink to="/freedom">{t("explore")} →</MuseumLink>
           </MuseumCard>
 

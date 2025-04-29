@@ -249,7 +249,7 @@ const MuseumContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 70px 30px 40px; // Increased top padding from 40px to 70px to push content down
+  padding: 20px 30px 40px; // Reduced from 70px to 50px top padding
   height: 100%;
   justify-content: space-between;
   text-align: center;
@@ -261,10 +261,114 @@ const MuseumContent = styled.div`
     rgba(26, 20, 16, 0) 100%
   );
 
+  // Add laptop-specific media query
+  @media (min-width: 769px) and (max-width: 1366px) {
+    padding: 40px 30px 40px; // Even less padding for laptops
+  }
+
   @media (max-width: 768px) {
-    padding: 60px 20px 25px; // Increased top padding here too
+    padding: 60px 20px 25px;
     justify-content: space-around;
   }
+`;
+
+// Update the TimingPill component to support two rows
+const TimingPill = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 3px 12px;
+  font-size: 0.75rem;
+  color: #f5efe7;
+  border: 1px solid rgba(211, 161, 100, 0.3);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  line-height: 1.4;
+
+  @media (max-width: 768px) {
+    top: 50px;
+    right: 10px;
+    padding: 6px 10px;
+    font-size: 0.65rem;
+  }
+`;
+
+const TimeRow = styled.div`
+  margin: 2px 0;
+  white-space: nowrap;
+`;
+
+const TimeLabel = styled.span`
+  color: #d3a164;
+  margin-right: 4px;
+`;
+
+const InfoContainer = styled.div`
+  margin: 0 auto;
+  width: 100%;
+  max-width: 85%;
+  margin-top: 5px; // Reduced from 10px
+  margin-bottom: 10px; // Reduced from 15px
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(5px);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(211, 161, 100, 0.2);
+  text-align: left;
+
+  @media (min-width: 769px) and (max-width: 1366px) {
+    padding: 8px; // Less padding on laptops
+    margin-top: 3px;
+    margin-bottom: 8px;
+  }
+
+  @media (max-width: 768px) {
+    display: none; // Hide on mobile to save space
+  }
+`;
+
+const InfoSection = styled.div`
+  margin-bottom: ${(props) => (props.last ? "0" : "6px")};
+  padding-bottom: ${(props) => (props.last ? "0" : "6px")};
+  border-bottom: ${(props) =>
+    props.last ? "none" : "1px solid rgba(211, 161, 100, 0.1)"};
+`;
+
+const InfoTitle = styled.div`
+  color: #d3a164;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 3px;
+`;
+
+const InfoText = styled.div`
+  color: #f5efe7;
+  font-size: 0.75rem;
+  line-height: 1.4;
+`;
+
+const PriceRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 2px;
+`;
+
+const PriceLabel = styled.span`
+  min-width: 65px;
+  margin-right: 5px;
+`;
+
+const PriceValue = styled.span`
+  color: #d3a164;
+  font-weight: 500;
 `;
 
 const MuseumIconBox = styled(motion.div)`
@@ -345,7 +449,7 @@ const MuseumTitle = styled.h2`
 const MuseumDescription = styled.p`
   font-size: 1.1rem;
   line-height: 1.6;
-  margin: 25px 0 30px; // Increased top margin from 20px to 25px
+  margin: 25px 0 20px; // Reduced bottom margin from 30px to 20px
   text-align: center;
   max-width: 90%;
   background: rgba(0, 0, 0, 0.3);
@@ -356,6 +460,12 @@ const MuseumDescription = styled.p`
   transform: translateY(0);
   opacity: 0.9;
   transition: transform 0.5s ease, opacity 0.5s ease, border-color 0.3s ease;
+
+  @media (min-width: 769px) and (max-width: 1366px) {
+    padding: 15px; // Less padding for laptop screens
+    margin: 15px 0 15px; // Less margin for laptop screens
+    font-size: 1rem; // Slightly smaller font for laptop screens
+  }
 
   @media (max-width: 768px) {
     font-size: 0.9rem;
@@ -648,6 +758,9 @@ const HeroSection = () => {
         style={{
           backgroundImage: `url(${foregroundElements})`,
           y: foregroundY,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: 1, // Ensure full opacity
         }}
       />
 
@@ -669,6 +782,14 @@ const HeroSection = () => {
             whileTap={{ scale: 0.98 }}
           >
             <MuseumTypeTag>{t("Tribal Museum")}</MuseumTypeTag>
+            <TimingPill>
+              <TimeRow>
+                <TimeLabel>{t("Tue-Fri")}:</TimeLabel> 10AM-6PM
+              </TimeRow>
+              <TimeRow>
+                <TimeLabel>{t("Sat-Sun")}:</TimeLabel> 9AM-7PM
+              </TimeRow>
+            </TimingPill>
             <MuseumBackground type="tribal" isActive={getIsActive("tribal")} />
             <MuseumContent>
               <ActiveIndicator
@@ -684,6 +805,22 @@ const HeroSection = () => {
               <MuseumDescription>
                 {t("heritageMuseumDescription")}
               </MuseumDescription>
+
+              <InfoContainer>
+                <InfoSection last>
+                  <InfoTitle>{t("Admission")}</InfoTitle>
+                  <InfoText>
+                    <PriceRow>
+                      <PriceLabel>{t("Adults")}</PriceLabel>
+                      <PriceValue>₹20</PriceValue>
+                    </PriceRow>
+                    <PriceRow>
+                      <PriceLabel>{t("Students")}</PriceLabel>
+                      <PriceValue>₹10</PriceValue>
+                    </PriceRow>
+                  </InfoText>
+                </InfoSection>
+              </InfoContainer>
 
               <ExploreIndicator>
                 {t("beginJourney")}
@@ -705,12 +842,18 @@ const HeroSection = () => {
             whileTap={{ scale: 0.98 }}
           >
             <MuseumTypeTag>{t("freedomMuseum")}</MuseumTypeTag>
-
+            <TimingPill>
+              <TimeRow>
+                <TimeLabel>{t("Tue-Fri")}:</TimeLabel> 10AM-6PM
+              </TimeRow>
+              <TimeRow>
+                <TimeLabel>{t("Sat-Sun")}:</TimeLabel> 9AM-7PM
+              </TimeRow>
+            </TimingPill>
             <MuseumBackground
               type="freedom"
               isActive={getIsActive("freedom")}
             />
-
             <MuseumContent>
               <ActiveIndicator
                 isActive={getIsActive("freedom")}
@@ -725,6 +868,22 @@ const HeroSection = () => {
               <MuseumDescription>
                 {t("freedomMuseumDescription")}
               </MuseumDescription>
+
+              <InfoContainer>
+                <InfoSection last>
+                  <InfoTitle>{t("Admission")}</InfoTitle>
+                  <InfoText>
+                    <PriceRow>
+                      <PriceLabel>{t("Adults")}</PriceLabel>
+                      <PriceValue>₹20</PriceValue>
+                    </PriceRow>
+                    <PriceRow>
+                      <PriceLabel>{t("Students")}</PriceLabel>
+                      <PriceValue>₹10</PriceValue>
+                    </PriceRow>
+                  </InfoText>
+                </InfoSection>
+              </InfoContainer>
 
               <ExploreIndicator>
                 {t("beginJourney")}

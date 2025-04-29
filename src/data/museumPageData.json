@@ -39,8 +39,8 @@
                     "hi": "छात्र और वरिष्ठ नागरिक"
                 },
                 "children": {
-                    "en": "Children (under 12)",
-                    "hi": "बच्चे (12 वर्ष से कम)"
+                    "en": "Children under 12",
+                    "hi": "12 वर्ष से कम उम्र के बच्चे"
                 },
                 "members": {
                     "en": "Members",
@@ -49,6 +49,10 @@
                 "free": {
                     "en": "Free",
                     "hi": "नि:शुल्क"
+                },
+                "specialDiscount": {
+                    "en": "Special discounts available for groups of 10 or more, please inquire at the ticket counter.",
+                    "hi": "10 या अधिक के समूहों के लिए विशेष छूट उपलब्ध है, कृपया टिकट काउंटर पर पूछताछ करें।"
                 }
             },
             "hoursTitle": {
@@ -67,6 +71,10 @@
                 "monday": {
                     "en": "Monday: Closed",
                     "hi": "सोमवार: बंद"
+                },
+                "holidayHours": {
+                    "en": "Museum may close early or have special hours on national holidays.",
+                    "hi": "संग्रहालय राष्ट्रीय अवकाश पर जल्दी बंद हो सकता है या विशेष समय हो सकता है।"
                 }
             },
             "locationTitle": {
