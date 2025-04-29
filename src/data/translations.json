@@ -123,7 +123,15 @@
         "price20": "₹20",
         "price10": "₹10",
         "Tue-Fri": "Tue-Fri",
-        "Sat-Sun": "Sat-Sun"
+        "Sat-Sun": "Sat-Sun",
+        "tribalArtTitle": "Traditional Art Forms",
+        "tribalCraftsTitle": "Handicrafts & Craftsmanship",
+        "tribalRitualsTitle": "Spiritual Practices & Rituals",
+        "tribalLifestyleTitle": "Daily Life & Culture",
+        "tribalArtDescription": "Explore the diverse artistic expressions of tribal communities, including vibrant paintings, intricate beadwork, and symbolic motifs that tell stories of their history and beliefs.",
+        "tribalCraftsDescription": "Discover the exceptional craftsmanship passed down through generations, showcasing masterful works in pottery, basketry, textiles, and metal crafts unique to each tribe.",
+        "tribalRitualsDescription": "Experience the spiritual world of indigenous peoples through exhibits featuring ceremonial objects, sacred instruments, and multimedia presentations of important rituals.",
+        "tribalLifestyleDescription": "Glimpse into the everyday lives of tribal communities through reconstructions of traditional dwellings, hunting tools, agricultural implements, and domestic artifacts."
     },
     "hi": {
         "home": "मुखपृष्ठ",
@@ -226,6 +234,14 @@
         "price20": "₹20",
         "price10": "₹10",
         "Tue-Fri": "मंगल-शुक्र",
-        "Sat-Sun": "शनि-रवि"
+        "Sat-Sun": "शनि-रवि",
+        "tribalArtTitle": "पारंपरिक कला रूप",
+        "tribalCraftsTitle": "हस्तशिल्प और कारीगरी",
+        "tribalRitualsTitle": "आध्यात्मिक प्रथाएँ और अनुष्ठान",
+        "tribalLifestyleTitle": "दैनिक जीवन और संस्कृति",
+        "tribalArtDescription": "आदिवासी समुदायों की विविध कलात्मक अभिव्यक्तियों का अन्वेषण करें, जिसमें जीवंत चित्रकला, जटिल मोतियों का काम, और प्रतीकात्मक नमूने शामिल हैं जो उनके इतिहास और मान्यताओं की कहानियां बताते हैं।",
+        "tribalCraftsDescription": "पीढ़ियों से चली आ रही असाधारण कारीगरी का पता लगाएं, जिसमें मिट्टी के बर्तन, टोकरी, कपड़ा और धातु शिल्प में प्रत्येक जनजाति के अनूठे कुशल कार्य दिखाए गए हैं।",
+        "tribalRitualsDescription": "अनुष्ठानिक वस्तुओं, पवित्र वाद्ययंत्रों और महत्वपूर्ण अनुष्ठानों के मल्टीमीडिया प्रस्तुतियों वाली प्रदर्शनियों के माध्यम से स्वदेशी लोगों की आध्यात्मिक दुनिया का अनुभव करें।",
+        "tribalLifestyleDescription": "पारंपरिक आवासों, शिकार उपकरणों, कृषि उपकरणों और घरेलू कलाकृतियों के पुनर्निर्माण के माध्यम से आदिवासी समुदायों के रोजमर्रा के जीवन की झलक देखें।"
     }
 }

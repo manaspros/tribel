@@ -5,7 +5,8 @@ import styled from "styled-components";
 import { useLanguage } from "../contexts/LanguageContext";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import galleries from "../data/galleries.json"; // Assuming you have a JSON file with gallery data
+import galleries from "../data/galleries.json";
+import galleryTranslations from "../data/galleryTranslations.json";
 
 const PageContainer = styled.div`
   background-color: #1a1410;
@@ -146,7 +147,16 @@ const BackLink = styled(Link)`
 `;
 
 const TribalGallery = () => {
-  const { t } = useLanguage();
+  const { language } = useLanguage();
+
+  // Function to get translation from gallery translations
+  const gt = (key) => {
+    if (galleryTranslations[language] && galleryTranslations[language][key]) {
+      return galleryTranslations[language][key];
+    }
+    // Fallback to English if translation is missing
+    return galleryTranslations.en[key] || key;
+  };
 
   return (
     <PageContainer>
@@ -156,7 +166,7 @@ const TribalGallery = () => {
           <svg width="20" height="20" viewBox="0 0 24 24" fill="#d3a164">
             <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
           </svg>
-          {t("backToHome")}
+          {gt("backToHome")}
         </BackLink>
 
         <PageTitle
@@ -164,15 +174,15 @@ const TribalGallery = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          {t("Galleries")}
+          {gt("pageTitle")}
         </PageTitle>
 
-        <GalleryIntro>{t("GalleriesDescription")}</GalleryIntro>
+        <GalleryIntro>{gt("pageIntro")}</GalleryIntro>
 
         <GalleryGrid>
           {galleries.map((gallery, index) => (
             <GalleryItem
-              key={gallery.id}
+              key={`gallery-${index}-${language}`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
@@ -180,16 +190,16 @@ const TribalGallery = () => {
               <GalleryImage image={`/gallery/${gallery.image}`} />
               <GalleryInfo>
                 <div>
-                  <GalleryTitle>{t(gallery.titleKey)}</GalleryTitle>
+                  <GalleryTitle>{gt(gallery.titleKey)}</GalleryTitle>
                   <GalleryDescription>
-                    {t(gallery.descriptionKey)}
+                    {gt(gallery.descriptionKey)}
                   </GalleryDescription>
                 </div>
                 <ExploreButton
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  {t("exploreGallery")} →
+                  {gt("exploreGallery")} →
                 </ExploreButton>
               </GalleryInfo>
             </GalleryItem>
