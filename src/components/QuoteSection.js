@@ -169,7 +169,7 @@ const quotes = {
 };
 
 const QuoteSection = () => {
-  const { language, t } = useLanguage();
+  const { language } = useLanguage();
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.3 });
 

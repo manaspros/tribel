@@ -26,7 +26,7 @@ const translationsData = {
     "Visiting the Museum": "Visiting the Museum",
     "Book the Ticket": "Book the Ticket",
     "Tribal Museum": "Tribal Museum", // Keep this for the museum card
-    "Museum CG": "Museum CG", // Add new translation for navbar logo
+    "Museum CG": "Museum CG", // Update navbar logo translation
     "Tribal Heritage Museum": "Tribal Heritage Museum",
     "Department of Tribal": "Department of Tribal",
     "Department of Scheduled Caste": "Department of Scheduled Caste",
@@ -81,6 +81,21 @@ const translationsData = {
     GalleriesDescription:
       "Explore our curated galleries showcasing the rich cultural heritage of indigenous tribal communities. Each gallery offers a unique perspective on traditional art, craftsmanship, spiritual practices, and daily life of tribal peoples across different regions.",
 
+    // Admission terms
+    Admission: "Admission",
+    Students: "Students",
+    Children: "Children",
+    seniors: "Seniors",
+    price20: "₹20",
+    price10: "₹10",
+    beginJourney: "Begin Journey",
+    tribal: "Tribal",
+    heritageMuseum: "Heritage Museum",
+    freedom: "Freedom",
+    fighterMuseum: "Fighter Museum",
+    "Tue-Fri": "Tue-Fri",
+    "Sat-Sun": "Sat-Sun",
+
     // Footer items
     backToHome: "Back to Home",
     aboutMuseum: "About The Museum",
@@ -102,7 +117,7 @@ const translationsData = {
     "Visiting the Museum": "संग्रहालय भ्रमण",
     "Book the Ticket": "टिकट बुक करें",
     "Tribal Museum": "आदिवासी संग्रहालय", // Keep this for the museum card
-    "Tribal CG": "आदिवासी छत्तीसगढ़", // Add new translation for navbar logo
+    "Museum CG": "संग्रहालय छ.ग.", // Update navbar logo translation
     "Tribal Heritage Museum": "आदिवासी विरासत संग्रहालय",
     "Department of Tribal": "आदिम जाति विभाग",
     "Department of Scheduled Caste": "अनुसूचित जाति विभाग",
@@ -156,6 +171,21 @@ const translationsData = {
     // Gallery descriptions
     GalleriesDescription:
       "हमारी क्यूरेटेड गैलरी देखें जो स्वदेशी आदिवासी समुदायों की समृद्ध सांस्कृतिक विरासत को प्रदर्शित करती है। प्रत्येक गैलरी पारंपरिक कला, शिल्प कौशल, आध्यात्मिक प्रथाओं और विभिन्न क्षेत्रों के आदिवासी लोगों के दैनिक जीवन पर एक अनूठा दृष्टिकोण प्रदान करती है।",
+
+    // Admission terms
+    Admission: "प्रवेश",
+    Students: "छात्र",
+    Children: "बच्चे",
+    seniors: "वरिष्ठ नागरिक",
+    price20: "₹20",
+    price10: "₹10",
+    beginJourney: "यात्रा शुरू करें",
+    tribal: "आदिवासी",
+    heritageMuseum: "विरासत संग्रहालय",
+    freedom: "स्वतंत्रता",
+    fighterMuseum: "सेनानी संग्रहालय",
+    "Tue-Fri": "मंगल-शुक्र",
+    "Sat-Sun": "शनि-रवि",
 
     // Footer items
     backToHome: "वापस होम पेज पर",

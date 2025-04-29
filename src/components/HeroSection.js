@@ -371,41 +371,6 @@ const PriceValue = styled.span`
   font-weight: 500;
 `;
 
-const MuseumIconBox = styled(motion.div)`
-  width: 90px;
-  height: 90px;
-  border-radius: 25px;
-  background: rgba(211, 161, 100, 0.15);
-  backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: auto;
-  border: 2px solid rgba(211, 161, 100, 0.3);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  position: relative;
-  margin-top: 15px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  @media (max-width: 768px) {
-    width: 60px;
-    height: 60px;
-    border-radius: 15px;
-    margin-top: 5px;
-  }
-
-  svg {
-    width: 45px;
-    height: 45px;
-    fill: #d3a164;
-
-    @media (max-width: 768px) {
-      width: 35px;
-      height: 35px;
-    }
-  }
-`;
-
 const MuseumTitle = styled.h2`
   font-size: clamp(2rem, 4vw, 2.6rem); // Slightly reduced font size
   font-family: "Playfair Display", serif;
@@ -812,11 +777,11 @@ const HeroSection = () => {
                   <InfoText>
                     <PriceRow>
                       <PriceLabel>{t("Adults")}</PriceLabel>
-                      <PriceValue>₹20</PriceValue>
+                      <PriceValue>{t("price20")}</PriceValue>
                     </PriceRow>
                     <PriceRow>
                       <PriceLabel>{t("Students")}</PriceLabel>
-                      <PriceValue>₹10</PriceValue>
+                      <PriceValue>{t("price10")}</PriceValue>
                     </PriceRow>
                   </InfoText>
                 </InfoSection>
@@ -875,11 +840,11 @@ const HeroSection = () => {
                   <InfoText>
                     <PriceRow>
                       <PriceLabel>{t("Adults")}</PriceLabel>
-                      <PriceValue>₹20</PriceValue>
+                      <PriceValue>{t("price20")}</PriceValue>
                     </PriceRow>
                     <PriceRow>
                       <PriceLabel>{t("Students")}</PriceLabel>
-                      <PriceValue>₹10</PriceValue>
+                      <PriceValue>{t("price10")}</PriceValue>
                     </PriceRow>
                   </InfoText>
                 </InfoSection>

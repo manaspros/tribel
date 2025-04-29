@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef, useMemo } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLanguage } from "../contexts/LanguageContext";
 import logo2 from "../assets/logo2.png";
 import logo3 from "../assets/logo3.png";
@@ -457,7 +457,6 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { language, toggleLanguage, t, version } = useLanguage();
   const mobileMenuRef = useRef(null);
-  const location = useLocation();
   const navigate = useNavigate();
 
   // Log when component re-renders due to language change
