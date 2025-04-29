@@ -562,25 +562,23 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
       >
         {/* Add a hidden debug element to verify current language */}
         <div style={{ display: "none" }}>Current language: {language}</div>
-
-        {/* Modified left side with multiple logos */}
         <LogosGroupLeft>
           <AdditionalLogo
             src={logo2}
             alt="Partner Logo"
             as={motion.img}
-            whileHover={{ scale: 1.4 }}
+            initial={{ scale: 1.6 }}
+            animate={{ scale: 1.4 }}
             whileTap={{ scale: 0.95 }}
           />
 
           <Link to="/">
             <LogoContainer>
-              <LogoImage src={logo3} alt={t("Tribal Museum")} />
-              <LogoText>{t("Tribal Museum")}</LogoText>
+              <LogoImage src={logo3} alt={t("Museum CG")} />
+              <LogoText>{t("Museum CG")}</LogoText>
             </LogoContainer>
           </Link>
         </LogosGroupLeft>
-
         <NavLinks>
           <NavLink
             as="div"
@@ -738,7 +736,6 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
             </BookTicketButton>
           </CTAButtonsWrapper>
         </NavLinks>
-
         <div style={{ display: "flex", alignItems: "center" }}>
           <LanguageToggle
             onClick={handleLanguageToggle}

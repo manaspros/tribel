@@ -25,7 +25,8 @@ const translationsData = {
     "Our Collection": "Our Collection",
     "Visiting the Museum": "Visiting the Museum",
     "Book the Ticket": "Book the Ticket",
-    "Tribal Museum": "Tribal Museum",
+    "Tribal Museum": "Tribal Museum", // Keep this for the museum card
+    "Museum CG": "Museum CG", // Add new translation for navbar logo
     "Tribal Heritage Museum": "Tribal Heritage Museum",
     "Department of Tribal": "Department of Tribal",
     "Department of Scheduled Caste": "Department of Scheduled Caste",
@@ -100,7 +101,8 @@ const translationsData = {
     "Our Collection": "हमारा संग्रह",
     "Visiting the Museum": "संग्रहालय भ्रमण",
     "Book the Ticket": "टिकट बुक करें",
-    "Tribal Museum": "आदिवासी संग्रहालय",
+    "Tribal Museum": "आदिवासी संग्रहालय", // Keep this for the museum card
+    "Tribal CG": "आदिवासी छत्तीसगढ़", // Add new translation for navbar logo
     "Tribal Heritage Museum": "आदिवासी विरासत संग्रहालय",
     "Department of Tribal": "आदिम जाति विभाग",
     "Department of Scheduled Caste": "अनुसूचित जाति विभाग",
