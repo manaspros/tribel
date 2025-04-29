@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useLanguage } from "../contexts/LanguageContext";
 import logo2 from "../assets/logo2.png";
 import logo3 from "../assets/logo3.png";
@@ -423,6 +423,8 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { language, toggleLanguage, t, version } = useLanguage();
   const mobileMenuRef = useRef(null);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   // Log when component re-renders due to language change
   useEffect(() => {
@@ -517,6 +519,18 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
     setMobileMenuOpen(false);
   };
 
+  // Handle about museum navigation - works from any page
+  const handleAboutClick = () => {
+    if (location.pathname === "/") {
+      // If on home page, scroll to section
+      scrollToStats();
+    } else {
+      // If on another page, navigate to home with hash (without checking location first)
+      navigate("/#museum-stats");
+    }
+    setMobileMenuOpen(false);
+  };
+
   return (
     <>
       {/* Main Navigation Container - always at the top */}
@@ -552,7 +566,7 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
           <NavLink
             as="div"
             style={{ cursor: "pointer" }}
-            onClick={scrollToStats}
+            onClick={handleAboutClick}
           >
             {t("About Museum")}
           </NavLink>
@@ -754,7 +768,7 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
 
               <MobileNavLink
                 as="div"
-                onClick={scrollToStats}
+                onClick={handleAboutClick}
                 style={{ cursor: "pointer" }}
               >
                 {t("About Museum")}

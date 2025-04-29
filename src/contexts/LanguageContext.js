@@ -1,7 +1,17 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 import translationsFromJson from "../data/translations.json"; // Assuming translations are in JSON format
 
-// Core translations dictionary - cleaned up and organized
+// Before the LanguageContext creation, ensure the translationsFromJson includes GalleriesDescription for English
+// This ensures both translation sources have the key
+if (translationsFromJson && translationsFromJson.en) {
+  // Make sure the GalleriesDescription key exists in English translations
+  if (!translationsFromJson.en.GalleriesDescription) {
+    translationsFromJson.en.GalleriesDescription =
+      "Explore our curated galleries showcasing the rich cultural heritage of indigenous tribal communities. Each gallery offers a unique perspective on traditional art, craftsmanship, spiritual practices, and daily life of tribal peoples across different regions.";
+    console.log("Added missing GalleriesDescription translation to English");
+  }
+}
+
 const translationsData = {
   en: {
     // Navbar items
@@ -65,6 +75,10 @@ const translationsData = {
 
     // Freedom Museum Page
     "Freedom Fighter Museum": "Tribal Freedom Fighter Museum",
+
+    // Gallery descriptions
+    GalleriesDescription:
+      "Explore our curated galleries showcasing the rich cultural heritage of indigenous tribal communities. Each gallery offers a unique perspective on traditional art, craftsmanship, spiritual practices, and daily life of tribal peoples across different regions.",
 
     // Footer items
     backToHome: "Back to Home",
@@ -136,6 +150,10 @@ const translationsData = {
 
     // Freedom Museum Page
     "Freedom Fighter Museum": "आदिवासी स्वतंत्रता सेनानी संग्रहालय",
+
+    // Gallery descriptions
+    GalleriesDescription:
+      "हमारी क्यूरेटेड गैलरी देखें जो स्वदेशी आदिवासी समुदायों की समृद्ध सांस्कृतिक विरासत को प्रदर्शित करती है। प्रत्येक गैलरी पारंपरिक कला, शिल्प कौशल, आध्यात्मिक प्रथाओं और विभिन्न क्षेत्रों के आदिवासी लोगों के दैनिक जीवन पर एक अनूठा दृष्टिकोण प्रदान करती है।",
 
     // Footer items
     backToHome: "वापस होम पेज पर",

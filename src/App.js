@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { Loader } from "./components/Loader";
 import { Cursor } from "./components/Cursor";
+import ScrollToHashElement from "./components/ScrollToHashElement";
 import Home from "./pages/Home";
 import VirtualTour from "./pages/VirtualTour";
 import TribalMuseumPage from "./pages/TribalMuseumPage";
@@ -18,18 +19,14 @@ import { LanguageProvider } from "./contexts/LanguageContext";
 import "./styles/global.css";
 
 function App() {
-  useEffect(() => {
-    // Preload assets
-    // Initialize any global libraries
-  }, []);
-
   return (
     <LoadingProvider>
       <LanguageProvider>
         <Cursor />
         <Loader />
         <AnimatePresence mode="wait">
-          <BrowserRouter>
+          <Router>
+            <ScrollToHashElement />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/virtual-tour" element={<VirtualTour />} />
@@ -42,11 +39,10 @@ function App() {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
             </Routes>
-          </BrowserRouter>
+          </Router>
         </AnimatePresence>
       </LanguageProvider>
     </LoadingProvider>
   );
 }
-
 export default App;
