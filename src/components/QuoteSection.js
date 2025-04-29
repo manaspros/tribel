@@ -134,36 +134,36 @@ const QuoteDecorationRight = styled.div`
 const quotes = {
   en: [
     {
-      text: "When we heal the earth, we heal ourselves.",
-      author: "David Orr",
-      role: "Environmental Educator",
+      text: "Corruption is a serious hindrance to the development of the socialist pattern. When there is scope for corruption there cannot be equal opportunity.",
+      author: "Shri Gulzari Lal Nanda",
+      role: "Indian Politician and Freedom Fighter",
     },
     {
-      text: "The indigenous understanding has its basis of spirituality in a recognition of the interconnectedness and interdependence of all living things.",
-      author: "Haunani-Kay Trask",
-      role: "Hawaiian Educator and Activist",
+      text: "Sabka Sath, Sabka Vikas < Sabka Vishwas, Sabka Prayas. ",
+      author: "Shri Narendra Modi.",
+      role: "Prime Minister of India",
     },
     {
-      text: "We are a part of everything that is beneath us, above us, and around us. Our past is our present, our present is our future, and our future is seven generations past and present.",
-      author: "Winona LaDuke",
-      role: "Anishinaabe Activist and Environmentalist",
+      text: "The preservation of freedom is not the task of soldiers alone. The whole nation has to be strong.",
+      author: "Shri Lal Bahadur Shastri",
+      role: "Former Prime Minister of India",
     },
   ],
   hi: [
     {
-      text: "जब हम पृथ्वी को ठीक करते हैं, तो हम खुद को ठीक करते हैं।",
-      author: "डेविड ओर्र",
-      role: "पर्यावरण शिक्षक",
+      text: "भ्रष्टाचार समाजवादी पैटर्न के विकास में एक गंभीर बाधा है। जब भ्रष्टाचार की गुंजाइश होती है तो समान अवसर नहीं हो सकते।",
+      author: "श्री गुलजारी लाल नंदा",
+      role: "भारतीय राजनेता और स्वतंत्रता सेनानी",
     },
     {
-      text: "स्वदेशी समझ का आधार आध्यात्मिकता में है, सभी जीवित चीजों के परस्पर जुड़ाव और परस्पर निर्भरता की पहचान में।",
-      author: "हौनानी-के त्रास्क",
-      role: "हवाईयन शिक्षक और कार्यकर्ता",
+      text: "सबका साथ, सबका विकास < सबका विश्वास, सबका प्रयास।",
+      author: "श्री नरेंद्र मोदी",
+      role: "भारत के प्रधानमंत्री",
     },
     {
-      text: "हम हमारे नीचे, ऊपर और हमारे चारों ओर की हर चीज का एक हिस्सा हैं। हमारा अतीत हमारा वर्तमान है, हमारा वर्तमान हमारा भविष्य है, और हमारा भविष्य सात पीढ़ियों का अतीत और वर्तमान है।",
-      author: "विनोना लाड्यूके",
-      role: "अनिशिनाबे कार्यकर्ता और पर्यावरणविद्",
+      text: "स्वतंत्रता का संरक्षण केवल सैनिकों का कार्य नहीं है। पूरे राष्ट्र को मजबूत होना चाहिए।",
+      author: "श्री लाल बहादुर शास्त्री",
+      role: "भारत के पूर्व प्रधानमंत्री",
     },
   ],
 };
