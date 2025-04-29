@@ -7,13 +7,6 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import galleryDescriptions from "../data/galleryDescriptions.json";
 
-// Import freedom gallery images (assuming these files exist)
-import halbaImg from "../assets/tribel/IMG-20250408-WA0015.jpg";
-import bhumkalImg from "../assets/tribel/IMG-20250408-WA0016.jpg";
-import quitIndiaImg from "../assets/tribel/IMG-20250408-WA0018.jpg";
-import jharkhandImg from "../assets/tribel/IMG-20250408-WA0019.jpg";
-import narmadaImg from "../assets/tribel/childwhitebg.jpg";
-
 const PageContainer = styled.div`
   background-color: #1a1410;
   color: #fff;
@@ -80,7 +73,7 @@ const GalleryItem = styled(motion.div)`
 
 const GalleryImage = styled.div`
   flex: 1;
-  background-image: ${(props) => `url(${props.image})`};
+  background-image: ${(props) => `url(/gallery/freedom/${props.image}.jpg)`};
   background-size: cover;
   background-position: center;
   position: relative;
@@ -237,68 +230,29 @@ const FreedomGallery = () => {
     }
   }, [language, version, prevLanguage]);
 
-  // Get description from JSON file based on current language
-  const getGalleryDescription = (key) => {
-    if (galleryDescriptions[key] && galleryDescriptions[key][language]) {
-      return galleryDescriptions[key][language];
-    }
-    return `Description not available for ${key}`;
+  // Generate gallery data directly from the JSON file
+  const generateGalleryData = () => {
+    // Get all rebellion keys (excluding titles, locations, durations, and galleryIntro)
+    const rebellionKeys = Object.keys(galleryDescriptions).filter(
+      key => !['titles', 'locations', 'durations', 'galleryIntro'].includes(key)
+    );
+    
+    // Generate gallery items
+    return rebellionKeys.map((key, index) => {
+      return {
+        id: index + 1,
+        titleKey: key,
+        descriptionKey: key,
+        // Use the key name as image filename
+        image: key.replace(/([A-Z])/g, "-$1").toLowerCase(),
+        // For simplicity assigning locations and durations based on entries in JSON
+        locationKey: index % 2 === 0 ? "centralIndia" : "bastarRegion",
+        durationKey: index % 3 === 0 ? "overSixMonths" : "severalMonths",
+      };
+    });
   };
 
-  // Get title, location, or duration translation
-  const getTranslation = (category, key) => {
-    if (
-      galleryDescriptions[category] &&
-      galleryDescriptions[category][key] &&
-      galleryDescriptions[category][key][language]
-    ) {
-      return galleryDescriptions[category][key][language];
-    }
-    return key; // Fallback to key if translation not found
-  };
-
-  const galleries = [
-    {
-      id: 1,
-      titleKey: "halbaRebellion",
-      descriptionKey: "halbaRebellion",
-      image: halbaImg,
-      locationKey: "centralIndia",
-      durationKey: "severalMonths",
-    },
-    {
-      id: 2,
-      titleKey: "bhumkalRevolt",
-      descriptionKey: "bhumkalRevolt",
-      image: bhumkalImg,
-      locationKey: "bastarRegion",
-      durationKey: "overSixMonths",
-    },
-    {
-      id: 3,
-      titleKey: "quitIndiaMovement",
-      descriptionKey: "quitIndiaMovement",
-      image: quitIndiaImg,
-      locationKey: "multipleRegions",
-      durationKey: "period1942To1945",
-    },
-    {
-      id: 4,
-      titleKey: "jharkhandMovement",
-      descriptionKey: "jharkhandMovement",
-      image: jharkhandImg,
-      locationKey: "easternIndia",
-      durationKey: "overThirtyYears",
-    },
-    {
-      id: 5,
-      titleKey: "narmadaBachaoAndolan",
-      descriptionKey: "narmadaBachaoAndolan",
-      image: narmadaImg,
-      locationKey: "narmadaValley",
-      durationKey: "ongoingSince1985",
-    },
-  ];
+  const galleries = generateGalleryData();
 
   return (
     <PageContainer>
@@ -329,7 +283,7 @@ const FreedomGallery = () => {
         </BackLink>
 
         <PageTitle
-          key={`title-${language}`} // Force re-render animation on language change
+          key={`title-${language}`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -337,12 +291,14 @@ const FreedomGallery = () => {
           {t("Galleries")}
         </PageTitle>
 
-        <GalleryIntro>{getGalleryDescription("galleryIntro")}</GalleryIntro>
+        <GalleryIntro>
+          {galleryDescriptions.galleryIntro[language]}
+        </GalleryIntro>
 
         <GalleryGrid>
           {galleries.map((gallery, index) => (
             <GalleryItem
-              key={`gallery-${gallery.id}-${language}`} // Force re-render on language change
+              key={`gallery-${gallery.id}-${language}`}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2, duration: 0.7 }}
@@ -350,10 +306,10 @@ const FreedomGallery = () => {
               <GalleryImage image={gallery.image} />
               <GalleryInfo>
                 <GalleryTitle>
-                  {getTranslation("titles", gallery.titleKey)}
+                  {galleryDescriptions.titles[gallery.titleKey][language]}
                 </GalleryTitle>
                 <GalleryDescription>
-                  {getGalleryDescription(gallery.descriptionKey)}
+                  {galleryDescriptions[gallery.descriptionKey][language]}
                 </GalleryDescription>
 
                 <GalleryDetails>
@@ -366,7 +322,7 @@ const FreedomGallery = () => {
                     >
                       <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                     </svg>
-                    {getTranslation("locations", gallery.locationKey)}
+                    {galleryDescriptions.locations[gallery.locationKey][language]}
                   </GalleryDetail>
 
                   <GalleryDetail>
@@ -378,7 +334,7 @@ const FreedomGallery = () => {
                     >
                       <path d="M11.99 2C6.47 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 11.99 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
                     </svg>
-                    {getTranslation("durations", gallery.durationKey)}
+                    {galleryDescriptions.durations[gallery.durationKey][language]}
                   </GalleryDetail>
                 </GalleryDetails>
 
