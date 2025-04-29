@@ -5,24 +5,28 @@
     },
     "titles": {
         "halbaRebellion": {
-            "en": "Halba Rebellion (1830)",
-            "hi": "हल्बा विद्रोह (1830)"
+            "en": "Halba Rebellion (1774-1779)",
+            "hi": "हल्बा विद्रोह (1774-1779)"
         },
-        "bhumkalRevolt": {
-            "en": "Bhumkal Revolt (1910)",
-            "hi": "भूमकाल विद्रोह (1910)"
+        "bhopalpatnamRebellion": {
+            "en": "Bhopalpatnam Rebellion (1795)",
+            "hi": "भोपालपटनम विद्रोह (1795)"
         },
-        "quitIndiaMovement": {
-            "en": "Tribal Participation in Quit India Movement (1942)",
-            "hi": "भारत छोड़ो आंदोलन में आदिवासी भागीदारी (1942)"
+        "tarapurRebellion": {
+            "en": "Tarapur Rebellion (1842-1854)",
+            "hi": "तरापुर विद्रोह (1842-1854)"
         },
-        "jharkhandMovement": {
-            "en": "Jharkhand Movement (1970s)",
-            "hi": "झारखंड आंदोलन (1970 का दशक)"
+        "koiRebellion": {
+            "en": "Koi Rebellion (1859)",
+            "hi": "कोई विद्रोह (1859)"
         },
-        "narmadaBachaoAndolan": {
-            "en": "Narmada Bachao Andolan (2000s)",
-            "hi": "नर्मदा बचाओ आंदोलन (2000 का दशक)"
+        "lingagiriRebellion": {
+            "en": "Lingagiri Rebellion (1856-1860)",
+            "hi": "लिंगागिरी विद्रोह (1856-1860)"
+        },
+        "muriaRebellion": {
+            "en": "Muria Rebellion (1876)",
+            "hi": "मुरिया विद्रोह (1876)"
         }
     },
     "locations": {
@@ -73,26 +77,24 @@
         "en": "The Halba Rebellion marked one of the earliest organized tribal resistances against British colonial rule in Central India. Led by tribal chieftain Shambu Singh, the Halba tribes rose up against excessive taxation, land appropriation, and the erosion of traditional tribal autonomy imposed by the British East India Company. This gallery showcases rare artifacts, maps, and accounts from this pivotal uprising that, despite its ultimate defeat, set a powerful precedent for indigenous resistance.",
         "hi": "हल्बा विद्रोह मध्य भारत में ब्रिटिश औपनिवेशिक शासन के खिलाफ सबसे पहले संगठित आदिवासी प्रतिरोध में से एक था। आदिवासी मुखिया शंभू सिंह के नेतृत्व में, हल्बा जनजातियां ब्रिटिश ईस्ट इंडिया कंपनी द्वारा लगाए गए अत्यधिक कराधान, भूमि अधिग्रहण, और पारंपरिक आदिवासी स्वायत्तता के क्षरण के खिलाफ उठ खड़ी हुईं। यह गैलरी इस महत्वपूर्ण विद्रोह से दुर्लभ कलाकृतियों, मानचित्रों और वृतांतों को प्रदर्शित करती है, जो अपनी अंतिम हार के बावजूद, स्वदेशी प्रतिरोध के लिए एक शक्तिशाली उदाहरण स्थापित किया।"
     },
-    "bhumkalRevolt": {
-        "en": "The Bhumkal Revolt of 1910, also known as the Bastar Rebellion, stands as one of the most significant tribal uprisings in Indian history. Led by tribal leader Gunda Dhur, this powerful movement united the Muria, Maria, and Bhattra communities against British colonial exploitation. Our gallery features original photographs, traditional weapons, and firsthand accounts that bring to life this extraordinary chapter of indigenous resistance that continues to inspire tribal identity and pride.",
-        "hi": "1910 का भूमकाल विद्रोह, जिसे बस्तर विद्रोह के नाम से भी जाना जाता है, भारतीय इतिहास में सबसे महत्वपूर्ण आदिवासी विद्रोहों में से एक के रूप में खड़ा है। आदिवासी नेता गुंडा धुर के नेतृत्व में, इस शक्तिशाली आंदोलन ने ब्रिटिश औपनिवेशिक शोषण के खिलाफ मुरिया, मारिया और भत्रा समुदायों को एकजुट किया। हमारी गैलरी में मूल तस्वीरें, पारंपरिक हथियार और प्रत्यक्षदर्शी खाते शामिल हैं जो स्वदेशी प्रतिरोध के इस असाधारण अध्याय को जीवंत करते हैं जो आदिवासी पहचान और गौरव को प्रेरित करना जारी रखता है।"
+    "bhopalpatnamRebellion": {
+        "en": "The Bhopalpatnam Rebellion of 1795 was sparked by British efforts to expand their empire into Bastar. The Governor of Bengal sent Captain Blunt to assess the East India Company’s prospects, and Captain Blunt attempted to enter Bastar through Rajnandgaon, Chanda, and Aheri Zamindari. The locals, sensing cultural threats, revolted, marking the first significant indigenous resistance against foreign rule.",
+        "hi": "1795 में हुए भोपालपटनम विद्रोह की चिंगारी ब्रिटिशों द्वारा बस्तर में अपने साम्राज्य विस्तार के प्रयासों से लगी। बंगाल के गवर्नर ने कैप्टन ब्लंट को ईस्ट इंडिया कंपनी की संभावनाएं जांचने के लिए भेजा। कैप्टन ब्लंट ने राजनांदगांव, चांदा और अहेरी ज़मींदारी मार्ग से बस्तर में प्रवेश का प्रयास किया। सांस्कृतिक खतरे को भांपकर स्थानीय आदिवासियों ने विद्रोह कर दिया, जिससे विदेशी शासन के खिलाफ उनके प्रारंभिक प्रतिरोध का पता चलता है।"
     },
-    "quitIndiaMovement": {
-        "en": "During the pivotal Quit India Movement of 1942, tribal communities across India made significant but often overlooked contributions to the independence struggle. This exhibit documents how indigenous groups in Jharkhand, Chhattisgarh, and Odisha organized protests, disrupted colonial infrastructure, and provided crucial support to underground freedom fighters. Displays include protest flags, correspondence between tribal leaders and national movement figures, and oral histories collected from movement participants.",
-        "hi": "1942 के निर्णायक भारत छोड़ो आंदोलन के दौरान, भारत भर के आदिवासी समुदायों ने स्वतंत्रता संग्राम में महत्वपूर्ण लेकिन अक्सर अनदेखी योगदान दिया। यह प्रदर्शनी दस्तावेज करती है कि कैसे झारखंड, छत्तीसगढ़ और ओडिशा में स्वदेशी समूहों ने विरोध प्रदर्शन आयोजित किए, औपनिवेशिक बुनियादी ढांचे को बाधित किया, और भूमिगत स्वतंत्रता सेनानियों को महत्वपूर्ण समर्थन प्रदान किया। प्रदर्शनों में विरोध ध्वज, आदिवासी नेताओं और राष्ट्रीय आंदोलन के प्रमुखों के बीच पत्राचार, और आंदोलन प्रतिभागियों से एकत्रित मौखिक इतिहास शामिल हैं।"
+    "tarapurRebellion": {
+        "en": "The Tarapur Rebellion in Bakawand tehsil of Bastar arose due to Bhonsle encroachment and the 'Takli' tax system. Diwan Dalganjan Singh opposed the tax increase and went to Jaipur, while the appointment of Jagbandhu in his place angered the locals. Dalganjan Singh, along with Muria, Madia, and Gond tribes, resisted British and Murd forces, but were subdued with separate taxation.",
+        "hi": "बस्तर के बकावंड तहसील में हुआ तरापुर विद्रोह भोंसलों की बढ़ती दखल और 'तकली' नामक अत्यधिक कर प्रणाली के कारण भड़का। दीवान दलगंजन सिंह ने कर बढ़ोतरी का विरोध किया और जयपुर चले गए, जबकि उनके स्थान पर जगबंधु की नियुक्ति से आदिवासी क्रोधित हो गए। दलगंजन सिंह ने मुरिया, माड़िया और गोंड जनजातियों के साथ मिलकर ब्रिटिश और मुरद सेना का विरोध किया, लेकिन उन्हें अलग-अलग कर के दबा दिया गया।"
     },
-    "jharkhandMovement": {
-        "en": "The Jharkhand Movement represents one of the most successful campaigns for tribal autonomy in modern India. This gallery chronicles the decades-long struggle led by tribal intellectuals and activists demanding recognition of Adivasi rights and separate statehood. Through photographs, movement banners, newspaper clippings, and video testimonials, visitors witness the remarkable journey that culminated in the formation of Jharkhand state in 2000, securing a historic victory for tribal self-determination.",
-        "hi": "झारखंड आंदोलन आधुनिक भारत में आदिवासी स्वायत्तता के लिए सबसे सफल अभियानों में से एक का प्रतिनिधित्व करता है। यह गैलरी आदिवासी अधिकारों और अलग राज्य की मांग के लिए आदिवासी बुद्धिजीवियों और कार्यकर्ताओं के नेतृत्व में दशकों लंबे संघर्ष का इतिहास बताती है। तस्वीरों, आंदोलन बैनरों, अखबारों की कतरनों और वीडियो गवाहियों के माध्यम से, आगंतुक उस उल्लेखनीय यात्रा को देखते हैं जिसका परिणाम 2000 में झारखंड राज्य के गठन के रूप में हुआ, जिससे आदिवासी आत्मनिर्णय के लिए एक ऐतिहासिक जीत सुरक्षित हुई।"
+    "koiRebellion": {
+        "en": "After the death of King Bhopal Dev in 1853, British influence grew in Bastar. A Hyderabad trader was granted the contract for cutting timber for railway construction, leading to exploitation of the locals. Tribesmen led by Juga Raju, Jumma Raju, and Bapi Raju attacked the laborers with spears and torches. This marked one of the first organized tribal uprisings against British exploitation.",
+        "hi": "1853 में राजा भूपाल देव की मृत्यु के बाद बस्तर में ब्रिटिश प्रभाव बढ़ने लगा। रेलवे निर्माण के लिए लकड़ी काटने का ठेका एक हैदराबादी व्यापारी को दिया गया, जिसने आदिवासियों का शोषण शुरू किया। आदिवासियों ने भालों और मशालों के साथ मजदूरों पर हमला कर दिया। जुगा राजू, जुम्मा राजू और बापी राजू जैसे नेताओं ने इस संघर्ष का नेतृत्व किया, जिससे यह ब्रिटिश शोषण के खिलाफ प्रारंभिक संगठित आदिवासी विद्रोहों में से एक बना।"
     },
-    "narmadaBachaoAndolan": {
-        "en": "The Narmada Bachao Andolan (Save Narmada Movement) represents a powerful modern example of tribal communities fighting against displacement and environmental injustice. This exhibit documents how Adivasi peoples in the Narmada Valley organized to protect their ancestral lands from submergence by large dam projects. Through protest art, activist journals, documentary photographs, and interactive displays, visitors engage with this ongoing struggle that has raised global awareness about indigenous rights and environmental justice.",
-        "hi": "नर्मदा बचाओ आंदोलन विस्थापन और पर्यावरणीय अन्याय के खिलाफ लड़ने वाले आदिवासी समुदायों का एक शक्तिशाली आधुनिक उदाहरण है। यह प्रदर्शनी दर्शाती है कि कैसे नर्मदा घाटी के आदिवासी लोगों ने बड़े बांध परियोजनाओं द्वारा अपनी पैतृक भूमि को डूबने से बचाने के लिए संगठित किया। विरोध कला, कार्यकर्ता पत्रिकाओं, वृत्तचित्र तस्वीरों और इंटरैक्टिव प्रदर्शनों के माध्यम से, आगंतुक इस चल रहे संघर्ष के साथ जुड़ते हैं जिसने स्वदेशी अधिकारों और पर्यावरणीय न्याय के बारे में वैश्विक जागरूकता बढ़ाई है।"
+    "lingagiriRebellion": {
+        "en": "The Lingagiri Rebellion was driven by oppressive British policies and violations of tribal rights. Led by leaders Dhurwarav, Telanga, and others, the tribes of Madia and Gond revolted from the Chintalar hills. On March 3, 1856, the British attacked, capturing 480 women and children, and on March 5, Dhurwarav was hanged. Talukedar Dhurwarav, Yagora Rao, Venkut, and Baburav fought against British domination.",
+        "hi": "लिंगागिरी विद्रोह ब्रिटिशों की दमनकारी नीतियों और आदिवासी अधिकारों के उल्लंघन के कारण हुआ। धुर्वाराव, तेलंगा और अन्य नेताओं के नेतृत्व में माड़िया और गोंड जनजातियों ने चिंतलार पहाड़ियों को आधार बनाकर विद्रोह किया। 3 मार्च 1856 को ब्रिटिशों ने हमला किया, जिसमें 480 महिलाओं और बच्चों को पकड़ लिया गया और 5 मार्च को धुर्वाराव को फांसी दे दी गई। तालुकेदार धुर्वाराव, यगोरा राव, व्यंकुट और बाबूराव ने ब्रिटिश वर्चस्व के खिलाफ संघर्ष किया।"
     },
-    "buttonLabels": {
-        "exploreGallery": {
-            "en": "Explore Gallery",
-            "hi": "गैलरी का अन्वेषण करें"
-        }
+    "muriaRebellion": {
+        "en": "The Muria Rebellion, although one of the earliest examples of indigenous resistance to British colonial rule, stands out as a persistent, years-long revolt. The Muria tribes, under the leadership of Nageshwar Singh, launched their struggle for autonomy from the oppressive and exploitative policies of the British.",
+        "hi": "मुरिया विद्रोह, हालांकि ब्रिटिश औपनिवेशिक शासन के खिलाफ स्वदेशी प्रतिरोध के पहले उदाहरणों में से एक था, यह एक लगातार, वर्षों तक चलने वाला विद्रोह के रूप में सामने आता है। नरेश्वर सिंह के नेतृत्व में मुरिया जनजातियों ने ब्रिटिशों की दमनकारी और शोषणकारी नीतियों से स्वतंत्रता के लिए संघर्ष शुरू किया।"
     }
 }
