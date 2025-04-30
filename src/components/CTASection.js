@@ -223,8 +223,8 @@ const CTASection = () => {
               boxShadow: "0 10px 25px rgba(211, 161, 100, 0.5)",
             }}
             whileTap={{ scale: 0.95 }}
-            as="a"
-            href="#booking"
+            as={Link}
+            to="/book-now"
           >
             {t("bookGuidedTour")}
           </PrimaryButton>
