@@ -75,6 +75,10 @@
                 "holidayHours": {
                     "en": "Museum may close early or have special hours on national holidays.",
                     "hi": "संग्रहालय राष्ट्रीय अवकाश पर जल्दी बंद हो सकता है या विशेष समय हो सकता है।"
+                },
+                "openHours": {
+                    "en": "Tuesday-Sunday: 10AM-6PM",
+                    "hi": "मंगलवार-रविवार: सुबह 10 बजे - शाम 6 बजे"
                 }
             },
             "locationTitle": {

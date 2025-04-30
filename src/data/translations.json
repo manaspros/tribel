@@ -166,7 +166,15 @@
         "Book the Ticket": "Book the Ticket",
         "Support Us": "Support Us",
         "Contact": "Contact",
-        "Hours": "Hours"
+        "Hours": "Hours",
+        "headerWelcome": "Welcome to",
+        "tribalHeritageMuseum": "Tribal Heritage Museum",
+        "freedomFighterMuseum": "Freedom Fighter Museum",
+        "headerExplore": "Explore",
+        "tribalArtifacts": "tribal artifacts",
+        "freedomMovementHistory": "freedom movement history",
+        "specialExhibitions": "Special exhibitions open now",
+        "visitToday": "Visit today!"
     },
     "hi": {
         "home": "मुखपृष्ठ",
@@ -313,6 +321,14 @@
         "Book the Ticket": "टिकट बुक करें",
         "Support Us": "हमें समर्थन दें",
         "Contact": "संपर्क करें",
-        "Hours": "समय"
+        "Hours": "समय",
+        "headerWelcome": "में आपका स्वागत है",
+        "tribalHeritageMuseum": "आदिवासी विरासत संग्रहालय",
+        "freedomFighterMuseum": "स्वतंत्रता सेनानी संग्रहालय",
+        "headerExplore": "अन्वेषण करें",
+        "tribalArtifacts": "आदिवासी कलाकृतियां",
+        "freedomMovementHistory": "स्वतंत्रता आंदोलन का इतिहास",
+        "specialExhibitions": "विशेष प्रदर्शनियां अब खुली हैं",
+        "visitToday": "आज ही भ्रमण करें!"
     }
 }

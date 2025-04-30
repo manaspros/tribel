@@ -452,6 +452,53 @@ const DepartmentNameTranslated = ({ translationKey }) => {
   );
 };
 
+// Add running text ticker component
+const RunningTextTicker = styled(motion.div)`
+  position: fixed;
+  top: ${(props) => (props.hideDepartmentNames ? "80px" : "150px")};
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  background-color: rgba(26, 20, 16, 0.9);
+  border-top: 1px solid rgba(211, 161, 100, 0.2);
+  padding: 4px 0;
+  z-index: 98;
+
+  @media (max-width: 768px) {
+    top: ${(props) => (props.hideDepartmentNames ? "65px" : "160px")};
+  }
+`;
+
+const RunningTextContent = styled.div`
+  white-space: nowrap;
+  display: inline-block;
+  animation: ticker 20s linear infinite;
+  color: #d3a164;
+  font-size: 0.9rem;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes ticker {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  span {
+    margin: 0 20px;
+  }
+
+  strong {
+    font-weight: 600;
+    color: #f5efe7;
+  }
+`;
+
 const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -925,6 +972,37 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
             <DepartmentNameTranslated translationKey="Department of Scheduled Caste" />
             <DepartmentNameTranslated translationKey="Department of Backword Classes and minorities" />
           </DepartmentNamesContainer>
+        )}
+      </AnimatePresence>
+
+      {/* Running text ticker below department names */}
+      <AnimatePresence>
+        {!scrolled && (
+          <RunningTextTicker
+            hideDepartmentNames={hideDepartmentNames}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <RunningTextContent>
+              <span>
+                {t("headerWelcome")}{" "}
+                <strong>{t("tribalHeritageMuseum")}</strong> {t("and")}{" "}
+                <strong>{t("freedomFighterMuseum")}</strong>
+              </span>
+              <span>
+                {t("headerExplore")} <strong>{t("tribalArtifacts")}</strong>{" "}
+                {t("and")} <strong>{t("freedomMovementHistory")}</strong>
+              </span>
+              <span>
+                {t("specialExhibitions")} - <strong>{t("visitToday")}</strong>
+              </span>
+              <span>
+                {t("Open")} <strong>10AM-6PM</strong> {t("Tuesday to Sunday")},{" "}
+                <strong>{t("Closed on Monday")}</strong>
+              </span>
+            </RunningTextContent>
+          </RunningTextTicker>
         )}
       </AnimatePresence>
 

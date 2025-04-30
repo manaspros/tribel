@@ -534,19 +534,9 @@ const FreedomMuseumPage = () => {
                 >
                   <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z" />
                 </svg>
-                {t("weekdayHours")}
-              </TimingDetail>
-
-              <TimingDetail>
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z" />
-                </svg>
-                {t("weekendHours")}
+                {language === "en"
+                  ? "Tuesday-Sunday: 10AM-6PM"
+                  : "मंगलवार-रविवार: सुबह 10 बजे - शाम 6 बजे"}
               </TimingDetail>
 
               <TimingDetail>
@@ -561,7 +551,7 @@ const FreedomMuseumPage = () => {
                 <span style={{ color: "#e74c3c" }}>{t("mondayClosed")}</span>
               </TimingDetail>
 
-              <PriceNote style={{ marginTop: "10px" }}>
+              <PriceNote style={{ marginTop: "20px" }}>
                 {t("holidayNote")}
               </PriceNote>
             </InfoCard>
