@@ -161,9 +161,11 @@ const Footer = () => {
           <FooterLinks>
             {[
               { to: "/about", text: t("aboutUs") },
-              { to: "/exhibits", text: t("exhibits") },
               { to: "/support", text: t("supportUs") },
               { to: "/contact", text: t("contact") },
+              { to: "/about/important-sites", text: t("Important Sites") },
+              { to: "/orders-tender", text: t("Orders/Tender") },
+              { to: "/news-media", text: t("News/Media") },
             ].map((link, index) => (
               <li key={index}>
                 <Link to={link.to}>{link.text}</Link>

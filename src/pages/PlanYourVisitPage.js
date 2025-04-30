@@ -205,6 +205,32 @@ const FAQItem = ({ title, children }) => {
   );
 };
 
+const AmenitiesGrid = styled(PlanningGrid)`
+  margin-bottom: 50px;
+`;
+
+const AmenityCard = styled(PlanningCard)`
+  text-align: center;
+  padding: 30px 20px;
+`;
+
+const AmenityIcon = styled.div`
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #d3a164;
+`;
+
+const AmenityTitle = styled.h3`
+  color: #d3a164;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+`;
+
+const AmenityDescription = styled.p`
+  font-size: 1rem;
+  line-height: 1.6;
+`;
+
 const PlanYourVisitPage = () => {
   const { language } = useLanguage();
 
@@ -316,6 +342,60 @@ const PlanYourVisitPage = () => {
               </Button>
             </PlanningCard>
           </PlanningGrid>
+
+          <SectionTitle>{t("amenitiesTitle") || "Amenities"}</SectionTitle>
+          <Description>
+            {t("amenitiesIntro") ||
+              "For your comfort and convenience, our museum offers various amenities to enhance your visit experience."}
+          </Description>
+
+          <AmenitiesGrid>
+            <AmenityCard
+              whileHover={{ y: -5 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              <AmenityIcon>🍽️</AmenityIcon>
+              <AmenityTitle>
+                {t("restaurantTitle") || "Restaurant"}
+              </AmenityTitle>
+              <AmenityDescription>
+                {t("restaurantDesc") ||
+                  "Our restaurant offers a variety of local and international cuisine options. Enjoy refreshments, snacks, or a full meal in a comfortable setting."}
+              </AmenityDescription>
+            </AmenityCard>
+
+            <AmenityCard
+              whileHover={{ y: -5 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+            >
+              <AmenityIcon>🚻</AmenityIcon>
+              <AmenityTitle>{t("washroomsTitle") || "Washrooms"}</AmenityTitle>
+              <AmenityDescription>
+                {t("washroomsDesc") ||
+                  "Clean and accessible washrooms are available throughout the museum. Facilities for persons with disabilities and baby changing stations are also provided."}
+              </AmenityDescription>
+            </AmenityCard>
+
+            <AmenityCard
+              whileHover={{ y: -5 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+            >
+              <AmenityIcon>🧒</AmenityIcon>
+              <AmenityTitle>
+                {t("playAreaTitle") || "Children's Play Area"}
+              </AmenityTitle>
+              <AmenityDescription>
+                {t("playAreaDesc") ||
+                  "A dedicated play area for children features interactive elements and educational activities. Let your kids have fun while learning about tribal heritage and culture."}
+              </AmenityDescription>
+            </AmenityCard>
+          </AmenitiesGrid>
 
           <SectionTitle>{t("guidelinesTitle")}</SectionTitle>
           <Description>{t("guidelinesIntro")}</Description>

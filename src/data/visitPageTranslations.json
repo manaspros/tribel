@@ -69,7 +69,15 @@
             "Group Bookings: groups@tribalmuseum.org",
             "Education Programs: education@tribalmuseum.org"
         ],
-        "visitContactPage": "Visit Contact Page"
+        "visitContactPage": "Visit Contact Page",
+        "amenitiesTitle": "Amenities",
+        "amenitiesIntro": "For your comfort and convenience, our museum offers various amenities to enhance your visit experience.",
+        "restaurantTitle": "Restaurant",
+        "restaurantDesc": "Our restaurant offers a variety of local and international cuisine options. Enjoy refreshments, snacks, or a full meal in a comfortable setting.",
+        "washroomsTitle": "Washrooms",
+        "washroomsDesc": "Clean and accessible washrooms are available throughout the museum. Facilities for persons with disabilities and baby changing stations are also provided.",
+        "playAreaTitle": "Children's Play Area",
+        "playAreaDesc": "A dedicated play area for children features interactive elements and educational activities. Let your kids have fun while learning about tribal heritage and culture."
     },
     "hi": {
         "pageTitle": "अपनी यात्रा की तैयारी करें",
@@ -141,6 +149,14 @@
             "समूह बुकिंग: groups@tribalmuseum.org",
             "शिक्षा कार्यक्रम: education@tribalmuseum.org"
         ],
-        "visitContactPage": "संपर्क पृष्ठ पर जाएं"
+        "visitContactPage": "संपर्क पृष्ठ पर जाएं",
+        "amenitiesTitle": "सुविधाएँ",
+        "amenitiesIntro": "आपकी सुविधा और आराम के लिए, हमारा संग्रहालय आपके भ्रमण अनुभव को बढ़ाने के लिए विभिन्न सुविधाएँ प्रदान करता है।",
+        "restaurantTitle": "भोजनालय",
+        "restaurantDesc": "हमारा भोजनालय स्थानीय और अंतरराष्ट्रीय व्यंजनों की विविधता प्रदान करता है। आरामदायक माहौल में रिफ्रेशमेंट, स्नैक्स या पूर्ण भोजन का आनंद लें।",
+        "washroomsTitle": "शौचालय",
+        "washroomsDesc": "पूरे संग्रहालय में स्वच्छ और सुलभ शौचालय उपलब्ध हैं। विकलांग व्यक्तियों के लिए सुविधाएँ और बच्चों के लिए डायपर बदलने के स्टेशन भी उपलब्ध हैं।",
+        "playAreaTitle": "बच्चों का खेल क्षेत्र",
+        "playAreaDesc": "बच्चों के लिए एक समर्पित खेल क्षेत्र में इंटरैक्टिव तत्व और शैक्षिक गतिविधियाँ शामिल हैं। अपने बच्चों को जनजातीय विरासत और संस्कृति के बारे में जानते हुए मज़े करने दें।"
     }
 }

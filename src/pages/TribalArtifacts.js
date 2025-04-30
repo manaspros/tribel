@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import styled from "styled-components";
 import { useLanguage } from "../contexts/LanguageContext";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import ArtifactCard from "../components/ArtifactCard";
+import LazyLoad from "../components/LazyLoad";
 import artifactDescriptions from "../data/artifactDescriptions.json";
 
 const PageContainer = styled.div`
@@ -85,68 +87,6 @@ const ArtifactsGrid = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
-`;
-
-const ArtifactCard = styled(motion.div)`
-  background-color: #241c17;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-`;
-
-const ArtifactImage = styled.div`
-  height: 280px;
-  background-color: #2c231c;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #d3a164;
-  font-size: 5rem;
-  position: relative;
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-      circle at center,
-      rgba(211, 161, 100, 0.2),
-      transparent 70%
-    );
-    pointer-events: none;
-  }
-`;
-
-const ArtifactInfo = styled.div`
-  padding: 25px;
-`;
-
-const ArtifactTitle = styled.h3`
-  color: #d3a164;
-  margin-bottom: 12px;
-  font-size: 1.4rem;
-  font-family: "Playfair Display", serif;
-`;
-
-const ArtifactDescription = styled.p`
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 20px;
-`;
-
-const ArtifactTags = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-`;
-
-const ArtifactTag = styled.span`
-  background-color: rgba(211, 161, 100, 0.15);
-  color: #d3a164;
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-size: 0.8rem;
 `;
 
 const ArtifactDetail = styled(motion.div)`
@@ -268,99 +208,120 @@ const TribalArtifacts = () => {
   const [filter, setFilter] = useState("all");
   const [selectedArtifact, setSelectedArtifact] = useState(null);
 
-  const getArtifactTranslation = (artifactKey, field) => {
-    if (
-      artifactDescriptions.tribalArtifacts[artifactKey] &&
-      artifactDescriptions.tribalArtifacts[artifactKey][field] &&
-      artifactDescriptions.tribalArtifacts[artifactKey][field][language]
-    ) {
-      return artifactDescriptions.tribalArtifacts[artifactKey][field][language];
-    }
-    return `Translation missing for ${artifactKey}.${field}`;
-  };
+  const getArtifactTranslation = useCallback(
+    (artifactKey, field) => {
+      if (
+        artifactDescriptions.tribalArtifacts[artifactKey] &&
+        artifactDescriptions.tribalArtifacts[artifactKey][field] &&
+        artifactDescriptions.tribalArtifacts[artifactKey][field][language]
+      ) {
+        return artifactDescriptions.tribalArtifacts[artifactKey][field][
+          language
+        ];
+      }
+      return `Translation missing for ${artifactKey}.${field}`;
+    },
+    [language]
+  );
 
-  const getCategoryTranslation = (category) => {
-    const lowerCategory = category.toLowerCase();
-    if (
-      artifactDescriptions.categoryLabels[lowerCategory] &&
-      artifactDescriptions.categoryLabels[lowerCategory][language]
-    ) {
-      return artifactDescriptions.categoryLabels[lowerCategory][language];
-    }
-    return category;
-  };
+  const getCategoryTranslation = useCallback(
+    (category) => {
+      const lowerCategory = category.toLowerCase();
+      if (
+        artifactDescriptions.categoryLabels[lowerCategory] &&
+        artifactDescriptions.categoryLabels[lowerCategory][language]
+      ) {
+        return artifactDescriptions.categoryLabels[lowerCategory][language];
+      }
+      return category;
+    },
+    [language]
+  );
 
-  const getDetailTranslation = (detail) => {
-    if (
-      artifactDescriptions.detailLabels[detail] &&
-      artifactDescriptions.detailLabels[detail][language]
-    ) {
-      return artifactDescriptions.detailLabels[detail][language];
-    }
-    return detail;
-  };
+  const getDetailTranslation = useCallback(
+    (detail) => {
+      if (
+        artifactDescriptions.detailLabels[detail] &&
+        artifactDescriptions.detailLabels[detail][language]
+      ) {
+        return artifactDescriptions.detailLabels[detail][language];
+      }
+      return detail;
+    },
+    [language]
+  );
 
-  const artifacts = [
-    {
-      id: 1,
-      artifactKey: "ceremonialWarAxe",
-      emoji: "🪓",
-      tags: ["Weapon", "Ceremonial"],
-      culture: "Gond Tribe",
-      age: "Circa 1750",
-      materials: "Iron, Wood, Leather, Semi-precious stones",
-    },
-    {
-      id: 2,
-      artifactKey: "dhokraHorse",
-      emoji: "🏺",
-      tags: ["Crafts", "Ancient"],
-      culture: "Bastar Region",
-      age: "Contemporary (using ancient techniques)",
-      materials: "Bronze alloy",
-    },
-    {
-      id: 3,
-      artifactKey: "ritualMask",
-      emoji: "🎭",
-      tags: ["Ritual", "Spiritual"],
-      culture: "Warli Tribe",
-      age: "Early 20th Century",
-      materials: "Wood, Natural pigments, Feathers",
-    },
-    {
-      id: 4,
-      artifactKey: "medicinalHerbs",
-      emoji: "🌿",
-      tags: ["Medicine", "Natural"],
-      culture: "Multiple Tribal Groups",
-      age: "Contemporary (ongoing tradition)",
-      materials: "Various dried herbs, roots, and leaves",
-    },
-    {
-      id: 5,
-      artifactKey: "ceremonialNecklace",
-      emoji: "💍",
-      tags: ["Adornment", "Cultural"],
-      culture: "Banjara Tribe",
-      age: "Mid-19th Century",
-      materials: "Silver, Glass beads, Coins, Cotton thread",
-    },
-    {
-      id: 6,
-      artifactKey: "tribalDrum",
-      emoji: "🥁",
-      tags: ["Music", "Performance"],
-      culture: "Santhal Tribe",
-      age: "Early 20th Century",
-      materials: "Wood, Animal hide, Natural fibers",
-    },
-  ];
+  const artifacts = useMemo(
+    () => [
+      {
+        id: 1,
+        artifactKey: "ceremonialWarAxe",
+        emoji: "🪓",
+        tags: ["Weapon", "Ceremonial"],
+        culture: "Gond Tribe",
+        age: "Circa 1750",
+        materials: "Iron, Wood, Leather, Semi-precious stones",
+      },
+      {
+        id: 2,
+        artifactKey: "dhokraHorse",
+        emoji: "🏺",
+        tags: ["Crafts", "Ancient"],
+        culture: "Bastar Region",
+        age: "Contemporary (using ancient techniques)",
+        materials: "Bronze alloy",
+      },
+      {
+        id: 3,
+        artifactKey: "ritualMask",
+        emoji: "🎭",
+        tags: ["Ritual", "Spiritual"],
+        culture: "Warli Tribe",
+        age: "Early 20th Century",
+        materials: "Wood, Natural pigments, Feathers",
+      },
+      {
+        id: 4,
+        artifactKey: "medicinalHerbs",
+        emoji: "🌿",
+        tags: ["Medicine", "Natural"],
+        culture: "Multiple Tribal Groups",
+        age: "Contemporary (ongoing tradition)",
+        materials: "Various dried herbs, roots, and leaves",
+      },
+      {
+        id: 5,
+        artifactKey: "ceremonialNecklace",
+        emoji: "💍",
+        tags: ["Adornment", "Cultural"],
+        culture: "Banjara Tribe",
+        age: "Mid-19th Century",
+        materials: "Silver, Glass beads, Coins, Cotton thread",
+      },
+      {
+        id: 6,
+        artifactKey: "tribalDrum",
+        emoji: "🥁",
+        tags: ["Music", "Performance"],
+        culture: "Santhal Tribe",
+        age: "Early 20th Century",
+        materials: "Wood, Animal hide, Natural fibers",
+      },
+    ],
+    []
+  );
 
-  const filteredArtifacts =
-    filter === "all"
-      ? artifacts
-      : artifacts.filter((artifact) => artifact.tags.includes(filter));
+  const filteredArtifacts = useMemo(
+    () =>
+      filter === "all"
+        ? artifacts
+        : artifacts.filter((artifact) => artifact.tags.includes(filter)),
+    [artifacts, filter]
+  );
+
+  const handleArtifactClick = useCallback((artifact) => {
+    setSelectedArtifact(artifact);
+  }, []);
 
   return (
     <PageContainer>
@@ -428,31 +389,24 @@ const TribalArtifacts = () => {
 
         <ArtifactsGrid>
           {filteredArtifacts.map((artifact, index) => (
-            <ArtifactCard
+            <LazyLoad
               key={`artifact-${artifact.id}-${language}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              onClick={() => setSelectedArtifact(artifact)}
-              whileHover={{ y: -10 }}
+              minHeight="400px"
             >
-              <ArtifactImage>{artifact.emoji}</ArtifactImage>
-              <ArtifactInfo>
-                <ArtifactTitle>
-                  {getArtifactTranslation(artifact.artifactKey, "title")}
-                </ArtifactTitle>
-                <ArtifactDescription>
-                  {getArtifactTranslation(artifact.artifactKey, "description")}
-                </ArtifactDescription>
-                <ArtifactTags>
-                  {artifact.tags.map((tag) => (
-                    <ArtifactTag key={tag}>
-                      {getCategoryTranslation(tag)}
-                    </ArtifactTag>
-                  ))}
-                </ArtifactTags>
-              </ArtifactInfo>
-            </ArtifactCard>
+              <ArtifactCard
+                artifact={artifact}
+                title={getArtifactTranslation(artifact.artifactKey, "title")}
+                description={getArtifactTranslation(
+                  artifact.artifactKey,
+                  "description"
+                )}
+                emoji={artifact.emoji}
+                tags={artifact.tags}
+                onClick={() => handleArtifactClick(artifact)}
+                translateTag={getCategoryTranslation}
+                index={index}
+              />
+            </LazyLoad>
           ))}
         </ArtifactsGrid>
 

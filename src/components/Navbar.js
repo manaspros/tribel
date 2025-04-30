@@ -284,7 +284,8 @@ const DropdownMenu = styled(motion.div)`
   transform: translateX(-50%);
   background: rgba(26, 20, 16, 0.95);
   backdrop-filter: blur(10px);
-  min-width: 180px;
+  min-width: 240px; // Increased from 180px to 240px
+  width: max-content; // Added to ensure the menu can grow based on content
   border-radius: 10px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
   padding: 10px 0;
@@ -308,14 +309,13 @@ const DropdownMenu = styled(motion.div)`
 `;
 
 const DropdownItem = styled(motion.div)`
-  padding: 12px 20px;
+  padding: 12px 25px; // Increased horizontal padding from 20px to 25px
   color: #f5efe7;
   cursor: pointer;
-  text-align: center;
+  text-align: left; // Changed from center to left for better alignment with wider width
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
 
   svg {
     margin-right: 10px;
@@ -477,6 +477,14 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
   const [collectionDropdownOpen, setCollectionDropdownOpen] = useState(false);
   const [mobileCollectionOpen, setMobileCollectionOpen] = useState(false);
   const collectionDropdownRef = useRef(null);
+  // Add state for about dropdown
+  const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
+  const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
+  const aboutDropdownRef = useRef(null);
+  // Add state for R&D dropdown
+  const [rdDropdownOpen, setRdDropdownOpen] = useState(false);
+  const [mobileRdOpen, setMobileRdOpen] = useState(false);
+  const rdDropdownRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -515,6 +523,18 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
         !collectionDropdownRef.current.contains(event.target)
       ) {
         setCollectionDropdownOpen(false);
+      }
+      if (
+        aboutDropdownRef.current &&
+        !aboutDropdownRef.current.contains(event.target)
+      ) {
+        setAboutDropdownOpen(false);
+      }
+      if (
+        rdDropdownRef.current &&
+        !rdDropdownRef.current.contains(event.target)
+      ) {
+        setRdDropdownOpen(false);
       }
     }
 
@@ -579,13 +599,152 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
           </Link>
         </LogosGroupLeft>
         <NavLinks>
-          <NavLink
-            as="div"
-            style={{ cursor: "pointer" }}
-            onClick={handleAboutClick}
+          {/* Replace direct About Museum link with dropdown */}
+          <DropdownContainer
+            ref={aboutDropdownRef}
+            onMouseEnter={() => setAboutDropdownOpen(true)}
+            onMouseLeave={() => setAboutDropdownOpen(false)}
           >
-            {t("About Museum")}
-          </NavLink>
+            <NavLink as="div" style={{ cursor: "pointer" }}>
+              <DropdownTrigger>
+                {t("About Us")}
+                <svg
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                >
+                  <path d="M7 10l5 5 5-5z" />
+                </svg>
+              </DropdownTrigger>
+            </NavLink>
+
+            <AnimatePresence>
+              {aboutDropdownOpen && (
+                <DropdownMenu
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <DropdownItem
+                    as="div"
+                    onClick={handleAboutClick}
+                    whileHover={{ x: 5 }}
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M13 7h-2v2h2V7zm0 4h-2v6h2v-6zm-1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+                    </svg>
+                    {t("About Museum")}
+                  </DropdownItem>
+
+                  <DropdownItem
+                    as={Link}
+                    to="/about/vision"
+                    whileHover={{ x: 5 }}
+                    onClick={() => setAboutDropdownOpen(false)}
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
+                    </svg>
+                    {t("Vision")}
+                  </DropdownItem>
+
+                  <DropdownItem
+                    as={Link}
+                    to="/about/director"
+                    whileHover={{ x: 5 }}
+                    onClick={() => setAboutDropdownOpen(false)}
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                    </svg>
+                    {t("Director Message")}
+                  </DropdownItem>
+
+                  <DropdownItem
+                    as={Link}
+                    to="/about/trti"
+                    whileHover={{ x: 5 }}
+                    onClick={() => setAboutDropdownOpen(false)}
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z" />
+                    </svg>
+                    {t("TRTI")}
+                  </DropdownItem>
+                </DropdownMenu>
+              )}
+            </AnimatePresence>
+          </DropdownContainer>
+
+          {/* Add R&D Activities dropdown */}
+          <DropdownContainer
+            ref={rdDropdownRef}
+            onMouseEnter={() => setRdDropdownOpen(true)}
+            onMouseLeave={() => setRdDropdownOpen(false)}
+          >
+            <NavLink as="div" style={{ cursor: "pointer" }}>
+              <DropdownTrigger>
+                {t("R&D Activities")}
+                <svg
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                >
+                  <path d="M7 10l5 5 5-5z" />
+                </svg>
+              </DropdownTrigger>
+            </NavLink>
+
+            <AnimatePresence>
+              {rdDropdownOpen && (
+                <DropdownMenu
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <DropdownItem
+                    as={Link}
+                    to="/rd/e-library"
+                    whileHover={{ x: 5 }}
+                    onClick={() => setRdDropdownOpen(false)}
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z" />
+                    </svg>
+                    {t("E-Library")}
+                  </DropdownItem>
+
+                  <DropdownItem
+                    as={Link}
+                    to="/rd/studies"
+                    whileHover={{ x: 5 }}
+                    onClick={() => setRdDropdownOpen(false)}
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z" />
+                    </svg>
+                    {t("Studies")}
+                  </DropdownItem>
+
+                  <DropdownItem
+                    as={Link}
+                    to="/rd/exhibition"
+                    whileHover={{ x: 5 }}
+                    onClick={() => setRdDropdownOpen(false)}
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+                    </svg>
+                    {t("Exhibition")}
+                  </DropdownItem>
+                </DropdownMenu>
+              )}
+            </AnimatePresence>
+          </DropdownContainer>
 
           {/* Replace galleries link with dropdown */}
           <DropdownContainer
@@ -792,13 +951,176 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                 ✕
               </MobileMenuButton>
 
-              <MobileNavLink
-                as="div"
-                onClick={handleAboutClick}
-                style={{ cursor: "pointer" }}
-              >
-                {t("About Museum")}
-              </MobileNavLink>
+              {/* Add About Us dropdown to mobile menu */}
+              <div>
+                <MobileNavLink
+                  as="div"
+                  onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
+                  style={{
+                    cursor: "pointer",
+                    display: "flex",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <span>{t("About Us")}</span>
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="24"
+                    height="24"
+                    fill="currentColor"
+                    style={{
+                      transform: mobileAboutOpen
+                        ? "rotate(180deg)"
+                        : "rotate(0deg)",
+                      transition: "transform 0.3s ease",
+                    }}
+                  >
+                    <path d="M7 10l5 5 5-5z" />
+                  </svg>
+                </MobileNavLink>
+
+                {mobileAboutOpen && (
+                  <MobileDropdownMenu>
+                    <MobileDropdownItem
+                      to="/museum-stats"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                      >
+                        <path d="M13 7h-2v2h2V7zm0 4h-2v6h2v-6zm-1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+                      </svg>
+                      {t("About Museum")}
+                    </MobileDropdownItem>
+
+                    <MobileDropdownItem
+                      to="/about/vision"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                      >
+                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
+                      </svg>
+                      {t("Vision")}
+                    </MobileDropdownItem>
+
+                    <MobileDropdownItem
+                      to="/about/director"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                      >
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                      </svg>
+                      {t("Director Message")}
+                    </MobileDropdownItem>
+
+                    <MobileDropdownItem
+                      to="/about/trti"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                      >
+                        <path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z" />
+                      </svg>
+                      {t("TRTI")}
+                    </MobileDropdownItem>
+                  </MobileDropdownMenu>
+                )}
+              </div>
+
+              {/* Add R&D Activities dropdown to mobile menu */}
+              <div>
+                <MobileNavLink
+                  as="div"
+                  onClick={() => setMobileRdOpen(!mobileRdOpen)}
+                  style={{
+                    cursor: "pointer",
+                    display: "flex",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <span>{t("R&D Activities")}</span>
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="24"
+                    height="24"
+                    fill="currentColor"
+                    style={{
+                      transform: mobileRdOpen
+                        ? "rotate(180deg)"
+                        : "rotate(0deg)",
+                      transition: "transform 0.3s ease",
+                    }}
+                  >
+                    <path d="M7 10l5 5 5-5z" />
+                  </svg>
+                </MobileNavLink>
+
+                {mobileRdOpen && (
+                  <MobileDropdownMenu>
+                    <MobileDropdownItem
+                      to="/rd/e-library"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                      >
+                        <path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z" />
+                      </svg>
+                      {t("E-Library")}
+                    </MobileDropdownItem>
+
+                    <MobileDropdownItem
+                      to="/rd/studies"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                      >
+                        <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z" />
+                      </svg>
+                      {t("Studies")}
+                    </MobileDropdownItem>
+
+                    <MobileDropdownItem
+                      to="/rd/exhibition"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                      >
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+                      </svg>
+                      {t("Exhibition")}
+                    </MobileDropdownItem>
+                  </MobileDropdownMenu>
+                )}
+              </div>
 
               {/* Modified mobile galleries with dropdown */}
               <div>

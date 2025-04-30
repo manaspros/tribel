@@ -272,59 +272,23 @@ const MuseumContent = styled.div`
   }
 `;
 
-// Update the TimingPill component to support two rows
-const TimingPill = styled.div`
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(8px);
-  border-radius: 12px;
-  padding: 3px 12px;
-  font-size: 0.75rem;
-  color: #f5efe7;
-  border: 1px solid rgba(211, 161, 100, 0.3);
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  line-height: 1.4;
-
-  @media (max-width: 768px) {
-    top: 50px;
-    right: 10px;
-    padding: 6px 10px;
-    font-size: 0.65rem;
-  }
-`;
-
-const TimeRow = styled.div`
-  margin: 2px 0;
-  white-space: nowrap;
-`;
-
-const TimeLabel = styled.span`
-  color: #d3a164;
-  margin-right: 4px;
-`;
-
+// Update the InfoContainer to support side-by-side layout
 const InfoContainer = styled.div`
   margin: 0 auto;
   width: 100%;
   max-width: 85%;
-  margin-top: 5px; // Reduced from 10px
-  margin-bottom: 10px; // Reduced from 15px
+  margin-top: 5px;
+  margin-bottom: 10px;
   background: rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(5px);
   padding: 12px;
   border-radius: 8px;
   border: 1px solid rgba(211, 161, 100, 0.2);
-  text-align: left;
+  display: flex;
+  justify-content: space-between;
 
   @media (min-width: 769px) and (max-width: 1366px) {
-    padding: 8px; // Less padding on laptops
+    padding: 8px;
     margin-top: 3px;
     margin-bottom: 8px;
   }
@@ -339,6 +303,7 @@ const InfoSection = styled.div`
   padding-bottom: ${(props) => (props.last ? "0" : "6px")};
   border-bottom: ${(props) =>
     props.last ? "none" : "1px solid rgba(211, 161, 100, 0.1)"};
+  flex: 1;
 `;
 
 const InfoTitle = styled.div`
@@ -747,14 +712,6 @@ const HeroSection = () => {
             whileTap={{ scale: 0.98 }}
           >
             <MuseumTypeTag>{t("Tribal Museum")}</MuseumTypeTag>
-            <TimingPill>
-              <TimeRow>
-                <TimeLabel>{t("Tue-Fri")}:</TimeLabel> 10AM-6PM
-              </TimeRow>
-              <TimeRow>
-                <TimeLabel>{t("Sat-Sun")}:</TimeLabel> 9AM-7PM
-              </TimeRow>
-            </TimingPill>
             <MuseumBackground type="tribal" isActive={getIsActive("tribal")} />
             <MuseumContent>
               <ActiveIndicator
@@ -785,6 +742,20 @@ const HeroSection = () => {
                     </PriceRow>
                   </InfoText>
                 </InfoSection>
+
+                <InfoSection last>
+                  <InfoTitle>{t("Hours")}</InfoTitle>
+                  <InfoText>
+                    <PriceRow>
+                      <PriceLabel>{t("Tue-Fri")}</PriceLabel>
+                      <PriceValue>10AM-6PM</PriceValue>
+                    </PriceRow>
+                    <PriceRow>
+                      <PriceLabel>{t("Sat-Sun")}</PriceLabel>
+                      <PriceValue>9AM-7PM</PriceValue>
+                    </PriceRow>
+                  </InfoText>
+                </InfoSection>
               </InfoContainer>
 
               <ExploreIndicator>
@@ -807,14 +778,6 @@ const HeroSection = () => {
             whileTap={{ scale: 0.98 }}
           >
             <MuseumTypeTag>{t("freedomMuseum")}</MuseumTypeTag>
-            <TimingPill>
-              <TimeRow>
-                <TimeLabel>{t("Tue-Fri")}:</TimeLabel> 10AM-6PM
-              </TimeRow>
-              <TimeRow>
-                <TimeLabel>{t("Sat-Sun")}:</TimeLabel> 9AM-7PM
-              </TimeRow>
-            </TimingPill>
             <MuseumBackground
               type="freedom"
               isActive={getIsActive("freedom")}
@@ -845,6 +808,20 @@ const HeroSection = () => {
                     <PriceRow>
                       <PriceLabel>{t("Students")}</PriceLabel>
                       <PriceValue>{t("price10")}</PriceValue>
+                    </PriceRow>
+                  </InfoText>
+                </InfoSection>
+
+                <InfoSection last>
+                  <InfoTitle>{t("Hours")}</InfoTitle>
+                  <InfoText>
+                    <PriceRow>
+                      <PriceLabel>{t("Tue-Fri")}</PriceLabel>
+                      <PriceValue>10AM-6PM</PriceValue>
+                    </PriceRow>
+                    <PriceRow>
+                      <PriceLabel>{t("Sat-Sun")}</PriceLabel>
+                      <PriceValue>9AM-7PM</PriceValue>
                     </PriceRow>
                   </InfoText>
                 </InfoSection>
