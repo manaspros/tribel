@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLanguage } from "../contexts/LanguageContext";
-import timelineData from '../data/timelineEvents';
+import timelineData from "../data/timelineEvents";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -386,12 +386,12 @@ const TimelineSection = () => {
   const events = timelineData[language];
 
   // Timeline events data with translation
-  const translatedEvents = events.map(event => ({
+  const translatedEvents = events.map((event) => ({
     ...event,
     title: t(event.titleKey),
     description: t(event.descriptionKey),
     content: t(event.contentKey),
-    artifacts: event.artifacts.map(artifact => t(artifact))
+    artifacts: event.artifacts.map((artifact) => t(artifact)),
   }));
 
   // Calculate visible width for the timeline
@@ -551,8 +551,6 @@ const TimelineSection = () => {
             strokeLinecap="round"
             strokeLinejoin="round"
           />
-          <circle cx="30" cy="0" r="4" fill="#d3a164" />
-          <circle cx="30" cy="100" r="6" fill="#d3a164" />
         </svg>
       </DecorativeArrow>
 
@@ -576,7 +574,10 @@ const TimelineSection = () => {
                 whileHover={{ scale: 1.03 }}
               >
                 <TimelineDot position={position} />
-                <EventImage src={`/timelineSection/${event.image}`} alt={event.title} />
+                <EventImage
+                  src={`/timelineSection/${event.image}`}
+                  alt={event.title}
+                />
                 <EventInfo>
                   <EventYear>{event.year}</EventYear>
                   <EventTitle>{event.title}</EventTitle>

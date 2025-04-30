@@ -1,0 +1,146 @@
+{
+    "en": {
+        "pageTitle": "Prepare Your Visit",
+        "introduction": "Plan your visit to the Tribal Heritage Museum. Here you'll find all the information you need to make the most of your museum experience, from opening hours and ticket information to directions and accessibility details.",
+        "openingHoursTitle": "Opening Hours",
+        "openingHoursList": [
+            "Tuesday - Friday: 10:00 AM - 6:00 PM",
+            "Saturday - Sunday: 9:00 AM - 7:00 PM",
+            "Monday: Closed",
+            "Last entry 45 minutes before closing",
+            "Special exhibitions may have different hours"
+        ],
+        "admissionTitle": "Admission Fees",
+        "admissionList": [
+            "Adults: ₹20",
+            "Students & Seniors: ₹10",
+            "Children (under 12): Free",
+            "Members: Free",
+            "Special exhibitions may require additional tickets"
+        ],
+        "bookTickets": "Book Tickets",
+        "gettingHereTitle": "Getting Here",
+        "gettingHereList": [
+            "Location: Tribal Freedom Fighter Museum, Sector 24, Naya Raipur, Chhattisgarh 492101",
+            "By BRTS Bus till HNLU Bus Stop",
+            "By Car: Parking available on-site",
+            "By Taxi: Drop-off point at main entrance",
+            "Accessibility: Ramps and elevators available"
+        ],
+        "getDirections": "Get Directions",
+        "guidelinesTitle": "Visitor Guidelines",
+        "guidelinesIntro": "To ensure a pleasant experience for all visitors and to protect our collection, please observe the following guidelines during your visit:",
+        "guidelinesList": [
+            "Photography without flash is permitted in most galleries, but tripods are not allowed",
+            "Food and drinks are not permitted in the galleries",
+            "Large bags and luggage must be stored in the cloakroom",
+            "Please maintain a respectful atmosphere and avoid loud conversations",
+            "Do not touch the exhibits unless explicitly indicated",
+            "Mobile phones should be set to silent mode"
+        ],
+        "faqTitle": "Frequently Asked Questions",
+        "faqItems": [
+            {
+                "question": "Are guided tours available?",
+                "answer": "Yes, guided tours are available in English and Hindi. Tours run daily at 11:00 AM and 3:00 PM and last approximately 90 minutes. You can book a tour at the information desk or in advance online."
+            },
+            {
+                "question": "Is the museum accessible for visitors with disabilities?",
+                "answer": "Yes, our museum is fully accessible with ramps and elevators throughout. Wheelchairs are available for loan at the main entrance. Service animals are welcome. Please contact us in advance for any specific accommodations."
+            },
+            {
+                "question": "Can I take photographs inside the museum?",
+                "answer": "Photography without flash is permitted in most galleries for personal, non-commercial use. Some special exhibitions may have photography restrictions. Tripods, selfie sticks, and video equipment require prior permission."
+            },
+            {
+                "question": "Are there any food options at the museum?",
+                "answer": "The museum café is located on the ground floor and offers a selection of Indian and international cuisine, snacks, and beverages. The café is open during museum hours."
+            },
+            {
+                "question": "Do you offer any discounts for group visits?",
+                "answer": "Yes, discounted rates are available for groups of 10 or more people. Please contact our group booking office at least two weeks in advance to arrange your visit. Educational groups can also request specialized tours."
+            }
+        ],
+        "contactTitle": "Contact Us",
+        "contactIntro": "If you have any questions about your visit, please don't hesitate to contact us:",
+        "contactList": [
+            "General Inquiries: info@tribalmuseum.org",
+            "Phone: +91 771-2242181",
+            "Group Bookings: groups@tribalmuseum.org",
+            "Education Programs: education@tribalmuseum.org"
+        ],
+        "visitContactPage": "Visit Contact Page"
+    },
+    "hi": {
+        "pageTitle": "अपनी यात्रा की तैयारी करें",
+        "introduction": "आदिवासी विरासत संग्रहालय की यात्रा की योजना बनाएं। यहां आपको संग्रहालय के अनुभव का अधिकतम लाभ उठाने के लिए सभी जानकारी मिलेगी, खुलने के समय और टिकट जानकारी से लेकर दिशा-निर्देश और पहुंच विवरण तक।",
+        "openingHoursTitle": "खुलने का समय",
+        "openingHoursList": [
+            "मंगलवार - शुक्रवार: सुबह 10:00 बजे - शाम 6:00 बजे",
+            "शनिवार - रविवार: सुबह 9:00 बजे - शाम 7:00 बजे",
+            "सोमवार: बंद",
+            "बंद होने से 45 मिनट पहले अंतिम प्रवेश",
+            "विशेष प्रदर्शनियों के अलग समय हो सकते हैं"
+        ],
+        "admissionTitle": "प्रवेश शुल्क",
+        "admissionList": [
+            "वयस्क: ₹20",
+            "छात्र और वरिष्ठ नागरिक: ₹10",
+            "बच्चे (12 वर्ष से कम): नि:शुल्क",
+            "सदस्य: नि:शुल्क",
+            "विशेष प्रदर्शनियों के लिए अतिरिक्त टिकट की आवश्यकता हो सकती है"
+        ],
+        "bookTickets": "टिकट बुक करें",
+        "gettingHereTitle": "यहां तक पहुंचना",
+        "gettingHereList": [
+            "स्थान: आदिवासी स्वतंत्रता सेनानी संग्रहालय, सेक्टर 24, नया रायपुर, छत्तीसगढ़ 492101",
+            "बीआरटीएस बस द्वारा एचएनएलयू बस स्टॉप तक",
+            "कार द्वारा: स्थल पर पार्किंग उपलब्ध है",
+            "टैक्सी द्वारा: मुख्य प्रवेश द्वार पर ड्रॉप-ऑफ पॉइंट",
+            "पहुंच: रैंप और लिफ्ट उपलब्ध हैं"
+        ],
+        "getDirections": "दिशा-निर्देश प्राप्त करें",
+        "guidelinesTitle": "आगंतुक दिशानिर्देश",
+        "guidelinesIntro": "सभी आगंतुकों के लिए एक सुखद अनुभव सुनिश्चित करने और हमारे संग्रह की रक्षा के लिए, कृपया अपनी यात्रा के दौरान निम्नलिखित दिशानिर्देशों का पालन करें:",
+        "guidelinesList": [
+            "अधिकांश गैलरी में फ्लैश के बिना फोटोग्राफी की अनुमति है, लेकिन तिपाई की अनुमति नहीं है",
+            "गैलरी में खाद्य और पेय पदार्थों की अनुमति नहीं है",
+            "बड़े बैग और सामान को क्लोकरूम में संग्रहित किया जाना चाहिए",
+            "कृपया सम्मानजनक माहौल बनाए रखें और जोर से बातचीत से बचें",
+            "जब तक स्पष्ट रूप से संकेत न दिया जाए, प्रदर्शनों को न छुएं",
+            "मोबाइल फोन को साइलेंट मोड पर सेट किया जाना चाहिए"
+        ],
+        "faqTitle": "अक्सर पूछे जाने वाले प्रश्न",
+        "faqItems": [
+            {
+                "question": "क्या गाइडेड टूर उपलब्ध हैं?",
+                "answer": "हां, अंग्रेजी और हिंदी में गाइडेड टूर उपलब्ध हैं। टूर रोजाना सुबह 11:00 बजे और दोपहर 3:00 बजे चलते हैं और लगभग 90 मिनट तक चलते हैं। आप सूचना डेस्क पर या ऑनलाइन अग्रिम में टूर बुक कर सकते हैं।"
+            },
+            {
+                "question": "क्या संग्रहालय विकलांग आगंतुकों के लिए सुलभ है?",
+                "answer": "हां, हमारा संग्रहालय पूरी तरह से सुलभ है, जिसमें पूरे भवन में रैंप और लिफ्ट हैं। व्हीलचेयर मुख्य प्रवेश द्वार पर उधार के लिए उपलब्ध हैं। सेवा जानवरों का स्वागत है। कृपया किसी भी विशिष्ट व्यवस्था के लिए हमसे पहले से संपर्क करें।"
+            },
+            {
+                "question": "क्या मैं संग्रहालय के अंदर तस्वीरें ले सकता हूं?",
+                "answer": "व्यक्तिगत, गैर-वाणिज्यिक उपयोग के लिए अधिकांश गैलरी में फ्लैश के बिना फोटोग्राफी की अनुमति है। कुछ विशेष प्रदर्शनियों में फोटोग्राफी प्रतिबंध हो सकते हैं। तिपाई, सेल्फी स्टिक, और वीडियो उपकरण के लिए पूर्व अनुमति की आवश्यकता होती है।"
+            },
+            {
+                "question": "क्या संग्रहालय में कोई खाद्य विकल्प हैं?",
+                "answer": "संग्रहालय कैफे भूतल पर स्थित है और भारतीय और अंतरराष्ट्रीय व्यंजनों, स्नैक्स, और पेय पदार्थों का चयन प्रदान करता है। कैफे संग्रहालय के समय के दौरान खुला रहता है।"
+            },
+            {
+                "question": "क्या आप समूह यात्राओं के लिए कोई छूट प्रदान करते हैं?",
+                "answer": "हां, 10 या अधिक लोगों के समूहों के लिए रियायती दरें उपलब्ध हैं। अपनी यात्रा की व्यवस्था करने के लिए कृपया हमारे समूह बुकिंग कार्यालय से कम से कम दो सप्ताह पहले संपर्क करें। शैक्षिक समूह विशेष टूर का भी अनुरोध कर सकते हैं।"
+            }
+        ],
+        "contactTitle": "संपर्क करें",
+        "contactIntro": "यदि आपके पास अपनी यात्रा के बारे में कोई प्रश्न हैं, तो कृपया हमसे संपर्क करने में संकोच न करें:",
+        "contactList": [
+            "सामान्य पूछताछ: info@tribalmuseum.org",
+            "फोन: +91 771-2242181",
+            "समूह बुकिंग: groups@tribalmuseum.org",
+            "शिक्षा कार्यक्रम: education@tribalmuseum.org"
+        ],
+        "visitContactPage": "संपर्क पृष्ठ पर जाएं"
+    }
+}

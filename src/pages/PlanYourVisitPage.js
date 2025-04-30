@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { useLanguage } from "../contexts/LanguageContext";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import visitTranslations from "../data/visitPageTranslations.json";
 
 // Import background image (use one from your assets)
 import planVisitBg from "../assets/tribel/Picture3.jpg";
@@ -205,7 +206,18 @@ const FAQItem = ({ title, children }) => {
 };
 
 const PlanYourVisitPage = () => {
-  const { t } = useLanguage();
+  const { language } = useLanguage();
+
+  // Function to get translations from visitTranslations file
+  const t = (key) => {
+    // Handle nested keys (for FAQ items)
+    if (key.includes(".")) {
+      const [section, item, property] = key.split(".");
+      return visitTranslations[language][section][parseInt(item)][property];
+    }
+
+    return visitTranslations[language][key] || visitTranslations.en[key] || key;
+  };
 
   return (
     <PageContainer>
@@ -217,7 +229,7 @@ const PlanYourVisitPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          {t("Prepare Your Visit")}
+          {t("pageTitle")}
         </PageTitle>
       </HeroSection>
 
@@ -227,11 +239,7 @@ const PlanYourVisitPage = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.8 }}
         >
-          <Description>
-            {t(
-              "Plan your visit to the Tribal Heritage Museum. Here you'll find all the information you need to make the most of your museum experience, from opening hours and ticket information to directions and accessibility details."
-            )}
-          </Description>
+          <Description>{t("introduction")}</Description>
 
           <PlanningGrid>
             <PlanningCard
@@ -244,14 +252,12 @@ const PlanYourVisitPage = () => {
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="#d3a164">
                   <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
                 </svg>
-                {t("Opening Hours")}
+                {t("openingHoursTitle")}
               </CardTitle>
               <InfoList>
-                <li>{t("Tuesday - Friday: 10:00 AM - 6:00 PM")}</li>
-                <li>{t("Saturday - Sunday: 9:00 AM - 7:00 PM")}</li>
-                <li>{t("Monday: Closed")}</li>
-                <li>{t("Last entry 45 minutes before closing")}</li>
-                <li>{t("Special exhibitions may have different hours")}</li>
+                {t("openingHoursList").map((item, index) => (
+                  <li key={`hours-${index}`}>{item}</li>
+                ))}
               </InfoList>
             </PlanningCard>
 
@@ -265,27 +271,19 @@ const PlanYourVisitPage = () => {
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="#d3a164">
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.94 1.64h1.71c-.05-1.34-.87-2.57-2.49-2.97V5H10.9v1.69c-1.51.32-2.72 1.3-2.72 2.81 0 1.79 1.4 2.72 3.52 3.33 1.74.5 2.2 1.2 2.2 1.95 0 .8-.65 1.57-2.01 1.57-1.36 0-2.05-.59-2.15-1.57H8.01c.1 1.58 1.23 2.66 2.89 2.96V19h1.32v-1.67c1.56-.3 2.7-1.37 2.7-2.83-.01-2.24-1.85-3.09-3.61-3.36z" />
                 </svg>
-                {t("Admission Fees")}
+                {t("admissionTitle")}
               </CardTitle>
               <InfoList>
-                <li>{t("Adults")}: ₹20</li>
-                <li>{t("Students & Seniors")}: ₹10</li>
-                <li>
-                  {t("Children (under 12)")}: {t("Free")}
-                </li>
-                <li>
-                  {t("Members")}: {t("Free")}
-                </li>
-                <li>
-                  {t("Special exhibitions may require additional tickets")}
-                </li>
+                {t("admissionList").map((item, index) => (
+                  <li key={`admission-${index}`}>{item}</li>
+                ))}
               </InfoList>
               <Button
                 href="#booking"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                {t("Book Tickets")}
+                {t("bookTickets")}
               </Button>
             </PlanningCard>
 
@@ -299,23 +297,12 @@ const PlanYourVisitPage = () => {
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="#d3a164">
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                 </svg>
-                {t("Getting Here")}
+                {t("gettingHereTitle")}
               </CardTitle>
               <InfoList>
-                <li>
-                  {t("Location")}:{" "}
-                  {t(
-                    "Tribal Freedom Fighter Museum, Sector 24, Naya Raipur, Chhattisgarh 492101"
-                  )}
-                </li>
-                <li>
-                  {t("By Bus: Routes 15, 23, and 42 stop near the museum")}
-                </li>
-                <li>
-                  {t("By Car: Parking available on-site (free for visitors)")}
-                </li>
-                <li>{t("By Taxi: Drop-off point at main entrance")}</li>
-                <li>{t("Accessibility: Ramps and elevators available")}</li>
+                {t("gettingHereList").map((item, index) => (
+                  <li key={`getting-here-${index}`}>{item}</li>
+                ))}
               </InfoList>
               <Button
                 as="a"
@@ -325,99 +312,37 @@ const PlanYourVisitPage = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                {t("Get Directions")}
+                {t("getDirections")}
               </Button>
             </PlanningCard>
           </PlanningGrid>
 
-          <SectionTitle>{t("Visitor Guidelines")}</SectionTitle>
-          <Description>
-            {t(
-              "To ensure a pleasant experience for all visitors and to protect our collection, please observe the following guidelines during your visit:"
-            )}
-          </Description>
+          <SectionTitle>{t("guidelinesTitle")}</SectionTitle>
+          <Description>{t("guidelinesIntro")}</Description>
 
           <InfoList style={{ maxWidth: "800px" }}>
-            <li>
-              {t(
-                "Photography without flash is permitted in most galleries, but tripods are not allowed"
-              )}
-            </li>
-            <li>{t("Food and drinks are not permitted in the galleries")}</li>
-            <li>
-              {t("Large bags and luggage must be stored in the cloakroom")}
-            </li>
-            <li>
-              {t(
-                "Please maintain a respectful atmosphere and avoid loud conversations"
-              )}
-            </li>
-            <li>
-              {t("Do not touch the exhibits unless explicitly indicated")}
-            </li>
-            <li>{t("Mobile phones should be set to silent mode")}</li>
+            {t("guidelinesList").map((item, index) => (
+              <li key={`guideline-${index}`}>{item}</li>
+            ))}
           </InfoList>
 
-          <SectionTitle>{t("Frequently Asked Questions")}</SectionTitle>
+          <SectionTitle>{t("faqTitle")}</SectionTitle>
 
           <div style={{ maxWidth: "800px", margin: "30px 0" }}>
-            <FAQItem title={t("Are guided tours available?")}>
-              <p>
-                {t(
-                  "Yes, guided tours are available in English and Hindi. Tours run daily at 11:00 AM and 3:00 PM and last approximately 90 minutes. You can book a tour at the information desk or in advance online."
-                )}
-              </p>
-            </FAQItem>
-
-            <FAQItem
-              title={t(
-                "Is the museum accessible for visitors with disabilities?"
-              )}
-            >
-              <p>
-                {t(
-                  "Yes, our museum is fully accessible with ramps and elevators throughout. Wheelchairs are available for loan at the main entrance. Service animals are welcome. Please contact us in advance for any specific accommodations."
-                )}
-              </p>
-            </FAQItem>
-
-            <FAQItem title={t("Can I take photographs inside the museum?")}>
-              <p>
-                {t(
-                  "Photography without flash is permitted in most galleries for personal, non-commercial use. Some special exhibitions may have photography restrictions. Tripods, selfie sticks, and video equipment require prior permission."
-                )}
-              </p>
-            </FAQItem>
-
-            <FAQItem title={t("Are there any food options at the museum?")}>
-              <p>
-                {t(
-                  "The museum café is located on the ground floor and offers a selection of Indian and international cuisine, snacks, and beverages. The café is open during museum hours."
-                )}
-              </p>
-            </FAQItem>
-
-            <FAQItem title={t("Do you offer any discounts for group visits?")}>
-              <p>
-                {t(
-                  "Yes, discounted rates are available for groups of 10 or more people. Please contact our group booking office at least two weeks in advance to arrange your visit. Educational groups can also request specialized tours."
-                )}
-              </p>
-            </FAQItem>
+            {t("faqItems").map((faq, index) => (
+              <FAQItem key={`faq-${index}`} title={faq.question}>
+                <p>{faq.answer}</p>
+              </FAQItem>
+            ))}
           </div>
 
-          <SectionTitle>{t("Contact Us")}</SectionTitle>
-          <Description>
-            {t(
-              "If you have any questions about your visit, please don't hesitate to contact us:"
-            )}
-          </Description>
+          <SectionTitle>{t("contactTitle")}</SectionTitle>
+          <Description>{t("contactIntro")}</Description>
 
           <InfoList style={{ maxWidth: "800px" }}>
-            <li>{t("General Inquiries")}: info@tribalmuseum.org</li>
-            <li>{t("Phone")}: +91 771-2242181</li>
-            <li>{t("Group Bookings")}: groups@tribalmuseum.org</li>
-            <li>{t("Education Programs")}: education@tribalmuseum.org</li>
+            {t("contactList").map((item, index) => (
+              <li key={`contact-${index}`}>{item}</li>
+            ))}
           </InfoList>
 
           <Button
@@ -427,7 +352,7 @@ const PlanYourVisitPage = () => {
             whileTap={{ scale: 0.95 }}
             style={{ marginTop: "30px" }}
           >
-            {t("Visit Contact Page")}
+            {t("visitContactPage")}
           </Button>
         </motion.div>
       </ContentContainer>

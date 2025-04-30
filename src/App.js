@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { Loader } from "./components/Loader";
@@ -12,7 +12,6 @@ import TribalArtifacts from "./pages/TribalArtifacts";
 import FreedomMuseumPage from "./pages/FreedomMuseumPage";
 import FreedomGallery from "./pages/FreedomGallery";
 import FreedomArtifacts from "./pages/FreedomArtifacts";
-import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import MuseumStatsPage from "./pages/MuseumStatsPage";
 import PlanYourVisitPage from "./pages/PlanYourVisitPage";
@@ -38,7 +37,7 @@ function App() {
               <Route path="/freedom" element={<FreedomMuseumPage />} />
               <Route path="/freedom/gallery" element={<FreedomGallery />} />
               <Route path="/freedom/artifacts" element={<FreedomArtifacts />} />
-              <Route path="/about" element={<AboutPage />} />
+              <Route path="/about" element={<MuseumStatsPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/museum-stats" element={<MuseumStatsPage />} />
               <Route path="/plan-visit" element={<PlanYourVisitPage />} />
