@@ -904,7 +904,7 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
               )}
             </AnimatePresence>
           </DropdownContainer>
-
+          {/* 
           <VirtualTourButton
             as={Link}
             to="/virtual-tour"
@@ -912,7 +912,7 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
             whileTap={{ scale: 0.95 }}
           >
             {t("virtualTour")}
-          </VirtualTourButton>
+          </VirtualTourButton> */}
 
           <LanguageToggle
             onClick={handleLanguageToggle}

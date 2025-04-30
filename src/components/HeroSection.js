@@ -747,11 +747,11 @@ const HeroSection = () => {
                   <InfoTitle>{t("Hours")}</InfoTitle>
                   <InfoText>
                     <PriceRow>
-                      <PriceLabel>{t("Tue-Sun")}</PriceLabel>
+                      <PriceLabel>{t("tuesdayToSunday")}</PriceLabel>
                       <PriceValue>10AM-6PM</PriceValue>
                     </PriceRow>
                     <PriceRow>
-                      <PriceLabel>{t("Monday")}</PriceLabel>
+                      <PriceLabel>{t("mondayClosed")}</PriceLabel>
                       <PriceValue>{t("Closed")}</PriceValue>
                     </PriceRow>
                   </InfoText>
@@ -816,11 +816,11 @@ const HeroSection = () => {
                   <InfoTitle>{t("Hours")}</InfoTitle>
                   <InfoText>
                     <PriceRow>
-                      <PriceLabel>{t("Tue-Sun")}</PriceLabel>
+                      <PriceLabel>{t("tuesdayToSunday")}</PriceLabel>
                       <PriceValue>10AM-6PM</PriceValue>
                     </PriceRow>
                     <PriceRow>
-                      <PriceLabel>{t("Monday")}</PriceLabel>
+                      <PriceLabel>{t("mondayClosed")}</PriceLabel>
                       <PriceValue>{t("Closed")}</PriceValue>
                     </PriceRow>
                   </InfoText>

@@ -174,7 +174,15 @@
         "tribalArtifacts": "tribal artifacts",
         "freedomMovementHistory": "freedom movement history",
         "specialExhibitions": "Special exhibitions open now",
-        "visitToday": "Visit today!"
+        "visitToday": "Visit today!",
+        "openingHours": "Opening Hours",
+        "tuesdayToSunday": "Tue-Sun:",
+        "mondayClosed": "Monday:",
+        "Closed": "Closed",
+        "admissionFees": "Admission Fees",
+        "adult": "Adult:",
+        "children": "Children:",
+        "free": "Free"
     },
     "hi": {
         "home": "मुखपृष्ठ",
@@ -329,6 +337,15 @@
         "tribalArtifacts": "आदिवासी कलाकृतियां",
         "freedomMovementHistory": "स्वतंत्रता आंदोलन का इतिहास",
         "specialExhibitions": "विशेष प्रदर्शनियां अब खुली हैं",
-        "visitToday": "आज ही भ्रमण करें!"
+        "visitToday": "आज ही भ्रमण करें!",
+        "openingHours": "खुलने का समय",
+        "tuesdayToSunday": "मंगल-रवि:",
+        "hour": " सुबह 10 बजे - शाम 6 बजे",
+        "mondayClosed": "सोमवार:",
+        "Closed": " बंद",
+        "admissionFees": "प्रवेश शुल्क",
+        "adult": "वयस्क:",
+        "children": "बच्चे:",
+        "free": "मुफ्त"
     }
 }
