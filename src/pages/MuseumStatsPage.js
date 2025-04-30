@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { useLanguage } from "../contexts/LanguageContext";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import StatisticsSection from "../components/StatisticsSection";
 import museumStatsTranslations from "../data/museumStatsTranslations.json";
 
 // Import a background image

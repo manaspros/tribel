@@ -933,7 +933,8 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
             </PlanVisitButton>
 
             <BookTicketButton
-              href="#booking"
+              as={Link}
+              to="/book-now"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

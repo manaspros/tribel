@@ -1,0 +1,240 @@
+{
+    "en": {
+        "pageTitle": "Book Your Visit",
+        "steps": {
+            "step1": "Select Package",
+            "step2": "Terms & Conditions",
+            "step3": "Select Date & Tickets",
+            "step4": "Your Information",
+            "step5": "Payment"
+        },
+        "packageSection": {
+            "title": "Select Your Visit Package",
+            "standardTitle": "Standard Museum Visit",
+            "priceFrom": "From ₹20",
+            "description": "Experience the rich tribal heritage and freedom fighter history of India with our standard museum visit package.",
+            "features": {
+                "feature1": "Access to all permanent galleries",
+                "feature2": "Audio guide in multiple languages",
+                "feature3": "Special exhibitions (where applicable)",
+                "feature4": "Free for children under 12 years"
+            }
+        },
+        "termsSection": {
+            "title": "Terms and Conditions",
+            "bookingTermsTitle": "Booking Terms",
+            "bookingTermsText": "Please read these terms and conditions carefully before booking your visit to the Tribal Heritage & Freedom Fighter Museum.",
+            "cancellationTitle": "Cancellation Policy",
+            "cancellationText": "Cancellations made more than 48 hours before the scheduled visit will be eligible for a full refund. Cancellations made within 48 hours of the scheduled visit will not be refunded.",
+            "museumRulesTitle": "Museum Rules",
+            "museumRules": {
+                "rule1": "Photography is allowed for personal use only. Flash photography is prohibited in certain exhibits.",
+                "rule2": "Food and drinks are not permitted in the gallery areas.",
+                "rule3": "Please maintain a respectful environment and follow instructions from museum staff.",
+                "rule4": "Large bags and backpacks must be stored in the provided lockers."
+            },
+            "covidTitle": "COVID-19 Guidelines",
+            "covidText": "We follow government guidelines regarding health and safety. Masks may be required for all visitors based on current health advisories.",
+            "ticketTitle": "Ticket Usage",
+            "ticketText": "Tickets are valid only for the date and time specified during booking. Late arrivals may result in shortened visit time.",
+            "acceptTerms": "I have read and agree to the terms and conditions"
+        },
+        "ticketsSection": {
+            "title": "Select Date & Tickets",
+            "selectedDate": "Selected date:",
+            "openingHours": "Opening hours:",
+            "openingTime": "10:00 AM - 6:00 PM",
+            "lastEntry": "Last entry:",
+            "lastEntryTime": "5:00 PM",
+            "adultTitle": "Adult",
+            "adultPrice": "₹20",
+            "adultDescription": "13 years and above",
+            "childTitle": "Child",
+            "childPrice": "Free",
+            "childDescription": "Under 12 years",
+            "studentTitle": "Student",
+            "studentPrice": "₹10",
+            "studentDescription": "50% discount with valid ID",
+            "memberTitle": "Member",
+            "memberPrice": "Free",
+            "memberDescription": "Museum members with valid credentials",
+            "quantity": "Quantity",
+            "membershipTypeLabel": "Membership Type",
+            "membershipPlaceholder": "Select Membership Type",
+            "membershipTypes": {
+                "annual": "Annual Member",
+                "patron": "Museum Patron",
+                "vip": "VIP Member",
+                "corporate": "Corporate Partner",
+                "staff": "Museum Staff"
+            },
+            "summaryTitle": "Order Summary",
+            "total": "Total"
+        },
+        "infoSection": {
+            "title": "Your Information",
+            "firstName": "First Name*",
+            "firstNamePlaceholder": "Enter your first name",
+            "lastName": "Last Name*",
+            "lastNamePlaceholder": "Enter your last name",
+            "email": "Email Address*",
+            "emailPlaceholder": "Enter your email address",
+            "phone": "Phone Number*",
+            "phonePlaceholder": "Enter your phone number",
+            "address": "Address (Optional)",
+            "addressPlaceholder": "Enter your address",
+            "summaryTitle": "Booking Summary",
+            "date": "Date",
+            "package": "Package",
+            "standardPackage": "Standard Museum Visit",
+            "tickets": "Tickets"
+        },
+        "paymentSection": {
+            "title": "Payment",
+            "upi": "UPI",
+            "card": "Credit/Debit Card",
+            "netbanking": "Net Banking",
+            "wallet": "Wallet",
+            "summaryTitle": "Final Payment Summary",
+            "date": "Date",
+            "visitor": "Visitor",
+            "totalAmount": "Total Amount",
+            "processing": "Processing...",
+            "completeBooking": "Complete Booking"
+        },
+        "successSection": {
+            "bookingConfirmed": "Booking Confirmed!",
+            "thankYouMessage": "Thank you for booking your visit to the Tribal Heritage & Freedom Fighter Museum. A confirmation email with your booking details has been sent to your email.",
+            "bookingDetails": "Booking Details",
+            "reference": "Reference:",
+            "date": "Date:",
+            "tickets": "Tickets:",
+            "amountPaid": "Amount Paid:",
+            "returnHome": "Return to Home"
+        },
+        "buttons": {
+            "continue": "Continue",
+            "back": "Back",
+            "continueToPayment": "Continue to Payment"
+        }
+    },
+    "hi": {
+        "pageTitle": "अपनी यात्रा बुक करें",
+        "steps": {
+            "step1": "पैकेज चुनें",
+            "step2": "नियम और शर्तें",
+            "step3": "तिथि और टिकट चुनें",
+            "step4": "आपकी जानकारी",
+            "step5": "भुगतान"
+        },
+        "packageSection": {
+            "title": "अपना यात्रा पैकेज चुनें",
+            "standardTitle": "मानक संग्रहालय भ्रमण",
+            "priceFrom": "₹20 से",
+            "description": "हमारे मानक संग्रहालय भ्रमण पैकेज के साथ भारत की समृद्ध आदिवासी विरासत और स्वतंत्रता सेनानी इतिहास का अनुभव करें।",
+            "features": {
+                "feature1": "सभी स्थायी गैलरी तक पहुंच",
+                "feature2": "कई भाषाओं में ऑडियो गाइड",
+                "feature3": "विशेष प्रदर्शनियां (जहां लागू हो)",
+                "feature4": "12 वर्ष से कम उम्र के बच्चों के लिए मुफ्त"
+            }
+        },
+        "termsSection": {
+            "title": "नियम और शर्तें",
+            "bookingTermsTitle": "बुकिंग की शर्तें",
+            "bookingTermsText": "आदिवासी विरासत और स्वतंत्रता सेनानी संग्रहालय की यात्रा बुक करने से पहले कृपया इन नियमों और शर्तों को ध्यान से पढ़ें।",
+            "cancellationTitle": "रद्दीकरण नीति",
+            "cancellationText": "निर्धारित यात्रा से 48 घंटे से अधिक पहले किए गए रद्दीकरण के लिए पूर्ण धनवापसी की पात्रता होगी। निर्धारित यात्रा के 48 घंटे के भीतर किए गए रद्दीकरण की धनवापसी नहीं की जाएगी।",
+            "museumRulesTitle": "संग्रहालय के नियम",
+            "museumRules": {
+                "rule1": "व्यक्तिगत उपयोग के लिए फोटोग्राफी की अनुमति है। कुछ प्रदर्शनों में फ्लैश फोटोग्राफी निषिद्ध है।",
+                "rule2": "गैलरी क्षेत्रों में खाद्य और पेय पदार्थों की अनुमति नहीं है।",
+                "rule3": "कृपया सम्मानजनक वातावरण बनाए रखें और संग्रहालय कर्मचारियों के निर्देशों का पालन करें।",
+                "rule4": "बड़े बैग और बैकपैक प्रदान किए गए लॉकर्स में रखे जाने चाहिए।"
+            },
+            "covidTitle": "COVID-19 दिशानिर्देश",
+            "covidText": "हम स्वास्थ्य और सुरक्षा के संबंध में सरकारी दिशानिर्देशों का पालन करते हैं। वर्तमान स्वास्थ्य सलाह के आधार पर सभी आगंतुकों के लिए मास्क आवश्यक हो सकते हैं।",
+            "ticketTitle": "टिकट उपयोग",
+            "ticketText": "टिकट केवल बुकिंग के दौरान निर्दिष्ट तिथि और समय के लिए मान्य हैं। देर से आने पर यात्रा का समय कम हो सकता है।",
+            "acceptTerms": "मैंने नियमों और शर्तों को पढ़ लिया है और उनसे सहमत हूं"
+        },
+        "ticketsSection": {
+            "title": "तिथि और टिकट चुनें",
+            "selectedDate": "चयनित तिथि:",
+            "openingHours": "खुलने का समय:",
+            "openingTime": "सुबह 10:00 - शाम 6:00",
+            "lastEntry": "अंतिम प्रवेश:",
+            "lastEntryTime": "शाम 5:00",
+            "adultTitle": "वयस्क",
+            "adultPrice": "₹20",
+            "adultDescription": "13 वर्ष और उससे अधिक",
+            "childTitle": "बच्चा",
+            "childPrice": "मुफ्त",
+            "childDescription": "12 वर्ष से कम",
+            "studentTitle": "छात्र",
+            "studentPrice": "₹10",
+            "studentDescription": "वैध आईडी के साथ 50% छूट",
+            "memberTitle": "सदस्य",
+            "memberPrice": "मुफ्त",
+            "memberDescription": "वैध प्रमाण पत्र के साथ संग्रहालय सदस्य",
+            "quantity": "मात्रा",
+            "membershipTypeLabel": "सदस्यता प्रकार",
+            "membershipPlaceholder": "सदस्यता प्रकार चुनें",
+            "membershipTypes": {
+                "annual": "वार्षिक सदस्य",
+                "patron": "संग्रहालय संरक्षक",
+                "vip": "वीआईपी सदस्य",
+                "corporate": "कॉर्पोरेट भागीदार",
+                "staff": "संग्रहालय कर्मचारी"
+            },
+            "summaryTitle": "आदेश सारांश",
+            "total": "कुल"
+        },
+        "infoSection": {
+            "title": "आपकी जानकारी",
+            "firstName": "पहला नाम*",
+            "firstNamePlaceholder": "अपना पहला नाम दर्ज करें",
+            "lastName": "अंतिम नाम*",
+            "lastNamePlaceholder": "अपना अंतिम नाम दर्ज करें",
+            "email": "ईमेल पता*",
+            "emailPlaceholder": "अपना ईमेल पता दर्ज करें",
+            "phone": "फोन नंबर*",
+            "phonePlaceholder": "अपना फोन नंबर दर्ज करें",
+            "address": "पता (वैकल्पिक)",
+            "addressPlaceholder": "अपना पता दर्ज करें",
+            "summaryTitle": "बुकिंग सारांश",
+            "date": "तिथि",
+            "package": "पैकेज",
+            "standardPackage": "मानक संग्रहालय भ्रमण",
+            "tickets": "टिकट"
+        },
+        "paymentSection": {
+            "title": "भुगतान",
+            "upi": "यूपीआई",
+            "card": "क्रेडिट/डेबिट कार्ड",
+            "netbanking": "नेट बैंकिंग",
+            "wallet": "वॉलेट",
+            "summaryTitle": "अंतिम भुगतान सारांश",
+            "date": "तिथि",
+            "visitor": "आगंतुक",
+            "totalAmount": "कुल राशि",
+            "processing": "प्रसंस्करण हो रहा है...",
+            "completeBooking": "बुकिंग पूर्ण करें"
+        },
+        "successSection": {
+            "bookingConfirmed": "बुकिंग की पुष्टि हो गई है!",
+            "thankYouMessage": "आदिवासी विरासत और स्वतंत्रता सेनानी संग्रहालय की यात्रा बुक करने के लिए धन्यवाद। आपके बुकिंग विवरण के साथ एक पुष्टिकरण ईमेल आपके ईमेल पर भेजा गया है।",
+            "bookingDetails": "बुकिंग विवरण",
+            "reference": "संदर्भ:",
+            "date": "तिथि:",
+            "tickets": "टिकट:",
+            "amountPaid": "भुगतान की गई राशि:",
+            "returnHome": "होम पर वापस जाएं"
+        },
+        "buttons": {
+            "continue": "जारी रखें",
+            "back": "वापस",
+            "continueToPayment": "भुगतान के लिए जारी रखें"
+        }
+    }
+}

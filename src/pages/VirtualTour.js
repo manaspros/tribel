@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styled from "styled-components";
-import Navbar from "../components/Navbar";
 import { useLanguage } from "../contexts/LanguageContext";
-// Import images for the museum walls
-import tribalWeaponsImg from "../assets/tribel/Timeline3.jpg"; // Assuming this exists in your assets
-import tribalArtImg from "../assets/halba-rebellion.jpeg"; // Reusing from TimelineSection
-import ceremonyImg from "../assets/bhumkal-revolt.webp"; // Reusing from TimelineSection
-import dailyLifeImg from "../assets/tribel/Timeline1.jpg"; // Assuming this exists in your assets
 
 const TourContainer = styled.div`
   width: 100%;
