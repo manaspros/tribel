@@ -17,7 +17,7 @@ const PageContainer = styled.div`
 const ContentContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 20px 80px;
+  padding: 100px 20px 80px; // Increased top padding from 40px to 100px
 `;
 
 const PageTitle = styled(motion.h1)`
@@ -133,6 +133,7 @@ const BackLink = styled(Link)`
   display: inline-flex;
   align-items: center;
   margin-bottom: 30px;
+  margin-top: 20px; // Added top margin for better spacing
   color: #d3a164;
   text-decoration: none;
   font-weight: 500;

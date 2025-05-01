@@ -16,7 +16,7 @@ const PageContainer = styled.div`
 const ContentContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 20px 80px;
+  padding: 100px 20px 80px; // Increased top padding from 40px to 100px
 `;
 
 const PageTitle = styled(motion.h1)`
@@ -169,6 +169,7 @@ const BackLink = styled(Link)`
   display: inline-flex;
   align-items: center;
   margin-bottom: 30px;
+  margin-top: 20px; // Added top margin for better spacing
   color: #d3a164;
   text-decoration: none;
   font-weight: 500;
@@ -337,7 +338,7 @@ const FreedomGallery = () => {
                       viewBox="0 0 24 24"
                       fill="currentColor"
                     >
-                      <path d="M11.99 2C6.47 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 11.99 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
+                      <path d="M11.99 2C6.47 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 11.99 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8-8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
                     </svg>
                     {
                       galleryDescriptions.durations[gallery.durationKey][
