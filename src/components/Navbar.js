@@ -10,15 +10,15 @@ import gsap from "gsap";
 // Enhanced container with transparent to solid transition
 const NavContainer = styled(motion.nav)`
   position: fixed;
-  top: 0; // Always stay at the top
+  top: 0;
   left: 0;
   right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
-  z-index: 100; // Decreased from 101 to 100
-  transition: background-color 0.3s ease;
+  padding: 15px 40px; // Slightly reduced padding
+  z-index: 100;
+  transition: all 0.4s ease;
 
   background-color: ${(props) =>
     props.isScrolled || !props.transparent
@@ -26,9 +26,13 @@ const NavContainer = styled(motion.nav)`
       : "transparent"};
   backdrop-filter: ${(props) =>
     props.isScrolled || !props.transparent ? "blur(10px)" : "none"};
+  box-shadow: ${(props) =>
+    props.isScrolled || !props.transparent
+      ? "0 4px 20px rgba(0, 0, 0, 0.3)"
+      : "none"};
 
   @media (max-width: 768px) {
-    padding: 15px 20px;
+    padding: 12px 20px;
   }
 `;
 
@@ -96,13 +100,15 @@ const NavLinks = styled.div`
   }
 `;
 
-// Enhanced nav link styling
+// Improved navigation links styling
 const NavLink = styled(motion.a)`
   color: #f5efe7;
   text-decoration: none;
   font-size: 1rem;
   position: relative;
-  padding: 5px 0;
+  padding: 5px 3px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
 
   &:after {
     content: "";
@@ -113,6 +119,10 @@ const NavLink = styled(motion.a)`
     height: 2px;
     background: #d3a164;
     transition: width 0.3s ease;
+  }
+
+  &:hover {
+    color: #d3a164;
   }
 
   &:hover:after {
@@ -131,28 +141,31 @@ const CTAButtonsWrapper = styled.div`
   }
 `;
 
-// Special CTA button
+// Enhanced CTA button
 const BookTicketButton = styled(motion.a)`
-  background: #d3a164;
+  background: linear-gradient(135deg, #d3a164, #b88c56);
   color: #1a1410;
-  padding: 10px 18px;
+  padding: 10px 20px;
   border-radius: 30px;
   font-weight: 600;
   font-size: 1rem;
   white-space: nowrap;
   text-decoration: none;
   box-shadow: 0 4px 15px rgba(211, 161, 100, 0.3);
+  transition: all 0.3s ease;
 
   &:hover {
-    background: #e4b87f;
+    background: linear-gradient(135deg, #e4b87f, #d3a164);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(211, 161, 100, 0.4);
   }
 `;
 
-// Plan Visit button with complementary styling
+// Enhanced Plan Visit button with complementary styling
 const PlanVisitButton = styled(motion.a)`
   background: transparent;
   color: #d3a164;
-  padding: 8px 16px;
+  padding: 8px 18px;
   border-radius: 30px;
   border: 2px solid #d3a164;
   font-weight: 600;
@@ -164,41 +177,25 @@ const PlanVisitButton = styled(motion.a)`
   &:hover {
     background: rgba(211, 161, 100, 0.15);
     transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(211, 161, 100, 0.2);
   }
 `;
 
-// Special Virtual Tour button styled like CTA
-const VirtualTourButton = styled(motion.a)`
-  background: rgba(211, 161, 100, 0.2);
-  border: 2px solid #d3a164;
-  color: #d3a164;
-  padding: 8px 16px;
-  border-radius: 30px;
-  font-weight: 500;
-  font-size: 0.95rem;
-  white-space: nowrap;
-  text-decoration: none;
-  margin-left: 5px;
-
-  &:hover {
-    background: rgba(211, 161, 100, 0.3);
-  }
-`;
-
-// Language toggle
+// Enhanced language toggle
 const LanguageToggle = styled(motion.button)`
   background: none;
   border: 2px solid #d3a164;
   border-radius: 20px;
   color: #f5efe7;
   font-size: 0.9rem;
-  padding: 5px 12px;
+  padding: 5px 14px;
   cursor: pointer;
   transition: all 0.3s ease;
   margin-left: 20px;
 
   &:hover {
     background: rgba(211, 161, 100, 0.2);
+    transform: translateY(-2px);
   }
 
   @media (max-width: 1024px) {
@@ -232,7 +229,7 @@ const MobileMenu = styled(motion.div)`
   display: flex;
   flex-direction: column;
   gap: 25px;
-  z-index: 102; // Increased from 90 to 102
+  z-index: 102;
   box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
 `;
 
@@ -244,7 +241,7 @@ const MobileMenuOverlay = styled(motion.div)`
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 101; // Increased from 80 to 101
+  z-index: 101;
   backdrop-filter: blur(3px);
 `;
 
@@ -277,6 +274,7 @@ const DropdownContainer = styled.div`
   display: inline-block;
 `;
 
+// Enhanced dropdown menu styling
 const DropdownMenu = styled(motion.div)`
   position: absolute;
   top: 100%;
@@ -284,12 +282,12 @@ const DropdownMenu = styled(motion.div)`
   transform: translateX(-50%);
   background: rgba(26, 20, 16, 0.95);
   backdrop-filter: blur(10px);
-  min-width: 240px; // Increased from 180px to 240px
-  width: max-content; // Added to ensure the menu can grow based on content
-  border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  min-width: 240px;
+  width: max-content;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   padding: 10px 0;
-  margin-top: 10px;
+  margin-top: 12px;
   z-index: 110;
   border: 1px solid rgba(211, 161, 100, 0.2);
   overflow: hidden;
@@ -309,13 +307,14 @@ const DropdownMenu = styled(motion.div)`
 `;
 
 const DropdownItem = styled(motion.div)`
-  padding: 12px 25px; // Increased horizontal padding from 20px to 25px
+  padding: 12px 25px;
   color: #f5efe7;
   cursor: pointer;
-  text-align: left; // Changed from center to left for better alignment with wider width
+  text-align: left;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
+  border-left: 3px solid transparent;
 
   svg {
     margin-right: 10px;
@@ -327,6 +326,8 @@ const DropdownItem = styled(motion.div)`
   &:hover {
     background: rgba(211, 161, 100, 0.15);
     color: #d3a164;
+    border-left: 3px solid #d3a164;
+    padding-left: 28px;
   }
 `;
 
@@ -376,42 +377,50 @@ const DropdownTrigger = styled.div`
   }
 `;
 
-// Modified department names container to appear below navbar
+// Modified department names container to appear directly below navbar
 const DepartmentNamesContainer = styled(motion.div)`
   width: 100%;
-  padding: 20px 60px 15px;
+  padding: 15px 60px 12px;
   background-color: rgba(26, 20, 16, 0.98);
   text-align: center;
   position: fixed;
-  top: 80px; // Position below the navbar height
+  top: 75px; // Adjusted to reduce gap
   left: 0;
-  z-index: 99; // Ensure it's below the navbar
+  z-index: 99;
   border-bottom: 1px solid rgba(211, 161, 100, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 15px;
+  box-shadow: 0 4px 15px -8px rgba(0, 0, 0, 0.5);
 
   @media (max-width: 768px) {
-    top: 65px; // Adjust for smaller navbar height on mobile
+    top: 60px; // Adjusted for smaller navbar height on mobile
     flex-direction: column;
-    padding: 15px 20px 12px;
+    padding: 12px 20px 10px;
   }
 `;
 
-// Convert to motion.span to properly support motion props
+// Enhance department name styling
 const DepartmentName = styled(motion.span)`
   color: #d3a164;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 500;
   font-family: "Playfair Display", serif;
-  margin: 0 30px;
-  padding: 5px 10px;
+  margin: 0 25px;
+  padding: 4px 15px;
   white-space: nowrap;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(211, 161, 100, 0.1);
+    transform: translateY(-2px);
+  }
 
   @media (max-width: 768px) {
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     margin-left: 0;
     margin-right: 0;
     font-size: 0.9rem;
@@ -452,20 +461,22 @@ const DepartmentNameTranslated = ({ translationKey }) => {
   );
 };
 
-// Add running text ticker component
+// Enhanced running text ticker
 const RunningTextTicker = styled(motion.div)`
   position: fixed;
-  top: ${(props) => (props.hideDepartmentNames ? "80px" : "150px")};
+  top: ${(props) =>
+    props.hideDepartmentNames ? "75px" : "132px"}; // Adjusted for reduced gap
   left: 0;
   width: 100%;
   overflow: hidden;
   background-color: rgba(26, 20, 16, 0.9);
   border-top: 1px solid rgba(211, 161, 100, 0.2);
-  padding: 4px 0;
+  padding: 6px 0;
   z-index: 98;
+  box-shadow: 0 4px 10px -5px rgba(0, 0, 0, 0.3);
 
   @media (max-width: 768px) {
-    top: ${(props) => (props.hideDepartmentNames ? "65px" : "160px")};
+    top: ${(props) => (props.hideDepartmentNames ? "60px" : "135px")};
   }
 `;
 
@@ -710,8 +721,10 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                   </DropdownItem>
 
                   <DropdownItem
-                    as={Link}
-                    to="/about/trti"
+                    as="a"
+                    href="https://cgtrti.gov.in/index"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ x: 5 }}
                     onClick={() => setAboutDropdownOpen(false)}
                   >
@@ -754,8 +767,10 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                   transition={{ duration: 0.2 }}
                 >
                   <DropdownItem
-                    as={Link}
-                    to="/rd/e-library"
+                    as="a"
+                    href="https://cgtrti.gov.in/e_Library"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ x: 5 }}
                     onClick={() => setRdDropdownOpen(false)}
                   >
@@ -766,8 +781,10 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                   </DropdownItem>
 
                   <DropdownItem
-                    as={Link}
-                    to="/rd/studies"
+                    as="a"
+                    href="https://cgtrti.gov.in/study"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ x: 5 }}
                     onClick={() => setRdDropdownOpen(false)}
                   >
@@ -778,8 +795,10 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                   </DropdownItem>
 
                   <DropdownItem
-                    as={Link}
-                    to="/rd/exhibition"
+                    as="a"
+                    href="https://cgtrti.gov.in/exhibition"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ x: 5 }}
                     onClick={() => setRdDropdownOpen(false)}
                   >
@@ -963,9 +982,9 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
         {!scrolled && !hideDepartmentNames && (
           <DepartmentNamesContainer
             key={`dept-container-${language}-${version}`} // Force re-render when language or version changes
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
             {/* Use special component with direct dictionary access instead of t() */}
@@ -1106,7 +1125,10 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                     </MobileDropdownItem>
 
                     <MobileDropdownItem
-                      to="/about/trti"
+                      as="a"
+                      href="https://cgtrti.gov.in/index"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       <svg
@@ -1154,7 +1176,10 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                 {mobileRdOpen && (
                   <MobileDropdownMenu>
                     <MobileDropdownItem
-                      to="/rd/e-library"
+                      as="a"
+                      href="https://cgtrti.gov.in/e_Library"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       <svg
@@ -1169,7 +1194,10 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                     </MobileDropdownItem>
 
                     <MobileDropdownItem
-                      to="/rd/studies"
+                      as="a"
+                      href="https://cgtrti.gov.in/study"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       <svg
@@ -1184,7 +1212,10 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                     </MobileDropdownItem>
 
                     <MobileDropdownItem
-                      to="/rd/exhibition"
+                      as="a"
+                      href="https://cgtrti.gov.in/exhibition"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       <svg

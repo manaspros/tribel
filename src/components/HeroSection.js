@@ -837,29 +837,6 @@ const HeroSection = () => {
           </MuseumOption>
         </MuseumSelector>
       </TitleContainer>
-
-      <ScrollDownIndicator
-        className="scroll-indicator"
-        onClick={handleScrollDown}
-        animate={{ y: [0, 10, 0] }}
-        transition={{
-          repeat: Infinity,
-          duration: 2.5,
-          ease: "easeInOut",
-        }}
-        whileHover={{ y: 5, scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        style={{ display: window.innerWidth <= 500 ? "none" : "flex" }}
-      >
-        <span>{t("scrollDown")}</span>
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </ScrollDownIndicator>
     </HeroContainer>
   );
 };
