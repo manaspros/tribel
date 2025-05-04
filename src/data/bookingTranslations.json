@@ -9,15 +9,24 @@
             "step5": "Payment"
         },
         "packageSection": {
-            "title": "Select Your Visit Package",
-            "standardTitle": "Standard Museum Visit",
+            "title": "Select Museums to Visit",
+            "selectMuseums": "Please select which museum(s) you would like to visit. You can select one or both museums.",
             "priceFrom": "From ₹20",
-            "description": "Experience the rich tribal heritage and freedom fighter history of India with our standard museum visit package.",
-            "features": {
-                "feature1": "Access to all permanent galleries",
-                "feature2": "Audio guide in multiple languages",
-                "feature3": "Special exhibitions (where applicable)",
-                "feature4": "Free for children under 12 years"
+            "tribalMuseum": "Tribal Museum",
+            "freedomMuseum": "Freedom Fighters Museum",
+            "bothMuseums": "Both Museums (10% Discount)",
+            "comboDiscount": "You've selected both museums! You'll receive a 10% discount on your total booking.",
+            "tribalDescription": "Explore the rich heritage and cultural diversity of tribal communities through artifacts, art, and immersive exhibits.",
+            "freedomDescription": "Discover the inspiring stories of freedom fighters who shaped the nation's history through historical documents and personal items.",
+            "tribalFeatures": {
+                "feature1": "Authentic tribal artifacts collection",
+                "feature2": "Interactive cultural displays",
+                "feature3": "Traditional art and craft exhibits"
+            },
+            "freedomFeatures": {
+                "feature1": "Historical documents and photographs",
+                "feature2": "Personal items of freedom fighters",
+                "feature3": "Chronological timeline of freedom movement"
             }
         },
         "termsSection": {
@@ -69,7 +78,8 @@
                 "staff": "Museum Staff"
             },
             "summaryTitle": "Order Summary",
-            "total": "Total"
+            "total": "Total",
+            "selectedMuseums": "Selected Museums"
         },
         "infoSection": {
             "title": "Your Information",
@@ -87,7 +97,8 @@
             "date": "Date",
             "package": "Package",
             "standardPackage": "Standard Museum Visit",
-            "tickets": "Tickets"
+            "tickets": "Tickets",
+            "museums": "Museums"
         },
         "paymentSection": {
             "title": "Payment",
@@ -100,7 +111,8 @@
             "visitor": "Visitor",
             "totalAmount": "Total Amount",
             "processing": "Processing...",
-            "completeBooking": "Complete Booking"
+            "completeBooking": "Complete Booking",
+            "museums": "Museums"
         },
         "successSection": {
             "bookingConfirmed": "Booking Confirmed!",
@@ -110,7 +122,8 @@
             "date": "Date:",
             "tickets": "Tickets:",
             "amountPaid": "Amount Paid:",
-            "returnHome": "Return to Home"
+            "returnHome": "Return to Home",
+            "museums": "Museums"
         },
         "buttons": {
             "continue": "Continue",
@@ -128,15 +141,24 @@
             "step5": "भुगतान"
         },
         "packageSection": {
-            "title": "अपना यात्रा पैकेज चुनें",
-            "standardTitle": "मानक संग्रहालय भ्रमण",
-            "priceFrom": "₹20 से",
-            "description": "हमारे मानक संग्रहालय भ्रमण पैकेज के साथ भारत की समृद्ध आदिवासी विरासत और स्वतंत्रता सेनानी इतिहास का अनुभव करें।",
-            "features": {
-                "feature1": "सभी स्थायी गैलरी तक पहुंच",
-                "feature2": "कई भाषाओं में ऑडियो गाइड",
-                "feature3": "विशेष प्रदर्शनियां (जहां लागू हो)",
-                "feature4": "12 वर्ष से कम उम्र के बच्चों के लिए मुफ्त"
+            "title": "देखने के लिए संग्रहालय चुनें",
+            "selectMuseums": "कृपया चुनें कि आप कौन से संग्रहालय देखना चाहते हैं। आप एक या दोनों संग्रहालयों का चयन कर सकते हैं।",
+            "priceFrom": "₹20 से शुरू",
+            "tribalMuseum": "आदिवासी संग्रहालय",
+            "freedomMuseum": "स्वतंत्रता सेनानी संग्रहालय",
+            "bothMuseums": "दोनों संग्रहालय (10% छूट)",
+            "comboDiscount": "आपने दोनों संग्रहालयों का चयन किया है! आपको अपनी कुल बुकिंग पर 10% की छूट मिलेगी।",
+            "tribalDescription": "कलाकृतियों, कला और इमर्सिव प्रदर्शनों के माध्यम से आदिवासी समुदायों की समृद्ध विरासत और सांस्कृतिक विविधता का अन्वेषण करें।",
+            "freedomDescription": "ऐतिहासिक दस्तावेजों और व्यक्तिगत वस्तुओं के माध्यम से स्वतंत्रता सेनानियों की प्रेरणादायक कहानियों का पता लगाएं जिन्होंने देश के इतिहास को आकार दिया।",
+            "tribalFeatures": {
+                "feature1": "प्रामाणिक आदिवासी कलाकृति संग्रह",
+                "feature2": "इंटरैक्टिव सांस्कृतिक प्रदर्शन",
+                "feature3": "पारंपरिक कला और शिल्प प्रदर्शनी"
+            },
+            "freedomFeatures": {
+                "feature1": "ऐतिहासिक दस्तावेज और तस्वीरें",
+                "feature2": "स्वतंत्रता सेनानियों की व्यक्तिगत वस्तुएं",
+                "feature3": "स्वतंत्रता आंदोलन की कालक्रमिक समयरेखा"
             }
         },
         "termsSection": {
@@ -188,7 +210,8 @@
                 "staff": "संग्रहालय कर्मचारी"
             },
             "summaryTitle": "आदेश सारांश",
-            "total": "कुल"
+            "total": "कुल",
+            "selectedMuseums": "चयनित संग्रहालय"
         },
         "infoSection": {
             "title": "आपकी जानकारी",
@@ -206,7 +229,8 @@
             "date": "तिथि",
             "package": "पैकेज",
             "standardPackage": "मानक संग्रहालय भ्रमण",
-            "tickets": "टिकट"
+            "tickets": "टिकट",
+            "museums": "संग्रहालय"
         },
         "paymentSection": {
             "title": "भुगतान",
@@ -219,7 +243,8 @@
             "visitor": "आगंतुक",
             "totalAmount": "कुल राशि",
             "processing": "प्रसंस्करण हो रहा है...",
-            "completeBooking": "बुकिंग पूर्ण करें"
+            "completeBooking": "बुकिंग पूर्ण करें",
+            "museums": "संग्रहालय"
         },
         "successSection": {
             "bookingConfirmed": "बुकिंग की पुष्टि हो गई है!",
@@ -229,7 +254,8 @@
             "date": "तिथि:",
             "tickets": "टिकट:",
             "amountPaid": "भुगतान की गई राशि:",
-            "returnHome": "होम पर वापस जाएं"
+            "returnHome": "होम पर वापस जाएं",
+            "museums": "संग्रहालय"
         },
         "buttons": {
             "continue": "जारी रखें",

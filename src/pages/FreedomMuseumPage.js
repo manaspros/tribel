@@ -21,6 +21,7 @@ const PageContainer = styled.div`
 
 const HeroSection = styled.div`
   height: 60vh;
+  padding-top: 80px; /* Add padding to account for the navbar height */
   background-image: linear-gradient(
       rgba(26, 20, 16, 0.7),
       rgba(26, 20, 16, 0.9)
@@ -33,6 +34,7 @@ const HeroSection = styled.div`
   justify-content: center;
   position: relative;
   overflow: hidden;
+  margin-top: 0; /* Ensure no additional margin is pushing content down */
 
   &::after {
     content: "";

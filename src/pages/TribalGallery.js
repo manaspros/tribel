@@ -9,7 +9,7 @@ import galleries from "../data/galleries.json";
 import galleryTranslations from "../data/galleryTranslations.json";
 
 const PageContainer = styled.div`
-  background-color: #1a1410;
+  background-color: rgb(208, 161, 130);
   color: #fff;
   min-height: 100vh;
 `;

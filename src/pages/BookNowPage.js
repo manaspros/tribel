@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styled from "styled-components";
 import { useLanguage } from "../contexts/LanguageContext";
@@ -133,7 +133,8 @@ const Package = styled.div`
   background: rgba(26, 20, 16, 0.5);
   border-radius: 10px;
   padding: 25px;
-  border: 1px solid rgba(211, 161, 100, 0.2);
+  border: 1px solid
+    ${(props) => (props.selected ? "#d3a164" : "rgba(211, 161, 100, 0.2)")};
   margin-bottom: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -147,9 +148,29 @@ const Package = styled.div`
   ${(props) =>
     props.selected &&
     `
-    border-color: #d3a164;
-    box-shadow: 0 10px 20px rgba(211, 161, 100, 0.2);
+    background: rgba(26, 20, 16, 0.7);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   `}
+`;
+
+const CheckboxWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+
+  input {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    cursor: pointer;
+  }
+
+  label {
+    cursor: pointer;
+    color: #d3a164;
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
 `;
 
 const PackageHeader = styled.div`
@@ -157,12 +178,6 @@ const PackageHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
-`;
-
-const PackageTitle = styled.h3`
-  color: #d3a164;
-  font-size: 1.5rem;
-  margin: 0;
 `;
 
 const PackagePrice = styled.div`
@@ -576,7 +591,10 @@ const disabledDays = [
 const BookNowPage = () => {
   const { language } = useLanguage();
   const [currentStep, setCurrentStep] = useState(1);
-  const [selectedPackage, setSelectedPackage] = useState(null);
+  const [selectedMuseums, setSelectedMuseums] = useState({
+    tribal: false,
+    freedom: false,
+  });
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
   const [tickets, setTickets] = useState({
@@ -598,7 +616,6 @@ const BookNowPage = () => {
   const [bookingComplete, setBookingComplete] = useState(false);
   const [bookingReference, setBookingReference] = useState("");
 
-  // Function to get translations from bookingTranslations
   const bt = (key) => {
     const keys = key.split(".");
     let value = bookingTranslations[language];
@@ -627,13 +644,37 @@ const BookNowPage = () => {
   const calculateTotal = () => {
     const adultPrice = 20 * tickets.adult;
     const studentPrice = 10 * tickets.student;
-    return adultPrice + studentPrice;
+
+    const museumCount =
+      (selectedMuseums.tribal ? 1 : 0) + (selectedMuseums.freedom ? 1 : 0);
+
+    const multiplier = museumCount === 2 ? 1.8 : museumCount;
+
+    return Math.round((adultPrice + studentPrice) * multiplier);
+  };
+
+  const toggleMuseumSelection = (museum) => {
+    setSelectedMuseums((prev) => ({
+      ...prev,
+      [museum]: !prev[museum],
+    }));
   };
 
   const handleNextStep = () => {
     if (currentStep < 5) {
       setCurrentStep(currentStep + 1);
       window.scrollTo(0, 0);
+
+      if (currentStep === 4) {
+        console.log("Booking Data:", {
+          museums: selectedMuseums,
+          date: selectedDate,
+          tickets,
+          memberType: tickets.member > 0 ? memberType : null,
+          personalInfo,
+          totalAmount: calculateTotal(),
+        });
+      }
     }
   };
 
@@ -657,7 +698,7 @@ const BookNowPage = () => {
   const isNextButtonDisabled = () => {
     switch (currentStep) {
       case 1:
-        return !selectedPackage;
+        return !selectedMuseums.tribal && !selectedMuseums.freedom;
       case 2:
         return !termsAccepted;
       case 3:
@@ -683,6 +724,16 @@ const BookNowPage = () => {
     setIsSubmitting(true);
 
     try {
+      console.log("FINAL BOOKING SUBMISSION:", {
+        museums: selectedMuseums,
+        date: selectedDate,
+        tickets,
+        memberType: tickets.member > 0 ? memberType : null,
+        personalInfo,
+        paymentMethod,
+        totalAmount: calculateTotal(),
+      });
+
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
       const reference =
@@ -713,6 +764,17 @@ const BookNowPage = () => {
       language === "en" ? "en-US" : "hi-IN",
       options
     );
+  };
+
+  const getSelectedMuseumsText = () => {
+    if (selectedMuseums.tribal && selectedMuseums.freedom) {
+      return bt("packageSection.bothMuseums");
+    } else if (selectedMuseums.tribal) {
+      return bt("packageSection.tribalMuseum");
+    } else if (selectedMuseums.freedom) {
+      return bt("packageSection.freedomMuseum");
+    }
+    return "";
   };
 
   return (
@@ -786,28 +848,87 @@ const BookNowPage = () => {
             >
               <CardTitle>{bt("packageSection.title")}</CardTitle>
 
+              <p style={{ marginBottom: "20px" }}>
+                {bt("packageSection.selectMuseums")}
+              </p>
+
               <Package
-                selected={selectedPackage === "standard"}
-                onClick={() => setSelectedPackage("standard")}
+                selected={selectedMuseums.tribal}
+                onClick={() => toggleMuseumSelection("tribal")}
               >
+                <CheckboxWrapper>
+                  <input
+                    type="checkbox"
+                    id="tribal-museum"
+                    checked={selectedMuseums.tribal}
+                    onChange={() => toggleMuseumSelection("tribal")}
+                  />
+                  <label htmlFor="tribal-museum">
+                    {bt("packageSection.tribalMuseum")}
+                  </label>
+                </CheckboxWrapper>
+
                 <PackageHeader>
-                  <PackageTitle>
-                    {bt("packageSection.standardTitle")}
-                  </PackageTitle>
                   <PackagePrice>{bt("packageSection.priceFrom")}</PackagePrice>
                 </PackageHeader>
 
                 <PackageDescription>
-                  {bt("packageSection.description")}
+                  {bt("packageSection.tribalDescription")}
                 </PackageDescription>
 
                 <PackageFeatures>
-                  <li>{bt("packageSection.features.feature1")}</li>
-                  <li>{bt("packageSection.features.feature2")}</li>
-                  <li>{bt("packageSection.features.feature3")}</li>
-                  <li>{bt("packageSection.features.feature4")}</li>
+                  <li>{bt("packageSection.tribalFeatures.feature1")}</li>
+                  <li>{bt("packageSection.tribalFeatures.feature2")}</li>
+                  <li>{bt("packageSection.tribalFeatures.feature3")}</li>
                 </PackageFeatures>
               </Package>
+
+              <Package
+                selected={selectedMuseums.freedom}
+                onClick={() => toggleMuseumSelection("freedom")}
+              >
+                <CheckboxWrapper>
+                  <input
+                    type="checkbox"
+                    id="freedom-museum"
+                    checked={selectedMuseums.freedom}
+                    onChange={() => toggleMuseumSelection("freedom")}
+                  />
+                  <label htmlFor="freedom-museum">
+                    {bt("packageSection.freedomMuseum")}
+                  </label>
+                </CheckboxWrapper>
+
+                <PackageHeader>
+                  <PackagePrice>{bt("packageSection.priceFrom")}</PackagePrice>
+                </PackageHeader>
+
+                <PackageDescription>
+                  {bt("packageSection.freedomDescription")}
+                </PackageDescription>
+
+                <PackageFeatures>
+                  <li>{bt("packageSection.freedomFeatures.feature1")}</li>
+                  <li>{bt("packageSection.freedomFeatures.feature2")}</li>
+                  <li>{bt("packageSection.freedomFeatures.feature3")}</li>
+                </PackageFeatures>
+              </Package>
+
+              {selectedMuseums.tribal && selectedMuseums.freedom && (
+                <div
+                  style={{
+                    background: "rgba(211, 161, 100, 0.1)",
+                    padding: "15px",
+                    borderRadius: "10px",
+                    marginTop: "20px",
+                    border: "1px dashed rgba(211, 161, 100, 0.3)",
+                  }}
+                >
+                  <p style={{ color: "#d3a164" }}>
+                    {bt("packageSection.comboDiscount")}
+                  </p>
+                </div>
+              )}
 
               <ButtonContainer>
                 <span></span>
@@ -857,9 +978,6 @@ const BookNowPage = () => {
                   <li>{bt("termsSection.museumRules.rule3")}</li>
                   <li>{bt("termsSection.museumRules.rule4")}</li>
                 </ul>
-
-                <h3>{bt("termsSection.covidTitle")}</h3>
-                <p>{bt("termsSection.covidText")}</p>
 
                 <h3>{bt("termsSection.ticketTitle")}</h3>
                 <p>{bt("termsSection.ticketText")}</p>
@@ -926,6 +1044,20 @@ const BookNowPage = () => {
               transition={{ duration: 0.5 }}
             >
               <CardTitle>{bt("ticketsSection.title")}</CardTitle>
+
+              <div
+                style={{
+                  background: "rgba(211, 161, 100, 0.1)",
+                  padding: "15px",
+                  borderRadius: "10px",
+                  marginBottom: "20px",
+                }}
+              >
+                <p>
+                  <strong>{bt("ticketsSection.selectedMuseums")}:</strong>{" "}
+                  {getSelectedMuseumsText()}
+                </p>
+              </div>
 
               <CalendarContainer>
                 <DayPickerContainer>
@@ -1072,44 +1204,48 @@ const BookNowPage = () => {
                           +
                         </QuantityButton>
                       </QuantitySelector>
-                    </TicketSelector>
 
-                    {tickets.member > 0 && (
-                      <MembershipContainer>
-                        <FormLabel>
-                          {bt("ticketsSection.membershipTypeLabel")}
-                        </FormLabel>
-                        <select
-                          value={memberType}
-                          onChange={(e) => setMemberType(e.target.value)}
-                        >
-                          <option value="">
-                            {bt("ticketsSection.membershipPlaceholder")}
-                          </option>
-                          <option value="annual">
-                            {bt("ticketsSection.membershipTypes.annual")}
-                          </option>
-                          <option value="patron">
-                            {bt("ticketsSection.membershipTypes.patron")}
-                          </option>
-                          <option value="vip">
-                            {bt("ticketsSection.membershipTypes.vip")}
-                          </option>
-                          <option value="corporate">
-                            {bt("ticketsSection.membershipTypes.corporate")}
-                          </option>
-                          <option value="staff">
-                            {bt("ticketsSection.membershipTypes.staff")}
-                          </option>
-                        </select>
-                      </MembershipContainer>
-                    )}
+                      {tickets.member > 0 && (
+                        <MembershipContainer>
+                          <FormLabel>
+                            {bt("ticketsSection.membershipTypeLabel")}
+                          </FormLabel>
+                          <select
+                            value={memberType}
+                            onChange={(e) => setMemberType(e.target.value)}
+                          >
+                            <option value="">
+                              {bt("ticketsSection.membershipPlaceholder")}
+                            </option>
+                            <option value="annual">
+                              {bt("ticketsSection.membershipTypes.annual")}
+                            </option>
+                            <option value="patron">
+                              {bt("ticketsSection.membershipTypes.patron")}
+                            </option>
+                            <option value="vip">
+                              {bt("ticketsSection.membershipTypes.vip")}
+                            </option>
+                            <option value="corporate">
+                              {bt("ticketsSection.membershipTypes.corporate")}
+                            </option>
+                            <option value="staff">
+                              {bt("ticketsSection.membershipTypes.staff")}
+                            </option>
+                          </select>
+                        </MembershipContainer>
+                      )}
+                    </TicketSelector>
                   </TicketTypeCard>
                 </TicketsContainer>
               </CalendarContainer>
 
               <OrderSummary>
                 <SummaryTitle>{bt("ticketsSection.summaryTitle")}</SummaryTitle>
+                <SummaryRow>
+                  <span>{bt("ticketsSection.selectedMuseums")}</span>
+                  <span>{getSelectedMuseumsText()}</span>
+                </SummaryRow>
                 {tickets.adult > 0 && (
                   <SummaryRow>
                     <span>
@@ -1246,6 +1382,9 @@ const BookNowPage = () => {
                     onChange={handlePersonalInfoChange}
                     placeholder={bt("infoSection.phonePlaceholder")}
                     required
+                    maxLength="10"
+                    pattern="[0-9]{10}"
+                    inputMode="numeric"
                   />
                 </FormGroup>
               </FormGrid>
@@ -1268,8 +1407,8 @@ const BookNowPage = () => {
                   <span>{formatDate(selectedDate)}</span>
                 </SummaryRow>
                 <SummaryRow>
-                  <span>{bt("infoSection.package")}</span>
-                  <span>{bt("infoSection.standardPackage")}</span>
+                  <span>{bt("infoSection.museums")}</span>
+                  <span>{getSelectedMuseumsText()}</span>
                 </SummaryRow>
                 <SummaryRow>
                   <span>{bt("infoSection.tickets")}</span>
@@ -1378,6 +1517,10 @@ const BookNowPage = () => {
                 <SummaryRow>
                   <span>{bt("paymentSection.date")}</span>
                   <span>{formatDate(selectedDate)}</span>
+                </SummaryRow>
+                <SummaryRow>
+                  <span>{bt("paymentSection.museums")}</span>
+                  <span>{getSelectedMuseumsText()}</span>
                 </SummaryRow>
                 <SummaryRow>
                   <span>{bt("paymentSection.visitor")}</span>
@@ -1508,6 +1651,10 @@ const BookNowPage = () => {
                 <p>
                   <strong>{bt("successSection.reference")}</strong>{" "}
                   {bookingReference}
+                </p>
+                <p>
+                  <strong>{bt("successSection.museums")}</strong>{" "}
+                  {getSelectedMuseumsText()}
                 </p>
                 <p>
                   <strong>{bt("successSection.date")}</strong>{" "}

@@ -12,13 +12,15 @@ import foregroundElements from "../assets/tribel/Tree2.png";
 gsap.registerPlugin(ScrollTrigger);
 
 const HeroContainer = styled.section`
-  height: 110vh; /* Increased from 100vh to 110vh to make the section taller */
+  height: 110vh;
+  padding-top: 80px; /* Add padding to account for the navbar height */
   width: 100%;
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 0; /* Ensure no additional margin is pushing content down */
 `;
 
 const ParallaxLayer = styled.div`
@@ -707,7 +709,7 @@ const HeroSection = () => {
               />
 
               <MuseumTitle isActive={getIsActive("tribal")}>
-                <span>{t("tribal")}</span> {t("heritageMuseum")}
+                <span>{t("tribal")}</span> <br /> {t("heritageMuseum")}
               </MuseumTitle>
 
               <MuseumDescription>
