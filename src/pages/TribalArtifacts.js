@@ -347,7 +347,7 @@ const TribalArtifacts = () => {
           {artifactDescriptions.tribalArtifactsIntro[language]}
         </ArtifactsDescription>
 
-        <ArtifactsHeader>
+        {/* <ArtifactsHeader>
           <FilterContainer>
             <FilterButton
               active={filter === "all"}
@@ -386,7 +386,7 @@ const TribalArtifacts = () => {
               {getCategoryTranslation("music")}
             </FilterButton>
           </FilterContainer>
-        </ArtifactsHeader>
+        </ArtifactsHeader> */}
 
         <ArtifactsGrid>
           {filteredArtifacts.map((artifact, index) => (
@@ -396,13 +396,16 @@ const TribalArtifacts = () => {
             >
               <ArtifactCard
                 artifact={artifact}
-                title={getArtifactTranslation(artifact.artifactKey, "title")}
-                description={getArtifactTranslation(
-                  artifact.artifactKey,
-                  "description"
-                )}
+                // title={getArtifactTranslation(artifact.artifactKey, "title")}
+                // description={getArtifactTranslation(
+                //   artifact.artifactKey,
+                //   "description"
+                // )}
+                // tags={artifact.tags
+                title={""}
+                description={""}
                 emoji={artifact.emoji}
-                tags={artifact.tags}
+                tags={[]}
                 onClick={() => handleArtifactClick(artifact)}
                 translateTag={getCategoryTranslation}
                 index={index}
