@@ -6,6 +6,9 @@ import { useLanguage } from "../contexts/LanguageContext";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
+// Import translation data
+import visionTranslations from "../data/visionPageTranslations.json";
+
 // Some placeholder image
 import visionBanner from "../assets/tribel/Picture3.jpg";
 
@@ -167,7 +170,16 @@ const Quote = styled.blockquote`
 `;
 
 const VisionPage = () => {
-  const { t } = useLanguage();
+  const { language } = useLanguage();
+
+  // Function to get translations
+  const getContent = (key) => {
+    if (visionTranslations[language] && visionTranslations[language][key]) {
+      return visionTranslations[language][key];
+    }
+    // Fallback to English if translation is missing
+    return visionTranslations.en[key] || key;
+  };
 
   return (
     <PageContainer>
@@ -180,14 +192,14 @@ const VisionPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            {t("Our Vision")}
+            {getContent("pageTitle")}
           </PageTitle>
           <Subtitle
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            Preserving the past, embracing the present, inspiring the future
+            {getContent("pageSubtitle")}
           </Subtitle>
         </div>
       </HeroSection>
@@ -197,7 +209,7 @@ const VisionPage = () => {
           <svg width="20" height="20" viewBox="0 0 24 24" fill="#d3a164">
             <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
           </svg>
-          {t("Back to About Museum")}
+          {getContent("backToAbout")}
         </BackLink>
 
         <Section
@@ -205,25 +217,10 @@ const VisionPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <SectionTitle>Vision Statement</SectionTitle>
-          <Paragraph>
-            Our vision is to create a dynamic cultural institution that
-            preserves, celebrates, and promotes the rich heritage of tribal
-            communities and freedom fighters, fostering understanding and
-            appreciation across generations and cultures.
-          </Paragraph>
-          <Quote>
-            "To be a world-class museum that serves as a cultural bridge between
-            past and future, honoring indigenous wisdom and the spirit of
-            freedom through engaging experiences that educate, inspire, and
-            transform."
-          </Quote>
-          <Paragraph>
-            We envision a museum that not only preserves artifacts but also
-            serves as a living cultural center where traditions are kept alive,
-            stories are shared, and new generations can connect with their roots
-            while building a more inclusive future.
-          </Paragraph>
+          <SectionTitle>{getContent("visionSectionTitle")}</SectionTitle>
+          <Paragraph>{getContent("visionDescription1")}</Paragraph>
+          <Quote>{getContent("visionQuote")}</Quote>
+          <Paragraph>{getContent("visionDescription2")}</Paragraph>
         </Section>
 
         <Section
@@ -231,39 +228,16 @@ const VisionPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <SectionTitle>Mission</SectionTitle>
-          <Paragraph>
-            Our mission is to collect, preserve, research, exhibit, and
-            interpret the material culture and historical narratives of tribal
-            communities and freedom fighters, creating meaningful connections
-            between our heritage and contemporary society.
-          </Paragraph>
-          <Paragraph>We are committed to:</Paragraph>
+          <SectionTitle>{getContent("missionSectionTitle")}</SectionTitle>
+          <Paragraph>{getContent("missionDescription1")}</Paragraph>
+          <Paragraph>{getContent("missionDescription2")}</Paragraph>
           <ValuesList>
-            <ValueItem>
-              Preserving the tangible and intangible heritage of indigenous
-              communities
-            </ValueItem>
-            <ValueItem>
-              Documenting and honoring the legacy of freedom fighters who shaped
-              our nation
-            </ValueItem>
-            <ValueItem>
-              Creating inclusive and accessible educational experiences for
-              diverse audiences
-            </ValueItem>
-            <ValueItem>
-              Fostering dialogue and understanding across cultures and
-              generations
-            </ValueItem>
-            <ValueItem>
-              Supporting research that enhances knowledge about tribal history
-              and independence movements
-            </ValueItem>
-            <ValueItem>
-              Engaging with communities to ensure authentic representation and
-              shared authority
-            </ValueItem>
+            <ValueItem>{getContent("missionValue1")}</ValueItem>
+            <ValueItem>{getContent("missionValue2")}</ValueItem>
+            <ValueItem>{getContent("missionValue3")}</ValueItem>
+            <ValueItem>{getContent("missionValue4")}</ValueItem>
+            <ValueItem>{getContent("missionValue5")}</ValueItem>
+            <ValueItem>{getContent("missionValue6")}</ValueItem>
           </ValuesList>
         </Section>
 
@@ -272,32 +246,14 @@ const VisionPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <SectionTitle>Core Values</SectionTitle>
+          <SectionTitle>{getContent("valuesSectionTitle")}</SectionTitle>
           <ValuesList>
-            <ValueItem>
-              <strong>Respect:</strong> Honoring the diversity and dignity of
-              all cultures, perspectives, and individuals
-            </ValueItem>
-            <ValueItem>
-              <strong>Authenticity:</strong> Ensuring truthful and accurate
-              representation of historical narratives and cultural practices
-            </ValueItem>
-            <ValueItem>
-              <strong>Community:</strong> Working collaboratively with
-              indigenous communities and stakeholders
-            </ValueItem>
-            <ValueItem>
-              <strong>Innovation:</strong> Embracing new ideas and technologies
-              to enhance the visitor experience
-            </ValueItem>
-            <ValueItem>
-              <strong>Accessibility:</strong> Making our collections and
-              programs available to all people
-            </ValueItem>
-            <ValueItem>
-              <strong>Stewardship:</strong> Responsibly caring for cultural
-              heritage for future generations
-            </ValueItem>
+            <ValueItem>{getContent("value1")}</ValueItem>
+            <ValueItem>{getContent("value2")}</ValueItem>
+            <ValueItem>{getContent("value3")}</ValueItem>
+            <ValueItem>{getContent("value4")}</ValueItem>
+            <ValueItem>{getContent("value5")}</ValueItem>
+            <ValueItem>{getContent("value6")}</ValueItem>
           </ValuesList>
         </Section>
 
@@ -306,36 +262,15 @@ const VisionPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          <SectionTitle>Strategic Objectives</SectionTitle>
-          <Paragraph>
-            To fulfill our vision and mission, we have established the following
-            strategic objectives:
-          </Paragraph>
+          <SectionTitle>{getContent("objectivesSectionTitle")}</SectionTitle>
+          <Paragraph>{getContent("objectivesIntro")}</Paragraph>
           <ValuesList>
-            <ValueItem>
-              Expand and diversify our collections to ensure comprehensive
-              representation of tribal cultures and freedom movements
-            </ValueItem>
-            <ValueItem>
-              Develop innovative exhibition strategies that engage visitors
-              through immersive and interactive experiences
-            </ValueItem>
-            <ValueItem>
-              Strengthen educational programs that promote cultural
-              understanding and historical awareness
-            </ValueItem>
-            <ValueItem>
-              Build sustainable partnerships with communities, educational
-              institutions, and cultural organizations
-            </ValueItem>
-            <ValueItem>
-              Enhance digital presence to reach broader audiences and create
-              virtual access to collections
-            </ValueItem>
-            <ValueItem>
-              Establish the museum as a center for research and scholarship in
-              tribal studies and freedom movement history
-            </ValueItem>
+            <ValueItem>{getContent("objective1")}</ValueItem>
+            <ValueItem>{getContent("objective2")}</ValueItem>
+            <ValueItem>{getContent("objective3")}</ValueItem>
+            <ValueItem>{getContent("objective4")}</ValueItem>
+            <ValueItem>{getContent("objective5")}</ValueItem>
+            <ValueItem>{getContent("objective6")}</ValueItem>
           </ValuesList>
         </Section>
 
@@ -344,26 +279,10 @@ const VisionPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
-          <SectionTitle>Future Direction</SectionTitle>
-          <Paragraph>
-            Looking ahead, our museum aims to become a globally recognized
-            cultural institution that sets new standards in presenting
-            indigenous heritage and historical narratives. We envision expanding
-            our physical and digital footprint, developing innovative community
-            engagement programs, and establishing a robust research center.
-          </Paragraph>
-          <Paragraph>
-            Through these efforts, we hope to inspire future generations to
-            value cultural diversity, understand the complexities of history,
-            and apply the wisdom of the past to create a more inclusive and
-            equitable future for all.
-          </Paragraph>
-          <Quote>
-            "A museum is not just a collection of artifacts; it is a living
-            testament to human creativity, resilience, and aspiration. Our role
-            is to ensure that these stories continue to inspire and educate for
-            generations to come."
-          </Quote>
+          <SectionTitle>{getContent("futureSectionTitle")}</SectionTitle>
+          <Paragraph>{getContent("futureDescription1")}</Paragraph>
+          <Paragraph>{getContent("futureDescription2")}</Paragraph>
+          <Quote>{getContent("futureQuote")}</Quote>
         </Section>
       </ContentContainer>
 

@@ -1234,7 +1234,6 @@ const BookNowPage = () => {
                     value={personalInfo.email}
                     onChange={handlePersonalInfoChange}
                     placeholder={bt("infoSection.emailPlaceholder")}
-                    required
                   />
                 </FormGroup>
 

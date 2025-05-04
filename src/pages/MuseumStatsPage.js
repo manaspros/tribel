@@ -292,7 +292,6 @@ const ComparisonCell = styled.div`
   }
 `;
 
-// New component for museum quote
 const MuseumQuote = styled.blockquote`
   font-style: italic;
   font-size: 1.15rem;
@@ -325,7 +324,6 @@ const MuseumQuote = styled.blockquote`
   }
 `;
 
-// Citation for quote
 const QuoteCitation = styled.cite`
   display: block;
   color: #d3a164;
@@ -336,19 +334,16 @@ const QuoteCitation = styled.cite`
 `;
 
 const MuseumStatsPage = () => {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
   const [activeMuseum, setActiveMuseum] = useState("tribal"); // Default to tribal museum
 
-  // Function to get translated content from the museumStatsData
   const getContent = (key) => {
     if (museumStatsData[language] && museumStatsData[language][key]) {
       return museumStatsData[language][key];
     }
-    // Fallback to English or key itself
     return museumStatsData.en ? museumStatsData.en[key] : key;
   };
 
-  // Simple stats for each museum with enhanced descriptions
   const museumStats = {
     tribal: [
       {
@@ -419,7 +414,6 @@ const MuseumStatsPage = () => {
     ],
   };
 
-  // Improved highlights with more engaging content
   const museumHighlights = {
     tribal: [
       "Immersive dioramas recreating authentic tribal villages with traditional housing, tools, and daily activities of Chhattisgarh's indigenous communities.",
@@ -445,7 +439,7 @@ const MuseumStatsPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          About Our Museums
+          {getContent("pageTitle")}
         </PageTitle>
       </HeroSection>
 
@@ -455,39 +449,44 @@ const MuseumStatsPage = () => {
             active={activeMuseum === "tribal"}
             onClick={() => setActiveMuseum("tribal")}
           >
-            Tribal Museum
+            {getContent("tribalToggle")}
           </ToggleButton>
           <ToggleButton
             active={activeMuseum === "freedom"}
             onClick={() => setActiveMuseum("freedom")}
           >
-            Freedom Fighters Museum
+            {getContent("freedomToggle")}
           </ToggleButton>
         </MuseumToggle>
 
         <Description>
-          {activeMuseum === "tribal"
-            ? "The Tribal Museum showcases the rich cultural heritage, traditional knowledge, and artistic expressions of indigenous communities of Chhattisgarh. Through carefully curated exhibits, artifacts, and interactive displays, we honor and preserve the vibrant living traditions that have been passed down through generations."
-            : "The Freedom Fighters Museum commemorates the brave individuals who struggled for India's independence. Through historical exhibits, personal artifacts, and compelling narratives, we tell the story of courage, sacrifice, and determination that led to the birth of modern India."}
+          {getContent(
+            activeMuseum === "tribal" ? "tribalIntro" : "freedomIntro"
+          )}
         </Description>
 
         {activeMuseum === "tribal" && (
           <MuseumQuote>
-            Our tribal communities possess a profound understanding of
-            sustainable living and harmonious coexistence with nature. Their
-            cultural heritage is not just history—it's a living wisdom that
-            offers valuable lessons for our contemporary world.
-            <QuoteCitation>— Dr. Radhika Sharma, Museum Director</QuoteCitation>
+            {language === "en"
+              ? "Our tribal communities possess a profound understanding of sustainable living and harmonious coexistence with nature. Their cultural heritage is not just history—it's a living wisdom that offers valuable lessons for our contemporary world."
+              : "हमारे आदिवासी समुदायों को टिकाऊ जीवन और प्रकृति के साथ सामंजस्यपूर्ण सह-अस्तित्व की गहरी समझ है। उनकी सांस्कृतिक विरासत सिर्फ इतिहास नहीं है—यह एक जीवित ज्ञान है जो हमारी समकालीन दुनिया के लिए मूल्यवान सबक प्रदान करता है।"}
+            <QuoteCitation>
+              {language === "en"
+                ? "— Dr. Radhika Sharma, Museum Director"
+                : "— डॉ. राधिका शर्मा, संग्रहालय निदेशक"}
+            </QuoteCitation>
           </MuseumQuote>
         )}
 
         {activeMuseum === "freedom" && (
           <MuseumQuote>
-            The struggle for freedom was not just fought on battlefields and
-            political arenas—it was carried in the hearts of countless ordinary
-            citizens who dared to dream of an independent India.
+            {language === "en"
+              ? "The struggle for freedom was not just fought on battlefields and political arenas—it was carried in the hearts of countless ordinary citizens who dared to dream of an independent India."
+              : "स्वतंत्रता के लिए संघर्ष सिर्फ युद्धक्षेत्रों और राजनीतिक मैदानों पर नहीं लड़ा गया था—यह असंख्य साधारण नागरिकों के दिलों में था जिन्होंने एक स्वतंत्र भारत का सपना देखने की हिम्मत की थी।"}
             <QuoteCitation>
-              — Prof. Vikram Mehta, Historical Adviser
+              {language === "en"
+                ? "— Prof. Vikram Mehta, Historical Adviser"
+                : "— प्रो. विक्रम मेहता, ऐतिहासिक सलाहकार"}
             </QuoteCitation>
           </MuseumQuote>
         )}
@@ -518,15 +517,19 @@ const MuseumStatsPage = () => {
 
             <HighlightSection>
               <SectionTitle>
-                {activeMuseum === "tribal"
-                  ? "Experience Tribal Cultural Heritage"
-                  : "Discover Freedom Struggle Highlights"}
+                {getContent(
+                  activeMuseum === "tribal"
+                    ? "tribalHighlightsTitle"
+                    : "freedomHighlightsTitle"
+                )}
               </SectionTitle>
 
               <Description>
-                {activeMuseum === "tribal"
-                  ? "Our museum offers a unique opportunity to explore the richness and diversity of tribal cultures through carefully curated exhibits that bring history to life."
-                  : "Delve into the pivotal moments and untold stories of India's independence movement through our immersive and educational exhibits."}
+                {getContent(
+                  activeMuseum === "tribal"
+                    ? "tribalHighlightsIntro"
+                    : "freedomHighlightsIntro"
+                )}
               </Description>
 
               <HighlightsList>
@@ -552,7 +555,7 @@ const MuseumStatsPage = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Visit This Museum
+                  {getContent("visitButton")}
                 </VisitButton>
 
                 <VisitButton
@@ -561,7 +564,7 @@ const MuseumStatsPage = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Explore Gallery
+                  {getContent("galleryButton")}
                 </VisitButton>
               </ButtonsContainer>
             </HighlightSection>
@@ -569,55 +572,36 @@ const MuseumStatsPage = () => {
         </AnimatePresence>
 
         <ComparisonSection>
-          <SectionTitle>Our Dual Museum Experience</SectionTitle>
+          <SectionTitle>{getContent("comparisonTitle")}</SectionTitle>
 
-          <Description>
-            Explore two distinct yet interconnected narratives of Chhattisgarh's
-            rich heritage through our complementary museums. Discover how tribal
-            communities and freedom fighters both contributed to the cultural
-            and historical tapestry of our region.
-          </Description>
+          <Description>{getContent("comparisonIntro")}</Description>
 
           <ComparisonTable>
-            <ComparisonRowHeader>Feature</ComparisonRowHeader>
-            <ComparisonRowHeader>Tribal Museum</ComparisonRowHeader>
-            <ComparisonRowHeader>Freedom Fighters Museum</ComparisonRowHeader>
+            <ComparisonRowHeader>
+              {getContent("featureColumn")}
+            </ComparisonRowHeader>
+            <ComparisonRowHeader>
+              {getContent("tribalColumn")}
+            </ComparisonRowHeader>
+            <ComparisonRowHeader>
+              {getContent("freedomColumn")}
+            </ComparisonRowHeader>
 
-            <ComparisonCell>Main Focus</ComparisonCell>
-            <ComparisonCell>
-              Cultural heritage, traditions, and indigenous knowledge systems
-            </ComparisonCell>
-            <ComparisonCell>
-              Independence movement, resistance, and national identity formation
-            </ComparisonCell>
+            <ComparisonCell>{getContent("focusRow")}</ComparisonCell>
+            <ComparisonCell>{getContent("tribal.focus")}</ComparisonCell>
+            <ComparisonCell>{getContent("freedom.focus")}</ComparisonCell>
 
-            <ComparisonCell>Time Period</ComparisonCell>
-            <ComparisonCell>
-              Ancient to contemporary tribal life spanning centuries
-            </ComparisonCell>
-            <ComparisonCell>
-              Primarily 1857 to 1947, with context from earlier rebellions
-            </ComparisonCell>
+            <ComparisonCell>{getContent("timelineRow")}</ComparisonCell>
+            <ComparisonCell>{getContent("tribal.timeline")}</ComparisonCell>
+            <ComparisonCell>{getContent("freedom.timeline")}</ComparisonCell>
 
-            <ComparisonCell>Key Exhibits</ComparisonCell>
-            <ComparisonCell>
-              Artifacts, handicrafts, art forms, traditional tools, ceremonial
-              items
-            </ComparisonCell>
-            <ComparisonCell>
-              Historical documents, photographs, weapons, personal belongings of
-              freedom fighters
-            </ComparisonCell>
+            <ComparisonCell>{getContent("exhibitsRow")}</ComparisonCell>
+            <ComparisonCell>{getContent("tribal.exhibits")}</ComparisonCell>
+            <ComparisonCell>{getContent("freedom.exhibits")}</ComparisonCell>
 
-            <ComparisonCell>Visitor Experience</ComparisonCell>
-            <ComparisonCell>
-              Immersive cultural displays with demonstrations and interactive
-              elements
-            </ComparisonCell>
-            <ComparisonCell>
-              Chronological journey through pivotal moments of the independence
-              struggle
-            </ComparisonCell>
+            <ComparisonCell>{getContent("experienceRow")}</ComparisonCell>
+            <ComparisonCell>{getContent("tribal.experience")}</ComparisonCell>
+            <ComparisonCell>{getContent("freedom.experience")}</ComparisonCell>
           </ComparisonTable>
         </ComparisonSection>
       </ContentContainer>

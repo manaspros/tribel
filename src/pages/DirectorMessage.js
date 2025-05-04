@@ -6,6 +6,9 @@ import { useLanguage } from "../contexts/LanguageContext";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
+// Import translation data
+import directorTranslations from "../data/directorMessageTranslations.json";
+
 // Placeholder images - replace with actual images
 import directorImage from "../assets/minister-placeholder.jpg";
 import cmImage from "../assets/cm-placeholder.jpg";
@@ -55,6 +58,7 @@ const PageTitle = styled(motion.h1)`
   color: #d3a164;
   font-size: 3rem;
   margin-bottom: 20px;
+  margin-top: 80px;
   text-align: center;
   font-family: "Playfair Display", serif;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
@@ -157,7 +161,16 @@ const MessageSignature = styled.div`
 `;
 
 const DirectorMessage = () => {
-  const { t } = useLanguage();
+  const { language } = useLanguage();
+
+  // Function to get translations
+  const getContent = (key) => {
+    if (directorTranslations[language] && directorTranslations[language][key]) {
+      return directorTranslations[language][key];
+    }
+    // Fallback to English if translation is missing
+    return directorTranslations.en[key] || key;
+  };
 
   return (
     <PageContainer>
@@ -169,7 +182,7 @@ const DirectorMessage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          {t("Director Message")}
+          {getContent("pageTitle")}
         </PageTitle>
       </HeroSection>
 
@@ -178,7 +191,7 @@ const DirectorMessage = () => {
           <svg width="20" height="20" viewBox="0 0 24 24" fill="#d3a164">
             <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
           </svg>
-          {t("Back to About Museum")}
+          {getContent("backToAbout")}
         </BackLink>
 
         {/* Director's Message */}
@@ -189,40 +202,19 @@ const DirectorMessage = () => {
           transition={{ duration: 0.6 }}
         >
           <MessageHeader>
-            <MessageTitle>Message from the Director</MessageTitle>
+            <MessageTitle>{getContent("directorMessageTitle")}</MessageTitle>
           </MessageHeader>
           <MessageContent>
             <MessageImageContainer>
               <MessageImage image={directorImage} />
             </MessageImageContainer>
             <MessageText>
-              <p>
-                Welcome to our museum, a living repository of our rich tribal
-                heritage and freedom struggle. Our institution stands as a
-                testament to the cultural legacy and resilience of our
-                indigenous communities and freedom fighters who shaped the
-                destiny of our nation.
-              </p>
-              <p>
-                The Museum embodies our commitment to preserving and celebrating
-                the diverse cultural traditions, artistic expressions, and
-                historical narratives that have shaped our identity. Through our
-                carefully curated exhibitions, educational programs, and
-                community engagements, we strive to create a dynamic space for
-                learning, reflection, and inspiration.
-              </p>
-              <p>
-                As we navigate the complexities of the modern world, we remain
-                steadfast in our mission to bridge the past with the present,
-                ensuring that the voices and stories of our ancestors continue
-                to resonate with future generations. We invite you to join us on
-                this enlightening journey of discovery and connection.
-              </p>
+              <p>{getContent("directorMessage1")}</p>
+              <p>{getContent("directorMessage2")}</p>
+              <p>{getContent("directorMessage3")}</p>
               <MessageSignature>
-                <div className="name">Dr. Rajesh Kumar Singh</div>
-                <div className="title">
-                  Director, Tribal & Freedom Fighter Museum
-                </div>
+                <div className="name">{getContent("directorName")}</div>
+                <div className="title">{getContent("directorTitle")}</div>
               </MessageSignature>
             </MessageText>
           </MessageContent>
@@ -236,40 +228,19 @@ const DirectorMessage = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <MessageHeader>
-            <MessageTitle>Message from the Hon'ble Chief Minister</MessageTitle>
+            <MessageTitle>{getContent("cmMessageTitle")}</MessageTitle>
           </MessageHeader>
           <MessageContent>
             <MessageImageContainer>
               <MessageImage image={cmImage} />
             </MessageImageContainer>
             <MessageText>
-              <p>
-                It is with immense pride that I extend my warmest greetings to
-                all visitors of our state's prestigious Tribal and Freedom
-                Fighter Museum. This institution represents our government's
-                unwavering commitment to preserving and promoting the rich
-                cultural heritage and historical legacy of our region.
-              </p>
-              <p>
-                The museum serves as a bridge between our past and future,
-                offering valuable insights into the traditions, arts, and
-                struggles that have shaped our collective identity. By
-                showcasing the invaluable contributions of our tribal
-                communities and freedom fighters, we aim to instill a sense of
-                pride and belonging among our citizens, while also educating
-                visitors about the diverse cultural tapestry that defines our
-                state.
-              </p>
-              <p>
-                I encourage everyone to explore this treasure trove of history
-                and culture, to learn from the wisdom of our ancestors, and to
-                draw inspiration from their resilience and creativity. Together,
-                let us honor our heritage while building a future that reflects
-                the values and aspirations of our people.
-              </p>
+              <p>{getContent("cmMessage1")}</p>
+              <p>{getContent("cmMessage2")}</p>
+              <p>{getContent("cmMessage3")}</p>
               <MessageSignature>
-                <div className="name">Shri Vishnu Deo Sai</div>
-                <div className="title">Chief Minister, Chhattisgarh</div>
+                <div className="name">{getContent("cmName")}</div>
+                <div className="title">{getContent("cmTitle")}</div>
               </MessageSignature>
             </MessageText>
           </MessageContent>
@@ -283,37 +254,19 @@ const DirectorMessage = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <MessageHeader>
-            <MessageTitle>Message from the Deputy Chief Minister</MessageTitle>
+            <MessageTitle>{getContent("deputyCmMessageTitle")}</MessageTitle>
           </MessageHeader>
           <MessageContent>
             <MessageImageContainer>
               <MessageImage image={deputyCmImage} />
             </MessageImageContainer>
             <MessageText>
-              <p>
-                I am delighted to welcome you to our state's Tribal and Freedom
-                Fighter Museum, a cultural landmark that embodies the spirit and
-                heritage of our people. This institution stands as a testament
-                to our administration's dedication to preserving our rich
-                cultural legacy and honoring the sacrifices of those who fought
-                for our freedom.
-              </p>
-              <p>
-                Through its thoughtfully curated exhibits and educational
-                programs, the museum offers valuable insights into the
-                traditions, customs, and historical struggles that have shaped
-                our identity. It serves not only as a repository of artifacts
-                but also as a vibrant center for learning and cultural exchange.
-              </p>
-              <p>
-                I invite all citizens and visitors to immerse themselves in the
-                wealth of knowledge and inspiration that this museum offers. May
-                your visit deepen your appreciation for our heritage and
-                strengthen your connection to our shared history.
-              </p>
+              <p>{getContent("deputyCmMessage1")}</p>
+              <p>{getContent("deputyCmMessage2")}</p>
+              <p>{getContent("deputyCmMessage3")}</p>
               <MessageSignature>
-                <div className="name">Shri Arun Sao</div>
-                <div className="title">Deputy Chief Minister, Chhattisgarh</div>
+                <div className="name">{getContent("deputyCmName")}</div>
+                <div className="title">{getContent("deputyCmTitle")}</div>
               </MessageSignature>
             </MessageText>
           </MessageContent>
@@ -327,38 +280,19 @@ const DirectorMessage = () => {
           transition={{ duration: 0.6, delay: 0.6 }}
         >
           <MessageHeader>
-            <MessageTitle>Message from the Minister of Culture</MessageTitle>
+            <MessageTitle>{getContent("ministerMessageTitle")}</MessageTitle>
           </MessageHeader>
           <MessageContent>
             <MessageImageContainer>
               <MessageImage image={ministerImage} />
             </MessageImageContainer>
             <MessageText>
-              <p>
-                As the Minister responsible for cultural affairs, it gives me
-                great pleasure to introduce you to our state's Tribal and
-                Freedom Fighter Museum. This institution represents our
-                commitment to preserving and celebrating the diverse cultural
-                heritage that has enriched our society for generations.
-              </p>
-              <p>
-                The museum serves as a vital platform for promoting
-                cross-cultural understanding and appreciation of our indigenous
-                communities' contributions to our collective identity. Through
-                its extensive collection of artifacts, artworks, and historical
-                documents, it offers visitors a unique opportunity to trace the
-                evolution of our cultural practices and historical narratives.
-              </p>
-              <p>
-                I encourage you to explore the various exhibitions and programs
-                offered by the museum, each designed to provide deeper insights
-                into our rich heritage. May your visit inspire you to become
-                active participants in our ongoing efforts to preserve and
-                promote the cultural diversity that makes our state unique.
-              </p>
+              <p>{getContent("ministerMessage1")}</p>
+              <p>{getContent("ministerMessage2")}</p>
+              <p>{getContent("ministerMessage3")}</p>
               <MessageSignature>
-                <div className="name">Shri Tankram Verma</div>
-                <div className="title">Minister of Culture, Chhattisgarh</div>
+                <div className="name">{getContent("ministerName")}</div>
+                <div className="title">{getContent("ministerTitle")}</div>
               </MessageSignature>
             </MessageText>
           </MessageContent>
