@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useLanguage } from "../contexts/LanguageContext";
 import logo2 from "../assets/logo2.png";
 import logo3 from "../assets/logo3.png";
+import logo4 from "../assets/logo4-removebg-preview.png";
 import gsap from "gsap";
 
 // Enhanced container with transparent to solid transition
@@ -79,7 +80,7 @@ const AdditionalLogo = styled.img`
 // Simple logo text without animations
 const LogoText = styled.span`
   font-family: "Playfair Display", serif;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
   color: #d3a164;
   text-decoration: none;
@@ -403,16 +404,17 @@ const DepartmentNamesContainer = styled(motion.div)`
 `;
 
 // Enhance department name styling
-const DepartmentName = styled(motion.span)`
+const CombinedDepartmentHeader = styled(motion.div)`
   color: #d3a164;
-  font-size: 1.05rem;
-  font-weight: 500;
+  font-size: 1.6rem;
+  font-weight: 600;
   font-family: "Playfair Display", serif;
-  margin: 0 25px;
-  padding: 4px 15px;
-  white-space: nowrap;
-  border-radius: 20px;
+  text-align: center;
+  padding: 8px 25px;
+  border-radius: 8px;
   transition: all 0.3s ease;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px;
 
   &:hover {
     background: rgba(211, 161, 100, 0.1);
@@ -420,58 +422,27 @@ const DepartmentName = styled(motion.span)`
   }
 
   @media (max-width: 768px) {
-    margin-bottom: 6px;
-    margin-left: 0;
-    margin-right: 0;
-    font-size: 0.9rem;
-    display: block;
+    font-size: 1.2rem;
+    padding: 6px 15px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    padding: 5px 10px;
   }
 `;
-
-// Create direct, hardcoded translations for department names
-const departmentTranslations = {
-  en: {
-    "Department of Tribal": "Department of Tribal",
-    "Department of Scheduled Caste": "Department of Scheduled Caste",
-    "Department of Backword Classes and minorities":
-      "Department of Backward Classes and Minorities",
-  },
-  hi: {
-    "Department of Tribal": "आदिम जाति विभाग",
-    "Department of Scheduled Caste": "अनुसूचित जाति विभाग",
-    "Department of Backword Classes and minorities":
-      "पिछड़ा वर्ग एवं अल्पसंख्यक विकास विभाग",
-  },
-};
-
-// Create a special component for department names that will re-render correctly
-const DepartmentNameTranslated = ({ translationKey }) => {
-  const { language } = useLanguage();
-
-  // Get translation directly from our hardcoded dictionary
-  const translation =
-    departmentTranslations[language][translationKey] || translationKey;
-
-  console.log(
-    `Rendering department ${translationKey} as: ${translation} (lang: ${language})`
-  );
-
-  return (
-    <DepartmentName animate={{ opacity: 1 }}>{translation}</DepartmentName>
-  );
-};
 
 // Enhanced running text ticker
 const RunningTextTicker = styled(motion.div)`
   position: fixed;
   top: ${(props) =>
-    props.hideDepartmentNames ? "75px" : "132px"}; // Adjusted for reduced gap
+    props.hideDepartmentNames ? "75px" : "152px"}; // Adjusted for reduced gap
   left: 0;
   width: 100%;
   overflow: hidden;
   background-color: rgba(26, 20, 16, 0.9);
   border-top: 1px solid rgba(211, 161, 100, 0.2);
-  padding: 6px 0;
+  padding: 16px 0;
   z-index: 98;
   box-shadow: 0 4px 10px -5px rgba(0, 0, 0, 0.3);
 
@@ -483,7 +454,7 @@ const RunningTextTicker = styled(motion.div)`
 const RunningTextContent = styled.div`
   white-space: nowrap;
   display: inline-block;
-  animation: ticker 20s linear infinite;
+  animation: ticker 30s linear infinite;
   color: #d3a164;
   font-size: 0.9rem;
 
@@ -509,6 +480,26 @@ const RunningTextContent = styled.div`
     color: #f5efe7;
   }
 `;
+
+// Create direct, hardcoded translations for department names
+const departmentTranslations = {
+  en: {
+    "Department of Tribal": "Department of Tribal",
+    "Department of Scheduled Caste": "Department of Scheduled Caste",
+    "Department of Backword Classes and minorities":
+      "Department of Backward Classes and Minorities",
+    "Combined Department":
+      "Department of Tribal, Scheduled Caste, Backward Classes and Minorities",
+  },
+  hi: {
+    "Department of Tribal": "आदिम जाति विभाग",
+    "Department of Scheduled Caste": "अनुसूचित जाति विभाग",
+    "Department of Backword Classes and minorities":
+      "पिछड़ा वर्ग एवं अल्पसंख्यक विकास विभाग",
+    "Combined Department":
+      "आदिम जाति, अनुसूचित जाति, पिछड़ा वर्ग एवं अल्पसंख्यक विभाग",
+  },
+};
 
 const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -651,6 +642,7 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
 
           <Link to="/">
             <LogoContainer>
+              <LogoImage src={logo4} alt={t("Museum CG")} />
               <LogoImage src={logo3} alt={t("Museum CG")} />
               <LogoText>{t("Museum CG")}</LogoText>
             </LogoContainer>
@@ -987,10 +979,13 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            {/* Use special component with direct dictionary access instead of t() */}
-            <DepartmentNameTranslated translationKey="Department of Tribal" />
-            <DepartmentNameTranslated translationKey="Department of Scheduled Caste" />
-            <DepartmentNameTranslated translationKey="Department of Backword Classes and minorities" />
+            <CombinedDepartmentHeader
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              {departmentTranslations[language]["Combined Department"]}
+            </CombinedDepartmentHeader>
           </DepartmentNamesContainer>
         )}
       </AnimatePresence>

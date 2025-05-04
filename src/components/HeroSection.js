@@ -7,7 +7,7 @@ import { useLanguage } from "../contexts/LanguageContext";
 import { useNavigate } from "react-router-dom";
 import forestBg from "../assets/forest-bg.jpeg";
 import villageSilhouette from "../assets/village-silhouette.jpg";
-import foregroundElements from "../assets/tribel/freedom-banner.jpg";
+import foregroundElements from "../assets/tribel/Tree2.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -670,20 +670,6 @@ const HeroSection = () => {
 
   return (
     <HeroContainer ref={containerRef}>
-      <ParallaxLayer
-        style={{
-          backgroundImage: `url(${forestBg})`,
-          y: backgroundY,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
-      <ParallaxLayer
-        style={{
-          backgroundImage: `url(${villageSilhouette})`,
-          y: midgroundY,
-        }}
-      />
       <ParallaxLayer
         style={{
           backgroundImage: `url(${foregroundElements})`,
