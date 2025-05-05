@@ -73,7 +73,7 @@ const GalleryItem = styled(motion.div)`
 
 const GalleryImage = styled.div`
   flex: 1;
-  background-image: ${(props) => `url(/gallery/freedom/${props.image}.jpg)`};
+  background-image: ${(props) => `url(/gallery/freedom/${props.image}.png)`};
   background-size: cover;
   background-position: center;
   position: relative;
@@ -210,56 +210,33 @@ const LanguageIndicator = styled(motion.div)`
   }
 `;
 
+// ...existing imports and styled components...
+
 const FreedomGallery = () => {
-  const { t, language, version } = useLanguage();
+  const { t, language } = useLanguage();
   const [showLanguageIndicator, setShowLanguageIndicator] = useState(false);
   const [prevLanguage, setPrevLanguage] = useState(language);
 
-  // Show indicator when language changes
+  // Show language indicator effect
   useEffect(() => {
-    // If language has changed
     if (language !== prevLanguage) {
       setShowLanguageIndicator(true);
       setPrevLanguage(language);
-
-      // Auto-hide after 3 seconds
       const timer = setTimeout(() => {
         setShowLanguageIndicator(false);
       }, 3000);
-
       return () => clearTimeout(timer);
     }
-  }, [language, version, prevLanguage]);
+  }, [language, prevLanguage]);
 
-  // Generate gallery data directly from the JSON file
-  const generateGalleryData = () => {
-    // Get all rebellion keys (excluding titles, locations, durations, and galleryIntro)
-    const rebellionKeys = Object.keys(galleryDescriptions).filter(
-      (key) =>
-        !["titles", "locations", "durations", "galleryIntro"].includes(key)
-    );
-
-    // Generate gallery items
-    return rebellionKeys.map((key, index) => {
-      return {
-        id: index + 1,
-        titleKey: key,
-        descriptionKey: key,
-        // Use the key name as image filename
-        image: key.replace(/([A-Z])/g, "-$1").toLowerCase(),
-        // For simplicity assigning locations and durations based on entries in JSON
-        locationKey: index % 2 === 0 ? "centralIndia" : "bastarRegion",
-        durationKey: index % 3 === 0 ? "overSixMonths" : "severalMonths",
-      };
-    });
-  };
-
-  const galleries = generateGalleryData();
+  // Get gallery keys that start with 'freedomGallery'
+  const galleryKeys = Object.keys(galleryDescriptions.titles)
+    .filter(key => key.startsWith('freedomGallery'))
+    .sort();
 
   return (
     <PageContainer>
       <Navbar />
-
       <AnimatePresence>
         {showLanguageIndicator && (
           <LanguageIndicator
@@ -298,56 +275,21 @@ const FreedomGallery = () => {
         </GalleryIntro>
 
         <GalleryGrid>
-          {galleries.map((gallery, index) => (
+          {galleryKeys.map((key, index) => (
             <GalleryItem
-              key={`gallery-${gallery.id}-${language}`}
+              key={`gallery-${index}-${language}`}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2, duration: 0.7 }}
             >
-              <GalleryImage image={gallery.image} />
+              <GalleryImage image={`${index + 3}`} />
               <GalleryInfo>
                 <GalleryTitle>
-                  {galleryDescriptions.titles[gallery.titleKey][language]}
+                  {galleryDescriptions.titles[key][language]}
                 </GalleryTitle>
                 <GalleryDescription>
-                  {galleryDescriptions[gallery.descriptionKey][language]}
+                  {galleryDescriptions.descriptions[key][language]}
                 </GalleryDescription>
-
-                <GalleryDetails>
-                  <GalleryDetail>
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                    >
-                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                    </svg>
-                    {
-                      galleryDescriptions.locations[gallery.locationKey][
-                        language
-                      ]
-                    }
-                  </GalleryDetail>
-
-                  <GalleryDetail>
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                    >
-                      <path d="M11.99 2C6.47 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 11.99 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8-8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
-                    </svg>
-                    {
-                      galleryDescriptions.durations[gallery.durationKey][
-                        language
-                      ]
-                    }
-                  </GalleryDetail>
-                </GalleryDetails>
-
                 <ExploreButton
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

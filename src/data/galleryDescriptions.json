@@ -3,32 +3,6 @@
         "en": "Our specialized galleries chronicle pivotal moments in tribal resistance history, showcasing the extraordinary courage and determination of indigenous communities in their fight for freedom, dignity, and autonomy. Each carefully curated exhibit combines historical artifacts, documentary evidence, and personal testimonies to reveal these powerful yet often overlooked chapters in the struggle against colonialism.",
         "hi": "हमारी विशेष प्रदर्शनियाँ आदिवासी प्रतिरोध इतिहास के महत्वपूर्ण क्षणों का वर्णन करती हैं, स्वतंत्रता, गरिमा और स्वायत्तता के लिए संघर्ष में स्वदेशी समुदायों के असाधारण साहस और दृढ़ता को प्रदर्शित करती हैं। प्रत्येक सावधानीपूर्वक तैयार की गई प्रदर्शनी ऐतिहासिक कलाकृतियों, प्रलेखित साक्ष्य और व्यक्तिगत गवाहियों को जोड़ती है जो औपनिवेशवाद के खिलाफ संघर्ष में इन शक्तिशाली लेकिन अक्सर अनदेखे अध्यायों को उजागर करती हैं।"
     },
-    "titles": {
-        "halbaRebellion": {
-            "en": "Halba Rebellion (1774-1779)",
-            "hi": "हल्बा विद्रोह (1774-1779)"
-        },
-        "bhopalpatnamRebellion": {
-            "en": "Bhopalpatnam Rebellion (1795)",
-            "hi": "भोपालपटनम विद्रोह (1795)"
-        },
-        "tarapurRebellion": {
-            "en": "Tarapur Rebellion (1842-1854)",
-            "hi": "तरापुर विद्रोह (1842-1854)"
-        },
-        "koiRebellion": {
-            "en": "Koi Rebellion (1859)",
-            "hi": "कोई विद्रोह (1859)"
-        },
-        "lingagiriRebellion": {
-            "en": "Lingagiri Rebellion (1856-1860)",
-            "hi": "लिंगागिरी विद्रोह (1856-1860)"
-        },
-        "muriaRebellion": {
-            "en": "Muria Rebellion (1876)",
-            "hi": "मुरिया विद्रोह (1876)"
-        }
-    },
     "locations": {
         "centralIndia": {
             "en": "Central India",
@@ -73,28 +47,104 @@
             "hi": "1985 से जारी"
         }
     },
-    "halbaRebellion": {
-        "en": "The Halba Rebellion marked one of the earliest organized tribal resistances against British colonial rule in Central India. Led by tribal chieftain Shambu Singh, the Halba tribes rose up against excessive taxation, land appropriation, and the erosion of traditional tribal autonomy imposed by the British East India Company. This gallery showcases rare artifacts, maps, and accounts from this pivotal uprising that, despite its ultimate defeat, set a powerful precedent for indigenous resistance.",
-        "hi": "हल्बा विद्रोह मध्य भारत में ब्रिटिश औपनिवेशिक शासन के खिलाफ सबसे पहले संगठित आदिवासी प्रतिरोध में से एक था। आदिवासी मुखिया शंभू सिंह के नेतृत्व में, हल्बा जनजातियां ब्रिटिश ईस्ट इंडिया कंपनी द्वारा लगाए गए अत्यधिक कराधान, भूमि अधिग्रहण, और पारंपरिक आदिवासी स्वायत्तता के क्षरण के खिलाफ उठ खड़ी हुईं। यह गैलरी इस महत्वपूर्ण विद्रोह से दुर्लभ कलाकृतियों, मानचित्रों और वृतांतों को प्रदर्शित करती है, जो अपनी अंतिम हार के बावजूद, स्वदेशी प्रतिरोध के लिए एक शक्तिशाली उदाहरण स्थापित किया।"
+    "titles": {
+        "freedomGallery1": {
+            "en": "Halba Rebellion (1774-1779)",
+            "hi": "हल्बा विद्रोह (1774-1779)"
+        },
+        "freedomGallery2": {
+            "en": "Surguja Rebellion (1792)",
+            "hi": "सरगुजा विद्रोह (1792)"
+        },
+        "freedomGallery3": {
+            "en": "Bhopalpatnam Rebellion (1795)",
+            "hi": "भोपालपटनम विद्रोह (1795)"
+        },
+        "freedomGallery4": {
+            "en": "Parlakot Rebellion (1824-1825)",
+            "hi": "परलकोट विद्रोह (1824-1825)"
+        },
+        "freedomGallery5": {
+            "en": "Tarapur Rebellion (1842-1854)",
+            "hi": "तारापुर विद्रोह (1842-1854)"
+        },
+        "freedomGallery6": {
+            "en": "Lingagiri Rebellion (1856-1860)",
+            "hi": "लिंगागिरी विद्रोह (1856-1860)"
+        },
+        "freedomGallery7": {
+            "en": "Koi Rebellion (1859)",
+            "hi": "कोई विद्रोह (1859)"
+        },
+        "freedomGallery8": {
+            "en": "Maria Rebellion (1842-1863)",
+            "hi": "मेरिया विद्रोह (1842-1863)"
+        },
+        "freedomGallery9": {
+            "en": "Muria Rebellion (1876)",
+            "hi": "मुरिया विद्रोह (1876)"
+        },
+        "freedomGallery10": {
+            "en": "Rani-Cho-Ris Rebellion (1878-1882)",
+            "hi": "रानी- चो- रिस विद्रोह (1878-1882)"
+        },
+        "freedomGallery11": {
+            "en": "Bhumkal Rebellion (1910)",
+            "hi": "भूमकाल विद्रोह (1910)"
+        },
+        "freedomGallery12": {
+            "en": "Sonakhan Rebellion (1857)",
+            "hi": "सोनाखान विद्रोह (1857)"
+        }
     },
-    "bhopalpatnamRebellion": {
-        "en": "The Bhopalpatnam Rebellion of 1795 was sparked by British efforts to expand their empire into Bastar. The Governor of Bengal sent Captain Blunt to assess the East India Company’s prospects, and Captain Blunt attempted to enter Bastar through Rajnandgaon, Chanda, and Aheri Zamindari. The locals, sensing cultural threats, revolted, marking the first significant indigenous resistance against foreign rule.",
-        "hi": "1795 में हुए भोपालपटनम विद्रोह की चिंगारी ब्रिटिशों द्वारा बस्तर में अपने साम्राज्य विस्तार के प्रयासों से लगी। बंगाल के गवर्नर ने कैप्टन ब्लंट को ईस्ट इंडिया कंपनी की संभावनाएं जांचने के लिए भेजा। कैप्टन ब्लंट ने राजनांदगांव, चांदा और अहेरी ज़मींदारी मार्ग से बस्तर में प्रवेश का प्रयास किया। सांस्कृतिक खतरे को भांपकर स्थानीय आदिवासियों ने विद्रोह कर दिया, जिससे विदेशी शासन के खिलाफ उनके प्रारंभिक प्रतिरोध का पता चलता है।"
-    },
-    "tarapurRebellion": {
-        "en": "The Tarapur Rebellion in Bakawand tehsil of Bastar arose due to Bhonsle encroachment and the 'Takli' tax system. Diwan Dalganjan Singh opposed the tax increase and went to Jaipur, while the appointment of Jagbandhu in his place angered the locals. Dalganjan Singh, along with Muria, Madia, and Gond tribes, resisted British and Murd forces, but were subdued with separate taxation.",
-        "hi": "बस्तर के बकावंड तहसील में हुआ तरापुर विद्रोह भोंसलों की बढ़ती दखल और 'तकली' नामक अत्यधिक कर प्रणाली के कारण भड़का। दीवान दलगंजन सिंह ने कर बढ़ोतरी का विरोध किया और जयपुर चले गए, जबकि उनके स्थान पर जगबंधु की नियुक्ति से आदिवासी क्रोधित हो गए। दलगंजन सिंह ने मुरिया, माड़िया और गोंड जनजातियों के साथ मिलकर ब्रिटिश और मुरद सेना का विरोध किया, लेकिन उन्हें अलग-अलग कर के दबा दिया गया।"
-    },
-    "koiRebellion": {
-        "en": "After the death of King Bhopal Dev in 1853, British influence grew in Bastar. A Hyderabad trader was granted the contract for cutting timber for railway construction, leading to exploitation of the locals. Tribesmen led by Juga Raju, Jumma Raju, and Bapi Raju attacked the laborers with spears and torches. This marked one of the first organized tribal uprisings against British exploitation.",
-        "hi": "1853 में राजा भूपाल देव की मृत्यु के बाद बस्तर में ब्रिटिश प्रभाव बढ़ने लगा। रेलवे निर्माण के लिए लकड़ी काटने का ठेका एक हैदराबादी व्यापारी को दिया गया, जिसने आदिवासियों का शोषण शुरू किया। आदिवासियों ने भालों और मशालों के साथ मजदूरों पर हमला कर दिया। जुगा राजू, जुम्मा राजू और बापी राजू जैसे नेताओं ने इस संघर्ष का नेतृत्व किया, जिससे यह ब्रिटिश शोषण के खिलाफ प्रारंभिक संगठित आदिवासी विद्रोहों में से एक बना।"
-    },
-    "lingagiriRebellion": {
-        "en": "The Lingagiri Rebellion was driven by oppressive British policies and violations of tribal rights. Led by leaders Dhurwarav, Telanga, and others, the tribes of Madia and Gond revolted from the Chintalar hills. On March 3, 1856, the British attacked, capturing 480 women and children, and on March 5, Dhurwarav was hanged. Talukedar Dhurwarav, Yagora Rao, Venkut, and Baburav fought against British domination.",
-        "hi": "लिंगागिरी विद्रोह ब्रिटिशों की दमनकारी नीतियों और आदिवासी अधिकारों के उल्लंघन के कारण हुआ। धुर्वाराव, तेलंगा और अन्य नेताओं के नेतृत्व में माड़िया और गोंड जनजातियों ने चिंतलार पहाड़ियों को आधार बनाकर विद्रोह किया। 3 मार्च 1856 को ब्रिटिशों ने हमला किया, जिसमें 480 महिलाओं और बच्चों को पकड़ लिया गया और 5 मार्च को धुर्वाराव को फांसी दे दी गई। तालुकेदार धुर्वाराव, यगोरा राव, व्यंकुट और बाबूराव ने ब्रिटिश वर्चस्व के खिलाफ संघर्ष किया।"
-    },
-    "muriaRebellion": {
-        "en": "The Muria Rebellion, although one of the earliest examples of indigenous resistance to British colonial rule, stands out as a persistent, years-long revolt. The Muria tribes, under the leadership of Nageshwar Singh, launched their struggle for autonomy from the oppressive and exploitative policies of the British.",
-        "hi": "मुरिया विद्रोह, हालांकि ब्रिटिश औपनिवेशिक शासन के खिलाफ स्वदेशी प्रतिरोध के पहले उदाहरणों में से एक था, यह एक लगातार, वर्षों तक चलने वाला विद्रोह के रूप में सामने आता है। नरेश्वर सिंह के नेतृत्व में मुरिया जनजातियों ने ब्रिटिशों की दमनकारी और शोषणकारी नीतियों से स्वतंत्रता के लिए संघर्ष शुरू किया।"
+    "descriptions": {
+        "freedomGallery1": {
+            "en": "The Halba Rebellion (1774-1779) emerged from power struggles among feudal lords. After Duriyav Dev's treacherous attack killed Ajmer Singh, the Halba community revolted. Many Halbas and their chiefs were thrown from waterfalls during the suppression. The conflict drew in both the Marathas and East India Company, ultimately leading to Maratha dominance in Bastar by 1779.",
+            "hi": "बस्तर का हल्बा विद्रोह 1774-1779 में सांमतों के बीच राज्याधिकार के लिए हुआ। अजमेर सिंह पर दुरियाव देव ने धोखे से हमला किया, जिससे अजमेर सिंह की मृत्यु हो गई। हल्बा समुदाय ने विद्रोह किया, लेकिन दुरियाव देव ने इसे दबा दिया और कई हल्बाओं और उनके मुखियाओं को जलप्रपात से नीचे फेंक दिया। दोनों पक्षों ने मराठों और ईस्ट इंडिया कंपनी से मदद ली, जिससे 1779 में बस्तर में मराठा आधिपत्य स्थापित हो गया।"
+        },
+        "freedomGallery2": {
+            "en": "The Surguja Rebellion highlights the tribes' struggle against British oppression until 1905. During Raja Kulyan Singh's rule (1818-1830), the British arrested him on false charges. By 1858, over 800 Kol Magat tribals from Surguja and Palamu regions united in revolt against British dominance.",
+            "hi": "सरगुजा क्षेत्र और उसकी जनजातियाँ अंग्रेजों के षड्यंत्र, उत्पीड़न और संघर्ष से प्रभावित रहीं। 1905 तक सरगुजा क्षेत्र बंगाल प्रांत के छोटा नागपुर रियासत का हिस्सा था। 1818-1830 के ब्रिटिश संक्रमण काल में उदयपुर रियासत के राजा कुल्याण सिंह थे। 1852 में अंग्रेजों ने राजा पर कुशासन और हत्या का आरोप लगाकर उन्हें गिरफ्तार कर लिया। 1858 में सरगुजा और पलामू क्षेत्र के कोल मगत आदिवासियों ने अंग्रेजों के खिलाफ विद्रोह किया।"
+        },
+        "freedomGallery3": {
+            "en": "The Bhopalpatnam Rebellion (1795) erupted when Captain Blunt, sent by Bengal's governor, attempted to assess East India Company's prospects in Bastar. His entry attempts through Rajnandgaon, Chanda, and Ahiri Zamindari sparked tribal resistance to protect their cultural sovereignty.",
+            "hi": "भोपालपटनम विद्रोह अंग्रेजों की बस्तर क्षेत्र में साम्राज्य स्थापित करने की कोशिश का परिणाम था। 1795 में बंगाल के शासक ने कैप्टन ब्लंट को बस्तर में ईस्ट इंडिया कंपनी की संभावनाओं की जांच के लिए भेजा। कैप्टन ब्लंट ने राजनांदगांव, चांदा, और अहीरी जमींदारी से होते हुए बस्तर में प्रवेश करने का प्रयास किया। आदिवासियों ने अंग्रेजों के आगमन से अपनी संस्कृति के खतरे को भांपते हुए उन्हें रोकने के लिए विद्रोह किया।"
+        },
+        "freedomGallery4": {
+            "en": "The Parlakot Rebellion (1824-1825) began when British officers and Murads exploited tribal communities. Zamindar Gaind Singh opposed this exploitation, gathering Abujhmadia tribals in Parlakot. The uprising ended tragically with his execution on January 20, 1825, after British and Murad forces surrounded Parlakot.",
+            "hi": "1818-1825 में अंग्रेजी अधीक्षक के समय, परलकोट में ब्रिटिश अधिकारियों और मुरादों के शोषण से आदिवासियों को अपनी संस्कृति पर खतरा महसूस हुआ। जमींदार गैंद्रसिंह ने इस शोषण का विरोध किया। 24 दिसंबर 1824 को अबुझमाड़िया आदिवासी परलकोट में एकत्रित हुए और 4 जनवरी 1825 तक संघर्ष जारी रहा। 10 जनवरी 1825 को ब्रिटिश और मुरादों की संयुक्त सेना ने परलकोट को घेर लिया। 20 जनवरी 1825 को महल के सामने राजा गैंद्रसिंह को फांसी दी गई।"
+        },
+        "freedomGallery5": {
+            "en": "The Tarapur Rebellion in Bastar's Bakawand tehsil arose from Bhonsla encroachment and oppressive Takoli taxation. Diwan Dalganjan Singh's opposition and subsequent replacement by Jagbandhu sparked widespread tribal unrest, leading to armed resistance by Muria, Madia, and Gond tribes.",
+            "hi": "तारापुर, बस्तर जिले के बकावंड तहसील का हिस्सा, भोसला शासन के अतिक्रमण और अत्यधिक टकोली के दबाव के कारण विद्रोह का केंद्र बना। दीवान दलगंजन सिंह ने टकोली बढ़ोतरी का विरोध किया और जयपुर चले गए। दलगंजन सिंह के स्थान पर जगबंधु को नियुक्त किया गया, जिससे आदिवासी उतेजित हो गए। दलगंजन सिंह और स्थानीय मुरिया, माड़िया, और गोंड आदिवासियों ने अंग्रेजों और मुरादों की सेना से संघर्ष किया।"
+        },
+        "freedomGallery6": {
+            "en": "The Lingagiri Rebellion (1856-1860) exemplified tribal resistance against British oppression. Under leaders like Dhurwarav and Telanga, Maria and Gond tribes fought from Chintalar hills. The British response was brutal, with 480 women and children captured and tribal leaders executed.",
+            "hi": "लिंगागिरी विद्रोह अंग्रेजी शासन की दमनकारी नीतियों, आदिवासी अधिकारों के हनन, और शोषण के विरोध में हुआ। धुर्वाराव और तेलंगा, माड़िया, गोंड आदिवासियों ने चिंतालार पहाड़ियों में छावनी बनाकर अंग्रेजों से संघर्ष किया। विद्रोह की विफलता के बाद, 480 माड़िया महिलाओं और बच्चों को बंदी बना लिया गया, और धुर्वाराव को 5 मार्च 1856 को फांसी दी गई।"
+        },
+        "freedomGallery7": {
+            "en": "The Koi Rebellion (1859) erupted after British influence grew following King Bhopal Dev's death. Local resistance intensified when a Hyderabad trader's timber contract led to tribal exploitation. Leaders like Juga Raju organized armed resistance against British economic policies.",
+            "hi": "1853 में राजा भोपाल देव की मृत्यु के बाद बस्तर में ब्रिटिश प्रभाव बढ़ने लगा। रेलवे निर्माण के लिए लकड़ी काटने का ठेका हैदराबादी व्यापारी को दिया गया, जिससे आदिवासी शोषण का शिकार हुए। जुगा राजू, जूम्मा राजू, बापी राजू, और अन्य आदिवासियों ने वृक्षों की रक्षा के लिए बलिदान दिया।"
+        },
+        "freedomGallery8": {
+            "en": "The Maria Rebellion (1842-1863) was a prolonged 21-year struggle in Chhattisgarh. The conflict began when Nagpur's raja sent forces to end the Meria practice, leading to resistance by Maria tribals under Hidma Manjhi's leadership against British intervention in their customs.",
+            "hi": "मेरिया विद्रोह छत्तीसगढ़ में आदिवासियों द्वारा 1842 से 21 वर्षों तक चलने वाला एक लंबा विद्रोह था। जनजातीय मान्यता के अनुसार, मेरिया उन बाहरी लोगों को कहा जाता था जो ताड़ी पेन्नू या आदी देव की पूजा में शामिल होते थे। बस्तर में नरबलि प्रथा को समाप्त करने के लिए नागपुर के राजा ने एक टुकड़ी भेजी, जिससे हिड्मा मांझी की अगुवाई में माड़िया आदिवासियों ने संघर्ष किया।"
+        },
+        "freedomGallery9": {
+            "en": "The Muria Rebellion (1876) emerged from exploitative systems and the Bisaha practice. Under increased pressure, tribals faced imprisonment and forced collections. Raja Bhairamdev increased palace security while rebels prepared to confront British forces along the Indravati River.",
+            "hi": "1853 में बस्तर में अंग्रेजों के शोषण के कारण आदिवासियों में असंतोष फैला। 1876 में मुरिया विद्रोह शुरू हुआ, जिसका कारण शोषणकारी व्यवस्था और बिसाहा पद्धति थी। राजा भैरमदेव ने महल की सुरक्षा बढ़ाई। विद्रोही इन्द्रावती नदी के तट पर ब्रिटिश सेना को रोकने के लिए तैयार थे।"
+        },
+        "freedomGallery10": {
+            "en": "The Rani-Cho-Ris Rebellion (1878-1882) was a unique uprising led by tribal women against both the Raja and British authorities. The conflict arose when Raja Bhairamdev was forced to marry Jawa Bai, leading to widespread protests by local tribal women.",
+            "hi": "1878-1882 का रानी-चो-रिस विद्रोह आदिवासी महिलाओं द्वारा राजा और ब्रिटिश सरकार के खिलाफ किया गया। बस्तर के राजा भैरमदेव को अंग्रेजों ने मुस्लिम महिला जावा बाई से विवाह करने के लिए मजबूर किया। स्थानीय आदिवासी महिलाओं ने राजा के खिलाफ सड़कों पर विरोध किया। आठ वर्षों तक चले इस विरोध के बाद, ब्रिटिश सरकार को झुकना पड़ा।"
+        },
+        "freedomGallery11": {
+            "en": "The Bhumkal Rebellion (1910) aimed to establish Muria rule in Bastar and protect regional identity. Led by Diwan Lal Kalindra Singh and Queen Subran Kunwar, the uprising began with closing Puspal Bazaar and included a 12-day siege of Jagdalpur.",
+            "hi": "भूमकाल विद्रोह का उद्देश्य बस्तर में मुरिया राज की स्थापना और क्षेत्र की अस्मिता की रक्षा था। विद्रोह के संरचनाकार दीवान लाल कालिन्द्र सिंह और नायक रानी सुबरन कुवर थे। 2 फरवरी 1910 को पूसपाल बाज़ार को बंद कर विद्रोह की शुरुआत की गई। 12 दिन तक जगदलपुर को घेर लिया गया।"
+        },
+        "freedomGallery12": {
+            "en": "The Sonakhan Rebellion (1857) emerged from conflicts over Takoli collection between Zamindar Ramray and the Marathas. After Ramray's death, his successor Narayan Singh actively addressed public grievances, leading to British persecution and his eventual execution in December 1857.",
+            "hi": "मराठों द्वारा टकोली वसूली से सोनाखान जमींदार रामराय और मराठों में तनाव बढ़ा। 1819 में रामराय ने अंग्रेजों के खिलाफ विद्रोह किया। 1830 में रामराय की मृत्यु के बाद नारायण सिंह जमींदार बने। अकाल के दौरान प्रजा की मदद करने पर अंग्रेजों ने नारायण सिंह को 24 अक्टूबर 1856 को बंदी बना लिया और 10 दिसम्बर 1857 को फांसी दे दी।"
+        }
     }
 }
