@@ -102,7 +102,7 @@
         "exploreMuseum": "Explore Museum",
         "scrollDown": "Scroll Down",
         "addressLine1": "Sector 24",
-        "addressLine2": "Near IIIT Naya Raipur",
+        "addressLine2": "Near Purkhouti Muktangan",
         "addressLine3": "Chhattisgarh 492101",
         "freedomMuseum": "Freedom Museum",
         "freedomMuseumDescription": "Discover the powerful stories of courage and resistance in the struggle for independence.",
@@ -116,7 +116,7 @@
         "reviewAuthor1": "- Priya S.",
         "review2": "The Freedom Fighters Museum tells such powerful stories. Every Indian should visit to understand our struggle for independence.",
         "reviewAuthor2": "- Rahul M.",
-        "Museum CG": "Museum of Chhattisgarh",
+        "Museum CG": "Chhattisgarh Tribal &\nFreedom Fighter Museum",
         "Admission": "Admission",
         "Adults": "Adults",
         "Students": "Students",
@@ -182,7 +182,16 @@
         "admissionFees": "Admission Fees",
         "adult": "Adult:",
         "children": "Children:",
-        "free": "Free"
+        "free": "Free",
+        "Nearby Places": "Nearby Places",
+        "nearbyPlacesPageTitle": "Nearby Places to Visit",
+        "nearbyPlacesIntro": "Discover amazing attractions near the Tribal Heritage Museum. From historical sites to natural wonders, there's plenty to explore in the surrounding area.",
+        "culturalAttractionsTitle": "Cultural Attractions",
+        "naturalWondersTitle": "Natural Wonders",
+        "diningAccommodationTitle": "Dining & Accommodation",
+        "getDirections": "Get Directions",
+        "distanceAway": "km away",
+        "locationMap": "Location Map"
     },
     "hi": {
         "home": "मुखपृष्ठ",
@@ -279,7 +288,7 @@
         "reviewAuthor1": "- प्रिया एस.",
         "review2": "स्वतंत्रता सेनानियों का संग्रहालय बेहद प्रभावशाली कहानियाँ बताता है। हर भारतीय को स्वतंत्रता संग्राम को समझने के लिए इसे जरूर देखना चाहिए।",
         "reviewAuthor2": "- राहुल एम.",
-        "Museum CG": "संग्रहालय छ.ग.",
+        "Museum CG": "छत्तीसगढ़ आदिवासी एवं\nस्वतंत्रता सेनानी संग्रहालय",
         "Admission": "प्रवेश",
         "Adults": "वयस्क",
         "Students": "छात्र",
@@ -346,6 +355,15 @@
         "admissionFees": "प्रवेश शुल्क",
         "adult": "वयस्क:",
         "children": "बच्चे:",
-        "free": "मुफ्त"
+        "free": "मुफ्त",
+        "Nearby Places": "आस-पास के स्थान",
+        "nearbyPlacesPageTitle": "आस-पास के दर्शनीय स्थल",
+        "nearbyPlacesIntro": "आदिवासी विरासत संग्रहालय के पास के आकर्षक स्थलों की खोज करें। ऐतिहासिक स्थलों से लेकर प्राकृतिक आश्चर्यों तक, आस-पास के क्षेत्र में घूमने के लिए बहुत कुछ है।",
+        "culturalAttractionsTitle": "सांस्कृतिक आकर्षण",
+        "naturalWondersTitle": "प्राकृतिक आश्चर्य",
+        "diningAccommodationTitle": "भोजन और आवास",
+        "getDirections": "दिशा-निर्देश पाएं",
+        "distanceAway": "किमी दूर",
+        "locationMap": "स्थान मानचित्र"
     }
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -124,8 +124,50 @@ const DesignerCredit = styled.div`
   }
 `;
 
+const MapContainer = styled.div`
+  width: 100%;
+  height: 230px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 10px;
+  border: 1px solid rgba(211, 161, 100, 0.3);
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 5px 15px rgba(211, 161, 100, 0.2);
+  }
+`;
+
+const MapIframe = styled.iframe`
+  width: 100%;
+  height: 100%;
+  border: none;
+`;
+
+const MapOverlay = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px;
+  background-color: rgba(211, 161, 100, 0.9);
+  color: #1a1410;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  transform: translateY(${(props) => (props.isHovered ? "0" : "100%")});
+  transition: transform 0.3s ease;
+`;
+
 const Footer = () => {
   const { t } = useLanguage();
+  const [mapHovered, setMapHovered] = useState(false);
+  
+  const handleMapClick = () => {
+    window.open("https://www.google.com/maps?q=Tribal+Freedom+Fighter+Museum+Naya+Raipur", "_blank");
+  };
 
   return (
     <FooterContainer>
@@ -133,27 +175,24 @@ const Footer = () => {
 
       <FooterContent>
         <FooterSection>
-          <h3>{t("aboutMuseum")}</h3>
-          <p>{t("aboutDesc")}</p>
-
-          <SocialIcons>
-            {[
-              { icon: FaFacebookF, label: "Facebook" },
-              { icon: FaTwitter, label: "Twitter" },
-              { icon: FaInstagram, label: "Instagram" },
-              { icon: FaYoutube, label: "YouTube" },
-            ].map((social, index) => (
-              <motion.a
-                key={index}
-                href="#"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                aria-label={social.label}
-              >
-                <social.icon size={20} />
-              </motion.a>
-            ))}
-          </SocialIcons>
+          <h3>{t("locationMap")}</h3>
+          <MapContainer
+            onMouseEnter={() => setMapHovered(true)}
+            onMouseLeave={() => setMapHovered(false)}
+            onClick={handleMapClick}
+          >
+            <MapIframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.0687013421286!2d81.63974961536798!3d21.235548085880083!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a28dd8c8d8706c5%3A0x8b52cc5b55c45ce1!2sTribal%20Freedom%20Fighter%20Museum%20Naya%20Raipur!5e0!3m2!1sen!2sin!4v1665486214558!5m2!1sen!2sin" 
+              allowFullScreen="" 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Museum Location"
+              aria-label="Google Maps showing Tribal Freedom Fighter Museum location"
+            />
+            <MapOverlay isHovered={mapHovered}>
+              {t("getDirections")}
+            </MapOverlay>
+          </MapContainer>
         </FooterSection>
 
         <FooterSection>
@@ -163,6 +202,7 @@ const Footer = () => {
               { to: "/about", text: t("aboutUs") },
               { to: "/support", text: t("supportUs") },
               { to: "/contact", text: t("contact") },
+              { to: "/nearby-places", text: t("Nearby Places") },
               { to: "/about/important-sites", text: t("Important Sites") },
               { to: "/orders-tender", text: t("Orders/Tender") },
               { to: "/news-media", text: t("News/Media") },

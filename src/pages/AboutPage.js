@@ -4,11 +4,29 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 import { useLanguage } from "../contexts/LanguageContext";
 import Navbar from "../components/Navbar";
+import forestBg from "../assets/tribel/Tree2.png"; // Import the same background image as HeroSection
 
 const PageContainer = styled.div`
   background-color: #1a1410;
   color: #fff;
   min-height: 100vh;
+`;
+
+const HeroSection = styled.div`
+  height: 50vh;
+  padding-top: 80px; /* Add padding to account for the navbar height */
+  background-image: linear-gradient(
+      rgba(26, 20, 16, 0.7),
+      rgba(26, 20, 16, 0.9)
+    ),
+    url(${forestBg}); /* Use the same background image as HeroSection */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
 `;
 
 const ContentContainer = styled.div`
@@ -96,6 +114,7 @@ const AboutPage = () => {
   return (
     <PageContainer>
       <Navbar />
+      <HeroSection />
       <ContentContainer>
         <PageTitle
           initial={{ opacity: 0, y: 20 }}

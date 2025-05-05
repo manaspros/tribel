@@ -23,6 +23,7 @@ const PlanYourVisitPage = React.lazy(() => import("./pages/PlanYourVisitPage"));
 const BookNowPage = React.lazy(() => import("./pages/BookNowPage"));
 const DirectorMessage = React.lazy(() => import("./pages/DirectorMessage"));
 const VisionPage = React.lazy(() => import("./pages/VisionPage"));
+const NearbyPlacesPage = React.lazy(() => import("./pages/NearbyPlacesPage"));
 
 // Context-aware loading component that uses the same LoadingContext
 const ContextAwareLoader = () => {
@@ -117,6 +118,7 @@ function AppContent() {
               <Route path="/museum-stats" element={<MuseumStatsPage />} />
               <Route path="/plan-visit" element={<PlanYourVisitPage />} />
               <Route path="/book-now" element={<BookNowPage />} />
+              <Route path="/nearby-places" element={<NearbyPlacesPage />} />
             </Routes>
           </Suspense>
         </Router>

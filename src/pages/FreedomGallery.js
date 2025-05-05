@@ -6,7 +6,6 @@ import { useLanguage } from "../contexts/LanguageContext";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import galleryDescriptions from "../data/galleryDescriptions.json";
-
 const PageContainer = styled.div`
   background-color: #1a1410;
   color: #fff;
@@ -16,13 +15,16 @@ const PageContainer = styled.div`
 const ContentContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 100px 20px 80px; // Increased top padding from 40px to 100px
+  padding-top: 180px; /* Increased to account for navbar */
+  padding-bottom: 80px;
+  padding-left: 20px;
+  padding-right: 20px;
 `;
 
 const PageTitle = styled(motion.h1)`
   color: #d3a164;
   font-size: 2.5rem;
-  margin-bottom: 40px;
+  margin-bottom: 20px; /* Reduced from 40px to 20px */
   text-align: center;
   font-family: "Playfair Display", serif;
   position: relative;
@@ -39,7 +41,7 @@ const PageTitle = styled(motion.h1)`
 
 const GalleryIntro = styled.div`
   max-width: 800px;
-  margin: 0 auto 50px;
+  margin: 0 auto 30px; /* Reduced from 50px to 30px */
   text-align: center;
   font-size: 1.1rem;
   line-height: 1.8;
@@ -168,8 +170,8 @@ const ExploreButton = styled(motion.button)`
 const BackLink = styled(Link)`
   display: inline-flex;
   align-items: center;
-  margin-bottom: 30px;
-  margin-top: 20px; // Added top margin for better spacing
+  margin-bottom: 20px; /* Reduced from 30px to 20px */
+  margin-top: 0; /* Removed top margin of 20px */
   color: #d3a164;
   text-decoration: none;
   font-weight: 500;
@@ -209,8 +211,6 @@ const LanguageIndicator = styled(motion.div)`
     font-size: 0.9rem;
   }
 `;
-
-// ...existing imports and styled components...
 
 const FreedomGallery = () => {
   const { t, language } = useLanguage();

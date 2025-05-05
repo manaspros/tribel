@@ -7,9 +7,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import galleries from "../data/galleriesTribal.json";
 import galleryTranslations from "../data/galleryTranslations.json";
-
 const PageContainer = styled.div`
-  background-color: rgb(235, 210, 185); /* Changed from rgb(208, 161, 130) to a lighter shade */
+  background-color: rgb(235, 210, 185);
   color: #fff;
   min-height: 100vh;
 `;
@@ -17,14 +16,17 @@ const PageContainer = styled.div`
 const ContentContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 100px 20px 80px;
+  padding-top: 180px; /* Increased to account for navbar */
+  padding-bottom: 80px;
+  padding-left: 20px;
+  padding-right: 20px;
 `;
 
 const PageTitle = styled(motion.h1)`
   color: #d3a164;
   font-size: 2.5rem;
-  margin-top: 40px; /* Added margin-top for spacing */
-  margin-bottom: 40px;
+  margin-top: 20px; /* Added margin-top */
+  margin-bottom: 20px; /* Added specific bottom margin */
   text-align: center;
   font-family: "Playfair Display", serif;
   position: relative;
@@ -41,7 +43,7 @@ const PageTitle = styled(motion.h1)`
 
 const GalleryIntro = styled.div`
   max-width: 800px;
-  margin: 0 auto 50px;
+  margin: 0 auto 30px; /* Reduced from 50px to 30px */
   text-align: center;
   font-size: 1.1rem;
   line-height: 1.8;
@@ -75,29 +77,26 @@ const GalleryItem = styled(motion.div)`
 `;
 
 const GalleryImage = styled.div`
-  height: 250px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-image: ${(props) => `url(${props.image})`};
   background-size: cover;
   background-position: center;
-  position: relative;
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100px;
-    background: linear-gradient(to top, #241c17, transparent);
-  }
+  z-index: 1;
 `;
 
 const GalleryInfo = styled.div`
   padding: 30px;
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.3) 80%, rgba(0, 0, 0, 0.1) 100%);
 `;
 
 const GalleryTitle = styled.h3`
@@ -105,6 +104,7 @@ const GalleryTitle = styled.h3`
   margin-bottom: 15px;
   font-size: 1.5rem;
   font-family: "Playfair Display", serif;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 `;
 
 const ExploreButton = styled(motion.button)`
@@ -117,6 +117,7 @@ const ExploreButton = styled(motion.button)`
   cursor: pointer;
   font-size: 0.9rem;
   transition: all 0.3s ease;
+  margin-top: auto;
 
   &:hover {
     background-color: #d3a164;
@@ -127,8 +128,8 @@ const ExploreButton = styled(motion.button)`
 const BackLink = styled(Link)`
   display: inline-flex;
   align-items: center;
-  margin-bottom: 30px;
-  margin-top: 20px;
+  margin-bottom: 20px; /* Reduced from 30px to 20px */
+  margin-top: 0; /* Removed top margin of 20px */
   color: #d3a164;
   text-decoration: none;
   font-weight: 500;

@@ -9,8 +9,7 @@ import Footer from "../components/Footer";
 // Import translation data
 import visionTranslations from "../data/visionPageTranslations.json";
 
-// Some placeholder image
-import visionBanner from "../assets/tribel/Picture3.jpg";
+import forestBg from "../assets/tribel/Tree2.png"; // Import the same background image as HeroSection
 
 const PageContainer = styled.div`
   background-color: #1a1410;
@@ -25,7 +24,7 @@ const HeroSection = styled.div`
       rgba(26, 20, 16, 0.7),
       rgba(26, 20, 16, 0.9)
     ),
-    url(${visionBanner});
+    url(${forestBg}); /* Use the same background image as HeroSection */
   background-size: cover;
   background-position: center;
   display: flex;
@@ -49,14 +48,14 @@ const HeroSection = styled.div`
 const ContentContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 60px 20px 80px;
+  padding: 30px 20px 80px; /* Reduced top padding from 60px to 30px */
   position: relative;
 `;
 
 const PageTitle = styled(motion.h1)`
   color: #d3a164;
   font-size: 3.5rem;
-  margin-bottom: 20px;
+  margin-bottom: 10px; /* Reduced from 20px to 10px */
   text-align: center;
   font-family: "Playfair Display", serif;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
@@ -71,7 +70,7 @@ const Subtitle = styled(motion.p)`
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.8);
   max-width: 800px;
-  margin: 0 auto 60px;
+  margin: 0 auto 30px; /* Reduced from 60px to 30px */
 
   @media (max-width: 768px) {
     font-size: 1rem;
@@ -81,7 +80,7 @@ const Subtitle = styled(motion.p)`
 const BackLink = styled(Link)`
   display: inline-flex;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px; /* Reduced from 30px to 20px */
   color: #d3a164;
   text-decoration: none;
   font-weight: 500;
@@ -117,7 +116,7 @@ const SectionTitle = styled.h2`
 `;
 
 const Section = styled(motion.div)`
-  margin-bottom: 50px;
+  margin-bottom: 40px; /* Reduced from 50px to 40px */
   background: rgba(42, 35, 28, 0.5);
   border-radius: 15px;
   padding: 30px;
