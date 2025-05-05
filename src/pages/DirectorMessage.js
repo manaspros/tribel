@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import styled from "styled-components";
 import { useLanguage } from "../contexts/LanguageContext";
 import Navbar from "../components/Navbar";
@@ -221,6 +221,7 @@ const MessageTextContent = styled(motion.div)`
 
 const MessageCard = ({ title, content, name, position, image, delay }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const { language } = useLanguage();
 
   return (
     <MessageSection
@@ -246,7 +247,9 @@ const MessageCard = ({ title, content, name, position, image, delay }) => {
             </MessageSignature>
           </MessageTextContent>
           <ExpandButton onClick={() => setIsExpanded(!isExpanded)}>
-            {isExpanded ? "Show Less" : "Read More"}
+            {isExpanded 
+              ? (language === "en" ? "Show Less" : "कम दिखाएं") 
+              : (language === "en" ? "Read More" : "अधिक पढ़ें")}
           </ExpandButton>
         </MessageText>
       </MessageContent>
@@ -344,15 +347,15 @@ const DirectorMessage = () => {
             delay={0.3}
           />
           
-          {/* You can add a third card here if needed */}
+          {/* Third card with proper translations */}
           <MessageCard
-            title="Additional Official Message"
+            title={getContent("additionalMessageTitle")}
             content={[
-              "This space is available for an additional message from another official or department head.",
-              "The text can be customized or replaced with content from your translations file."
+              getContent("additionalMessage1"),
+              getContent("additionalMessage2")
             ]}
-            name="Additional Official"
-            position="Position Title"
+            name={getContent("additionalName")}
+            position={getContent("additionalTitle")}
             image={ministerImage}
             delay={0.4}
           />

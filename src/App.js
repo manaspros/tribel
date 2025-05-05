@@ -17,7 +17,6 @@ const TribalArtifacts = React.lazy(() => import("./pages/TribalArtifacts"));
 const FreedomMuseumPage = React.lazy(() => import("./pages/FreedomMuseumPage"));
 const FreedomGallery = React.lazy(() => import("./pages/FreedomGallery"));
 const FreedomArtifacts = React.lazy(() => import("./pages/FreedomArtifacts"));
-const ContactPage = React.lazy(() => import("./pages/ContactPage"));
 const MuseumStatsPage = React.lazy(() => import("./pages/MuseumStatsPage"));
 const PlanYourVisitPage = React.lazy(() => import("./pages/PlanYourVisitPage"));
 const BookNowPage = React.lazy(() => import("./pages/BookNowPage"));
@@ -114,7 +113,6 @@ function AppContent() {
               <Route path="/about" element={<MuseumStatsPage />} />
               <Route path="/about/director" element={<DirectorMessage />} />
               <Route path="/about/vision" element={<VisionPage />} />
-              <Route path="/contact" element={<ContactPage />} />
               <Route path="/museum-stats" element={<MuseumStatsPage />} />
               <Route path="/plan-visit" element={<PlanYourVisitPage />} />
               <Route path="/book-now" element={<BookNowPage />} />

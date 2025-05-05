@@ -25,7 +25,12 @@
         "ministerMessage2": "For the general public to understand and experience this rich and diverse culture, establishing a museum seems to be a powerful medium. There was a growing need for a Tribal Museum in the state to preserve, promote, and widely disseminate tribal culture.",
         "ministerMessage3": "I congratulate the Tribal Development Department and the Tribal Research and Training Institute for establishing the 'Tribal Museum' with 14 galleries dedicated to the tribal culture of the state. I also extend my gratitude to all the tribal communities of the state who have shared nearly extinct artifacts of social and cultural significance from their traditions with our research teams to preserve them for future generations. I am confident that this first Tribal Museum of the state will play a vital role in enriching and promoting our culture and will gain international recognition.",
         "ministerName": "Shri Ramvichar Netam",
-        "ministerTitle": "Minister of Tribal and Scheduled Caste Development, Other Backward Classes and Minorities Department"
+        "ministerTitle": "Minister of Tribal and Scheduled Caste Development, Other Backward Classes and Minorities Department",
+        "additionalMessageTitle": "Additional Official Message",
+        "additionalMessage1": "This space is available for an additional message from another official or department head.",
+        "additionalMessage2": "The text can be customized or replaced with content from your translations file.",
+        "additionalName": "Additional Official",
+        "additionalTitle": "Position Title"
     },
     "hi": {
         "pageTitle": "निदेशक का संदेश",
@@ -53,6 +58,11 @@
         "ministerMessage2": "एक सामान्य जनमानस को राज्य की इस विविधतापूर्ण संस्कृति को समझने और इसे महसूस करने एक स्थान पर संग्रहालय के रूप में प्रदर्शित करने एक सशक्त माध्यम प्रतीत होता है। जनजातीय संस्कृति को संरक्षण, संवर्धन एवं उनके व्यापक प्रचार-प्रसार हेतु राज्य में आदिवासी संग्रहालय की महति आवश्यकता प्रतीत हो रही थी।",
         "ministerMessage3": "मै आदिमजाति विकास विभाग एवं आदिमजाति अनुसंधान एवं प्रशिक्षण संस्थान को बधाई देता हूं कि, उन्होंने राज्य की जनजातीय संस्कृति को समर्पित 14 गैलरियों युक्त \"आदिवासी संग्रहालय\" की स्थापना की है। साथ ही राज्य के सभी आदिवासी समुदायों को धन्यवाद देना चाहता हूं कि, उन्होंने अपनी आदिवासजी संस्कृति से संबद्ध सामाजिक-सांस्कृतिक महत्व के विलुप्त प्राय आर्टिफेक्ट्स को आने वाली पीढ़ी के लिये संरक्षित करने के उद्देश्य से हमारे अनुसंधानिक दलों को उपलब्ध कराया है। मुझे पूर्ण विश्वास है कि, राज्य का यह प्रथम आदिवासी संग्रहालय अपनी संस्कृति को समृद्ध व संवर्धित करने के स्थान के रूप में महत्वपूण् भूमिका निभाएगा और विश्व विख्यात होगा।",
         "ministerName": "श्री रामविचार नेताम",
-        "ministerTitle": "मंत्री, आदिम जाति तथा अनुसूचित जाति विकास, अन्य पिछड़ा वर्ग एवं अल्पसंख्यक विभाग"
+        "ministerTitle": "मंत्री, आदिम जाति तथा अनुसूचित जाति विकास, अन्य पिछड़ा वर्ग एवं अल्पसंख्यक विभाग",
+        "additionalMessageTitle": "अतिरिक्त अधिकारी का संदेश",
+        "additionalMessage1": "यह स्थान किसी अन्य अधिकारी या विभाग प्रमुख के अतिरिक्त संदेश के लिए उपलब्ध है।",
+        "additionalMessage2": "इस पाठ को आपके अनुवाद फ़ाइल से सामग्री के साथ अनुकूलित या प्रतिस्थापित किया जा सकता है।",
+        "additionalName": "अतिरिक्त अधिकारी",
+        "additionalTitle": "पद का शीर्षक"
     }
 }

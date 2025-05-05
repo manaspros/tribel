@@ -121,27 +121,6 @@ const GalleryDescription = styled.p`
   margin-bottom: 30px;
 `;
 
-const GalleryDetails = styled.div`
-  display: flex;
-  gap: 20px;
-  margin-top: auto;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 10px;
-  }
-`;
-
-const GalleryDetail = styled.div`
-  display: flex;
-  align-items: center;
-
-  svg {
-    margin-right: 10px;
-    color: #d3a164;
-  }
-`;
-
 const ExploreButton = styled(motion.button)`
   background-color: #d3a164;
   color: #1a1410;
