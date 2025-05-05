@@ -134,14 +134,19 @@ const QuoteDecorationRight = styled.div`
 const quotes = {
   en: [
     {
-      text: "Sabka Sath, Sabka Vikas < Sabka Vishwas, Sabka Prayas. ",
-      author: "Shri Narendra Modi.",
+      text: "Sabka Sath, Sabka Vikas, Sabka Vishwas, Sabka Prayas.",
+      author: "Shri Narendra Modi",
       role: "Prime Minister of India",
     },
     {
-      text: "Our tribal communities are the guardians of our ancient traditions and cultural heritage. Their development is essential for a truly self-reliant India.",
+      text: "Nation First, Always First.",
       author: "Shri Narendra Modi",
       role: "Prime Minister of India",
+    },
+    {
+      text: "Ek Bharat, Shreshtha Bharat.",
+      author: "Shri Amit Shah",
+      role: "Union Home Minister",
     },
     {
       text: "Tribal communities have played a vital role in India's independence. Now they must play an equally important role in our nation's development.",
@@ -151,14 +156,19 @@ const quotes = {
   ],
   hi: [
     {
-      text: "सबका साथ, सबका विकास < सबका विश्वास, सबका प्रयास।",
+      text: "सबका साथ, सबका विकास, सबका विश्वास, सबका प्रयास।",
       author: "श्री नरेंद्र मोदी",
       role: "भारत के प्रधानमंत्री",
     },
     {
-      text: "हमारे आदिवासी समुदाय हमारी प्राचीन परंपराओं और सांस्कृतिक विरासत के संरक्षक हैं। उनका विकास एक वास्तविक आत्मनिर्भर भारत के लिए आवश्यक है।",
+      text: "राष्ट्र प्रथम, सदा प्रथम।",
       author: "श्री नरेंद्र मोदी",
       role: "भारत के प्रधानमंत्री",
+    },
+    {
+      text: "एक भारत, श्रेष्ठ भारत।",
+      author: "श्री अमित शाह",
+      role: "केंद्रीय गृह मंत्री",
     },
     {
       text: "आदिवासी समुदायों ने भारत की स्वतंत्रता में महत्वपूर्ण भूमिका निभाई है। अब उन्हें हमारे राष्ट्र के विकास में भी उतनी ही महत्वपूर्ण भूमिका निभानी चाहिए।",
