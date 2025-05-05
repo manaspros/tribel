@@ -21,21 +21,14 @@ const Card = styled(motion.div)`
 `;
 
 const ArtifactImage = styled.div`
-  height: 100%;
-  width: 100%;
+  height: 280px;
+  background-color: #2c231c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d3a164;
+  font-size: 5rem;
   position: relative;
-  overflow: hidden;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-
-  &:hover img {
-    transform: scale(1.05);
-  }
 
   &::after {
     content: "";
@@ -97,21 +90,15 @@ const ArtifactCard = ({
 }) => {
   return (
     <Card
-      // onClick={onClick}
+      onClick={onClick}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
       whileHover={{ y: -10 }}
       layout
     >
-      <ArtifactImage>
-        <img 
-          src={`/collection/tribal/${index+1}.JPG`} 
-          alt={title}
-          loading="lazy"
-        />
-      </ArtifactImage>
-      {/* <ArtifactInfo>
+      <ArtifactImage>{emoji}</ArtifactImage>
+      <ArtifactInfo>
         <ArtifactTitle>{title}</ArtifactTitle>
         <ArtifactDescription>{description}</ArtifactDescription>
         <ArtifactTags>
@@ -119,7 +106,7 @@ const ArtifactCard = ({
             <ArtifactTag key={tag}>{translateTag(tag)}</ArtifactTag>
           ))}
         </ArtifactTags>
-      </ArtifactInfo> */}
+      </ArtifactInfo>
     </Card>
   );
 };

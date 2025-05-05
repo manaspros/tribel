@@ -14,15 +14,18 @@
             "tribalLifestyleTitle": "Daily Life & Culture",
             "tribalLifestyleDescription": "Glimpse into the everyday lives of tribal communities through reconstructions of traditional dwellings, hunting tools, agricultural implements, and domestic artifacts."
         },
-        "tribalGallery1": "Tribal Introduction",
-        "tribalGallery2": "Life Cycle",
-        "tribalGallery3": "Housing and Domestic Tools",
-        "tribalGallery4": "Hunting Tools & Equipment",
-        "tribalGallery5": "Traditional Clothing & Ornaments",
-        "tribalGallery6": "Agricultural Implements",
-        "tribalGallery7": "Traditional Medicinal Plants",
-        "tribalGallery8": "Tribal Adornments & Jewelry",
-        "tribalGallery9": "Indigenous Musical Instruments"
+        "tribalWarAxe": "Traditional War Axes",
+        "tribalWarAxeDesc": "Discover ceremonial and functional war axes used by tribal communities in central India. These handcrafted weapons served both as hunting tools and symbols of prestige in the community, often featuring intricate carvings and sacred symbols.",
+        "dhokraArt": "Dhokra Metal Crafts",
+        "dhokraArtDesc": "Experience the ancient lost-wax metal casting technique of Dhokra, practiced for over 4,000 years. These distinctive brass artifacts feature intricate detailing and primitive patterns that reflect the daily life, beliefs, and folklore of tribal communities.",
+        "tribalMask": "Ceremonial Tribal Masks",
+        "tribalMaskDesc": "Explore the spiritual significance of tribal masks used in religious ceremonies, social rituals, and storytelling performances. Each mask represents deities, ancestors, or spirits and is believed to channel their powers during sacred ceremonies.",
+        "healingHerbs": "Traditional Medicinal Plants",
+        "healingHerbsDesc": "Learn about the indigenous knowledge of medicinal herbs passed down through generations. This collection showcases healing plants used in tribal medicine, along with traditional preparation methods and their applications for various ailments.",
+        "tribalJewelry": "Tribal Adornments & Jewelry",
+        "tribalJewelryDesc": "Admire the vibrant and symbolic jewelry crafted by different tribal communities. These ornaments do more than decorate—they tell stories of cultural identity, marital status, religious beliefs, and socio-economic standing within the community.",
+        "musicalInstruments": "Indigenous Musical Instruments",
+        "musicalInstrumentsDesc": "Discover the rich musical heritage of tribal communities through their handcrafted instruments. From percussion and wind to string instruments, these artifacts play essential roles in rituals, celebrations, and the oral transmission of cultural knowledge."
     },
     "hi": {
         "pageTitle": "आदिवासी विरासत प्रदर्शनी",
@@ -39,14 +42,17 @@
             "tribalLifestyleTitle": "दैनिक जीवन और संस्कृति",
             "tribalLifestyleDescription": "पारंपरिक आवासों, शिकार उपकरणों, कृषि उपकरणों और घरेलू कलाकृतियों के पुनर्निर्माण के माध्यम से आदिवासी समुदायों के रोजमर्रा के जीवन की झलक देखें।"
         },
-        "tribalGallery1": "जनजातीय परिचय",
-        "tribalGallery2": "जीवन चक्र",
-        "tribalGallery3": "आवास व घरेलू उपकरण",
-        "tribalGallery4": "औजार (शिकार उपकरण)",
-        "tribalGallery5": "वस्त्र (परिधान) व आभूशण",
-        "tribalGallery6": "कृषि उपकरण",
-        "tribalGallery7": "पारंपरिक औषधीय पौधे",
-        "tribalGallery8": "जनजातीय आभूषण और गहने",
-        "tribalGallery9": "स्वदेशी संगीत वाद्ययंत्र"
+        "tribalWarAxe": "पारंपरिक युद्ध कुल्हाड़ी",
+        "tribalWarAxeDesc": "मध्य भारत के आदिवासी समुदायों द्वारा उपयोग किए जाने वाले अनुष्ठानिक और कार्यात्मक युद्ध कुल्हाड़ियों की खोज करें। ये हस्तनिर्मित हथियार शिकार के उपकरण और समुदाय में प्रतिष्ठा के प्रतीक के रूप में काम करते थे, जिनमें अक्सर जटिल नक्काशी और पवित्र प्रतीक होते थे।",
+        "dhokraArt": "ढोकरा धातु शिल्प",
+        "dhokraArtDesc": "4,000 वर्षों से अधिक समय से प्रचलित ढोकरा की प्राचीन लॉस्ट-वैक्स धातु ढलाई तकनीक का अनुभव करें। इन विशिष्ट पीतल की कलाकृतियों में जटिल विवरण और आदिम पैटर्न हैं जो आदिवासी समुदायों के दैनिक जीवन, मान्यताओं और लोक कथाओं को दर्शाते हैं।",
+        "tribalMask": "अनुष्ठानिक जनजातीय मुखौटे",
+        "tribalMaskDesc": "धार्मिक समारोहों, सामाजिक अनुष्ठानों और कहानी सुनाने के प्रदर्शनों में उपयोग किए जाने वाले जनजातीय मुखौटों के आध्यात्मिक महत्व का पता लगाएं। प्रत्येक मुखौटा देवताओं, पूर्वजों या आत्माओं का प्रतिनिधित्व करता है और माना जाता है कि पवित्र समारोहों के दौरान उनकी शक्तियों को चैनल करता है।",
+        "healingHerbs": "पारंपरिक औषधीय पौधे",
+        "healingHerbsDesc": "पीढ़ियों से चली आ रही औषधीय जड़ी-बूटियों के स्वदेशी ज्ञान के बारे में जानें। यह संग्रह आदिवासी चिकित्सा में उपयोग किए जाने वाले औषधीय पौधों के साथ-साथ पारंपरिक तैयारी विधियों और विभिन्न बीमारियों के लिए उनके अनुप्रयोगों को प्रदर्शित करता है।",
+        "tribalJewelry": "जनजातीय आभूषण और गहने",
+        "tribalJewelryDesc": "विभिन्न आदिवासी समुदायों द्वारा बनाए गए जीवंत और प्रतीकात्मक आभूषणों की प्रशंसा करें। ये आभूषण सजावट से अधिक काम करते हैं—वे सांस्कृतिक पहचान, वैवाहिक स्थिति, धार्मिक मान्यताओं और समुदाय के भीतर सामाजिक-आर्थिक स्थिति की कहानियां बताते हैं।",
+        "musicalInstruments": "स्वदेशी संगीत वाद्ययंत्र",
+        "musicalInstrumentsDesc": "उनके हस्तनिर्मित वाद्ययंत्रों के माध्यम से आदिवासी समुदायों की समृद्ध संगीत विरासत की खोज करें। अवनद्ध, वायु से लेकर तार वाद्ययंत्रों तक, ये कलाकृतियां अनुष्ठानों, उत्सवों और सांस्कृतिक ज्ञान के मौखिक प्रसारण में महत्वपूर्ण भूमिका निभाती हैं।"
     }
 }
