@@ -134,36 +134,36 @@ const QuoteDecorationRight = styled.div`
 const quotes = {
   en: [
     {
-      text: "Corruption is a serious hindrance to the development of the socialist pattern. When there is scope for corruption there cannot be equal opportunity.",
-      author: "Shri Gulzari Lal Nanda",
-      role: "Indian Politician and Freedom Fighter",
-    },
-    {
       text: "Sabka Sath, Sabka Vikas < Sabka Vishwas, Sabka Prayas. ",
       author: "Shri Narendra Modi.",
       role: "Prime Minister of India",
     },
     {
-      text: "The preservation of freedom is not the task of soldiers alone. The whole nation has to be strong.",
-      author: "Shri Lal Bahadur Shastri",
-      role: "Former Prime Minister of India",
+      text: "Our tribal communities are the guardians of our ancient traditions and cultural heritage. Their development is essential for a truly self-reliant India.",
+      author: "Shri Narendra Modi",
+      role: "Prime Minister of India",
+    },
+    {
+      text: "Tribal communities have played a vital role in India's independence. Now they must play an equally important role in our nation's development.",
+      author: "Smt. Droupadi Murmu",
+      role: "President of India",
     },
   ],
   hi: [
-    {
-      text: "भ्रष्टाचार समाजवादी पैटर्न के विकास में एक गंभीर बाधा है। जब भ्रष्टाचार की गुंजाइश होती है तो समान अवसर नहीं हो सकते।",
-      author: "श्री गुलजारी लाल नंदा",
-      role: "भारतीय राजनेता और स्वतंत्रता सेनानी",
-    },
     {
       text: "सबका साथ, सबका विकास < सबका विश्वास, सबका प्रयास।",
       author: "श्री नरेंद्र मोदी",
       role: "भारत के प्रधानमंत्री",
     },
     {
-      text: "स्वतंत्रता का संरक्षण केवल सैनिकों का कार्य नहीं है। पूरे राष्ट्र को मजबूत होना चाहिए।",
-      author: "श्री लाल बहादुर शास्त्री",
-      role: "भारत के पूर्व प्रधानमंत्री",
+      text: "हमारे आदिवासी समुदाय हमारी प्राचीन परंपराओं और सांस्कृतिक विरासत के संरक्षक हैं। उनका विकास एक वास्तविक आत्मनिर्भर भारत के लिए आवश्यक है।",
+      author: "श्री नरेंद्र मोदी",
+      role: "भारत के प्रधानमंत्री",
+    },
+    {
+      text: "आदिवासी समुदायों ने भारत की स्वतंत्रता में महत्वपूर्ण भूमिका निभाई है। अब उन्हें हमारे राष्ट्र के विकास में भी उतनी ही महत्वपूर्ण भूमिका निभानी चाहिए।",
+      author: "श्रीमती द्रौपदी मुर्मू",
+      role: "भारत की राष्ट्रपति",
     },
   ],
 };

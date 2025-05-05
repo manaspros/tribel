@@ -464,7 +464,7 @@ const MuseumStatsPage = () => {
             activeMuseum === "tribal" ? "tribalIntro" : "freedomIntro"
           )}
         </Description>
-
+{/* 
         {activeMuseum === "tribal" && (
           <MuseumQuote>
             {language === "en"
@@ -489,7 +489,7 @@ const MuseumStatsPage = () => {
                 : "— प्रो. विक्रम मेहता, ऐतिहासिक सलाहकार"}
             </QuoteCitation>
           </MuseumQuote>
-        )}
+        )} */}
 
         <AnimatePresence mode="wait">
           <motion.div
