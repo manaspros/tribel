@@ -11,7 +11,7 @@ const CursorWrapper = styled(motion.div)`
   height: 12px;
   background-color: #d3a164;
   border-radius: 50%;
-  z-index: 999;
+  z-index: 9999; /* Increased from 999 to be above modal */
   mix-blend-mode: difference;
 
   @media (max-width: 768px) {
@@ -28,7 +28,7 @@ const CursorRing = styled(motion.div)`
   height: 40px;
   border: 1px solid rgba(211, 161, 100, 0.5);
   border-radius: 50%;
-  z-index: 998;
+  z-index: 9998; /* Increased from 998 to be above modal */
 
   @media (max-width: 768px) {
     display: none; /* Hide on touch devices */
