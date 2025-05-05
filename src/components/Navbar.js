@@ -55,6 +55,14 @@ const LogosGroupLeft = styled.div`
 const LogoImage = styled.img`
   height: 45px;
   margin-right: 15px;
+  
+  /* Enhanced styling for logo4 */
+  &[src*="logo4"] {
+    filter: brightness(1.4) contrast(1.2) saturate(1.5);
+    transition: all 0.4s ease;
+    transform-origin: center center;
+    transform: scale(1.15);
+  }
 `;
 
 // Additional logo styling
