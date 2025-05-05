@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { useLanguage } from "../contexts/LanguageContext";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import galleries from "../data/galleriesTribal.json";
+import galleries from "../data/galleries.json";
 import galleryTranslations from "../data/galleryTranslations.json";
 
 const PageContainer = styled.div`
@@ -147,24 +147,17 @@ const BackLink = styled(Link)`
   }
 `;
 
-// ...existing imports...
-
 const TribalGallery = () => {
   const { language } = useLanguage();
 
+  // Function to get translation from gallery translations
   const gt = (key) => {
     if (galleryTranslations[language] && galleryTranslations[language][key]) {
       return galleryTranslations[language][key];
     }
+    // Fallback to English if translation is missing
     return galleryTranslations.en[key] || key;
   };
-
-  // Get gallery data
-  const galleryItems = galleries.map((gallery, index) => ({
-    ...gallery,
-    title: gt(gallery.titleKey),
-    imageIndex: index + 1
-  }));
 
   return (
     <PageContainer>
@@ -188,27 +181,24 @@ const TribalGallery = () => {
         <GalleryIntro>{gt("pageIntro")}</GalleryIntro>
 
         <GalleryGrid>
-          {galleryItems.map((gallery, index) => (
+          {galleries.map((gallery, index) => (
             <GalleryItem
               key={`gallery-${index}-${language}`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
             >
-              <GalleryImage image={`/gallery/tribal/${gallery.imageIndex}.png`} />
+              <GalleryImage image={`/gallery/${gallery.image}`} />
               <GalleryInfo>
                 <div>
-                  <GalleryTitle>{gallery.title}</GalleryTitle>
+                  <GalleryTitle>{gt(gallery.titleKey)}</GalleryTitle>
+                  <GalleryDescription>
+                    {gt(gallery.descriptionKey)}
+                  </GalleryDescription>
                 </div>
                 <ExploreButton
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => {
-                    // Handle explore gallery click, can add navigation here
-                    if (gallery.exploreGalleryImages.length > 0) {
-                      // Navigate to gallery detail view
-                    }
-                  }}
                 >
                   {gt("exploreGallery")} →
                 </ExploreButton>

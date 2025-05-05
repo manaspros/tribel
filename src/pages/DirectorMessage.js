@@ -172,11 +172,10 @@ const DirectorMessage = () => {
     return directorTranslations.en[key] || key;
   };
 
-  // ...existing code...
-
   return (
     <PageContainer>
       <Navbar />
+
       <HeroSection>
         <PageTitle
           initial={{ opacity: 0, y: 20 }}
@@ -195,12 +194,38 @@ const DirectorMessage = () => {
           {getContent("backToAbout")}
         </BackLink>
 
-        {/* Chief Minister's Message */}
+        {/* Director's Message */}
         <MessageSection
           as={motion.div}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
+        >
+          <MessageHeader>
+            <MessageTitle>{getContent("directorMessageTitle")}</MessageTitle>
+          </MessageHeader>
+          <MessageContent>
+            <MessageImageContainer>
+              <MessageImage image={directorImage} />
+            </MessageImageContainer>
+            <MessageText>
+              <p>{getContent("directorMessage1")}</p>
+              <p>{getContent("directorMessage2")}</p>
+              <p>{getContent("directorMessage3")}</p>
+              <MessageSignature>
+                <div className="name">{getContent("directorName")}</div>
+                <div className="title">{getContent("directorTitle")}</div>
+              </MessageSignature>
+            </MessageText>
+          </MessageContent>
+        </MessageSection>
+
+        {/* Chief Minister's Message */}
+        <MessageSection
+          as={motion.div}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
           <MessageHeader>
             <MessageTitle>{getContent("cmMessageTitle")}</MessageTitle>
@@ -221,12 +246,38 @@ const DirectorMessage = () => {
           </MessageContent>
         </MessageSection>
 
+        {/* Deputy Chief Minister's Message */}
+        <MessageSection
+          as={motion.div}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <MessageHeader>
+            <MessageTitle>{getContent("deputyCmMessageTitle")}</MessageTitle>
+          </MessageHeader>
+          <MessageContent>
+            <MessageImageContainer>
+              <MessageImage image={deputyCmImage} />
+            </MessageImageContainer>
+            <MessageText>
+              <p>{getContent("deputyCmMessage1")}</p>
+              <p>{getContent("deputyCmMessage2")}</p>
+              <p>{getContent("deputyCmMessage3")}</p>
+              <MessageSignature>
+                <div className="name">{getContent("deputyCmName")}</div>
+                <div className="title">{getContent("deputyCmTitle")}</div>
+              </MessageSignature>
+            </MessageText>
+          </MessageContent>
+        </MessageSection>
+
         {/* Minister's Message */}
         <MessageSection
           as={motion.div}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
         >
           <MessageHeader>
             <MessageTitle>{getContent("ministerMessageTitle")}</MessageTitle>
@@ -242,32 +293,6 @@ const DirectorMessage = () => {
               <MessageSignature>
                 <div className="name">{getContent("ministerName")}</div>
                 <div className="title">{getContent("ministerTitle")}</div>
-              </MessageSignature>
-            </MessageText>
-          </MessageContent>
-        </MessageSection>
-
-        {/* Director's Message */}
-        <MessageSection
-          as={motion.div}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <MessageHeader>
-            <MessageTitle>{getContent("directorMessageTitle")}</MessageTitle>
-          </MessageHeader>
-          <MessageContent>
-            {/* <MessageImageContainer>
-              <MessageImage image={directorImage} />
-            </MessageImageContainer> */}
-            <MessageText>
-              <p>{getContent("directorMessage1")}</p>
-              <p>{getContent("directorMessage2")}</p>
-              <p>{getContent("directorMessage3")}</p>
-              <MessageSignature>
-                <div className="name">{getContent("directorName")}</div>
-                <div className="title">{getContent("directorTitle")}</div>
               </MessageSignature>
             </MessageText>
           </MessageContent>
