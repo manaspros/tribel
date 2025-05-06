@@ -652,6 +652,25 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
           </Link>
         </LogosGroupLeft>
         <NavLinks>
+          {/* Add Home Link as the first navigation item */}
+          <NavLink 
+            as={Link} 
+            to="/"
+            whileHover={{ y: -2 }}
+            whileTap={{ y: 0 }}
+          >
+            <svg 
+              viewBox="0 0 24 24" 
+              width="18" 
+              height="18" 
+              fill="currentColor" 
+              style={{ marginRight: '5px', verticalAlign: 'middle' }}
+            >
+              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+            </svg>
+            {t("Home")}
+          </NavLink>
+
           {/* Replace direct About Museum link with dropdown */}
           <DropdownContainer
             ref={aboutDropdownRef}
@@ -879,7 +898,7 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                     onClick={() => setGalleriesDropdownOpen(false)}
                   >
                     <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
                     </svg>
                     {t("Image Gallery")}
                   </DropdownItem>
@@ -891,7 +910,7 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                     onClick={() => setGalleriesDropdownOpen(false)}
                   >
                     <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
                     </svg>
                     {t("Saffron Gallery")}
                   </DropdownItem>
@@ -903,9 +922,61 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                     onClick={() => setGalleriesDropdownOpen(false)}
                   >
                     <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
                     </svg>
                     {t("Light Gallery")}
+                  </DropdownItem>
+                  
+                  {/* Divider */}
+                  <div style={{ height: "1px", background: "rgba(211, 161, 100, 0.2)", margin: "8px 0" }}></div>
+                  
+                  {/* Tribal Gallery variants */}
+                  <DropdownItem
+                    as={Link}
+                    to="/tribal/gallery/default"
+                    whileHover={{ x: 5 }}
+                    onClick={() => setGalleriesDropdownOpen(false)}
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+                    </svg>
+                    {t("Tribal Default")}
+                  </DropdownItem>
+                  
+                  <DropdownItem
+                    as={Link}
+                    to="/tribal/gallery/image"
+                    whileHover={{ x: 5 }}
+                    onClick={() => setGalleriesDropdownOpen(false)}
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+                    </svg>
+                    {t("Tribal Image")}
+                  </DropdownItem>
+                  
+                  <DropdownItem
+                    as={Link}
+                    to="/tribal/gallery/saffron"
+                    whileHover={{ x: 5 }}
+                    onClick={() => setGalleriesDropdownOpen(false)}
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+                    </svg>
+                    {t("Tribal Saffron")}
+                  </DropdownItem>
+                  
+                  <DropdownItem
+                    as={Link}
+                    to="/tribal/gallery/light"
+                    whileHover={{ x: 5 }}
+                    onClick={() => setGalleriesDropdownOpen(false)}
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+                    </svg>
+                    {t("Tribal Light")}
                   </DropdownItem>
                 </DropdownMenu>
               )}
@@ -1039,6 +1110,28 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
               >
                 ✕
               </MobileMenuButton>
+
+              {/* Add Home link as first item in mobile menu */}
+              <MobileNavLink
+                as={Link}
+                to="/"
+                onClick={() => setMobileMenuOpen(false)}
+                style={{ 
+                  display: 'flex',
+                  alignItems: 'center'
+                }}
+              >
+                <svg 
+                  viewBox="0 0 24 24" 
+                  width="18" 
+                  height="18" 
+                  fill="currentColor" 
+                  style={{ marginRight: '10px' }}
+                >
+                  <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                </svg>
+                {t("Home")}
+              </MobileNavLink>
 
               {/* Add About Us dropdown to mobile menu */}
               <div>
@@ -1309,7 +1402,7 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                         height="16"
                         fill="currentColor"
                       >
-                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
                       </svg>
                       {t("Image Gallery")}
                     </MobileDropdownItem>
@@ -1342,6 +1435,47 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                         <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
                       </svg>
                       {t("Light Gallery")}
+                    </MobileDropdownItem>
+                    
+                    {/* Add new mobile tribal gallery links */}
+                    <MobileDropdownItem
+                      to="/tribal/gallery/default"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+                      </svg>
+                      {t("Tribal Default")}
+                    </MobileDropdownItem>
+                    
+                    <MobileDropdownItem
+                      to="/tribal/gallery/image"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+                      </svg>
+                      {t("Tribal Image")}
+                    </MobileDropdownItem>
+                    
+                    <MobileDropdownItem
+                      to="/tribal/gallery/saffron"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+                      </svg>
+                      {t("Tribal Saffron")}
+                    </MobileDropdownItem>
+                    
+                    <MobileDropdownItem
+                      to="/tribal/gallery/light"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+                      </svg>
+                      {t("Tribal Light")}
                     </MobileDropdownItem>
                   </MobileDropdownMenu>
                 )}

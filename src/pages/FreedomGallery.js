@@ -7,7 +7,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import galleryDescriptions from "../data/galleryDescriptions.json";
 const PageContainer = styled.div`
-  background-color: #1a1410;
+  background-color: #2a2018; /* Lightened from #1a1410 */
   color: #fff;
   min-height: 100vh;
 `;
@@ -56,7 +56,7 @@ const GalleryGrid = styled.div`
 
 const GalleryItem = styled(motion.div)`
   display: flex;
-  background-color: rgba(36, 28, 23, 0.5);
+  background-color: rgba(50, 40, 32, 0.5); /* Lightened from rgba(36, 28, 23, 0.5) */
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
@@ -88,14 +88,14 @@ const GalleryImage = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to right, rgba(36, 28, 23, 0.8), transparent);
+    background: linear-gradient(to right, rgba(50, 40, 32, 0.8), transparent); /* Lightened from rgba(36, 28, 23, 0.8) */
 
     ${GalleryItem}:nth-child(even) & {
-      background: linear-gradient(to left, rgba(36, 28, 23, 0.8), transparent);
+      background: linear-gradient(to left, rgba(50, 40, 32, 0.8), transparent); /* Lightened from rgba(36, 28, 23, 0.8) */
     }
 
     @media (max-width: 992px) {
-      background: linear-gradient(to top, rgba(36, 28, 23, 0.9), transparent);
+      background: linear-gradient(to top, rgba(50, 40, 32, 0.9), transparent); /* Lightened from rgba(36, 28, 23, 0.9) */
     }
   }
 `;

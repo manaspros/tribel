@@ -186,7 +186,19 @@
         "locationMap": "Location Map",
         "mapLoadError": "Map couldn't be loaded. Click here for directions.",
         "viewOnMap": "View on Map",
-        "clickForDirections": "Click for directions"
+        "clickForDirections": "Click for directions",
+        "Our Leadership": "Our Leadership",
+        "cmName": "Shri Vishnu Deo Sai",
+        "cmTitle": "Chief Minister, Chhattisgarh",
+        "ministerName": "Shri Ramvichar Netam",
+        "ministerTitle": "Minister of Tribal Development",
+        "Read Message": "Read Message",
+        "cmQuote": "Preserving our tribal heritage for future generations is one of our top priorities.",
+        "ministerQuote": "Our tribal communities represent the rich cultural tapestry that defines our state's identity.",
+        "Inspiring Words from Our Leaders": "Inspiring Words from Our Leaders",
+        "cmQuote1": "Tribal communities have played a significant role in India's freedom struggle. Their cultural heritage is our national treasure that we must preserve for future generations.",
+        "ministerQuote1": "Our goal is to create awareness about the rich tribal heritage and ensure that indigenous knowledge systems are recognized and respected.",
+        "ministerQuote2": "The tribal museum showcases the unique cultural practices, art forms and traditional knowledge of our indigenous communities that have evolved over centuries."
     },
     "hi": {
         "home": "मुखपृष्ठ",
@@ -221,14 +233,6 @@
         "Select...": "चयन करें...",
         "Number of Visitors": "आगंतुकों की संख्या",
         "Thank You!": "धन्यवाद!",
-        "Your booking has been confirmed": "आपकी बुकिंग की पुष्टि हो गई है। आपको शीघ्र ही एक पुष्टिकरण ईमेल प्राप्त होगा।",
-        "Close": "बंद करें",
-        "virtualExhibitGallery": "आभासी प्रदर्शनी दीर्घा",
-        "Explore our collection": "हमारे दुर्लभ जनजातीय कलाकृतियों के संग्रह का अन्वेषण करें, जो स्वदेशी विरासत, शिल्पकला और सांस्कृतिक महत्व की अनूठी कहानियाँ बताते हैं।",
-        "tribalWarAxe": "बैगा जनजाति",
-        "tribalWarAxeDesc": "बैगा मध्य भारत की एक वन-निवासी जनजाति है, जो अपने पारंपरिक टैटू और प्रकृति से गहरे संबंध के लिए जानी जाती है।",
-        "dhokraArt": "घोटपाल",
-        "dhokraArtDesc": "घोटपाल गोंड समुदाय द्वारा अभ्यास की जाने वाली एक पारंपरिक जनजातीय व्यवस्था है, जो युवाओं के लिए सांस्कृतिक प्रथाओं और सामाजिक मानदंडों को सीखने के लिए एक सामाजिक स्थान के रूप में कार्य करती है।",
         "tribalMask": "धुर्वा जनजाति",
         "tribalMaskDesc": "धुर्वा मध्य भारत की एक जनजाति है, जो अपनी विशिष्ट संस्कृति, रीति-रिवाजों और प्रकृति के साथ मजबूत संबंध के लिए जानी जाती है।",
         "healingHerbs": "कमार जनजाति",
@@ -367,6 +371,10 @@
         "locationMap": "स्थान मानचित्र",
         "mapLoadError": "नक्शा लोड नहीं किया जा सका। दिशा-निर्देशों के लिए यहां क्लिक करें।",
         "viewOnMap": "नक्शे पर देखें",
-        "clickForDirections": "दिशा-निर्देशों के लिए क्लिक करें"
+        "clickForDirections": "दिशा-निर्देशों के लिए क्लिक करें",
+        "Inspiring Words from Our Leaders": "हमारे नेताओं के प्रेरणादायक शब्द",
+        "cmQuote1": "आदिवासी समुदायों ने भारत के स्वतंत्रता संग्राम में महत्वपूर्ण भूमिका निभाई है। उनकी सांस्कृतिक विरासत हमारा राष्ट्रीय खजाना है जिसे हमें भावी पीढ़ियों के लिए संरक्षित करना चाहिए।",
+        "ministerQuote1": "हमारा लक्ष्य समृद्ध आदिवासी विरासत के बारे में जागरूकता पैदा करना और यह सुनिश्चित करना है कि स्वदेशी ज्ञान प्रणालियों को मान्यता और सम्मान मिले।",
+        "ministerQuote2": "आदिवासी संग्रहालय हमारे स्वदेशी समुदायों की अनूठी सांस्कृतिक प्रथाओं, कला रूपों और पारंपरिक ज्ञान को प्रदर्शित करता है जो सदियों से विकसित हुए हैं।"
     }
 }

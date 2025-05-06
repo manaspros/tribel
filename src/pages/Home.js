@@ -11,6 +11,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useLoading } from "../contexts/LoadingContext";
 import { useLanguage } from "../contexts/LanguageContext";
+import DirectorMessage from "../components/MinisterSection";
 
 const PageWrapper = styled(motion.div)`
   background: #1a1410;
@@ -139,6 +140,12 @@ const Home = () => {
     >
       <Navbar />
       <HeroSection />
+      <DirectorMessage
+        as={motion.div}
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      />
       <QuoteSection />
       <TimelineSection />
       <StatisticsSection />

@@ -30,6 +30,12 @@ const GalleryImage = React.lazy(() => import("./pages/GalleryImage"));
 const GallerySaffron = React.lazy(() => import("./pages/GallerySaffron"));
 const GalleryLight = React.lazy(() => import("./pages/GalleryLight"));
 
+// Add imports for the Tribal gallery pages
+const TribalGalleryDefault = React.lazy(() => import("./pages/TribalGalleryDefault"));
+const TribalGalleryImage = React.lazy(() => import("./pages/TribalGalleryImage"));
+const TribalGallerySaffron = React.lazy(() => import("./pages/TribalGallerySaffron"));
+const TribalGalleryLight = React.lazy(() => import("./pages/TribalGalleryLight"));
+
 // Context-aware loading component that uses the same LoadingContext
 const ContextAwareLoader = () => {
   const { progress } = useLoading();
@@ -129,6 +135,12 @@ function AppContent() {
               <Route path="/gallery/image" element={<GalleryImage />} />
               <Route path="/gallery/saffron" element={<GallerySaffron />} />
               <Route path="/gallery/light" element={<GalleryLight />} />
+
+              {/* Tribal Gallery variant routes */}
+              <Route path="/tribal/gallery/default" element={<TribalGalleryDefault />} />
+              <Route path="/tribal/gallery/image" element={<TribalGalleryImage />} />
+              <Route path="/tribal/gallery/saffron" element={<TribalGallerySaffron />} />
+              <Route path="/tribal/gallery/light" element={<TribalGalleryLight />} />
             </Routes>
           </Suspense>
         </Router>

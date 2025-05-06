@@ -40,8 +40,8 @@ const DarkOverlay = styled.div`
   height: 100%;
   background: linear-gradient(
     to bottom,
-    rgba(26, 20, 16, 0.6),
-    rgba(26, 20, 16, 0.8)
+    rgba(40, 30, 22, 0.5),  /* Lightened from rgba(26, 20, 16, 0.6) */
+    rgba(40, 30, 22, 0.7)   /* Lightened from rgba(26, 20, 16, 0.8) */
   );
   z-index: 5;
 `;
@@ -251,16 +251,16 @@ const MuseumContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 30px 40px; // Reduced from 70px to 50px top padding
+  padding: 20px 30px 40px;
   height: 100%;
   justify-content: space-between;
   text-align: center;
   background: linear-gradient(
     to top,
-    rgba(26, 20, 16, 0.95) 0%,
-    rgba(26, 20, 16, 0.7) 40%,
-    rgba(26, 20, 16, 0.4) 70%,
-    rgba(26, 20, 16, 0) 100%
+    rgba(40, 30, 22, 0.95) 0%,    /* Lightened from rgba(26, 20, 16, 0.95) */
+    rgba(40, 30, 22, 0.7) 40%,    /* Lightened from rgba(26, 20, 16, 0.7) */
+    rgba(40, 30, 22, 0.4) 70%,    /* Lightened from rgba(26, 20, 16, 0.4) */
+    rgba(40, 30, 22, 0) 100%      /* Lightened from rgba(26, 20, 16, 0) */
   );
 
   // Add laptop-specific media query
@@ -281,7 +281,7 @@ const InfoContainer = styled.div`
   max-width: 85%;
   margin-top: 5px;
   margin-bottom: 10px;
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(40, 30, 22, 0.25);  /* Lightened from rgba(0, 0, 0, 0.25) */
   backdrop-filter: blur(5px);
   padding: 12px;
   border-radius: 8px;
@@ -381,10 +381,10 @@ const MuseumTitle = styled.h2`
 const MuseumDescription = styled.p`
   font-size: 1.1rem;
   line-height: 1.6;
-  margin: 25px 0 20px; // Reduced bottom margin from 30px to 20px
+  margin: 25px 0 20px;
   text-align: center;
   max-width: 90%;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(40, 30, 22, 0.3);  /* Lightened from rgba(0, 0, 0, 0.3) */
   backdrop-filter: blur(5px);
   padding: 20px;
   border-radius: 12px;
