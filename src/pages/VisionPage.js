@@ -55,7 +55,6 @@ const ContentContainer = styled.div`
 const PageTitle = styled(motion.h1)`
   color: #d3a164;
   font-size: 3.5rem;
-  margin-bottom: 10px; /* Reduced from 20px to 10px */
   text-align: center;
   font-family: "Playfair Display", serif;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
@@ -70,7 +69,6 @@ const Subtitle = styled(motion.p)`
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.8);
   max-width: 800px;
-  margin: 0 auto 30px; /* Reduced from 60px to 30px */
 
   @media (max-width: 768px) {
     font-size: 1rem;

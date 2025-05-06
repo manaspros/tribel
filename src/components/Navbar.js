@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useLanguage } from "../contexts/LanguageContext";
 import logo2 from "../assets/logo2.png";
 import logo3 from "../assets/logo3.png";
@@ -510,6 +510,8 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
   const { language, toggleLanguage, t, version } = useLanguage();
   const mobileMenuRef = useRef(null);
   const navigate = useNavigate();
+  const location = useLocation(); // Add this to track current location
+  const isHomePage = location.pathname === '/'; // Check if we're on home page
 
   // Log when component re-renders due to language change
   useEffect(() => {
@@ -652,24 +654,26 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
           </Link>
         </LogosGroupLeft>
         <NavLinks>
-          {/* Add Home Link as the first navigation item */}
-          <NavLink 
-            as={Link} 
-            to="/"
-            whileHover={{ y: -2 }}
-            whileTap={{ y: 0 }}
-          >
-            <svg 
-              viewBox="0 0 24 24" 
-              width="18" 
-              height="18" 
-              fill="currentColor" 
-              style={{ marginRight: '5px', verticalAlign: 'middle' }}
+          {/* Add Home Link only when not on home page */}
+          {!isHomePage && (
+            <NavLink 
+              as={Link} 
+              to="/"
+              whileHover={{ y: -2 }}
+              whileTap={{ y: 0 }}
             >
-              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-            </svg>
-            {t("Home")}
-          </NavLink>
+              <svg 
+                viewBox="0 0 24 24" 
+                width="18" 
+                height="18" 
+                fill="currentColor" 
+                style={{ marginRight: '5px', verticalAlign: 'middle' }}
+              >
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+              </svg>
+              {t("Home")}
+            </NavLink>
+          )}
 
           {/* Replace direct About Museum link with dropdown */}
           <DropdownContainer
@@ -886,7 +890,7 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                     onClick={() => setGalleriesDropdownOpen(false)}
                   >
                     <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
                     </svg>
                     {t("Default Gallery")}
                   </DropdownItem>
@@ -982,15 +986,50 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
               )}
             </AnimatePresence>
           </DropdownContainer>
-          {/* 
-          <VirtualTourButton
-            as={Link}
-            to="/virtual-tour"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+
+          {/* Add Collection dropdown back */}
+          <DropdownContainer
+            ref={collectionDropdownRef}
+            onMouseEnter={() => setCollectionDropdownOpen(true)}
+            onMouseLeave={() => setCollectionDropdownOpen(false)}
           >
-            {t("virtualTour")}
-          </VirtualTourButton> */}
+            <NavLink as="div" style={{ cursor: "pointer" }}>
+              <DropdownTrigger>
+                {t("Collection")}
+                <svg
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                >
+                  <path d="M7 10l5 5 5-5z" />
+                </svg>
+              </DropdownTrigger>
+            </NavLink>
+
+            <AnimatePresence>
+              {collectionDropdownOpen && (
+                <DropdownMenu
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <DropdownItem
+                    as={Link}
+                    to="/tribal/artifacts"
+                    whileHover={{ x: 5 }}
+                    onClick={() => setCollectionDropdownOpen(false)}
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm0 12.5L5 12 12 7l7 5-7 3.5z" />
+                    </svg>
+                    {t("Tribal Artifacts")}
+                  </DropdownItem>
+                </DropdownMenu>
+              )}
+            </AnimatePresence>
+          </DropdownContainer>
 
           <LanguageToggle
             onClick={handleLanguageToggle}
@@ -1111,27 +1150,29 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                 ✕
               </MobileMenuButton>
 
-              {/* Add Home link as first item in mobile menu */}
-              <MobileNavLink
-                as={Link}
-                to="/"
-                onClick={() => setMobileMenuOpen(false)}
-                style={{ 
-                  display: 'flex',
-                  alignItems: 'center'
-                }}
-              >
-                <svg 
-                  viewBox="0 0 24 24" 
-                  width="18" 
-                  height="18" 
-                  fill="currentColor" 
-                  style={{ marginRight: '10px' }}
+              {/* Add Home link only when not on home page */}
+              {!isHomePage && (
+                <MobileNavLink
+                  as={Link}
+                  to="/"
+                  onClick={() => setMobileMenuOpen(false)}
+                  style={{ 
+                    display: 'flex',
+                    alignItems: 'center'
+                  }}
                 >
-                  <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-                </svg>
-                {t("Home")}
-              </MobileNavLink>
+                  <svg 
+                    viewBox="0 0 24 24" 
+                    width="18" 
+                    height="18" 
+                    fill="currentColor" 
+                    style={{ marginRight: '10px' }}
+                  >
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                  </svg>
+                  {t("Home")}
+                </MobileNavLink>
+              )}
 
               {/* Add About Us dropdown to mobile menu */}
               <div>
@@ -1387,7 +1428,7 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                         height="16"
                         fill="currentColor"
                       >
-                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
                       </svg>
                       {t("Default Gallery")}
                     </MobileDropdownItem>
@@ -1417,7 +1458,7 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                         height="16"
                         fill="currentColor"
                       >
-                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
                       </svg>
                       {t("Saffron Gallery")}
                     </MobileDropdownItem>
@@ -1432,7 +1473,7 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                         height="16"
                         fill="currentColor"
                       >
-                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
                       </svg>
                       {t("Light Gallery")}
                     </MobileDropdownItem>
@@ -1443,7 +1484,7 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
                       </svg>
                       {t("Tribal Default")}
                     </MobileDropdownItem>
@@ -1453,7 +1494,7 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
                       </svg>
                       {t("Tribal Image")}
                     </MobileDropdownItem>
@@ -1463,7 +1504,7 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
                       </svg>
                       {t("Tribal Saffron")}
                     </MobileDropdownItem>
@@ -1473,7 +1514,7 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
                       </svg>
                       {t("Tribal Light")}
                     </MobileDropdownItem>
