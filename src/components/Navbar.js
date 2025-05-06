@@ -858,62 +858,55 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                     </svg>
                     {t("Freedom Fighters")}
                   </DropdownItem>
-                </DropdownMenu>
-              )}
-            </AnimatePresence>
-          </DropdownContainer>
-
-          {/* Add collection dropdown */}
-          <DropdownContainer
-            ref={collectionDropdownRef}
-            onMouseEnter={() => setCollectionDropdownOpen(true)}
-            onMouseLeave={() => setCollectionDropdownOpen(false)}
-          >
-            <NavLink as="div" style={{ cursor: "pointer" }}>
-              <DropdownTrigger>
-                {t("Our Collection")}
-                <svg
-                  viewBox="0 0 24 24"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                >
-                  <path d="M7 10l5 5 5-5z" />
-                </svg>
-              </DropdownTrigger>
-            </NavLink>
-
-            <AnimatePresence>
-              {collectionDropdownOpen && (
-                <DropdownMenu
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.2 }}
-                >
+                  
+                  {/* Add new gallery pages */}
                   <DropdownItem
                     as={Link}
-                    to="/tribal/artifacts"
+                    to="/gallery/default"
                     whileHover={{ x: 5 }}
-                    onClick={() => setCollectionDropdownOpen(false)}
+                    onClick={() => setGalleriesDropdownOpen(false)}
                   >
                     <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 4h2v5l-1-.75L9 9V4zm9 16H6V4h1v9l3-2.25L13 13V4h5v16z" />
+                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
                     </svg>
-                    {t("Tribal Artifacts")}
+                    {t("Default Gallery")}
                   </DropdownItem>
-
-                  {/* <DropdownItem
+                  
+                  <DropdownItem
                     as={Link}
-                    to="/freedom/artifacts"
+                    to="/gallery/image"
                     whileHover={{ x: 5 }}
-                    onClick={() => setCollectionDropdownOpen(false)}
+                    onClick={() => setGalleriesDropdownOpen(false)}
                   >
                     <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4.86 8.86l-3 3.87L9 13.14 6 17h12l-3.86-5.14z" />
+                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
                     </svg>
-                    {t("Freedom Artifacts")}
-                  </DropdownItem> */}
+                    {t("Image Gallery")}
+                  </DropdownItem>
+                  
+                  <DropdownItem
+                    as={Link}
+                    to="/gallery/saffron"
+                    whileHover={{ x: 5 }}
+                    onClick={() => setGalleriesDropdownOpen(false)}
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+                    </svg>
+                    {t("Saffron Gallery")}
+                  </DropdownItem>
+                  
+                  <DropdownItem
+                    as={Link}
+                    to="/gallery/light"
+                    whileHover={{ x: 5 }}
+                    onClick={() => setGalleriesDropdownOpen(false)}
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+                    </svg>
+                    {t("Light Gallery")}
+                  </DropdownItem>
                 </DropdownMenu>
               )}
             </AnimatePresence>
@@ -1289,42 +1282,10 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                       </svg>
                       {t("Freedom Fighters")}
                     </MobileDropdownItem>
-                  </MobileDropdownMenu>
-                )}
-              </div>
-
-              {/* Add collection dropdown to mobile menu */}
-              <div>
-                <MobileNavLink
-                  as="div"
-                  onClick={() => setMobileCollectionOpen(!mobileCollectionOpen)}
-                  style={{
-                    cursor: "pointer",
-                    display: "flex",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <span>{t("Our Collection")}</span>
-                  <svg
-                    viewBox="0 0 24 24"
-                    width="24"
-                    height="24"
-                    fill="currentColor"
-                    style={{
-                      transform: mobileCollectionOpen
-                        ? "rotate(180deg)"
-                        : "rotate(0deg)",
-                      transition: "transform 0.3s ease",
-                    }}
-                  >
-                    <path d="M7 10l5 5 5-5z" />
-                  </svg>
-                </MobileNavLink>
-
-                {mobileCollectionOpen && (
-                  <MobileDropdownMenu>
+                    
+                    {/* Add new mobile gallery links */}
                     <MobileDropdownItem
-                      to="/tribal/artifacts"
+                      to="/gallery/default"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       <svg
@@ -1333,13 +1294,13 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                         height="16"
                         fill="currentColor"
                       >
-                        <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 4h2v5l-1-.75L9 9V4zm9 16H6V4h1v9l3-2.25L13 13V4h5v16z" />
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
                       </svg>
-                      {t("Tribal Artifacts")}
+                      {t("Default Gallery")}
                     </MobileDropdownItem>
-
+                    
                     <MobileDropdownItem
-                      to="/freedom/artifacts"
+                      to="/gallery/image"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       <svg
@@ -1348,9 +1309,39 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                         height="16"
                         fill="currentColor"
                       >
-                        <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4.86 8.86l-3 3.87L9 13.14 6 17h12l-3.86-5.14z" />
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
                       </svg>
-                      {t("Freedom Artifacts")}
+                      {t("Image Gallery")}
+                    </MobileDropdownItem>
+                    
+                    <MobileDropdownItem
+                      to="/gallery/saffron"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                      >
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+                      </svg>
+                      {t("Saffron Gallery")}
+                    </MobileDropdownItem>
+                    
+                    <MobileDropdownItem
+                      to="/gallery/light"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                      >
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+                      </svg>
+                      {t("Light Gallery")}
                     </MobileDropdownItem>
                   </MobileDropdownMenu>
                 )}

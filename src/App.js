@@ -6,6 +6,8 @@ import { Cursor } from "./components/Cursor";
 import ScrollToHashElement from "./components/ScrollToHashElement";
 import { LoadingProvider, useLoading } from "./contexts/LoadingContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
+import { ThemeProvider } from "./contexts/ThemeContext";
+import ThemeToggle from "./components/ThemeToggle";
 import "./styles/global.css";
 
 // Use React.lazy for code splitting
@@ -23,6 +25,12 @@ const BookNowPage = React.lazy(() => import("./pages/BookNowPage"));
 const DirectorMessage = React.lazy(() => import("./pages/DirectorMessage"));
 const VisionPage = React.lazy(() => import("./pages/VisionPage"));
 const NearbyPlacesPage = React.lazy(() => import("./pages/NearbyPlacesPage"));
+
+// Add imports for the new gallery pages
+const GalleryDefault = React.lazy(() => import("./pages/GalleryDefault"));
+const GalleryImage = React.lazy(() => import("./pages/GalleryImage"));
+const GallerySaffron = React.lazy(() => import("./pages/GallerySaffron"));
+const GalleryLight = React.lazy(() => import("./pages/GalleryLight"));
 
 // Context-aware loading component that uses the same LoadingContext
 const ContextAwareLoader = () => {
@@ -117,6 +125,12 @@ function AppContent() {
               <Route path="/plan-visit" element={<PlanYourVisitPage />} />
               <Route path="/book-now" element={<BookNowPage />} />
               <Route path="/nearby-places" element={<NearbyPlacesPage />} />
+              
+              {/* Add routes for the new gallery pages */}
+              <Route path="/gallery/default" element={<GalleryDefault />} />
+              <Route path="/gallery/image" element={<GalleryImage />} />
+              <Route path="/gallery/saffron" element={<GallerySaffron />} />
+              <Route path="/gallery/light" element={<GalleryLight />} />
             </Routes>
           </Suspense>
         </Router>
@@ -127,11 +141,14 @@ function AppContent() {
 
 function App() {
   return (
-    <LoadingProvider>
-      <LanguageProvider>
-        <AppContent />
-      </LanguageProvider>
-    </LoadingProvider>
+    <ThemeProvider>
+      <LoadingProvider>
+        <LanguageProvider>
+          <AppContent />
+          <ThemeToggle />
+        </LanguageProvider>
+      </LoadingProvider>
+    </ThemeProvider>
   );
 }
 
