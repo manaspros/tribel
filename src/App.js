@@ -6,8 +6,6 @@ import { Cursor } from "./components/Cursor";
 import ScrollToHashElement from "./components/ScrollToHashElement";
 import { LoadingProvider, useLoading } from "./contexts/LoadingContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
-import { ThemeProvider } from "./contexts/ThemeContext";
-import ThemeToggle from "./components/ThemeToggle";
 import "./styles/global.css";
 
 // Use React.lazy for code splitting
