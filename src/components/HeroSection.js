@@ -699,7 +699,6 @@ const HeroSection = () => {
             whileHover={{ scale: window.innerWidth <= 768 ? 1.01 : 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <MuseumTypeTag>{t("Tribal Museum")}</MuseumTypeTag>
             <MuseumBackground type="tribal" isActive={getIsActive("tribal")} />
             <MuseumContent>
               <ActiveIndicator
@@ -765,7 +764,6 @@ const HeroSection = () => {
             whileHover={{ scale: window.innerWidth <= 768 ? 1.01 : 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <MuseumTypeTag>{t("freedomMuseum")}</MuseumTypeTag>
             <MuseumBackground
               type="freedom"
               isActive={getIsActive("freedom")}
