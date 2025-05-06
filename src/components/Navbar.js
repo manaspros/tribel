@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useLanguage } from "../contexts/LanguageContext";
 import logo2 from "../assets/logo2.png";
 import logo3 from "../assets/logo3.png";
-import logo4 from "../assets/logo4-removebg-preview.png";
+import logo4 from "../assets/logo4.png";
 import gsap from "gsap";
 
 // Enhanced container with transparent to solid transition
@@ -53,21 +53,20 @@ const LogosGroupLeft = styled.div`
 
 // Main logo image with adjusted styling
 const LogoImage = styled.img`
-  height: 45px;
+  height: 55px; /* Increased from 45px */
   margin-right: 15px;
+  transform: scale(1.25); /* Increased from 1.25 */
   
   /* Enhanced styling for logo4 */
   &[src*="logo4"] {
-    filter: brightness(1.4) contrast(1.2) saturate(1.5);
     transition: all 0.4s ease;
     transform-origin: center center;
-    transform: scale(1.15);
   }
 `;
 
 // Additional logo styling
 const AdditionalLogo = styled.img`
-  height: 35px;
+  height: 45px; /* Increased from 35px */
   opacity: 0.85;
   transition: all 0.3s ease;
 
@@ -77,24 +76,20 @@ const AdditionalLogo = styled.img`
   }
 
   @media (max-width: 768px) {
-    height: 30px;
-  }
-
-  @media (max-width: 480px) {
-    display: none; // Hide on very small screens
+    height: 40px; /* Increased from 30px */
   }
 `;
 
 // Simple logo text without animations
 const LogoText = styled.span`
   font-family: "Playfair Display", serif;
-  font-size: 1.2rem;
+  font-size: 1.4rem; /* Increased from 1.2rem to match larger logos */
   font-weight: bold;
   color: #d3a164;
   text-decoration: none;
 
   @media (max-width: 580px) {
-    font-size: 1.2rem;
+    font-size: 1.3rem; /* Increased from 1.2rem */
   }
 `;
 
