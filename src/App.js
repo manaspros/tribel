@@ -141,14 +141,11 @@ function AppContent() {
 
 function App() {
   return (
-    <ThemeProvider>
       <LoadingProvider>
         <LanguageProvider>
           <AppContent />
-          <ThemeToggle />
         </LanguageProvider>
       </LoadingProvider>
-    </ThemeProvider>
   );
 }
 
