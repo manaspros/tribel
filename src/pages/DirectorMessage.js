@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import styled from "styled-components";
@@ -12,8 +12,6 @@ import directorTranslations from "../data/directorMessageTranslations.json";
 // Placeholder images - replace with actual images
 import cmImage from "../assets/cm-placeholder.jpg";
 import deputyCmImage from "../assets/minister-placeholder.jpg";
-import ministerImage from "../assets/minister-placeholder.jpg";
-import forestBg from "../assets/forest-bg.jpeg"; // Import the same background image as HeroSection
 
 const PageContainer = styled.div`
   background-color: #1a1410;
@@ -27,7 +25,7 @@ const HeroSection = styled.div`
       rgba(26, 20, 16, 0.8),
       rgba(26, 20, 16, 0.9)
     ),
-    url(${forestBg}); /* Use the same background image as HeroSection instead of directorImage */
+    url(${cmImage});
   background-size: cover;
   background-position: center;
   display: flex;
@@ -35,7 +33,6 @@ const HeroSection = styled.div`
   justify-content: center;
   position: relative;
   overflow: hidden;
-  padding-top: 80px; /* Add padding to account for navbar height */
 
   &::after {
     content: "";
@@ -51,15 +48,15 @@ const HeroSection = styled.div`
 const ContentContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 30px 20px 80px;
+  padding: 110px 20px 80px; /* Increased top padding from 60px to 110px to account for navbar */
   position: relative;
 `;
 
 const PageTitle = styled(motion.h1)`
   color: #d3a164;
   font-size: 3rem;
-  margin-bottom: 10px;
-  margin-top: 0;
+  margin-bottom: 20px;
+  margin-top: 80px;
   text-align: center;
   font-family: "Playfair Display", serif;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
@@ -68,7 +65,7 @@ const PageTitle = styled(motion.h1)`
 const BackLink = styled(Link)`
   display: inline-flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   color: #d3a164;
   text-decoration: none;
   font-weight: 500;
@@ -82,67 +79,49 @@ const BackLink = styled(Link)`
   }
 `;
 
-const MessageGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  margin-bottom: 20px;
-  
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-const MessageGridBottom = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  
-  @media (max-width: 992px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-const MessageSection = styled(motion.div)`
+const MessageSection = styled.div`
+  margin: 40px 0;
   border-radius: 15px;
   overflow: hidden;
   background: rgba(42, 35, 28, 0.5);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 const MessageHeader = styled.div`
   background: rgba(211, 161, 100, 0.2);
-  padding: 15px 20px;
+  padding: 15px 25px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   border-bottom: 2px solid rgba(211, 161, 100, 0.3);
 `;
 
 const MessageTitle = styled.h2`
   color: #d3a164;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   margin: 0;
   font-family: "Playfair Display", serif;
 `;
 
 const MessageContent = styled.div`
   display: flex;
-  flex-direction: column;
-  height: 100%;
+  padding: 0;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const MessageImageContainer = styled.div`
-  width: 100%;
-  height: 180px;
+  width: 250px;
   flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 250px;
+  }
 `;
 
 const MessageImage = styled.div`
@@ -154,32 +133,44 @@ const MessageImage = styled.div`
 `;
 
 const MessageText = styled.div`
-  padding: 20px;
+  padding: 30px;
   flex-grow: 1;
-  overflow: hidden;
-  position: relative;
+  position: relative; /* Added for positioning the expand button */
 
   p {
-    line-height: 1.6;
-    margin-bottom: 15px;
-    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+  }
+  
+  /* Added to create fading effect for truncated text */
+  &.truncated::after {
+    content: '';
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, rgba(42, 35, 28, 0.95));
+    pointer-events: none;
   }
 `;
 
 const MessageSignature = styled.div`
   font-family: "Playfair Display", serif;
   font-style: italic;
-  margin-top: 15px;
+  margin-top: 30px;
+  margin-bottom: 15px; /* Added margin-bottom to create space for the button */
 
   .name {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: #d3a164;
     font-weight: bold;
     margin-bottom: 5px;
   }
 
   .title {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: rgba(255, 255, 255, 0.7);
   }
 `;
@@ -188,77 +179,26 @@ const ExpandButton = styled.button`
   background: rgba(211, 161, 100, 0.2);
   color: #d3a164;
   border: 1px solid #d3a164;
-  padding: 8px 15px;
-  border-radius: 5px;
-  cursor: pointer;
+  border-radius: 20px;
+  padding: 5px 15px;
   font-size: 0.9rem;
+  cursor: pointer;
   margin-top: 10px;
-  align-self: flex-start;
   transition: all 0.3s ease;
-
+  display: block; /* Change from inline to block */
+  clear: both; /* Ensure it's below other elements */
+  position: relative; /* Ensure proper stacking */
+  z-index: 2; /* Place above the gradient overlay */
+  
   &:hover {
-    background: rgba(211, 161, 100, 0.4);
+    background: rgba(211, 161, 100, 0.3);
   }
 `;
-
-const MessageTextContent = styled(motion.div)`
-  max-height: ${props => props.isExpanded ? 'none' : '150px'};
-  overflow: hidden;
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: ${props => props.isExpanded ? '0' : '80px'};
-    background: linear-gradient(to top, rgba(42, 35, 28, 1), rgba(42, 35, 28, 0));
-    pointer-events: none;
-    display: ${props => props.isExpanded ? 'none' : 'block'};
-  }
-`;
-
-const MessageCard = ({ title, content, name, position, image, delay }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const { language } = useLanguage();
-
-  return (
-    <MessageSection
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay }}
-    >
-      <MessageHeader>
-        <MessageTitle>{title}</MessageTitle>
-      </MessageHeader>
-      <MessageContent>
-        <MessageImageContainer>
-          <MessageImage image={image} />
-        </MessageImageContainer>
-        <MessageText>
-          <MessageTextContent isExpanded={isExpanded}>
-            {content.map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
-            ))}
-            <MessageSignature>
-              <div className="name">{name}</div>
-              <div className="title">{position}</div>
-            </MessageSignature>
-          </MessageTextContent>
-          <ExpandButton onClick={() => setIsExpanded(!isExpanded)}>
-            {isExpanded 
-              ? (language === "en" ? "Show Less" : "कम दिखाएं") 
-              : (language === "en" ? "Read More" : "अधिक पढ़ें")}
-          </ExpandButton>
-        </MessageText>
-      </MessageContent>
-    </MessageSection>
-  );
-};
 
 const DirectorMessage = () => {
   const { language } = useLanguage();
+  const [cmExpanded, setCmExpanded] = React.useState(false);
+  const [deputyExpanded, setDeputyExpanded] = React.useState(false);
 
   // Function to get translations
   const getContent = (key) => {
@@ -272,15 +212,6 @@ const DirectorMessage = () => {
   return (
     <PageContainer>
       <Navbar />
-      <HeroSection>
-        <PageTitle
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          {getContent("pageTitle")}
-        </PageTitle>
-      </HeroSection>
 
       <ContentContainer>
         <BackLink to="/museum-stats">
@@ -290,76 +221,71 @@ const DirectorMessage = () => {
           {getContent("backToAbout")}
         </BackLink>
 
-        {/* Top row: Director and CM messages */}
-        <MessageGrid>
-          <MessageCard
-            title={getContent("directorMessageTitle")}
-            content={[
-              getContent("directorMessage1"),
-              getContent("directorMessage2"),
-              getContent("directorMessage3")
-            ]}
-            name={getContent("directorName")}
-            position={getContent("directorTitle")}
-            image={forestBg}
-            delay={0}
-          />
-          
-          <MessageCard
-            title={getContent("cmMessageTitle")}
-            content={[
-              getContent("cmMessage1"),
-              getContent("cmMessage2"),
-              getContent("cmMessage3")
-            ]}
-            name={getContent("cmName")}
-            position={getContent("cmTitle")}
-            image={cmImage}
-            delay={0.1}
-          />
-        </MessageGrid>
+        {/* Chief Minister's Message - Now shown first */}
+        <MessageSection
+          as={motion.div}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <MessageHeader>
+            <MessageTitle>{getContent("cmMessageTitle")}</MessageTitle>
+          </MessageHeader>
+          <MessageContent>
+            <MessageImageContainer>
+              <MessageImage image={cmImage} />
+            </MessageImageContainer>
+            <MessageText className={!cmExpanded ? "truncated" : ""}>
+              <p>{getContent("cmMessage1")}</p>
+              <p>{getContent("cmMessage2")}</p>
+              {cmExpanded && (
+                <p>{getContent("cmMessage3")}</p>
+              )}
+              <MessageSignature>
+                <div className="name">{getContent("cmName")}</div>
+                <div className="title">{getContent("cmTitle")}</div>
+              </MessageSignature>
+              <div style={{ marginTop: "20px" }}> {/* Added container with margin */}
+                <ExpandButton onClick={() => setCmExpanded(!cmExpanded)}>
+                  {cmExpanded ? "Show Less" : "Read More"}
+                </ExpandButton>
+              </div>
+            </MessageText>
+          </MessageContent>
+        </MessageSection>
 
-        {/* Bottom row: Deputy CM and Ministers messages */}
-        <MessageGridBottom>
-          <MessageCard
-            title={getContent("deputyCmMessageTitle")}
-            content={[
-              getContent("deputyCmMessage1"),
-              getContent("deputyCmMessage2"),
-              getContent("deputyCmMessage3")
-            ]}
-            name={getContent("deputyCmName")}
-            position={getContent("deputyCmTitle")}
-            image={deputyCmImage}
-            delay={0.2}
-          />
-          
-          <MessageCard
-            title={getContent("ministerMessageTitle")}
-            content={[
-              getContent("ministerMessage1"),
-              getContent("ministerMessage2"),
-              getContent("ministerMessage3")
-            ]}
-            name={getContent("ministerName")}
-            position={getContent("ministerTitle")}
-            image={ministerImage}
-            delay={0.3}
-          />
-          
-          {/* Third card with proper translations */}
-          <MessageCard
-            title={getContent("additionalMessageTitle")}
-            content={[
-              getContent("additionalMessage1"),
-              getContent("additionalMessage2")
-            ]}
-            name={getContent("additionalName")}
-            position={getContent("additionalTitle")}
-            image={ministerImage}
-            delay={0.4}
-          />
-        </MessageGridBottom>
+        {/* Deputy Chief Minister's Message */}
+        <MessageSection
+          as={motion.div}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <MessageHeader>
+            <MessageTitle>{getContent("deputyCmMessageTitle")}</MessageTitle>
+          </MessageHeader>
+          <MessageContent>
+            <MessageImageContainer>
+              <MessageImage image={deputyCmImage} />
+            </MessageImageContainer>
+            <MessageText className={!deputyExpanded ? "truncated" : ""}>
+              <p>{getContent("deputyCmMessage1")}</p>
+              <p>{getContent("deputyCmMessage2")}</p>
+              {deputyExpanded && (
+                <p>{getContent("deputyCmMessage3")}</p>
+              )}
+              <MessageSignature>
+                <div className="name">{getContent("deputyCmName")}</div>
+                <div className="title">{getContent("deputyCmTitle")}</div>
+              </MessageSignature>
+              <div style={{ marginTop: "20px" }}> {/* Added container with margin */}
+                <ExpandButton onClick={() => setDeputyExpanded(!deputyExpanded)}>
+                  {deputyExpanded ? "Show Less" : "Read More"}
+                </ExpandButton>
+              </div>
+            </MessageText>
+          </MessageContent>
+        </MessageSection>
       </ContentContainer>
 
       <Footer />
