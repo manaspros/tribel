@@ -647,7 +647,6 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
 
           <Link to="/">
             <LogoContainer>
-              <LogoImage src={logo4} alt={t("Museum CG")} />
               <LogoImage src={logo3} alt={t("Museum CG")} />
               <LogoText>{t("Museum CG")}</LogoText>
             </LogoContainer>

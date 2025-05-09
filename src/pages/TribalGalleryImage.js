@@ -11,8 +11,8 @@ import backgroundImage from "../assets/RUID75f5bbabcf5843eda2d9fafa639f5b56.jpg"
 
 // Only changing the background
 const PageContainer = styled.div`
-    background-image: linear-gradient(rgba(40, 30, 22, 0.85), rgba(40, 30, 22, 0.85)), 
-    url(${backgroundImage});
+  background-image: linear-gradient(rgba(155, 119, 89, 0.85), rgba(169, 130, 99, 0.85)), 
+                    url(${backgroundImage});
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
