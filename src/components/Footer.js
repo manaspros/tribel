@@ -241,20 +241,11 @@ const Footer = () => {
   const [mapHovered, setMapHovered] = useState(false);
   const [mapError, setMapError] = useState(false);
 
-  // Define the museum location coordinates - these are for Naya Raipur, Chhattisgarh
-  const museumLat = 21.1702;
-  const museumLng = 81.7900;
-  const zoomLevel = 14;
 
-  // Create the Google Maps embed URL with proper API formatting
-  const googleMapsUrl = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.930516162282!2d${museumLng}!3d${museumLat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDEwJzEyLjciTiA4McKwNDcnMjMuOSJF!5e0!3m2!1sen!2sin!4v1623456789012!5m2!1sen!2sin`;
-  
+  const mapLocationQuery = encodeURIComponent("Tribal Freedom Fighter Museum, Naya Raipur");
   // Create a direct Google Maps navigation URL for the "Get Directions" button
-  const getDirectionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${museumLat},${museumLng}`;
+  const getDirectionsUrl = `https://www.google.com/maps?q=${mapLocationQuery}`;
 
-  const handleMapError = () => {
-    setMapError(true);
-  };
 
   return (
     <FooterContainer>
@@ -280,13 +271,12 @@ const Footer = () => {
               </MapFallback>
             ) : (
               <>
-                <MapIframe 
-                  src={googleMapsUrl}
-                  allowFullScreen="" 
-                  loading="lazy"
-                  onError={handleMapError}
-                  title="Museum Location Map"
-                />
+              <MapIframe 
+                src={`https://maps.google.com/maps?q=${mapLocationQuery}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+                allowFullScreen
+                loading="lazy"
+                title="Museum Location Map"
+              />
                 <MapOverlay isHovered={mapHovered}>
                   {t("getDirections")}
                 </MapOverlay>
