@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 import galleryDescriptions from "../data/galleryDescriptions.json";
 
 const PageContainer = styled.div`
-  background: linear-gradient(135deg, #FF9933 0%, #8B4513 100%); /* Saffron gradient */
+  background-color: #FF9933 ;
   color: #fff;
   min-height: 100vh;
 `;
