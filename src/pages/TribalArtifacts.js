@@ -13,7 +13,10 @@ import backgroundImage from "../assets/RUID75f5bbabcf5843eda2d9fafa639f5b56.jpg"
 const PageContainer = styled.div`
   background-image: linear-gradient(rgba(155, 119, 89, 0.85), rgba(169, 130, 99, 0.85)), 
                     url(${backgroundImage});
-  color: #fff;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #f5efe7; /* Changed from #fff to a softer off-white for better reading */
   min-height: 100vh;
 `;
 
@@ -42,13 +45,26 @@ const ArtifactsDescription = styled.div`
 
 const ArtifactsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 40px;
   margin-top: 40px;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
+`;
+
+const ArtifactEmoji = styled.div`
+  font-size: 7rem;
+  height: 200px;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  background-color: rgba(211, 161, 100, 0.1);
+  border-radius: 50%;
+  border: 2px solid rgba(211, 161, 100, 0.3);
 `;
 
 const ArtifactDetail = styled(motion.div)`
@@ -168,7 +184,6 @@ const BackLink = styled(Link)`
 
 const TribalArtifacts = () => {
   const { t, language } = useLanguage();
-  const [filter] = useState("all");
   const [selectedArtifact, setSelectedArtifact] = useState(null);
 
   const getArtifactTranslation = useCallback(
@@ -274,13 +289,7 @@ const TribalArtifacts = () => {
     []
   );
 
-  const filteredArtifacts = useMemo(
-    () =>
-      filter === "all"
-        ? artifacts
-        : artifacts.filter((artifact) => artifact.tags.includes(filter)),
-    [artifacts, filter]
-  );
+  const filteredArtifacts = useMemo(() => artifacts, [artifacts]);
 
   const handleArtifactClick = useCallback((artifact) => {
     setSelectedArtifact(artifact);
@@ -309,47 +318,6 @@ const TribalArtifacts = () => {
           {artifactDescriptions.tribalArtifactsIntro[language]}
         </ArtifactsDescription>
 
-        {/* <ArtifactsHeader>
-          <FilterContainer>
-            <FilterButton
-              active={filter === "all"}
-              onClick={() => setFilter("all")}
-            >
-              {getCategoryTranslation("all")}
-            </FilterButton>
-            <FilterButton
-              active={filter === "Weapon"}
-              onClick={() => setFilter("Weapon")}
-            >
-              {getCategoryTranslation("weapon")}
-            </FilterButton>
-            <FilterButton
-              active={filter === "Ceremonial"}
-              onClick={() => setFilter("Ceremonial")}
-            >
-              {getCategoryTranslation("ceremonial")}
-            </FilterButton>
-            <FilterButton
-              active={filter === "Crafts"}
-              onClick={() => setFilter("Crafts")}
-            >
-              {getCategoryTranslation("crafts")}
-            </FilterButton>
-            <FilterButton
-              active={filter === "Ritual"}
-              onClick={() => setFilter("Ritual")}
-            >
-              {getCategoryTranslation("ritual")}
-            </FilterButton>
-            <FilterButton
-              active={filter === "Music"}
-              onClick={() => setFilter("Music")}
-            >
-              {getCategoryTranslation("music")}
-            </FilterButton>
-          </FilterContainer>
-        </ArtifactsHeader> */}
-
         <ArtifactsGrid>
           {filteredArtifacts.map((artifact, index) => (
             <LazyLoad
@@ -358,16 +326,13 @@ const TribalArtifacts = () => {
             >
               <ArtifactCard
                 artifact={artifact}
-                // title={getArtifactTranslation(artifact.artifactKey, "title")}
-                // description={getArtifactTranslation(
-                //   artifact.artifactKey,
-                //   "description"
-                // )}
-                // tags={artifact.tags
-                title={""}
-                description={""}
-                emoji={artifact.emoji}
-                tags={[]}
+                title={getArtifactTranslation(artifact.artifactKey, "title")}
+                description={getArtifactTranslation(
+                  artifact.artifactKey,
+                  "description"
+                )}
+                emoji={<ArtifactEmoji>{artifact.emoji}</ArtifactEmoji>}
+                tags={artifact.tags}
                 onClick={() => handleArtifactClick(artifact)}
                 translateTag={getCategoryTranslation}
                 index={index}
