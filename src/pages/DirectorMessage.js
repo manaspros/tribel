@@ -12,6 +12,7 @@ import directorTranslations from "../data/directorMessageTranslations.json";
 // Placeholder images - replace with actual images
 import cmImage from "../assets/cm-placeholder.jpg";
 import deputyCmImage from "../assets/minister-placeholder.jpg";
+import backgroundImage from "../assets/RUID75f5bbabcf5843eda2d9fafa639f5b56.jpg";
 
 // Use placeholder portrait images from online sources
 const secretaryImage = "https://thispersondoesnotexist.com/image?id=secretary";
@@ -19,7 +20,8 @@ const commissionerImage = "https://thispersondoesnotexist.com/image?id=commissio
 const directorImage = "https://thispersondoesnotexist.com/image?id=director";
 
 const PageContainer = styled.div`
-  background-color: #1a1410;
+  background-image: linear-gradient(rgba(155, 119, 89, 0.85), rgba(169, 130, 99, 0.85)), 
+                    url(${backgroundImage});
   color: #fff;
   min-height: 100vh;
 `;
@@ -53,20 +55,9 @@ const HeroSection = styled.div`
 const ContentContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 110px 20px 80px; /* Increased top padding from 60px to 110px to account for navbar */
+  padding: 150px 20px 80px; /* Increased top padding from 60px to 110px to account for navbar */
   position: relative;
 `;
-
-const PageTitle = styled(motion.h1)`
-  color: #d3a164;
-  font-size: 3rem;
-  margin-bottom: 20px;
-  margin-top: 80px;
-  text-align: center;
-  font-family: "Playfair Display", serif;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-`;
-
 const BackLink = styled(Link)`
   display: inline-flex;
   align-items: center;
@@ -156,7 +147,6 @@ const MessageText = styled.div`
     left: 0;
     width: 100%;
     height: 60px;
-    background: linear-gradient(to bottom, transparent, rgba(42, 35, 28, 0.95));
     pointer-events: none;
   }
 `;

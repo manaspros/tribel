@@ -8,9 +8,11 @@ import Footer from "../components/Footer";
 import ArtifactCard from "../components/ArtifactCard";
 import LazyLoad from "../components/LazyLoad";
 import artifactDescriptions from "../data/artifactDescriptions.json";
+import backgroundImage from "../assets/RUID75f5bbabcf5843eda2d9fafa639f5b56.jpg";
 
 const PageContainer = styled.div`
-  background-color: #1a1410;
+  background-image: linear-gradient(rgba(155, 119, 89, 0.85), rgba(169, 130, 99, 0.85)), 
+                    url(${backgroundImage});
   color: #fff;
   min-height: 100vh;
 `;
@@ -28,47 +30,6 @@ const PageTitle = styled(motion.h1)`
   margin-top: 80px; // Added top margin for better spacing
   text-align: center;
   font-family: "Playfair Display", serif;
-`;
-
-const ArtifactsHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 40px;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-  }
-`;
-
-const FilterContainer = styled.div`
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-
-  @media (max-width: 768px) {
-    width: 100%;
-    justify-content: center;
-  }
-`;
-
-const FilterButton = styled.button`
-  background: ${(props) =>
-    props.active ? "#d3a164" : "rgba(211, 161, 100, 0.2)"};
-  color: ${(props) => (props.active ? "#1a1410" : "#d3a164")};
-  border: 1px solid #d3a164;
-  border-radius: 30px;
-  padding: 8px 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0.9rem;
-
-  &:hover {
-    background: ${(props) =>
-      props.active ? "#e0b175" : "rgba(211, 161, 100, 0.3)"};
-  }
 `;
 
 const ArtifactsDescription = styled.div`
@@ -207,7 +168,7 @@ const BackLink = styled(Link)`
 
 const TribalArtifacts = () => {
   const { t, language } = useLanguage();
-  const [filter, setFilter] = useState("all");
+  const [filter] = useState("all");
   const [selectedArtifact, setSelectedArtifact] = useState(null);
 
   const getArtifactTranslation = useCallback(

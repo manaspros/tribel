@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styled from "styled-components";
 import { useLanguage } from "../contexts/LanguageContext";
@@ -435,6 +435,7 @@ const MembershipContainer = styled.div`
     border-radius: 8px;
     color: #f5efe7;
     margin-top: 5px;
+    margin-bottom: 10px;
 
     option {
       background: #1a1410;
@@ -615,6 +616,17 @@ const BookNowPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [bookingComplete, setBookingComplete] = useState(false);
   const [bookingReference, setBookingReference] = useState("");
+  
+  // Add new state to store all booking data
+  const [bookingData, setBookingData] = useState({
+    step1: null,
+    step2: null,
+    step3: null,
+    step4: null,
+    step5: null,
+    completedAt: null,
+    reference: null
+  });
 
   const bt = (key) => {
     const keys = key.split(".");
@@ -629,9 +641,6 @@ const BookNowPage = () => {
           if (englishValue && englishValue[ek]) {
             englishValue = englishValue[ek];
           } else {
-            console.warn(
-              `Translation missing for key: "${key}" in language: "${language}"`
-            );
             return key;
           }
         }
@@ -662,19 +671,11 @@ const BookNowPage = () => {
 
   const handleNextStep = () => {
     if (currentStep < 5) {
+      // Store data from the current step before moving to the next
+      updateBookingDataForCurrentStep();
+      
       setCurrentStep(currentStep + 1);
       window.scrollTo(0, 0);
-
-      if (currentStep === 4) {
-        console.log("Booking Data:", {
-          museums: selectedMuseums,
-          date: selectedDate,
-          tickets,
-          memberType: tickets.member > 0 ? memberType : null,
-          personalInfo,
-          totalAmount: calculateTotal(),
-        });
-      }
     }
   };
 
@@ -710,7 +711,6 @@ const BookNowPage = () => {
         return (
           !personalInfo.firstName ||
           !personalInfo.lastName ||
-          !personalInfo.email ||
           !personalInfo.phone
         );
       case 5:
@@ -720,29 +720,74 @@ const BookNowPage = () => {
     }
   };
 
+  // Add function to update booking data for the current step
+  const updateBookingDataForCurrentStep = () => {
+    const newBookingData = { ...bookingData };
+    
+    switch(currentStep) {
+      case 1:
+        newBookingData.step1 = {
+          selectedMuseums: { ...selectedMuseums },
+          timestamp: new Date().toISOString()
+        };
+        break;
+      case 2:
+        newBookingData.step2 = {
+          termsAccepted,
+          timestamp: new Date().toISOString()
+        };
+        break;
+      case 3:
+        newBookingData.step3 = {
+          selectedDate: selectedDate?.toISOString(),
+          tickets: { ...tickets },
+          memberType: tickets.member > 0 ? memberType : null,
+          totalAmount: calculateTotal(),
+          timestamp: new Date().toISOString()
+        };
+        break;
+      case 4:
+        newBookingData.step4 = {
+          personalInfo: { ...personalInfo },
+          timestamp: new Date().toISOString()
+        };
+        break;
+      default:
+        break;
+    }
+    
+    setBookingData(newBookingData);
+  };
+
   const handleSubmit = async () => {
     setIsSubmitting(true);
 
     try {
-      console.log("FINAL BOOKING SUBMISSION:", {
-        museums: selectedMuseums,
-        date: selectedDate,
-        tickets,
-        memberType: tickets.member > 0 ? memberType : null,
-        personalInfo,
-        paymentMethod,
-        totalAmount: calculateTotal(),
-      });
-
+      // Update booking data with payment information
+      const finalBookingData = { 
+        ...bookingData,
+        step5: {
+          paymentMethod,
+          totalAmount: calculateTotal(),
+          timestamp: new Date().toISOString()
+        }
+      };
+      
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
-      const reference =
-        "BK" +
-        Math.floor(Math.random() * 10000000)
-          .toString()
-          .padStart(7, "0");
+      const reference = "BK" + Math.floor(Math.random() * 10000000).toString().padStart(7, "0");
+      
+      // Update the booking data with reference and completion timestamp
+      finalBookingData.completedAt = new Date().toISOString();
+      finalBookingData.reference = reference;
+      
+      setBookingData(finalBookingData);
       setBookingReference(reference);
       setBookingComplete(true);
+      
+      // Log the complete booking data JSON
+      console.log("COMPLETE BOOKING DATA:", JSON.stringify(finalBookingData, null, 2));
+      
       setCurrentStep(6);
     } catch (error) {
       console.error("Booking submission error:", error);
@@ -1159,6 +1204,7 @@ const BookNowPage = () => {
                     <TicketDescription>
                       {bt("ticketsSection.studentDescription")}
                     </TicketDescription>
+                    
                     <TicketSelector>
                       <span>{bt("ticketsSection.quantity")}</span>
                       <QuantitySelector>
@@ -1188,24 +1234,7 @@ const BookNowPage = () => {
                     <TicketDescription>
                       {bt("ticketsSection.memberDescription")}
                     </TicketDescription>
-                    <TicketSelector>
-                      <span>{bt("ticketsSection.quantity")}</span>
-                      <QuantitySelector>
-                        <QuantityButton
-                          onClick={() => handleTicketChange("member", -1)}
-                          disabled={tickets.member === 0}
-                        >
-                          -
-                        </QuantityButton>
-                        <QuantityDisplay>{tickets.member}</QuantityDisplay>
-                        <QuantityButton
-                          onClick={() => handleTicketChange("member", 1)}
-                        >
-                          +
-                        </QuantityButton>
-                      </QuantitySelector>
-
-                      {tickets.member > 0 && (
+                    
                         <MembershipContainer>
                           <FormLabel>
                             {bt("ticketsSection.membershipTypeLabel")}
@@ -1234,7 +1263,24 @@ const BookNowPage = () => {
                             </option>
                           </select>
                         </MembershipContainer>
-                      )}
+                    <TicketSelector>
+                      <span>{bt("ticketsSection.quantity")}</span>
+                      <QuantitySelector>
+                        <QuantityButton
+                          onClick={() => handleTicketChange("member", -1)}
+                          disabled={tickets.member === 0}
+                        >
+                          -
+                        </QuantityButton>
+                        <QuantityDisplay>{tickets.member}</QuantityDisplay>
+                        <QuantityButton
+                          onClick={() => handleTicketChange("member", 1)}
+                        >
+                          +
+                        </QuantityButton>
+                      </QuantitySelector>
+
+                      
                     </TicketSelector>
                   </TicketTypeCard>
                 </TicketsContainer>

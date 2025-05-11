@@ -46,11 +46,6 @@ export const LanguageProvider = ({ children }) => {
         text = translations[language][key];
       } else {
         // For development: Log missing translations
-        if (process.env.NODE_ENV !== "production") {
-          console.warn(
-            `Translation missing for key: "${key}" in language: "${language}"`
-          );
-        }
         text = key; // Fallback to key itself
       }
     } catch (error) {

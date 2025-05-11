@@ -28,7 +28,7 @@ const ContentContainer = styled.div`
 `;
 
 const PageTitle = styled(motion.h1)`
-  color: #d3a164;
+  color: rgb(224, 152, 63);
   font-size: 2.5rem;
   margin-bottom: 20px;
   text-align: center;
@@ -94,15 +94,6 @@ const GalleryImage = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to right, rgba(50, 40, 32, 0.8), transparent);
-
-    ${GalleryItem}:nth-child(even) & {
-      background: linear-gradient(to left, rgba(50, 40, 32, 0.8), transparent);
-    }
-
-    @media (max-width: 992px) {
-      background: linear-gradient(to top, rgba(50, 40, 32, 0.9), transparent);
-    }
   }
 `;
 

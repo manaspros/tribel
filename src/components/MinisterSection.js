@@ -160,6 +160,7 @@ const QuoteCard = styled(motion.div)`
   background: linear-gradient(135deg, rgba(50, 40, 30, 0.7) 0%, rgba(60, 45, 30, 0.5) 100%);
   border-radius: 16px;
   padding: 30px;
+  margin-bottom: 40px;
   text-align: left;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -358,16 +359,31 @@ const MinisterSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <QuoteAuthorImage>
+              <QuoteAuthorImage
+                as={motion.div}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+              >
                 <LeaderImage src={cmImage} alt={t("cmName")} />
               </QuoteAuthorImage>
               
               <QuoteContent>
-                <QuoteAuthor>
+                <QuoteAuthor
+                  as={motion.div}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.7 }}
+                >
                   <QuoteAuthorName>{t("cmName")}</QuoteAuthorName>
                   <QuoteAuthorTitle>{t("cmTitle")}</QuoteAuthorTitle>
                 </QuoteAuthor>
-                <QuoteText>
+                <QuoteText
+                  as={motion.blockquote}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.9 }}
+                >
                   {t("cmQuote1")}
                 </QuoteText>
               </QuoteContent>
@@ -378,18 +394,33 @@ const MinisterSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <QuoteAuthorImage>
+              <QuoteAuthorImage
+                as={motion.div}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.9 }}
+              >
                 <LeaderImage src={ministerImage} alt={t("ministerName")} />
               </QuoteAuthorImage>
               
               <QuoteContent>
-                <QuoteAuthor>
+                <QuoteAuthor
+                  as={motion.div}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 1.1 }}
+                >
                   <QuoteAuthorName>{t("ministerName")}</QuoteAuthorName>
                   <QuoteAuthorTitle>{t("ministerTitle")}</QuoteAuthorTitle>
                 </QuoteAuthor>
-                <QuoteText>
+                <QuoteText
+                  as={motion.blockquote}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 1.3 }}
+                >
                   {t("ministerQuote1")}
                 </QuoteText>
               </QuoteContent>

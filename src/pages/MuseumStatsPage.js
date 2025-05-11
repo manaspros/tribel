@@ -292,56 +292,51 @@ const ComparisonCell = styled.div`
   }
 `;
 
-const MuseumQuote = styled.blockquote`
-  font-style: italic;
-  font-size: 1.15rem;
-  font-family: "Playfair Display", serif;
-  line-height: 1.8;
-  color: #f5efe7;
-  margin: 40px auto;
-  text-align: center;
-  max-width: 700px;
-  position: relative;
-  padding: 0 40px;
-
-  &::before,
-  &::after {
-    content: '"';
-    font-size: 4rem;
-    position: absolute;
-    opacity: 0.2;
-    color: #d3a164;
-  }
-
-  &::before {
-    top: -30px;
-    left: 0;
-  }
-
-  &::after {
-    bottom: -60px;
-    right: 0;
-  }
-`;
-
-const QuoteCitation = styled.cite`
-  display: block;
-  color: #d3a164;
-  font-size: 0.9rem;
-  margin-top: 15px;
-  font-style: normal;
-  font-weight: 500;
-`;
-
 const MuseumStatsPage = () => {
   const { language } = useLanguage();
   const [activeMuseum, setActiveMuseum] = useState("tribal"); // Default to tribal museum
 
+  // Fix the getContent function to handle nested keys properly
   const getContent = (key) => {
-    if (museumStatsData[language] && museumStatsData[language][key]) {
-      return museumStatsData[language][key];
+    // Split the key by dots to handle nested properties
+    const keys = key.split('.');
+    
+    // Try to get from current language first
+    let value = museumStatsData[language];
+    if (value) {
+      // Walk through the object hierarchy
+      for (const k of keys) {
+        if (value && value[k] !== undefined) {
+          value = value[k];
+        } else {
+          // If key not found, try English fallback
+          value = null;
+          break;
+        }
+      }
     }
-    return museumStatsData.en ? museumStatsData.en[key] : key;
+    
+    // If found in current language, return it
+    if (value !== null) {
+      return value;
+    }
+    
+    // Otherwise, try English fallback
+    value = museumStatsData.en;
+    if (value) {
+      for (const k of keys) {
+        if (value && value[k] !== undefined) {
+          value = value[k];
+        } else {
+          // If not found in English either, return the key
+          return key;
+        }
+      }
+      return value;
+    }
+    
+    // Last resort: return the key itself
+    return key;
   };
 
   const museumStats = {
@@ -414,19 +409,13 @@ const MuseumStatsPage = () => {
     ],
   };
 
-  const museumHighlights = {
-    tribal: [
-      "Immersive dioramas recreating authentic tribal villages with traditional housing, tools, and daily activities of Chhattisgarh's indigenous communities.",
-      "Extensive collection of rare tribal musical instruments with interactive audio stations allowing visitors to experience traditional sounds and rhythms.",
-      "Detailed exhibits on traditional medicinal practices, sustainable farming techniques, and ecological knowledge systems preserved for generations.",
-      "Gallery dedicated to tribal art forms including paintings, sculptures, pottery, and textiles, showcasing the artistic traditions of various communities.",
-    ],
-    freedom: [
-      "Life-sized recreations of key moments in India's freedom struggle with interactive elements and multi-sensory experiences for visitors of all ages.",
-      "Curated collection of personal belongings, letters, and artifacts from prominent freedom fighters of Chhattisgarh, many never displayed publicly before.",
-      "Chronological journey through significant regional protests and rebellions that contributed to the national independence movement.",
-      "Specially designed gallery honoring women freedom fighters and their often overlooked contributions to India's struggle for independence.",
-    ],
+  const getMuseumHighlights = (museumType) => {
+    return [
+      getContent(`${museumType}.highlight1`),
+      getContent(`${museumType}.highlight2`),
+      getContent(`${museumType}.highlight3`),
+      getContent(`${museumType}.highlight4`)
+    ];
   };
 
   return (
@@ -464,32 +453,6 @@ const MuseumStatsPage = () => {
             activeMuseum === "tribal" ? "tribalIntro" : "freedomIntro"
           )}
         </Description>
-{/* 
-        {activeMuseum === "tribal" && (
-          <MuseumQuote>
-            {language === "en"
-              ? "Our tribal communities possess a profound understanding of sustainable living and harmonious coexistence with nature. Their cultural heritage is not just history—it's a living wisdom that offers valuable lessons for our contemporary world."
-              : "हमारे आदिवासी समुदायों को टिकाऊ जीवन और प्रकृति के साथ सामंजस्यपूर्ण सह-अस्तित्व की गहरी समझ है। उनकी सांस्कृतिक विरासत सिर्फ इतिहास नहीं है—यह एक जीवित ज्ञान है जो हमारी समकालीन दुनिया के लिए मूल्यवान सबक प्रदान करता है।"}
-            <QuoteCitation>
-              {language === "en"
-                ? "— Dr. Radhika Sharma, Museum Director"
-                : "— डॉ. राधिका शर्मा, संग्रहालय निदेशक"}
-            </QuoteCitation>
-          </MuseumQuote>
-        )}
-
-        {activeMuseum === "freedom" && (
-          <MuseumQuote>
-            {language === "en"
-              ? "The struggle for freedom was not just fought on battlefields and political arenas—it was carried in the hearts of countless ordinary citizens who dared to dream of an independent India."
-              : "स्वतंत्रता के लिए संघर्ष सिर्फ युद्धक्षेत्रों और राजनीतिक मैदानों पर नहीं लड़ा गया था—यह असंख्य साधारण नागरिकों के दिलों में था जिन्होंने एक स्वतंत्र भारत का सपना देखने की हिम्मत की थी।"}
-            <QuoteCitation>
-              {language === "en"
-                ? "— Prof. Vikram Mehta, Historical Adviser"
-                : "— प्रो. विक्रम मेहता, ऐतिहासिक सलाहकार"}
-            </QuoteCitation>
-          </MuseumQuote>
-        )} */}
 
         <AnimatePresence mode="wait">
           <motion.div
@@ -533,7 +496,7 @@ const MuseumStatsPage = () => {
               </Description>
 
               <HighlightsList>
-                {museumHighlights[activeMuseum].map((highlight, index) => (
+                {getMuseumHighlights(activeMuseum).map((highlight, index) => (
                   <HighlightItem
                     key={`highlight-${index}-${language}`}
                     initial={{ opacity: 0, x: -20 }}

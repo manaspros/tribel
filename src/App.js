@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { Loader } from "./components/Loader";
 import { Cursor } from "./components/Cursor";
-import ScrollToHashElement from "./components/ScrollToHashElement";
 import { LoadingProvider, useLoading } from "./contexts/LoadingContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import "./styles/global.css";
@@ -12,10 +11,8 @@ import "./styles/global.css";
 const Home = React.lazy(() => import("./pages/Home"));
 const VirtualTour = React.lazy(() => import("./pages/VirtualTour"));
 const TribalMuseumPage = React.lazy(() => import("./pages/TribalMuseumPage"));
-const TribalGallery = React.lazy(() => import("./pages/TribalGallery"));
 const TribalArtifacts = React.lazy(() => import("./pages/TribalArtifacts"));
 const FreedomMuseumPage = React.lazy(() => import("./pages/FreedomMuseumPage"));
-const FreedomGallery = React.lazy(() => import("./pages/FreedomGallery"));
 const FreedomArtifacts = React.lazy(() => import("./pages/FreedomArtifacts"));
 const MuseumStatsPage = React.lazy(() => import("./pages/MuseumStatsPage"));
 const PlanYourVisitPage = React.lazy(() => import("./pages/PlanYourVisitPage"));
@@ -25,16 +22,10 @@ const VisionPage = React.lazy(() => import("./pages/VisionPage"));
 const NearbyPlacesPage = React.lazy(() => import("./pages/NearbyPlacesPage"));
 
 // Add imports for the new gallery pages
-const GalleryDefault = React.lazy(() => import("./pages/GalleryDefault"));
 const GalleryImage = React.lazy(() => import("./pages/GalleryImage"));
-const GallerySaffron = React.lazy(() => import("./pages/GallerySaffron"));
-const GalleryLight = React.lazy(() => import("./pages/GalleryLight"));
 
 // Add imports for the Tribal gallery pages
-const TribalGalleryDefault = React.lazy(() => import("./pages/TribalGalleryDefault"));
 const TribalGalleryImage = React.lazy(() => import("./pages/TribalGalleryImage"));
-const TribalGallerySaffron = React.lazy(() => import("./pages/TribalGallerySaffron"));
-const TribalGalleryLight = React.lazy(() => import("./pages/TribalGalleryLight"));
 
 // Context-aware loading component that uses the same LoadingContext
 const ContextAwareLoader = () => {
@@ -111,16 +102,15 @@ function AppContent() {
       <Loader />
       <AnimatePresence mode="wait">
         <Router>
-          <ScrollToHashElement />
           <Suspense fallback={<ContextAwareLoader />}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/virtual-tour" element={<VirtualTour />} />
               <Route path="/tribal" element={<TribalMuseumPage />} />
-              <Route path="/tribal/gallery" element={<TribalGallery />} />
+              <Route path="/tribal/gallery" element={<TribalGalleryImage />} />
               <Route path="/tribal/artifacts" element={<TribalArtifacts />} />
               <Route path="/freedom" element={<FreedomMuseumPage />} />
-              <Route path="/freedom/gallery" element={<FreedomGallery />} />
+              <Route path="/freedom/gallery" element={<GalleryImage />} />
               <Route path="/freedom/artifacts" element={<FreedomArtifacts />} />
               <Route path="/about" element={<MuseumStatsPage />} />
               <Route path="/about/director" element={<DirectorMessage />} />
@@ -130,17 +120,6 @@ function AppContent() {
               <Route path="/book-now" element={<BookNowPage />} />
               <Route path="/nearby-places" element={<NearbyPlacesPage />} />
               
-              {/* Add routes for the new gallery pages */}
-              <Route path="/gallery/default" element={<GalleryDefault />} />
-              <Route path="/gallery/image" element={<GalleryImage />} />
-              <Route path="/gallery/saffron" element={<GallerySaffron />} />
-              <Route path="/gallery/light" element={<GalleryLight />} />
-
-              {/* Tribal Gallery variant routes */}
-              <Route path="/tribal/gallery/default" element={<TribalGalleryDefault />} />
-              <Route path="/tribal/gallery/image" element={<TribalGalleryImage />} />
-              <Route path="/tribal/gallery/saffron" element={<TribalGallerySaffron />} />
-              <Route path="/tribal/gallery/light" element={<TribalGalleryLight />} />
             </Routes>
           </Suspense>
         </Router>

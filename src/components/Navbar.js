@@ -5,7 +5,6 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useLanguage } from "../contexts/LanguageContext";
 import logo2 from "../assets/logo2.png";
 import logo3 from "../assets/logo3.png";
-import logo4 from "../assets/logo4.png";
 import gsap from "gsap";
 
 // Enhanced container with transparent to solid transition
@@ -514,14 +513,6 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
   const isHomePage = location.pathname === '/'; // Check if we're on home page
 
   // Log when component re-renders due to language change
-  useEffect(() => {
-    console.log(
-      "Navbar re-rendered with language:",
-      language,
-      "version:",
-      version
-    );
-  }, [language, version]);
 
   // Add state for dropdown menu
   const [galleriesDropdownOpen, setGalleriesDropdownOpen] = useState(false);
@@ -879,107 +870,6 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                       <path d="M14.4 6l-.24-1.2c-.09-.46-.5-.8-.98-.8H6c-.55 0-1 .45-1 1v15c0 .55.45 1 1 1s1-.45 1-1v-6h5.6l.24 1.2c-.09.47.5.8.98.8H19c.55 0 1-.45 1-1V7c0-.55-.45-1-1-1h-4.6z" />
                     </svg>
                     {t("Freedom Fighters")}
-                  </DropdownItem>
-                  
-                  {/* Add new gallery pages */}
-                  <DropdownItem
-                    as={Link}
-                    to="/gallery/default"
-                    whileHover={{ x: 5 }}
-                    onClick={() => setGalleriesDropdownOpen(false)}
-                  >
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
-                    </svg>
-                    {t("Default Gallery")}
-                  </DropdownItem>
-                  
-                  <DropdownItem
-                    as={Link}
-                    to="/gallery/image"
-                    whileHover={{ x: 5 }}
-                    onClick={() => setGalleriesDropdownOpen(false)}
-                  >
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
-                    </svg>
-                    {t("Image Gallery")}
-                  </DropdownItem>
-                  
-                  <DropdownItem
-                    as={Link}
-                    to="/gallery/saffron"
-                    whileHover={{ x: 5 }}
-                    onClick={() => setGalleriesDropdownOpen(false)}
-                  >
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
-                    </svg>
-                    {t("Saffron Gallery")}
-                  </DropdownItem>
-                  
-                  <DropdownItem
-                    as={Link}
-                    to="/gallery/light"
-                    whileHover={{ x: 5 }}
-                    onClick={() => setGalleriesDropdownOpen(false)}
-                  >
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
-                    </svg>
-                    {t("Light Gallery")}
-                  </DropdownItem>
-                  
-                  {/* Divider */}
-                  <div style={{ height: "1px", background: "rgba(211, 161, 100, 0.2)", margin: "8px 0" }}></div>
-                  
-                  {/* Tribal Gallery variants */}
-                  <DropdownItem
-                    as={Link}
-                    to="/tribal/gallery/default"
-                    whileHover={{ x: 5 }}
-                    onClick={() => setGalleriesDropdownOpen(false)}
-                  >
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
-                    </svg>
-                    {t("Tribal Default")}
-                  </DropdownItem>
-                  
-                  <DropdownItem
-                    as={Link}
-                    to="/tribal/gallery/image"
-                    whileHover={{ x: 5 }}
-                    onClick={() => setGalleriesDropdownOpen(false)}
-                  >
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
-                    </svg>
-                    {t("Tribal Image")}
-                  </DropdownItem>
-                  
-                  <DropdownItem
-                    as={Link}
-                    to="/tribal/gallery/saffron"
-                    whileHover={{ x: 5 }}
-                    onClick={() => setGalleriesDropdownOpen(false)}
-                  >
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
-                    </svg>
-                    {t("Tribal Saffron")}
-                  </DropdownItem>
-                  
-                  <DropdownItem
-                    as={Link}
-                    to="/tribal/gallery/light"
-                    whileHover={{ x: 5 }}
-                    onClick={() => setGalleriesDropdownOpen(false)}
-                  >
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
-                    </svg>
-                    {t("Tribal Light")}
                   </DropdownItem>
                 </DropdownMenu>
               )}
@@ -1387,7 +1277,7 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                 {mobileGalleriesOpen && (
                   <MobileDropdownMenu>
                     <MobileDropdownItem
-                      to="/tribal"
+                      to="/tribal/gallery"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       <svg
@@ -1402,7 +1292,7 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                     </MobileDropdownItem>
 
                     <MobileDropdownItem
-                      to="/freedom"
+                      to="/freedom/gallery"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       <svg
@@ -1415,132 +1305,57 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                       </svg>
                       {t("Freedom Fighters")}
                     </MobileDropdownItem>
-                    
-                    {/* Add new mobile gallery links */}
-                    <MobileDropdownItem
-                      to="/gallery/default"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                      >
-                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
-                      </svg>
-                      {t("Default Gallery")}
-                    </MobileDropdownItem>
-                    
-                    <MobileDropdownItem
-                      to="/gallery/image"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                      >
-                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
-                      </svg>
-                      {t("Image Gallery")}
-                    </MobileDropdownItem>
-                    
-                    <MobileDropdownItem
-                      to="/gallery/saffron"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                      >
-                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
-                      </svg>
-                      {t("Saffron Gallery")}
-                    </MobileDropdownItem>
-                    
-                    <MobileDropdownItem
-                      to="/gallery/light"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                      >
-                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
-                      </svg>
-                      {t("Light Gallery")}
-                    </MobileDropdownItem>
-                    
-                    {/* Add new mobile tribal gallery links */}
-                    <MobileDropdownItem
-                      to="/tribal/gallery/default"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
-                      </svg>
-                      {t("Tribal Default")}
-                    </MobileDropdownItem>
-                    
-                    <MobileDropdownItem
-                      to="/tribal/gallery/image"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
-                      </svg>
-                      {t("Tribal Image")}
-                    </MobileDropdownItem>
-                    
-                    <MobileDropdownItem
-                      to="/tribal/gallery/saffron"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
-                      </svg>
-                      {t("Tribal Saffron")}
-                    </MobileDropdownItem>
-                    
-                    <MobileDropdownItem
-                      to="/tribal/gallery/light"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1-.9 2-2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
-                      </svg>
-                      {t("Tribal Light")}
-                    </MobileDropdownItem>
                   </MobileDropdownMenu>
                 )}
               </div>
 
-              <MobileNavLink
-                href="#visiting"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {t("Visiting the Museum")}
-              </MobileNavLink>
-              <MobileNavLink
-                as={Link}
-                to="/plan-visit"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {t("Plan Your Visit")}
-              </MobileNavLink>
-              <MobileNavLink
-                as={Link}
-                to="/virtual-tour"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {t("virtualTour")}
-              </MobileNavLink>
+              {/* Add Collection dropdown to mobile menu - matches desktop */}
+              <div>
+                <MobileNavLink
+                  as="div"
+                  onClick={() => setMobileCollectionOpen(!mobileCollectionOpen)}
+                  style={{
+                    cursor: "pointer",
+                    display: "flex",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <span>{t("Collection")}</span>
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="24"
+                    height="24"
+                    fill="currentColor"
+                    style={{
+                      transform: mobileCollectionOpen
+                        ? "rotate(180deg)"
+                        : "rotate(0deg)",
+                      transition: "transform 0.3s ease",
+                    }}
+                  >
+                    <path d="M7 10l5 5 5-5z" />
+                  </svg>
+                </MobileNavLink>
+
+                {mobileCollectionOpen && (
+                  <MobileDropdownMenu>
+                    <MobileDropdownItem
+                      to="/tribal/artifacts"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                      >
+                        <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm0 12.5L5 12 12 7l7 5-7 3.5z" />
+                      </svg>
+                      {t("Tribal Artifacts")}
+                    </MobileDropdownItem>
+                  </MobileDropdownMenu>
+                )}
+              </div>
 
               <LanguageToggle
                 onClick={() => {
@@ -1554,13 +1369,27 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
                 {language === "en" ? "हिंदी" : "English"}
               </LanguageToggle>
 
+              {/* Plan Your Visit - Matches desktop */}
               <MobileBookButton
-                href="#booking"
+                as={Link}
+                to="/plan-visit"
+                onClick={() => setMobileMenuOpen(false)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                style={{ marginTop: "10px", marginBottom: "10px", background: "transparent", color: "#d3a164", border: "2px solid #d3a164" }}
+              >
+                {t("Plan Your Visit")}
+              </MobileBookButton>
+
+              {/* Book Now - Matches desktop */}
+              <MobileBookButton
+                as={Link}
+                to="/book-now"
                 onClick={() => setMobileMenuOpen(false)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                {t("Book the Ticket")}
+                {t("Book Now")}
               </MobileBookButton>
             </MobileMenu>
           </>

@@ -14,8 +14,8 @@
             "priceFrom": "From ₹20",
             "tribalMuseum": "Tribal Museum",
             "freedomMuseum": "Freedom Fighters Museum",
-            "bothMuseums": "Both Museums (10% Discount)",
-            "comboDiscount": "You've selected both museums! You'll receive a 10% discount on your total booking.",
+            "bothMuseums": "Both Museums",
+            "comboDiscount": "You've selected both museums!",
             "tribalDescription": "Explore the rich heritage and cultural diversity of tribal communities through artifacts, art, and immersive exhibits.",
             "freedomDescription": "Discover the inspiring stories of freedom fighters who shaped the nation's history through historical documents and personal items.",
             "tribalFeatures": {
@@ -68,7 +68,7 @@
             "memberPrice": "Free",
             "memberDescription": "Museum members with valid credentials",
             "quantity": "Quantity",
-            "membershipTypeLabel": "Membership Type",
+            "membershipTypeLabel": "Type",
             "membershipPlaceholder": "Select Membership Type",
             "membershipTypes": {
                 "annual": "Annual Member",
@@ -87,7 +87,7 @@
             "firstNamePlaceholder": "Enter your first name",
             "lastName": "Last Name*",
             "lastNamePlaceholder": "Enter your last name",
-            "email": "Email Address*",
+            "email": "Email Address",
             "emailPlaceholder": "Enter your email address",
             "phone": "Phone Number*",
             "phonePlaceholder": "Enter your phone number",

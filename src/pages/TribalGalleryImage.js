@@ -16,7 +16,7 @@ const PageContainer = styled.div`
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  color: #fff;
+  color: #f5efe7; /* Changed from #fff to a softer off-white for better reading */
   min-height: 100vh;
 `;
 
@@ -30,7 +30,7 @@ const ContentContainer = styled.div`
 `;
 
 const PageTitle = styled(motion.h1)`
-  color: #d3a164;
+  color:rgb(224, 152, 63);
   font-size: 2.5rem;
   margin-top: 20px; /* Added margin-top */
   margin-bottom: 20px; /* Added specific bottom margin */
@@ -54,6 +54,8 @@ const GalleryIntro = styled.div`
   text-align: center;
   font-size: 1.1rem;
   line-height: 1.8;
+  color: #f5efe7; /* Added explicit color */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); /* Added shadow for better readability */
 `;
 
 const GalleryGrid = styled.div`
@@ -104,6 +106,12 @@ const GalleryInfo = styled.div`
   z-index: 2;
   height: 100%;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.3) 80%, rgba(0, 0, 0, 0.1) 100%);
+  
+  p {
+    color: #f5efe7;
+    margin-bottom: 10px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  }
 `;
 
 const GalleryTitle = styled.h3`
@@ -242,8 +250,9 @@ const GalleryImageLarge = styled.div`
 const ImageCaption = styled.div`
   padding: 20px;
   background: rgba(26, 20, 16, 0.9);
-  color: #fff;
+  color: #e6dfd4; /* Lighter shade for better readability */
   border-top: 1px solid rgba(211, 161, 100, 0.2);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 `;
 
 const NavButton = styled.button`

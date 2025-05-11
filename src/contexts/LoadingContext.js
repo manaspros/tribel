@@ -7,9 +7,9 @@ export const useLoading = () => useContext(LoadingContext);
 export const LoadingProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
-
-  // Add isLoaded state to maintain compatibility with components using setLoaded
   const [isLoaded, setLoaded] = useState(false);
+  // Add a flag to determine if we're in initial loading or navigation loading
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
 
   useEffect(() => {
     // Simple loading animation with progress
@@ -22,13 +22,39 @@ export const LoadingProvider = ({ children }) => {
         clearInterval(interval);
         setTimeout(() => {
           setLoading(false);
-          setLoaded(true); // Also set isLoaded to true
+          setLoaded(true);
+          // Mark that initial load is complete
+          setIsInitialLoad(false);
         }, 500);
       }
     }, 150);
 
     return () => clearInterval(interval);
   }, []);
+
+  // Function to start navigation loading (for route changes)
+  const startNavigationLoading = () => {
+    setLoading(true);
+    setProgress(0);
+    setLoaded(false);
+    
+    // Set up progress animation for navigation
+    let loadingProgress = 0;
+    const interval = setInterval(() => {
+      loadingProgress += 10; // Faster loading for navigation
+      setProgress(loadingProgress);
+
+      if (loadingProgress >= 100) {
+        clearInterval(interval);
+        setTimeout(() => {
+          setLoading(false);
+          setLoaded(true);
+        }, 300);
+      }
+    }, 100);
+
+    return () => clearInterval(interval);
+  };
 
   return (
     <LoadingContext.Provider
@@ -38,7 +64,9 @@ export const LoadingProvider = ({ children }) => {
         progress,
         setProgress,
         isLoaded,
-        setLoaded, // Export setLoaded function
+        setLoaded,
+        isInitialLoad,
+        startNavigationLoading,
       }}
     >
       {children}

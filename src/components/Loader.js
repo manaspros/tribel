@@ -64,41 +64,57 @@ const LoaderTribalPattern = styled.div`
   mix-blend-mode: overlay;
 `;
 
-const AudioHint = styled(motion.div)`
-  position: absolute;
-  bottom: 20px;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  font-size: 0.9rem;
-  opacity: 0.7;
-`;
-
 export const Loader = () => {
-  const { isLoaded } = useLoading();
+  const { loading, isLoaded, progress, isInitialLoad } = useLoading();
   const { t } = useLanguage();
 
   useEffect(() => {
-    // Animate progress bar
-    gsap.to(".loader-progress", {
-      width: "100%",
-      duration: 2,
-      ease: "power2.inOut",
-    });
+    if (loading && isInitialLoad) {
+      // Animate progress bar
+      gsap.to(".loader-progress", {
+        width: "100%",
+        duration: 2,
+        ease: "power2.inOut",
+      });
 
-    // Tribal motif animations
-    gsap.to(".tribal-pattern", {
-      backgroundPosition: "100px 100px",
-      duration: 10,
-      repeat: -1,
-      ease: "linear",
-    });
-  }, []);
+      // Tribal motif animations
+      gsap.to(".tribal-pattern", {
+        backgroundPosition: "100px 100px",
+        duration: 10,
+        repeat: -1,
+        ease: "linear",
+      });
+    }
+  }, [loading, isInitialLoad]);
+
+  // If not initial load and still loading, show the simpler context loader
+  if (!isInitialLoad && loading) {
+    return (
+      <LoaderContainer
+        initial={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <LoaderInner>
+          <LoaderTitle>
+            {t("tribal")} {t("heritageMuseum")}
+          </LoaderTitle>
+
+          <LoaderProgressBar>
+            <LoaderProgress style={{ width: `${progress}%` }} />
+          </LoaderProgressBar>
+
+          <motion.p>
+            {t("preparingExperience")}... {progress}%
+          </motion.p>
+        </LoaderInner>
+      </LoaderContainer>
+    );
+  }
 
   return (
     <AnimatePresence>
-      {!isLoaded && (
+      {!isLoaded && isInitialLoad && (
         <LoaderContainer
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
