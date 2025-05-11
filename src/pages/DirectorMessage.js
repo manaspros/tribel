@@ -13,6 +13,11 @@ import directorTranslations from "../data/directorMessageTranslations.json";
 import cmImage from "../assets/cm-placeholder.jpg";
 import deputyCmImage from "../assets/minister-placeholder.jpg";
 
+// Use placeholder portrait images from online sources
+const secretaryImage = "https://thispersondoesnotexist.com/image?id=secretary";
+const commissionerImage = "https://thispersondoesnotexist.com/image?id=commissioner";
+const directorImage = "https://thispersondoesnotexist.com/image?id=director";
+
 const PageContainer = styled.div`
   background-color: #1a1410;
   color: #fff;
@@ -80,12 +85,12 @@ const BackLink = styled(Link)`
 `;
 
 const MessageSection = styled.div`
-  margin: 40px 0;
+  margin: 30px 0; /* Reduced margin from 40px to 30px */
   border-radius: 15px;
   overflow: hidden;
   background: rgba(42, 35, 28, 0.5);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-  max-width: 900px;
+  max-width: 800px; /* Reduced max-width from 900px to 800px */
   margin-left: auto;
   margin-right: auto;
 `;
@@ -115,12 +120,12 @@ const MessageContent = styled.div`
 `;
 
 const MessageImageContainer = styled.div`
-  width: 250px;
+  width: 200px; /* Reduced width from 250px to 200px */
   flex-shrink: 0;
 
   @media (max-width: 768px) {
     width: 100%;
-    height: 250px;
+    height: 200px; /* Reduced height from 250px to 200px */
   }
 `;
 
@@ -133,14 +138,14 @@ const MessageImage = styled.div`
 `;
 
 const MessageText = styled.div`
-  padding: 30px;
+  padding: 25px; /* Reduced padding from 30px to 25px */
   flex-grow: 1;
   position: relative; /* Added for positioning the expand button */
 
   p {
-    line-height: 1.8;
-    margin-bottom: 20px;
-    font-size: 1.1rem;
+    line-height: 1.7; /* Reduced line height from 1.8 to 1.7 */
+    margin-bottom: 15px; /* Reduced margin-bottom from 20px to 15px */
+    font-size: 1rem; /* Reduced font size from 1.1rem to 1rem */
   }
   
   /* Added to create fading effect for truncated text */
@@ -168,11 +173,6 @@ const MessageSignature = styled.div`
     font-weight: bold;
     margin-bottom: 5px;
   }
-
-  .title {
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.7);
-  }
 `;
 
 const ExpandButton = styled.button`
@@ -199,6 +199,9 @@ const DirectorMessage = () => {
   const { language } = useLanguage();
   const [cmExpanded, setCmExpanded] = React.useState(false);
   const [deputyExpanded, setDeputyExpanded] = React.useState(false);
+  const [secretaryExpanded, setSecretaryExpanded] = React.useState(false);
+  const [commissionerExpanded, setCommissionerExpanded] = React.useState(false);
+  const [directorExpanded, setDirectorExpanded] = React.useState(false);
 
   // Function to get translations
   const getContent = (key) => {
@@ -237,17 +240,18 @@ const DirectorMessage = () => {
             </MessageImageContainer>
             <MessageText className={!cmExpanded ? "truncated" : ""}>
               <p>{getContent("cmMessage1")}</p>
-              <p>{getContent("cmMessage2")}</p>
               {cmExpanded && (
-                <p>{getContent("cmMessage3")}</p>
+                <>
+                  <p>{getContent("cmMessage2")}</p>
+                  <p>{getContent("cmMessage3")}</p>
+                </>
               )}
               <MessageSignature>
                 <div className="name">{getContent("cmName")}</div>
-                <div className="title">{getContent("cmTitle")}</div>
               </MessageSignature>
-              <div style={{ marginTop: "20px" }}> {/* Added container with margin */}
+              <div style={{ marginTop: "20px" }}>
                 <ExpandButton onClick={() => setCmExpanded(!cmExpanded)}>
-                  {cmExpanded ? "Show Less" : "Read More"}
+                  {cmExpanded ? getContent("showLess") : getContent("readMore")}
                 </ExpandButton>
               </div>
             </MessageText>
@@ -270,22 +274,130 @@ const DirectorMessage = () => {
             </MessageImageContainer>
             <MessageText className={!deputyExpanded ? "truncated" : ""}>
               <p>{getContent("deputyCmMessage1")}</p>
-              <p>{getContent("deputyCmMessage2")}</p>
               {deputyExpanded && (
-                <p>{getContent("deputyCmMessage3")}</p>
+                <>
+                  <p>{getContent("deputyCmMessage2")}</p>
+                  <p>{getContent("deputyCmMessage3")}</p>
+                </>
               )}
               <MessageSignature>
                 <div className="name">{getContent("deputyCmName")}</div>
-                <div className="title">{getContent("deputyCmTitle")}</div>
               </MessageSignature>
-              <div style={{ marginTop: "20px" }}> {/* Added container with margin */}
+              <div style={{ marginTop: "20px" }}>
                 <ExpandButton onClick={() => setDeputyExpanded(!deputyExpanded)}>
-                  {deputyExpanded ? "Show Less" : "Read More"}
+                  {deputyExpanded ? getContent("showLess") : getContent("readMore")}
                 </ExpandButton>
               </div>
             </MessageText>
           </MessageContent>
         </MessageSection>
+
+        {/* Principal Secretary's Message - Added after Deputy CM */}
+        <MessageSection
+          as={motion.div}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <MessageHeader>
+            <MessageTitle>{getContent("secretaryMessageTitle")}</MessageTitle>
+          </MessageHeader>
+          <MessageContent>
+            <MessageImageContainer>
+              <MessageImage image={secretaryImage} />
+            </MessageImageContainer>
+            <MessageText className={!secretaryExpanded ? "truncated" : ""}>
+              <p>{getContent("secretaryMessage1")}</p>
+              {secretaryExpanded && (
+                <>
+                  <p>{getContent("secretaryMessage2")}</p>
+                  <p>{getContent("secretaryMessage3")}</p>
+                  <p>{getContent("secretaryMessage4")}</p>
+                </>
+              )}
+              <MessageSignature>
+                <div className="name">{getContent("secretaryName")}</div>
+              </MessageSignature>
+              <div style={{ marginTop: "20px" }}>
+                <ExpandButton onClick={() => setSecretaryExpanded(!secretaryExpanded)}>
+                  {secretaryExpanded ? getContent("showLess") : getContent("readMore")}
+                </ExpandButton>
+              </div>
+            </MessageText>
+          </MessageContent>
+        </MessageSection>
+
+        {/* Commissioner's Message */}
+        <MessageSection
+          as={motion.div}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <MessageHeader>
+            <MessageTitle>{getContent("commissionerMessageTitle")}</MessageTitle>
+          </MessageHeader>
+          <MessageContent>
+            <MessageImageContainer>
+              <MessageImage image={commissionerImage} />
+            </MessageImageContainer>
+            <MessageText className={!commissionerExpanded ? "truncated" : ""}>
+              <p>{getContent("commissionerMessage1")}</p>
+              {commissionerExpanded && (
+                <>
+                  <p>{getContent("commissionerMessage2")}</p>
+                  <p>{getContent("commissionerMessage3")}</p>
+                </>
+              )}
+              <MessageSignature>
+                <div className="name">{getContent("commissionerName")}</div>
+              </MessageSignature>
+              <div style={{ marginTop: "20px" }}>
+                <ExpandButton onClick={() => setCommissionerExpanded(!commissionerExpanded)}>
+                  {commissionerExpanded ? getContent("showLess") : getContent("readMore")}
+                </ExpandButton>
+              </div>
+            </MessageText>
+          </MessageContent>
+        </MessageSection>
+        
+        {/* Director's Message - First message */}
+        <MessageSection
+          as={motion.div}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        >
+          <MessageHeader>
+            <MessageTitle>{getContent("directorMessageTitle")}</MessageTitle>
+          </MessageHeader>
+          <MessageContent>
+            <MessageImageContainer>
+              <MessageImage image={directorImage} />
+            </MessageImageContainer>
+            <MessageText className={!directorExpanded ? "truncated" : ""}>
+              <p>{getContent("directorMessage1")}</p>
+              {directorExpanded && (
+                <>
+                  <p>{getContent("directorMessage2")}</p>
+                  <p>{getContent("directorMessage3")}</p>
+                  <p>{getContent("directorMessage4")}</p>
+                  <p>{getContent("directorMessage5")}</p>
+                  <p>{getContent("directorMessage6")}</p>
+                </>
+              )}
+              <MessageSignature>
+                <div className="name">{getContent("directorName")}</div>
+              </MessageSignature>
+              <div style={{ marginTop: "20px" }}>
+                <ExpandButton onClick={() => setDirectorExpanded(!directorExpanded)}>
+                  {directorExpanded ? getContent("showLess") : getContent("readMore")}
+                </ExpandButton>
+              </div>
+            </MessageText>
+          </MessageContent>
+        </MessageSection>
+
       </ContentContainer>
 
       <Footer />

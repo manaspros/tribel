@@ -438,11 +438,6 @@ const FreedomMuseumPage = () => {
                   <p>{t("timeline3Desc")}</p>
                 </TimelineEvent>
 
-                <TimelineEvent>
-                  <EventYear>{t("timeline4Year")}</EventYear>
-                  <EventTitle>{t("timeline4Title")}</EventTitle>
-                  <p>{t("timeline4Desc")}</p>
-                </TimelineEvent>
               </TimelineEvents>
             </TimelineContent>
           </TimelineSection>
