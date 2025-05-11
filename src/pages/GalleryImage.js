@@ -21,7 +21,7 @@ const PageContainer = styled.div`
 const ContentContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding-top: 180px;
+  padding-top: 200px;
   padding-bottom: 80px;
   padding-left: 20px;
   padding-right: 20px;
