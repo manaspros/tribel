@@ -87,6 +87,9 @@ const MessageContent = styled.div`
 const MessageImageContainer = styled.div`
   width: 200px; /* Reduced width from 250px to 200px */
   flex-shrink: 0;
+  align-self: flex-start; /* Keep the image aligned to the top */
+  height: 240px; /* Fixed height to prevent growing */
+  overflow: hidden; /* Ensure image stays contained */
 
   @media (max-width: 768px) {
     width: 100%;
@@ -99,13 +102,14 @@ const MessageImage = styled.div`
   height: 100%;
   background-image: url(${(props) => props.image});
   background-size: cover;
-  background-position: center;
+  background-position: center top; /* Position from the top for better framing */
 `;
 
 const MessageText = styled.div`
   padding: 25px; /* Reduced padding from 30px to 25px */
   flex-grow: 1;
   position: relative; /* Added for positioning the expand button */
+  overflow: visible; /* Allow content to expand without affecting container */
 
   p {
     line-height: 1.7; /* Reduced line height from 1.8 to 1.7 */
