@@ -73,7 +73,7 @@ const MuseumToggle = styled.div`
 `;
 
 const ToggleButton = styled.button`
-  background: ${(props) => (props.active ? "#d3a164" : "transparent")};
+  background: ${(props) => (props.active ? "#d3a164" : "#1a1410")};
   color: ${(props) => (props.active ? "#1a1410" : "#d3a164")};
   border: 2px solid #d3a164;
   padding: 12px 25px;
@@ -84,8 +84,6 @@ const ToggleButton = styled.button`
   transition: all 0.3s ease;
 
   &:hover {
-    background: ${(props) =>
-      props.active ? "#e0b175" : "rgba(211, 161, 100, 0.2)"};
     transform: translateY(-3px);
   }
 `;
@@ -163,7 +161,7 @@ const HighlightSection = styled.div`
 `;
 
 const SectionTitle = styled.h2`
-  color: #d3a164;
+  color:rgb(148, 112, 68);
   font-size: 2rem;
   margin-bottom: 30px;
   text-align: center;
@@ -393,16 +391,7 @@ const MuseumStatsPage = () => {
         ),
         number: "24",
         label: "Significant Historical Events",
-      },
-      {
-        icon: (
-          <svg viewBox="0 0 24 24">
-            <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z" />
-          </svg>
-        ),
-        number: "200+",
-        label: "Original Documents & Artifacts",
-      },
+      }
     ],
   };
 
@@ -530,7 +519,7 @@ const MuseumStatsPage = () => {
             </HighlightSection>
           </motion.div>
         </AnimatePresence>
-
+        <HighlightSection>
         <ComparisonSection>
           <SectionTitle>{getContent("comparisonTitle")}</SectionTitle>
 
@@ -564,6 +553,7 @@ const MuseumStatsPage = () => {
             <ComparisonCell>{getContent("freedom.experience")}</ComparisonCell>
           </ComparisonTable>
         </ComparisonSection>
+      </HighlightSection>
       </ContentContainer>
 
       <Footer />

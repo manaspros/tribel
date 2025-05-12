@@ -13,11 +13,9 @@ import directorTranslations from "../data/directorMessageTranslations.json";
 import cmImage from "../assets/cm-placeholder.jpg";
 import deputyCmImage from "../assets/minister-placeholder.jpg";
 import backgroundImage from "../assets/RUID75f5bbabcf5843eda2d9fafa639f5b56.jpg";
-
-// Use placeholder portrait images from online sources
-const secretaryImage = "https://thispersondoesnotexist.com/image?id=secretary";
-const commissionerImage = "https://thispersondoesnotexist.com/image?id=commissioner";
-const directorImage = "https://thispersondoesnotexist.com/image?id=director";
+import directorImage from "../assets/DirectorPhoto.JPG";
+import secretaryImage from "../assets/secretary-placeholder.jpg";
+import commissionerImage from "../assets/commissioner-placeholder.jpg";
 
 const PageContainer = styled.div`
   background-image: linear-gradient(rgba(155, 119, 89, 0.85), rgba(169, 130, 99, 0.85)), 
@@ -28,33 +26,6 @@ const PageContainer = styled.div`
   color: #f5efe7; /* Changed from #fff to a softer off-white for better reading */
   min-height: 100vh;
 `;
-
-const HeroSection = styled.div`
-  height: 40vh;
-  background-image: linear-gradient(
-      rgba(26, 20, 16, 0.8),
-      rgba(26, 20, 16, 0.9)
-    ),
-    url(${cmImage});
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 15vh;
-    background: linear-gradient(to top, #1a1410, transparent);
-  }
-`;
-
 const ContentContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
