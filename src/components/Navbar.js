@@ -407,7 +407,7 @@ const DepartmentNamesContainer = styled(motion.div)`
   @media (max-width: 768px) {
     top: 60px; // Adjusted for smaller navbar height on mobile
     flex-direction: column;
-    padding: 12px 20px 10px;
+    padding: 30px 20px 10px;
   }
 `;
 
@@ -436,7 +436,7 @@ const CombinedDepartmentHeader = styled(motion.div)`
 
   @media (max-width: 480px) {
     font-size: 1rem;
-    padding: 5px 10px;
+    padding: 2px 10px;
   }
 `;
 
@@ -455,7 +455,7 @@ const RunningTextTicker = styled(motion.div)`
   box-shadow: 0 4px 10px -5px rgba(0, 0, 0, 0.3);
 
   @media (max-width: 768px) {
-    top: ${(props) => (props.hideDepartmentNames ? "60px" : "135px")};
+    top: ${(props) => (props.hideDepartmentNames ? "60px" : "145px")};
   }
 `;
 

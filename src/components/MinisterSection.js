@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useLanguage } from "../contexts/LanguageContext";
+import { Link } from "react-router-dom"; // Import Link for navigation
 
 // Placeholder images - replace with actual Minister and CM images
 import cmImage from "../assets/cm-placeholder.jpg";
@@ -214,6 +215,35 @@ const QuoteAuthorName = styled.span`
   font-weight: 600;
   font-size: 1.5rem;
   font-family: "Playfair Display", serif;
+  display: inline-block; // Ensure proper display when used as a link
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    
+    &:hover {
+      color: #e4b87f;
+      text-shadow: 0 0 10px rgba(211, 161, 100, 0.3);
+    }
+    
+    // Animated underline effect on hover
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: #e4b87f;
+      transition: width 0.3s ease;
+    }
+    
+    &:hover::after {
+      width: 100%;
+    }
+  }
 `;
 
 const QuoteAuthorTitle = styled.span`
@@ -308,7 +338,9 @@ const MinisterSection = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.7 }}
                 >
-                  <QuoteAuthorName>{t("cmName")}</QuoteAuthorName>
+                  <QuoteAuthorName>
+                    <Link to="/about/director">{t("cmName")}</Link>
+                  </QuoteAuthorName>
                   <QuoteAuthorTitle>{t("cmTitle")}</QuoteAuthorTitle>
                 </QuoteAuthor>
                 <QuoteText
@@ -345,7 +377,9 @@ const MinisterSection = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 1.1 }}
                 >
-                  <QuoteAuthorName>{t("ministerName")}</QuoteAuthorName>
+                  <QuoteAuthorName>
+                    <Link to="/about/director">{t("ministerName")}</Link>
+                  </QuoteAuthorName>
                   <QuoteAuthorTitle>{t("ministerTitle")}</QuoteAuthorTitle>
                 </QuoteAuthor>
                 <QuoteText
