@@ -21,6 +21,12 @@ const HeroContainer = styled.section`
   align-items: center;
   justify-content: center;
   margin-top: 0; /* Ensure no additional margin is pushing content down */
+  
+  @media (max-width: 768px) {
+    height: auto; // Auto height for better mobile layout
+    min-height: 100vh; // Ensure it fills at least the viewport
+    padding-top: 60px; // Reduced padding
+  }
 `;
 
 const ParallaxLayer = styled.div`
@@ -58,7 +64,7 @@ const TitleContainer = styled(motion.div)`
   max-width: 90%;
 
   @media (max-width: 768px) {
-    padding: 170px 15px 20px; /* Increased from 120px to 170px */
+    padding: 130px 15px 30px; // Reduced from 170px top padding
     width: 95%;
     margin-top: 0;
     display: flex;
@@ -68,7 +74,8 @@ const TitleContainer = styled(motion.div)`
 
   /* Extra small screens may need even more padding adjustment */
   @media (max-width: 480px) {
-    padding-top: 150px; /* Increased from 100px to 150px */
+    padding-top: 100px; // Reduced from 150px
+    padding-bottom: 20px;
   }
 `;
 
@@ -133,9 +140,10 @@ const ScrollDownIndicator = styled(motion.div)`
   }
 
   @media (max-width: 768px) {
-    bottom: 20px;
-    padding: 8px 16px 6px;
-    transform: translateX(-50%) scale(0.9);
+    bottom: 15px; // Moved up from 20px
+    padding: 6px 12px 4px; // Smaller padding
+    transform: translateX(-50%) scale(0.85); // Slightly smaller
+    border-radius: 20px; // Smaller radius
   }
 
   span {
@@ -145,6 +153,12 @@ const ScrollDownIndicator = styled(motion.div)`
     letter-spacing: 2px;
     font-weight: 500;
     margin-bottom: 5px;
+    
+    @media (max-width: 768px) {
+      font-size: 12px; // Smaller font
+      letter-spacing: 1px;
+      margin-bottom: 3px;
+    }
   }
 
   svg {
@@ -152,6 +166,11 @@ const ScrollDownIndicator = styled(motion.div)`
     height: 24px;
     fill: #d3a164;
     filter: drop-shadow(0 0 5px rgba(211, 161, 100, 0.5));
+    
+    @media (max-width: 768px) {
+      width: 20px; // Smaller icon
+      height: 20px;
+    }
   }
 `;
 
@@ -170,9 +189,9 @@ const MuseumSelector = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    gap: 50px;
-    margin-bottom: 10px;
-    padding-top: 10px;
+    gap: 30px; // Reduced from 50px
+    margin-bottom: 0; // Removed bottom margin
+    padding-top: 0; // Removed top padding
   }
 `;
 
@@ -191,6 +210,9 @@ const MuseumOption = styled(motion.div)`
       ? "0 25px 50px rgba(211, 161, 100, 0.4), 0 0 0 3px rgba(211, 161, 100, 0.5) inset"
       : "0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(211, 161, 100, 0.2) inset"};
   border-bottom: 8px solid rgba(211, 161, 100, 0.8);
+  will-change: transform, box-shadow;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 
   @media (max-width: 992px) {
     width: 420px;
@@ -199,9 +221,16 @@ const MuseumOption = styled(motion.div)`
 
   @media (max-width: 768px) {
     width: 100%;
-    height: 340px; // Increased from 320px to 340px for more space
-    max-width: 360px;
-    margin-bottom: 10px;
+    height: 300px; // Reduced from 340px for smaller screens
+    max-width: 340px; // Slightly smaller than before
+    margin-bottom: 15px; // Increased from 10px for more space between cards
+    border-bottom: 6px solid rgba(211, 161, 100, 0.8); // Thinner border
+  }
+  
+  @media (max-width: 480px) {
+    height: 260px; // Even smaller height for very small screens
+    max-width: 300px;
+    border-bottom: 4px solid rgba(211, 161, 100, 0.8);
   }
 `;
 
@@ -274,7 +303,6 @@ const MuseumContent = styled.div`
   }
 `;
 
-// Update the InfoContainer to support side-by-side layout
 const InfoContainer = styled.div`
   margin: 0 auto;
   width: 100%;
@@ -350,8 +378,9 @@ const MuseumTitle = styled.h2`
   line-height: 1.3; // Improved line height for better readability
 
   @media (max-width: 768px) {
-    font-size: clamp(1.4rem, 4vw, 1.8rem); // Reduced font size on mobile
-    margin: 20px 0 5px 0; // Adjusted margin
+    font-size: clamp(1.2rem, 4vw, 1.6rem); // Further reduced font size on mobile
+    margin: 15px 0 5px 0; // Reduced margin
+    letter-spacing: 1px;
   }
 
   span {
@@ -373,6 +402,11 @@ const MuseumTitle = styled.h2`
 
       ${MuseumOption}:hover & {
         transform: scaleX(1);
+      }
+      
+      @media (max-width: 480px) {
+        height: 2px; // Thinner underline on small screens
+        bottom: -3px;
       }
     }
   }
@@ -400,14 +434,15 @@ const MuseumDescription = styled.p`
   }
 
   @media (max-width: 768px) {
-    font-size: 0.9rem;
-    padding: 12px;
-    margin: 15px 0 15px; // Increased top margin from 10px to 15px
-    line-height: 1.5;
+    font-size: 0.85rem; // Smaller than previous 0.9rem
+    padding: 10px; // Reduced from 12px
+    margin: 10px 0; // Reduced from 15px
+    line-height: 1.4; // Reduced from 1.5
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    border-radius: 8px; // Smaller radius
   }
 `;
 
@@ -428,9 +463,10 @@ const ExploreIndicator = styled(motion.div)`
   margin-bottom: 25px;
 
   @media (max-width: 768px) {
-    padding: 10px 20px;
-    font-size: 0.9rem;
-    margin-bottom: 15px;
+    padding: 8px 16px; // Reduced from 10px 20px
+    font-size: 0.85rem; // Reduced from 0.9rem
+    margin-bottom: 10px; // Reduced from 15px
+    border-radius: 20px; // Smaller radius
   }
 
   svg {
@@ -439,6 +475,12 @@ const ExploreIndicator = styled(motion.div)`
     fill: #1a1410;
     margin-left: 8px;
     transition: transform 0.3s ease;
+    
+    @media (max-width: 768px) {
+      width: 14px;
+      height: 14px;
+      margin-left: 6px;
+    }
   }
 
   &:hover svg {

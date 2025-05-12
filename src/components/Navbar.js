@@ -234,6 +234,12 @@ const MobileMenu = styled(motion.div)`
   gap: 25px;
   z-index: 102;
   box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
+  
+  @media (max-width: 480px) {
+    width: 260px; // Narrower menu on small screens
+    padding: 70px 30px 70px 25px; // Adjusted padding
+    gap: 18px; // Less gap between items
+  }
 `;
 
 // Add an overlay to handle clicks outside the mobile menu
