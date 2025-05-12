@@ -88,7 +88,7 @@ const LogoText = styled.span`
   text-decoration: none;
 
   @media (max-width: 580px) {
-    font-size: 1.3rem; /* Increased from 1.2rem */
+    font-size: 0.7rem; /* Increased from 1.2rem */
   }
 `;
 

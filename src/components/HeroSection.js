@@ -378,7 +378,7 @@ const MuseumTitle = styled.h2`
   line-height: 1.3; // Improved line height for better readability
 
   @media (max-width: 768px) {
-    font-size: clamp(1.2rem, 4vw, 1.6rem); // Further reduced font size on mobile
+    font-size: clamp(2rem, 4vw, 1.6rem); // Further reduced font size on mobile
     margin: 15px 0 5px 0; // Reduced margin
     letter-spacing: 1px;
   }
@@ -434,15 +434,7 @@ const MuseumDescription = styled.p`
   }
 
   @media (max-width: 768px) {
-    font-size: 0.85rem; // Smaller than previous 0.9rem
-    padding: 10px; // Reduced from 12px
-    margin: 10px 0; // Reduced from 15px
-    line-height: 1.4; // Reduced from 1.5
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    border-radius: 8px; // Smaller radius
+    display: none; // Hide on mobile devices
   }
 `;
 
