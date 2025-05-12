@@ -22,14 +22,14 @@ const PageContainer = styled.div`
 const ContentContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding-top: 180px; /* Increased to account for navbar */
+  padding-top: 220px; /* Increased to account for navbar */
   padding-bottom: 80px;
   padding-left: 20px;
   padding-right: 20px;
 `;
 
 const PageTitle = styled(motion.h1)`
-  color:rgb(224, 152, 63);
+  color:rgb(0, 0, 0);
   font-size: 2.5rem;
   margin-top: 20px; /* Added margin-top */
   margin-bottom: 20px; /* Added specific bottom margin */
@@ -69,7 +69,6 @@ const GalleryGrid = styled.div`
 `;
 
 const GalleryItem = styled(motion.div)`
-  background-color: #241c17;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
@@ -104,8 +103,6 @@ const GalleryInfo = styled.div`
   position: relative;
   z-index: 2;
   height: 100%;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.3) 80%, rgba(0, 0, 0, 0.1) 100%);
-  
   p {
     color: #f5efe7;
     margin-bottom: 10px;
@@ -114,7 +111,7 @@ const GalleryInfo = styled.div`
 `;
 
 const GalleryTitle = styled.h3`
-  color: #d3a164;
+  color:rgb(253, 219, 177);
   margin-bottom: 15px;
   font-size: 1.5rem;
   font-family: "Playfair Display", serif;

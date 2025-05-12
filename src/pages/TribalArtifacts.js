@@ -27,7 +27,7 @@ const ContentContainer = styled.div`
 `;
 
 const PageTitle = styled(motion.h1)`
-  color: #d3a164;
+  color:rgb(0, 0, 0);
   font-size: 2.5rem;
   margin-bottom: 30px;
   margin-top: 80px; // Added top margin for better spacing

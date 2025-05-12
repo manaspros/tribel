@@ -47,12 +47,11 @@ const ContentContainer = styled.div`
 `;
 
 const PageTitle = styled(motion.h1)`
-  color:rgb(224, 152, 63);
+  color:rgb(0, 0, 0);
   font-size: 3.5rem;
   margin-bottom: 30px;
   text-align: center;
   font-family: "Playfair Display", serif;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 
   @media (max-width: 768px) {
     font-size: 2.5rem;
@@ -403,7 +402,7 @@ const MuseumStatsPage = () => {
   return (
     <PageContainer>
       <Navbar />
-
+      
       <HeroSection>
         <PageTitle
           initial={{ opacity: 0, y: 20 }}
@@ -429,12 +428,13 @@ const MuseumStatsPage = () => {
             {getContent("freedomToggle")}
           </ToggleButton>
         </MuseumToggle>
-
+<HighlightSection>
         <Description>
           {getContent(
             activeMuseum === "tribal" ? "tribalIntro" : "freedomIntro"
           )}
         </Description>
+        </HighlightSection>
 
         <AnimatePresence mode="wait">
           <motion.div

@@ -4,10 +4,15 @@ import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useLanguage } from "../contexts/LanguageContext";
+import backgroundImage from "../assets/RUID75f5bbabcf5843eda2d9fafa639f5b56.jpg";
 
 const PageContainer = styled.div`
-  background-color: #1a1410;
-  color: #fff;
+  background-image: linear-gradient(rgba(155, 119, 89, 0.85), rgba(169, 130, 99, 0.85)), 
+                    url(${backgroundImage});
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #f5efe7; /* Changed from #fff to a softer off-white for better reading */
   min-height: 100vh;
 `;
 
@@ -30,7 +35,6 @@ const HeroSection = styled.div`
     left: 0;
     width: 100%;
     height: 15vh;
-    background: linear-gradient(to top, #1a1410, transparent);
   }
 `;
 
@@ -42,12 +46,12 @@ const ContentContainer = styled.div`
 `;
 
 const PageTitle = styled(motion.h1)`
-  color: #d3a164;
+  color:rgb(0, 0, 0);
   font-size: 3.5rem;
   margin-bottom: 30px;
+  margin-top: 140px;
   text-align: center;
   font-family: "Playfair Display", serif;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 
   @media (max-width: 768px) {
     font-size: 2.5rem;
@@ -180,16 +184,6 @@ const NearbyPlacesPage = () => {
     cultural: [
       {
         id: 1,
-        title: language === "en" ? "IGRMS Museum" : "आईजीआरएमएस संग्रहालय",
-        description: language === "en" 
-          ? "Indira Gandhi Rashtriya Manav Sangrahalaya showcases the rich diversity of Indian tribal cultures."
-          : "इंदिरा गांधी राष्ट्रीय मानव संग्रहालय भारतीय जनजातीय संस्कृतियों की समृद्ध विविधता को प्रदर्शित करता है।",
-        image: "/assets/forest-bg.jpg", // Placeholder image
-        distance: language === "en" ? "15 km" : "15 किमी",
-        mapLink: "https://maps.google.com/?q=IGRMS+Museum+Raipur"
-      },
-      {
-        id: 2,
         title: language === "en" ? "Purkhauti Muktangan" : "पुरखौती मुक्तांगन",
         description: language === "en" 
           ? "An open-air museum showcasing the cultural heritage of Chhattisgarh with beautiful sculptures and tribal art."
@@ -199,20 +193,30 @@ const NearbyPlacesPage = () => {
         mapLink: "https://maps.google.com/?q=Purkhauti+Muktangan+Raipur"
       },
       {
-        id: 3,
-        title: language === "en" ? "Mahant Ghasidas Memorial Museum" : "महंत घासीदास स्मारक संग्रहालय",
+        id: 2,
+        title: language === "en" ? "Central Park" : "सेंट्रल पार्क",
         description: language === "en" 
-          ? "Houses a rich collection of archaeological artifacts, sculptures, coins, and tribal objects from Chhattisgarh's history."
-          : "छत्तीसगढ़ के इतिहास से पुरातात्विक कलाकृतियों, मूर्तियों, सिक्कों और जनजातीय वस्तुओं का समृद्ध संग्रह।",
+          ? "A large urban park with lush greenery, walking paths, and a lake. Ideal for picnics and relaxation."
+          : "एक बड़ा शहरी पार्क जिसमें हरी-भरी हरियाली, चलने के रास्ते और एक झील है। पिकनिक और विश्राम के लिए आदर्श।",
         image: "/assets/forest-bg.jpg", // Placeholder image
-        distance: language === "en" ? "12 km" : "12 किमी",
-        mapLink: "https://maps.google.com/?q=Mahant+Ghasidas+Memorial+Museum+Raipur"
+        distance: language === "en" ? "5 km" : "5 किमी",
+        mapLink: "https://maps.google.com/?q=Central+Park+Raipur"
+      },
+      {
+        id: 3,
+        title: language === "en" ? "Musical fountain" : "संगीतमय फव्वारा",
+        description: language === "en" 
+          ? "A mesmerizing fountain show with music and lights, creating a magical atmosphere."
+          : "एक मंत्रमुग्ध कर देने वाला फव्वारा शो जिसमें संगीत और रोशनी होती है, जो एक जादुई वातावरण बनाता है।",
+        image: "/assets/forest-bg.jpg", // Placeholder image
+        distance: language === "en" ? "7 km" : "7 किमी",
+        mapLink: "https://maps.google.com/?q=Musical+Fountain+Raipur"
       }
     ],
     natural: [
       {
         id: 4,
-        title: language === "en" ? "Nandan Van Zoo" : "नंदन वन चिड़ियाघर",
+        title: language === "en" ? "Nandan Van Zoo & Jungle Safari " : "नंदन वन चिड़ियाघर और जंगल सफारी",
         description: language === "en" 
           ? "A well-maintained zoo with a variety of animals and birds in natural surroundings. Perfect for families and nature enthusiasts."
           : "प्राकृतिक परिवेश में विभिन्न प्रकार के जानवरों और पक्षियों के साथ एक अच्छी तरह से बनाए रखा गया चिड़ियाघर।",

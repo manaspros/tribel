@@ -28,7 +28,7 @@ const ContentContainer = styled.div`
 `;
 
 const PageTitle = styled(motion.h1)`
-  color: rgb(224, 152, 63);
+  color: rgb(0, 0, 0);
   font-size: 2.5rem;
   margin-bottom: 20px;
   text-align: center;

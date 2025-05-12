@@ -8,10 +8,15 @@ import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { Link } from "react-router-dom";
 import bookingTranslations from "../data/bookingTranslations.json";
+import backgroundImage from "../assets/RUID75f5bbabcf5843eda2d9fafa639f5b56.jpg";
 
 const PageContainer = styled.div`
-  background-color: #1a1410;
-  color: #fff;
+  background-image: linear-gradient(rgba(155, 119, 89, 0.85), rgba(169, 130, 99, 0.85)), 
+                    url(${backgroundImage});
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #f5efe7; /* Changed from #fff to a softer off-white for better reading */
   min-height: 100vh;
 `;
 

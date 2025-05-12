@@ -628,17 +628,17 @@ const Navbar = ({ transparent = false, hideDepartmentNames = false }) => {
         <div style={{ display: "none" }}>Current language: {language}</div>
         <LogosGroupLeft>
           <AdditionalLogo
-            src={logo2}
+            src={logo3}
             alt="Partner Logo"
             as={motion.img}
-            initial={{ scale: 1.6 }}
+            initial={{ scale: 1.8 }}
             animate={{ scale: 1.4 }}
             whileTap={{ scale: 0.95 }}
           />
 
           <Link to="/">
             <LogoContainer>
-              <LogoImage src={logo3} alt={t("Museum CG")} />
+              <LogoImage src={logo2} alt={t("Museum CG")} />
               <LogoText>{t("Museum CG")}</LogoText>
             </LogoContainer>
           </Link>

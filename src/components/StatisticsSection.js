@@ -127,28 +127,28 @@ const statsData = {
   en: [
     {
       icon: "📚",
-      number: "100+",
+      number: "3000+",
       label: "Artifacts Preserved",
       description:
         "Carefully curated artifacts representing the rich heritage of indigenous communities",
     },
     {
       icon: "🌍",
-      number: "50+",
+      number: "43",
       label: "Tribal Communities",
       description:
         "Representing the diverse cultures and traditions of indigenous peoples",
     },
     {
       icon: "👥",
-      number: "250,000+",
+      number: "0",
       label: "Annual Visitors",
       description:
         "Engaging with our exhibits, workshops, and educational programs",
     },
     {
       icon: "🎓",
-      number: "500+",
+      number: "0",
       label: "Educational Programs",
       description:
         "Workshops, seminars, and outreach initiatives conducted annually",
@@ -157,28 +157,28 @@ const statsData = {
   hi: [
     {
       icon: "📚",
-      number: "10,000+",
+      number: "3000+",
       label: "संरक्षित कलाकृतियां",
       description:
         "स्वदेशी समुदायों की समृद्ध विरासत का प्रतिनिधित्व करने वाली सावधानीपूर्वक तैयार की गई कलाकृतियां",
     },
     {
       icon: "🌍",
-      number: "50+",
+      number: "43",
       label: "आदिवासी समुदाय",
       description:
         "स्वदेशी लोगों की विविध संस्कृतियों और परंपराओं का प्रतिनिधित्व करते हुए",
     },
     {
       icon: "👥",
-      number: "250,000+",
+      number: "0",
       label: "वार्षिक आगंतुक",
       description:
         "हमारी प्रदर्शनियों, कार्यशालाओं और शैक्षिक कार्यक्रमों के साथ जुड़ाव",
     },
     {
       icon: "🎓",
-      number: "500+",
+      number: "0",
       label: "शैक्षिक कार्यक्रम",
       description: "वार्षिक आयोजित कार्यशालाएं, संगोष्ठियां और आउटरीच पहल",
     },

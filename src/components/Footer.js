@@ -298,11 +298,11 @@ const Footer = () => {
             <strong>{t("contact")}:</strong>
             <br />
             <a href="mailto:info@tribalmuseum.org" style={{ color: "#f5efe7" }}>
-              info@tribalmuseum.org
+              triraipur0771@gmail.com
             </a>
             <br />
             <a href="tel:+15551234567" style={{ color: "#f5efe7" }}>
-              +1 (555) 123-4567
+              0771-2960530
             </a>
           </p>
 

@@ -9,10 +9,15 @@ import visitTranslations from "../data/visitPageTranslations.json";
 
 // Import background image (use one from your assets)
 import planVisitBg from "../assets/tribel/Picture3.jpg";
+import backgroundImage from "../assets/RUID75f5bbabcf5843eda2d9fafa639f5b56.jpg";
 
 const PageContainer = styled.div`
-  background-color: #1a1410;
-  color: #fff;
+  background-image: linear-gradient(rgba(155, 119, 89, 0.85), rgba(169, 130, 99, 0.85)), 
+                    url(${backgroundImage});
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #f5efe7; /* Changed from #fff to a softer off-white for better reading */
   min-height: 100vh;
 `;
 
@@ -49,16 +54,15 @@ const ContentContainer = styled.div`
 `;
 
 const PageTitle = styled(motion.h1)`
-  color: #d3a164;
+  color:rgb(0, 0, 0);
   font-size: 3.5rem;
-  margin-bottom: 30px;
+  margin-top: 180px;
   text-align: center;
   font-family: "Playfair Display", serif;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 `;
 
 const SectionTitle = styled.h2`
-  color: #d3a164;
+  color:rgb(231, 171, 96);
   font-size: 2rem;
   margin: 50px 0 20px;
   position: relative;
@@ -249,7 +253,12 @@ const PlanYourVisitPage = () => {
     <PageContainer>
       <Navbar hideDepartmentNames={true} />
 
-      <HeroSection>
+      <ContentContainer>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+        >
         <PageTitle
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -257,14 +266,6 @@ const PlanYourVisitPage = () => {
         >
           {t("pageTitle")}
         </PageTitle>
-      </HeroSection>
-
-      <ContentContainer>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-        >
           <Description>{t("introduction")}</Description>
 
           <PlanningGrid>
@@ -305,7 +306,8 @@ const PlanYourVisitPage = () => {
                 ))}
               </InfoList>
               <Button
-                href="#booking"
+                                  as={Link}
+                                  to="/book-now"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
