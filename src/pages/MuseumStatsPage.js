@@ -6,10 +6,6 @@ import { useLanguage } from "../contexts/LanguageContext";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-// Import images
-import tribalBanner from "../assets/tribel/Picture3.jpg";
-import freedomBanner from "../assets/tribel/banner.jpg";
-
 // Import museum stats data from JSON
 import museumStatsData from "../data/museumStatsTranslations.json";
 import backgroundImage from "../assets/RUID75f5bbabcf5843eda2d9fafa639f5b56.jpg";
@@ -161,7 +157,7 @@ const HighlightSection = styled.div`
 `;
 
 const SectionTitle = styled.h2`
-  color:rgb(148, 112, 68);
+  color:rgb(211, 151, 76);
   font-size: 2rem;
   margin-bottom: 30px;
   text-align: center;
