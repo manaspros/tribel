@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import styled from "styled-components";
 import { useLanguage } from "../contexts/LanguageContext";
@@ -139,25 +138,6 @@ const ExploreButton = styled(motion.button)`
     color: #1a1410;
   }
 `;
-
-const BackLink = styled(Link)`
-  display: inline-flex;
-  align-items: center;
-  margin-bottom: 20px; /* Reduced from 30px to 20px */
-  margin-top: 0; /* Removed top margin of 20px */
-  color: #d3a164;
-  text-decoration: none;
-  font-weight: 500;
-
-  svg {
-    margin-right: 8px;
-  }
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
 const ModalOverlay = styled(motion.div)`
   position: fixed;
   top: 0;

@@ -12,29 +12,27 @@ import freedomBanner from "../assets/tribel/banner.jpg";
 
 // Import museum stats data from JSON
 import museumStatsData from "../data/museumStatsTranslations.json";
+import backgroundImage from "../assets/RUID75f5bbabcf5843eda2d9fafa639f5b56.jpg";
 
 const PageContainer = styled.div`
-  background-color: #1a1410;
-  color: #fff;
+  background-image: linear-gradient(rgba(155, 119, 89, 0.85), rgba(169, 130, 99, 0.85)), 
+                    url(${backgroundImage});
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #f5efe7; /* Changed from #fff to a softer off-white for better reading */
   min-height: 100vh;
 `;
 
 const HeroSection = styled.div`
-  height: 60vh;
-  background-image: linear-gradient(
-      rgba(26, 20, 16, 0.7),
-      rgba(26, 20, 16, 0.9)
-    ),
-    url(${(props) => (props.isFreedom ? freedomBanner : tribalBanner)});
-  background-size: cover;
-  background-position: center;
+  height: 30vh; /* Reduced height since we no longer have a background image */
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  overflow: hidden;
-  transition: background-image 0.7s ease-in-out;
-
+  padding-top: 220px; /* Add padding to account for the navbar height */
+  margin-bottom: 30px;
+  
   &::after {
     content: "";
     position: absolute;
@@ -42,7 +40,6 @@ const HeroSection = styled.div`
     left: 0;
     width: 100%;
     height: 15vh;
-    background: linear-gradient(to top, #1a1410, transparent);
   }
 `;
 
@@ -54,7 +51,7 @@ const ContentContainer = styled.div`
 `;
 
 const PageTitle = styled(motion.h1)`
-  color: #d3a164;
+  color:rgb(224, 152, 63);
   font-size: 3.5rem;
   margin-bottom: 30px;
   text-align: center;
@@ -422,7 +419,7 @@ const MuseumStatsPage = () => {
     <PageContainer>
       <Navbar />
 
-      <HeroSection isFreedom={activeMuseum === "freedom"}>
+      <HeroSection>
         <PageTitle
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

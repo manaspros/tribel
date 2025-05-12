@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useLanguage } from "../contexts/LanguageContext";
-import { Link } from "react-router-dom";
 
 // Placeholder images - replace with actual Minister and CM images
 import cmImage from "../assets/cm-placeholder.jpg";
@@ -45,76 +44,10 @@ const SectionTitle = styled(motion.h2)`
   text-align: center;
 `;
 
-const LeadersContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 60px;
-  margin-top: 40px;
-  
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-  }
-`;
-
-const LeaderCard = styled(motion.div)`
-  width: 280px;
-  text-align: center;
-  
-  @media (max-width: 768px) {
-    width: 240px;
-  }
-`;
-
-const LeaderImageContainer = styled.div`
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin: 0 auto 20px;
-  border: 3px solid #d3a164;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  
-  @media (max-width: 768px) {
-    width: 150px;
-    height: 150px;
-  }
-`;
-
 const LeaderImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-`;
-
-const LeaderName = styled.h3`
-  color: #d3a164;
-  font-size: 1.4rem;
-  margin-bottom: 5px;
-  font-family: "Playfair Display", serif;
-`;
-
-const LeaderTitle = styled.p`
-  color: #f5efe7;
-  font-size: 1rem;
-  margin-bottom: 15px;
-  opacity: 0.9;
-`;
-
-const LeaderButton = styled(motion.button)`
-  background-color: transparent;
-  color: #d3a164;
-  border: 1px solid #d3a164;
-  padding: 8px 16px;
-  font-size: 0.9rem;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background-color: rgba(211, 161, 100, 0.2);
-  }
 `;
 
 // New styled components for quotes

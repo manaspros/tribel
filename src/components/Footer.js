@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import tribalPattern from "../assets/tribal-pattern.svg";
 import { useLanguage } from "../contexts/LanguageContext";
@@ -67,30 +66,6 @@ const FooterLinks = styled.ul`
     &:hover {
       opacity: 1;
       color: #d3a164;
-    }
-  }
-`;
-
-const SocialIcons = styled.div`
-  display: flex;
-  gap: 15px;
-  margin-top: 20px;
-
-  a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(211, 161, 100, 0.2);
-    color: #d3a164;
-    transition: all 0.3s ease;
-
-    &:hover {
-      background: #d3a164;
-      color: #1a1410;
-      transform: translateY(-3px);
     }
   }
 `;
@@ -237,9 +212,9 @@ const YouTubeIcon = () => (
 );
 
 const Footer = () => {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   const [mapHovered, setMapHovered] = useState(false);
-  const [mapError, setMapError] = useState(false);
+  const [mapError] = useState(false);
 
 
   const mapLocationQuery = encodeURIComponent("Tribal Freedom Fighter Museum, Naya Raipur");
@@ -314,9 +289,9 @@ const Footer = () => {
           <p style={{ marginTop: "15px" }}>
             <strong>{t("hours")}:</strong>
             <br />
-            Tuesday-Sunday: 10 AM - 6 PM
+            {t("Tuesday-Sunday")}
             <br />
-            <span style={{ color: "#d3a164" }}>Closed on Mondays</span>
+            <span style={{ color: "#d3a164" }}>{t("Closed on Monday")}</span>
           </p>
 
           <p style={{ marginTop: "15px" }}>

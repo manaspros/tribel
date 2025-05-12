@@ -8,72 +8,27 @@ import Footer from "../components/Footer";
 
 // Import translation data
 import visionTranslations from "../data/visionPageTranslations.json";
+import backgroundImage from "../assets/RUID75f5bbabcf5843eda2d9fafa639f5b56.jpg";
 
 import forestBg from "../assets/tribel/Tree2.png"; // Import the same background image as HeroSection
 
 const PageContainer = styled.div`
-  background-color: #1a1410;
-  color: #fff;
-  min-height: 100vh;
-`;
-
-const HeroSection = styled.div`
-  height: 50vh;
-  padding-top: 80px; /* Add padding to account for the navbar height */
-  background-image: linear-gradient(
-      rgba(26, 20, 16, 0.7),
-      rgba(26, 20, 16, 0.9)
-    ),
-    url(${forestBg}); /* Use the same background image as HeroSection */
+  background-image: linear-gradient(rgba(155, 119, 89, 0.85), rgba(169, 130, 99, 0.85)), 
+                    url(${backgroundImage});
   background-size: cover;
   background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  margin-top: 0; /* Ensure no additional margin is pushing content down */
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 15vh;
-    background: linear-gradient(to top, #1a1410, transparent);
-  }
+  background-attachment: fixed;
+  color: #f5efe7; /* Changed from #fff to a softer off-white for better reading */
+  min-height: 100vh;
 `;
 
 const ContentContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 30px 20px 80px; /* Reduced top padding from 60px to 30px */
+  padding: 230px 20px 80px; /* Reduced top padding from 60px to 30px */
   position: relative;
 `;
 
-const PageTitle = styled(motion.h1)`
-  color: #d3a164;
-  font-size: 3.5rem;
-  text-align: center;
-  font-family: "Playfair Display", serif;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-
-  @media (max-width: 768px) {
-    font-size: 2.5rem;
-  }
-`;
-
-const Subtitle = styled(motion.p)`
-  text-align: center;
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.8);
-  max-width: 800px;
-
-  @media (max-width: 768px) {
-    font-size: 1rem;
-  }
-`;
 
 const BackLink = styled(Link)`
   display: inline-flex;
@@ -183,25 +138,6 @@ const VisionPage = () => {
   return (
     <PageContainer>
       <Navbar />
-
-      <HeroSection>
-        <div style={{ textAlign: "center" }}>
-          <PageTitle
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            {getContent("pageTitle")}
-          </PageTitle>
-          <Subtitle
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            {getContent("pageSubtitle")}
-          </Subtitle>
-        </div>
-      </HeroSection>
 
       <ContentContainer>
         <BackLink to="/museum-stats">

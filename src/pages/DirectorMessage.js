@@ -22,7 +22,10 @@ const directorImage = "https://thispersondoesnotexist.com/image?id=director";
 const PageContainer = styled.div`
   background-image: linear-gradient(rgba(155, 119, 89, 0.85), rgba(169, 130, 99, 0.85)), 
                     url(${backgroundImage});
-  color: #fff;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #f5efe7; /* Changed from #fff to a softer off-white for better reading */
   min-height: 100vh;
 `;
 
