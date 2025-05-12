@@ -241,7 +241,7 @@ const ImageBackgroundGallery = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          {t("Image Background Gallery")}
+          {t("Freedom Fighter Gallery")}
         </PageTitle>
 
         <GalleryIntro>
