@@ -417,10 +417,10 @@ const TribalGallery = () => {
                       </ImageCounter>
                     </ImageWrapper>
                     
-                    <ImageCaption>
+                    {/* <ImageCaption>
                       {gt(galleries[activeGallery].exploreGalleryImages[currentImageIndex]?.textKey) || 
                         "Discover the rich cultural heritage of tribal communities through this authentic artifact."}
-                    </ImageCaption>
+                    </ImageCaption> */}
                   </ImageContainer>
                 )}
               </CarouselContainer>

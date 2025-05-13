@@ -20,9 +20,14 @@
         "tribalGallery4": "Hunting Tools & Equipment",
         "tribalGallery5": "Traditional Clothing & Ornaments",
         "tribalGallery6": "Agricultural Implements",
-        "tribalGallery7": "Traditional Medicinal Plants",
-        "tribalGallery8": "Tribal Adornments & Jewelry",
-        "tribalGallery9": "Indigenous Musical Instruments"
+        "tribalGallery7": "Tribal Dance",
+        "tribalGallery8": "Tribal Musical Instruments",
+        "tribalGallery9": "Religious Beliefs",
+        "tribalGallery10": "Tribal Festivals",
+        "tribalGallery11": "Traditional Technologies",
+        "tribalGallery12": "Cultural Heritage",
+        "tribalGallery13": "Arts & Crafts",
+        "tribalGallery14": "Particularly Vulnerable Tribal Groups (PVTGs)"
     },
     "hi": {
         "pageTitle": "आदिवासी प्रदर्शनी",
@@ -45,8 +50,13 @@
         "tribalGallery4": "औजार (शिकार उपकरण)",
         "tribalGallery5": "वस्त्र (परिधान) व आभूशण",
         "tribalGallery6": "कृषि उपकरण",
-        "tribalGallery7": "पारंपरिक औषधीय पौधे",
-        "tribalGallery8": "जनजातीय आभूषण और गहने",
-        "tribalGallery9": "स्वदेशी संगीत वाद्ययंत्र"
+        "tribalGallery7": "जनजातीय नृत्य",
+        "tribalGallery8": "जनजातीय वाद्य-यंत्र",
+        "tribalGallery9": "धार्मिक मान्यताएं",
+        "tribalGallery10": "जनजातीय तीज-त्यौहार",
+        "tribalGallery11": "परम्परागत तकनीक",
+        "tribalGallery12": "सांस्कृतिक विरासत",
+        "tribalGallery13": "कला-कौशल",
+        "tribalGallery14": "विशेश रूप से कमजोर जनजाति समूह"
     }
 }

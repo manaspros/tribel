@@ -3,16 +3,10 @@
         "titleKey": "tribalGallery1",
         "exploreGalleryImages": [
             {
-                "imagePath": "/gallery/tribal/1_1.png",
-                "textKey": "tribal1_1_text"
+                "imagePath": "/gallery/tribal/1_1.png"
             },
             {
-                "imagePath": "/gallery/tribal/1_2.png",
-                "textKey": "tribal1_2_text"
-            },
-            {
-                "imagePath": "/gallery/tribal/1_3.png",
-                "textKey": "tribal1_3_text"
+                "imagePath": "/gallery/tribal/1_2.png"
             }
         ]
     },
@@ -20,16 +14,10 @@
         "titleKey": "tribalGallery2",
         "exploreGalleryImages": [
             {
-                "imagePath": "/gallery/tribal/2_1.png",
-                "textKey": "tribal2_1_text"
+                "imagePath": "/gallery/tribal/2_1.png"
             },
             {
-                "imagePath": "/gallery/tribal/2_2.png",
-                "textKey": "tribal2_2_text"
-            },
-            {
-                "imagePath": "/gallery/tribal/2_3.png",
-                "textKey": "tribal2_3_text"
+                "imagePath": "/gallery/tribal/2_2.png"
             }
         ]
     },
@@ -37,12 +25,16 @@
         "titleKey": "tribalGallery3",
         "exploreGalleryImages": [
             {
-                "imagePath": "/gallery/tribal/3_1.png",
-                "textKey": "tribal3_1_text"
+                "imagePath": "/gallery/tribal/3_1.png"
             },
             {
-                "imagePath": "/gallery/tribal/3_2.png",
-                "textKey": "tribal3_2_text"
+                "imagePath": "/gallery/tribal/3_2.png"
+            },
+            {
+                "imagePath": "/gallery/tribal/3_3.png"
+            },
+            {
+                "imagePath": "/gallery/tribal/3_4.png"
             }
         ]
     },
@@ -50,16 +42,10 @@
         "titleKey": "tribalGallery4",
         "exploreGalleryImages": [
             {
-                "imagePath": "/gallery/tribal/4_1.png",
-                "textKey": "tribal4_1_text"
+                "imagePath": "/gallery/tribal/4_1.png"
             },
             {
-                "imagePath": "/gallery/tribal/4_2.png",
-                "textKey": "tribal4_2_text"
-            },
-            {
-                "imagePath": "/gallery/tribal/4_3.png", 
-                "textKey": "tribal4_3_text"
+                "imagePath": "/gallery/tribal/4_2.png"
             }
         ]
     },
@@ -67,12 +53,16 @@
         "titleKey": "tribalGallery5",
         "exploreGalleryImages": [
             {
-                "imagePath": "/gallery/tribal/5_1.png",
-                "textKey": "tribal5_1_text"
+                "imagePath": "/gallery/tribal/5_1.png"
             },
             {
-                "imagePath": "/gallery/tribal/5_2.png",
-                "textKey": "tribal5_2_text"
+                "imagePath": "/gallery/tribal/5_2.png"
+            },
+            {
+                "imagePath": "/gallery/tribal/5_3.png"
+            },
+            {
+                "imagePath": "/gallery/tribal/5_4.png"
             }
         ]
     },
@@ -80,16 +70,104 @@
         "titleKey": "tribalGallery6",
         "exploreGalleryImages": [
             {
-                "imagePath": "/gallery/tribal/6_1.png",
-                "textKey": "tribal6_1_text"
+                "imagePath": "/gallery/tribal/6_1.png"
+            }
+        ]
+    },
+    {
+        "titleKey": "tribalGallery7",
+        "exploreGalleryImages": [
+            {
+                "imagePath": "/gallery/tribal/7_1.png"
             },
             {
-                "imagePath": "/gallery/tribal/6_2.png",
-                "textKey": "tribal6_2_text"
+                "imagePath": "/gallery/tribal/7_2.png"
+            }
+        ]
+    },
+    {
+        "titleKey": "tribalGallery8",
+        "exploreGalleryImages": [
+            {
+                "imagePath": "/gallery/tribal/8_1.png"
             },
             {
-                "imagePath": "/gallery/tribal/6_3.png",
-                "textKey": "tribal6_3_text"
+                "imagePath": "/gallery/tribal/8_2.png"
+            },
+            {
+                "imagePath": "/gallery/tribal/8_3.png"
+            }
+        ]
+    },
+    {
+        "titleKey": "tribalGallery9",
+        "exploreGalleryImages": [
+            {
+                "imagePath": "/gallery/tribal/9_1.png"
+            }
+        ]
+    },
+    {
+        "titleKey": "tribalGallery10",
+        "exploreGalleryImages": [
+            {
+                "imagePath": "/gallery/tribal/10_1.png"
+            },
+            {
+                "imagePath": "/gallery/tribal/10_2.png"
+            },
+            {
+                "imagePath": "/gallery/tribal/10_3.png"
+            }
+        ]
+    },
+    {
+        "titleKey": "tribalGallery11",
+        "exploreGalleryImages": [
+            {
+                "imagePath": "/gallery/tribal/11_1.png"
+            }
+        ]
+    },
+    {
+        "titleKey": "tribalGallery12",
+        "exploreGalleryImages": [
+            {
+                "imagePath": "/gallery/tribal/12_1.png"
+            }
+        ]
+    },
+    {
+        "titleKey": "tribalGallery13",
+        "exploreGalleryImages": [
+            {
+                "imagePath": "/gallery/tribal/13_1.png"
+            },
+            {
+                "imagePath": "/gallery/tribal/13_2.png"
+            }
+        ]
+    },
+    {
+        "titleKey": "tribalGallery14",
+        "exploreGalleryImages": [
+            {
+                "imagePath": "/gallery/tribal/14_1.png"
+            },
+            {
+                "imagePath": "/gallery/tribal/14_2.png"
+            },
+            {
+                "imagePath": "/gallery/tribal/14_3.png"
+            },
+            {
+                "imagePath": "/gallery/tribal/14_4.png"
+            },
+            {
+                "imagePath": "/gallery/tribal/14_5.png"
+            },
+            {
+                "imagePath": "/gallery/tribal/14_6.png"
             }
         ]
     }
