@@ -1,5 +1,5 @@
-import React, { Suspense } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { Suspense, useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { Loader } from "./components/Loader";
 import { Cursor } from "./components/Cursor";
@@ -30,6 +30,13 @@ const TribalGalleryImage = React.lazy(() => import("./pages/TribalGalleryImage")
 // Context-aware loading component that uses the same LoadingContext
 const ContextAwareLoader = () => {
   const { progress } = useLoading();
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+  
+  // Don't show loader on home page
+  if (isHomePage) {
+    return null;
+  }
 
   return (
     <div
@@ -52,17 +59,28 @@ const ContextAwareLoader = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          maxWidth: "90%",
+          textAlign: "center",
         }}
       >
         <h1
           style={{
             fontFamily: "Playfair Display, serif",
-            fontSize: "clamp(2rem, 6vw, 4rem)",
+            fontSize: "clamp(1.8rem, 5vw, 3.2rem)",
             margin: "0 0 30px",
             color: "#d3a164",
+            lineHeight: 1.3,
+            display: "flex",
+            flexDirection: "column",
           }}
         >
-          Tribal Heritage Museum
+          <span>Welcome to</span>
+          <span style={{ 
+            fontSize: "clamp(1.4rem, 4vw, 2.6rem)",
+            marginTop: "0.4rem" 
+          }}>
+            Chhattisgarh Tribal Museum and Freedom Fighter Museum
+          </span>
         </h1>
 
         <div
@@ -95,6 +113,40 @@ const ContextAwareLoader = () => {
   );
 };
 
+// Wrapper for suspense that provides location awareness
+const LocationAwareSuspense = ({ children }) => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+  
+  return (
+    <Suspense fallback={isHomePage ? null : <ContextAwareLoader />}>
+      {children}
+    </Suspense>
+  );
+};
+
+function AppRoutes() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/virtual-tour" element={<VirtualTour />} />
+      <Route path="/tribal" element={<TribalMuseumPage />} />
+      <Route path="/tribal/gallery" element={<TribalGalleryImage />} />
+      <Route path="/tribal/artifacts" element={<TribalArtifacts />} />
+      <Route path="/freedom" element={<FreedomMuseumPage />} />
+      <Route path="/freedom/gallery" element={<GalleryImage />} />
+      <Route path="/freedom/artifacts" element={<FreedomArtifacts />} />
+      <Route path="/about" element={<MuseumStatsPage />} />
+      <Route path="/about/director" element={<DirectorMessage />} />
+      <Route path="/about/vision" element={<VisionPage />} />
+      <Route path="/museum-stats" element={<MuseumStatsPage />} />
+      <Route path="/plan-visit" element={<PlanYourVisitPage />} />
+      <Route path="/book-now" element={<BookNowPage />} />
+      <Route path="/nearby-places" element={<NearbyPlacesPage />} />
+    </Routes>
+  );
+}
+
 function AppContent() {
   return (
     <>
@@ -102,26 +154,9 @@ function AppContent() {
       <Loader />
       <AnimatePresence mode="wait">
         <Router>
-          <Suspense fallback={<ContextAwareLoader />}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/virtual-tour" element={<VirtualTour />} />
-              <Route path="/tribal" element={<TribalMuseumPage />} />
-              <Route path="/tribal/gallery" element={<TribalGalleryImage />} />
-              <Route path="/tribal/artifacts" element={<TribalArtifacts />} />
-              <Route path="/freedom" element={<FreedomMuseumPage />} />
-              <Route path="/freedom/gallery" element={<GalleryImage />} />
-              <Route path="/freedom/artifacts" element={<FreedomArtifacts />} />
-              <Route path="/about" element={<MuseumStatsPage />} />
-              <Route path="/about/director" element={<DirectorMessage />} />
-              <Route path="/about/vision" element={<VisionPage />} />
-              <Route path="/museum-stats" element={<MuseumStatsPage />} />
-              <Route path="/plan-visit" element={<PlanYourVisitPage />} />
-              <Route path="/book-now" element={<BookNowPage />} />
-              <Route path="/nearby-places" element={<NearbyPlacesPage />} />
-              
-            </Routes>
-          </Suspense>
+          <LocationAwareSuspense>
+            <AppRoutes />
+          </LocationAwareSuspense>
         </Router>
       </AnimatePresence>
     </>

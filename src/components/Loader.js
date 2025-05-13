@@ -30,9 +30,27 @@ const LoaderInner = styled(motion.div)`
 
 const LoaderTitle = styled.h1`
   font-family: "Playfair Display", serif;
-  font-size: clamp(2rem, 6vw, 4rem);
+  font-size: clamp(1.8rem, 5vw, 3.2rem); // Slightly smaller font size
   margin: 0 0 30px;
   color: #d3a164;
+  text-align: center;
+  line-height: 1.3; // Add line height for better readability
+  max-width: 90%; // Constrain width for better text wrapping
+  
+  b {
+    display: block; // Force the second part to a new line
+    font-size: clamp(1.4rem, 4vw, 2.6rem); // Slightly smaller for second line
+    margin-top: 0.4rem; // Add space between lines
+  }
+  
+  @media (max-width: 480px) {
+    margin: 0 0 20px;
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
+    
+    b {
+      font-size: clamp(1.2rem, 4vw, 1.8rem);
+    }
+  }
 `;
 
 const LoaderProgressBar = styled.div`
@@ -97,7 +115,8 @@ export const Loader = () => {
       >
         <LoaderInner>
           <LoaderTitle>
-            {t("tribal")} {t("heritageMuseum")}
+            {t("headerWelcome")}
+            <b>{t("heritageMuseum2")}</b>
           </LoaderTitle>
 
           <LoaderProgressBar>
@@ -124,7 +143,8 @@ export const Loader = () => {
 
           <LoaderInner>
             <LoaderTitle>
-              {t("tribal")} {t("heritageMuseum")}
+              {t("headerWelcome")}
+              <b>{t("heritageMuseum2")}</b>
             </LoaderTitle>
             <motion.img
               src={tribalSymbol}
