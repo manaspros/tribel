@@ -6,6 +6,8 @@ import { Cursor } from "./components/Cursor";
 import { LoadingProvider, useLoading } from "./contexts/LoadingContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import "./styles/global.css";
+import ReactGA from 'react-ga4';
+ReactGA.initialize('G-QTTLRC7EFS');
 
 // Use React.lazy for code splitting
 const Home = React.lazy(() => import("./pages/Home"));
@@ -125,6 +127,17 @@ const LocationAwareSuspense = ({ children }) => {
   );
 };
 
+// Add Google Analytics PageView Tracking component
+const PageTracker = () => {
+  const location = useLocation();
+  
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname });
+  }, [location]); // Track when location changes
+  
+  return null;
+};
+
 function AppRoutes() {
   return (
     <Routes>
@@ -155,6 +168,7 @@ function AppContent() {
       <AnimatePresence mode="wait">
         <Router>
           <LocationAwareSuspense>
+            <PageTracker /> {/* Add the tracker component inside Router */}
             <AppRoutes />
           </LocationAwareSuspense>
         </Router>
